@@ -11,6 +11,11 @@ struct LevelView: View{
     
     @State var levelNumber: Int
     @State var levelModel: [LevelModel]
+    
+    @State var levelGrid: [GridItem]
+    @State var levelSpotsIndex: [Int]
+    @State var levelActualPosition: Int
+    @State var levelStartPosition: Int
     //MARK: VARIABLES
     @State private var isGameOver = false
     
@@ -28,6 +33,10 @@ struct LevelView: View{
     init(levelNumber: Int, levelModel: [LevelModel]) {
         self.levelNumber = levelNumber
         self.levelModel = levelModel
+        self.levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
+        self.levelSpotsIndex = LevelModel.getIndexes(of: "🟨", in: levelModel[levelNumber].levelMap)
+        self.levelStartPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
+        self.levelActualPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
     }
     
     //MARK: THE GAME VIEW
@@ -81,10 +90,10 @@ struct LevelView: View{
                 Spacer()
                 
                 //MARK: GAME GRID
-                LazyVGrid(columns: levelModel[levelNumber].levelGrid, spacing: 0){
+                LazyVGrid(columns: levelGrid, spacing: 0){
                     ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
                         if levelModel[levelNumber].levelMap[num] == wall{
-                            Image("BRICK")
+                            Image("Brick")
                                 .resizable()
                                 .scaledToFill()
                         }
@@ -120,7 +129,7 @@ struct LevelView: View{
                 HStack{
                     Button(action:{
                         witchImage = "WITCH-LEFT"
-                        defineMoviment(actualPosition: levelModel[levelNumber].levelStartPosition, offset: -1)
+                        defineMoviment(actualPosition: levelActualPosition, offset: -1)
                     }){
                         Image("LEFT")
                             .resizable()
@@ -130,7 +139,7 @@ struct LevelView: View{
 
                     VStack{
                         Button(action:{
-                            defineMoviment(actualPosition: levelModel[levelNumber].levelStartPosition, offset: levelModel[levelNumber].levelOffset * -1)
+                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }){
                             Image("UP")
                                 .resizable()
@@ -139,7 +148,7 @@ struct LevelView: View{
                             
                         }.disabled(isGameOver)
                         Button(action:{
-                            defineMoviment(actualPosition: levelModel[levelNumber].levelStartPosition, offset: levelModel[levelNumber].levelOffset)
+                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
                         }){
                             Image("DOWN")
                                 .resizable()
@@ -149,7 +158,7 @@ struct LevelView: View{
                     }.disabled(isGameOver)
                     Button(action:{
                         witchImage = "WITCH-RIGHT"
-                        defineMoviment(actualPosition: levelModel[levelNumber].levelStartPosition, offset: 1)
+                        defineMoviment(actualPosition: levelActualPosition, offset: 1)
                     }){
                         Image("RIGHT")
                             .resizable()
@@ -177,7 +186,9 @@ struct LevelView: View{
                         
                         Button{
                             if levelNumber < LevelModel.fases().count - 1{
+                                refreshGame()
                                 levelNumber += 1
+                                refreshGame()
                                 isGameOver.toggle()
                             }
                         }label: {
@@ -197,30 +208,34 @@ extension LevelView{
     
     func refreshGame(){
         levelModel[levelNumber].levelMap = LevelModel.fases()[levelNumber].levelMap
-        levelModel[levelNumber].levelStartPosition = LevelModel.fases()[levelNumber].levelStartPosition
+        levelActualPosition = levelStartPosition
+        levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
+        levelSpotsIndex = LevelModel.getIndexes(of: "🟨", in: levelModel[levelNumber].levelMap)
+        levelStartPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
+        levelActualPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
     }
     //MARK: Game Functions
     func defineMoviment(actualPosition: Int, offset: Int){
         //walking in free space recursively
         if levelModel[levelNumber].levelMap[actualPosition + offset] == grass {
             levelModel[levelNumber].levelMap.swapAt(actualPosition + offset, actualPosition)
-            levelModel[levelNumber].levelStartPosition = actualPosition + offset
+            levelActualPosition = actualPosition + offset
             //recursion
-            if (levelModel[levelNumber].levelMap[levelModel[levelNumber].levelStartPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelModel[levelNumber].levelStartPosition + offset] == wall) {
+            if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) {
                 //while walking you hit something, so it's time to stop walking
             }
             else{
                 //keep moving
-                defineMoviment(actualPosition: levelModel[levelNumber].levelStartPosition, offset: offset)
+                defineMoviment(actualPosition: levelActualPosition, offset: offset)
             }
         }
         //pushing a box
-        else if levelModel[levelNumber].levelMap[levelModel[levelNumber].levelStartPosition + offset] == box {
+        else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box {
             if levelModel[levelNumber].levelMap[actualPosition + offset + offset] != wall && levelModel[levelNumber].levelMap[actualPosition + offset + offset] != box{
                 levelModel[levelNumber].levelMap[actualPosition] = grass
                 levelModel[levelNumber].levelMap[actualPosition + offset] = person
                 levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
-                levelModel[levelNumber].levelStartPosition = actualPosition + offset
+                levelActualPosition = actualPosition + offset
             }
         }
         else{
@@ -228,7 +243,7 @@ extension LevelView{
             //stop walking
         }
         //checking if the level is done
-        if isLevelCompleted(platesPosition: levelModel[levelNumber].levelSpotsIndex){
+        if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
         }
     }

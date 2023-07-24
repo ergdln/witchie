@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct LevelModel{
-    //where the person starts in this level
-    var levelStartPosition: Int
+    //the width of a line
     var levelOffset: Int
-    var levelSpotsIndex: [Int]
-        
-    //number of columns
-    var levelGrid: [GridItem]
     
     //map
     var levelMap: [String]
@@ -24,19 +19,7 @@ extension LevelModel{
     static func fases() -> [LevelModel]{
         return[
             LevelModel(
-                levelStartPosition: 69,
                 levelOffset: 8,
-                levelSpotsIndex: [13, 22, 57, 66],
-                levelGrid: [
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                ],
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🟨 = plate.
@@ -55,19 +38,7 @@ extension LevelModel{
                 ]
             ),
             LevelModel(
-                levelStartPosition: 70,
                 levelOffset: 8,
-                levelSpotsIndex: [9, 35, 46, 57],
-                levelGrid: [
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                ],
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🟨 = plate.
@@ -86,19 +57,7 @@ extension LevelModel{
                 ]
             ),
             LevelModel(
-                levelStartPosition: 69,
                 levelOffset: 8,
-                levelSpotsIndex: [9, 17, 25, 33, 41, 49, 57],
-                levelGrid: [
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                    GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0),
-                ],
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🟨 = plate.
@@ -117,5 +76,14 @@ extension LevelModel{
                 ]
             ),
         ]
+    }
+    static func getIndexes(of element: String, in array: [String]) -> [Int] {
+        var result = [Int]()
+        for (index, value) in array.enumerated() {
+            if value == element {
+                result.append(index)
+            }
+        }
+        return result
     }
 }
