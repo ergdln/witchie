@@ -131,50 +131,6 @@ struct LevelView: View{
                     }
                 }
                 
-                //MARK: game controls
-//                HStack{
-//                    Button(action:{
-//                        witchImage = "WITCH-LEFT"
-//                        defineMoviment(actualPosition: levelActualPosition, offset: -1)
-//                    }){
-//                        Image("LEFT")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 60, height: 60)
-//                    }.disabled(isGameOver)
-//
-//                    VStack{
-//                        Button(action:{
-//                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
-//                        }){
-//                            Image("UP")
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fit)
-//                                .frame(width: 60, height: 60)
-//
-//                        }.disabled(isGameOver)
-//                        Button(action:{
-//                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
-//                        }){
-//                            Image("DOWN")
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fit)
-//                                .frame(width: 60, height: 60)
-//                        }
-//                    }.disabled(isGameOver)
-//                    Button(action:{
-//                        witchImage = "WITCH-RIGHT"
-//                        defineMoviment(actualPosition: levelActualPosition, offset: 1)
-//                    }){
-//                        Image("RIGHT")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 60, height: 60)
-//                    }.disabled(isGameOver)
-//                }.frame(width: 500)
-                
-                //MARK: New sliding game controls
-                
             }.frame(width: 600, height: 600)
                 .navigationBarBackButtonHidden(true)
                 .navigationViewStyle(StackNavigationViewStyle())
@@ -210,6 +166,9 @@ struct LevelView: View{
                 }
             }
         }
+        
+        //MARK: New sliding game controls
+        
         .gesture(
                 DragGesture()
                     .onChanged { gesture in
@@ -232,7 +191,6 @@ struct LevelView: View{
                         }
                         self.gestureOffset = .zero
                         self.direction = .none
-                        // Perform your action based on the direction here
                         
                     }
             )
@@ -245,13 +203,13 @@ extension LevelView{
         let x = translation.width
         let y = translation.height
 
-        if x > 50 && abs(y) < x {
+        if x > 25 && abs(y) < x {
             return .right
-        } else if x < -50 && abs(y) < abs(x) {
+        } else if x < -25 && abs(y) < abs(x) {
             return .left
-        } else if y > 50 && abs(x) < y {
+        } else if y > 25 && abs(x) < y {
             return .down
-        } else if y < -50 && abs(x) < abs(y) {
+        } else if y < -25 && abs(x) < abs(y) {
             return .up
         }
 
