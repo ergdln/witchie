@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LevelView: View{
     
+    
+    
     @State var levelNumber: Int
     @State var levelModel: [LevelModel]
     
@@ -37,13 +39,15 @@ struct LevelView: View{
     let empty: String = "🟫"
     
     init(levelNumber: Int, levelModel: [LevelModel]) {
-        self.levelNumber = levelNumber
-        self.levelModel = levelModel
-        self.levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
-        self.levelSpotsIndex = LevelModel.getIndexes(of: "🟨", in: levelModel[levelNumber].levelMap)
-        self.levelStartPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
-        self.levelActualPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
+        self._levelNumber = State(initialValue: levelNumber)
+        self._levelModel = State(initialValue: levelModel)
+        self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset))
+        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🟨", in: levelModel[levelNumber].levelMap))
+        self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
+        self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
     }
+    
+    @Environment(\.dismiss) private var dismiss
     
     //MARK: THE GAME VIEW
     var body: some View{
@@ -57,31 +61,40 @@ struct LevelView: View{
                 ZStack{
                     HStack {
                         Button(action:{
-                            if levelNumber > 0{
-                                refreshGame()
-                                levelNumber -= 1
-                                refreshGame()
-                            }
+                            dismiss()
                         }){
-                            Text("Previous")
+                            Text("Back to menu")
                                 .foregroundColor(.white)
                                 .padding()
                                 .border(.white)
-                        }.frame(width: 100, alignment: .trailing)
+                        }.frame(alignment: .trailing)
                             .disabled(isGameOver)
-                        Button(action:{
-                            if levelNumber < LevelModel.fases().count - 1{
-                                refreshGame()
-                                levelNumber += 1
-                                refreshGame()
-                            }
-                        }){
-                            Text("Next")
-                                .foregroundColor(.white)
-                                .padding()
-                                .border(.white)
-                        }.frame(width: 100, alignment: .trailing)
-                            .disabled(isGameOver)
+//                        Button(action:{
+//                            if levelNumber > 0{
+//                                refreshGame()
+//                                levelNumber -= 1
+//                                refreshGame()
+//                            }
+//                        }){
+//                            Text("Previous")
+//                                .foregroundColor(.white)
+//                                .padding()
+//                                .border(.white)
+//                        }.frame(width: 100, alignment: .trailing)
+//                            .disabled(isGameOver)
+//                        Button(action:{
+//                            if levelNumber < LevelModel.fases().count - 1{
+//                                refreshGame()
+//                                levelNumber += 1
+//                                refreshGame()
+//                            }
+//                        }){
+//                            Text("Next")
+//                                .foregroundColor(.white)
+//                                .padding()
+//                                .border(.white)
+//                        }.frame(width: 100, alignment: .trailing)
+//                            .disabled(isGameOver)
                         Button(action:{
                             refreshGame()
                         }){
@@ -270,7 +283,8 @@ extension LevelView{
     }
 }
 
-struct LevelView_Previews: PreviewProvider {
+
+private struct LevelView_Previews: PreviewProvider {
     static var previews: some View {
         LevelView(levelNumber: 0, levelModel: LevelModel.fases())
     }
