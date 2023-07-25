@@ -18,6 +18,12 @@ struct LevelView: View{
     @State var levelStartPosition: Int
     //MARK: VARIABLES
     @State private var isGameOver = false
+    @State private var gestureOffset: CGSize = .zero
+    @State private var direction: Direction = .none
+
+    enum Direction {
+        case none, up, down, left, right
+    }
     
     //witch first image
     @State var witchImage: String = "WITCH-LEFT"
@@ -126,46 +132,49 @@ struct LevelView: View{
                 }
                 
                 //MARK: game controls
-                HStack{
-                    Button(action:{
-                        witchImage = "WITCH-LEFT"
-                        defineMoviment(actualPosition: levelActualPosition, offset: -1)
-                    }){
-                        Image("LEFT")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60, height: 60)
-                    }.disabled(isGameOver)
-
-                    VStack{
-                        Button(action:{
-                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
-                        }){
-                            Image("UP")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 60, height: 60)
-                            
-                        }.disabled(isGameOver)
-                        Button(action:{
-                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
-                        }){
-                            Image("DOWN")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 60, height: 60)
-                        }
-                    }.disabled(isGameOver)
-                    Button(action:{
-                        witchImage = "WITCH-RIGHT"
-                        defineMoviment(actualPosition: levelActualPosition, offset: 1)
-                    }){
-                        Image("RIGHT")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60, height: 60)
-                    }.disabled(isGameOver)
-                }.frame(width: 500)
+//                HStack{
+//                    Button(action:{
+//                        witchImage = "WITCH-LEFT"
+//                        defineMoviment(actualPosition: levelActualPosition, offset: -1)
+//                    }){
+//                        Image("LEFT")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 60, height: 60)
+//                    }.disabled(isGameOver)
+//
+//                    VStack{
+//                        Button(action:{
+//                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
+//                        }){
+//                            Image("UP")
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(width: 60, height: 60)
+//
+//                        }.disabled(isGameOver)
+//                        Button(action:{
+//                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
+//                        }){
+//                            Image("DOWN")
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(width: 60, height: 60)
+//                        }
+//                    }.disabled(isGameOver)
+//                    Button(action:{
+//                        witchImage = "WITCH-RIGHT"
+//                        defineMoviment(actualPosition: levelActualPosition, offset: 1)
+//                    }){
+//                        Image("RIGHT")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 60, height: 60)
+//                    }.disabled(isGameOver)
+//                }.frame(width: 500)
+                
+                //MARK: New sliding game controls
+                
             }.frame(width: 600, height: 600)
                 .navigationBarBackButtonHidden(true)
                 .navigationViewStyle(StackNavigationViewStyle())
@@ -201,10 +210,53 @@ struct LevelView: View{
                 }
             }
         }
+        .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        self.gestureOffset = gesture.translation
+                        self.direction = self.getDirection(from: gesture.translation)
+                    }
+                    .onEnded { gesture in
+                        if direction == .down{
+                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
+                        }else if direction == .up{
+                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
+                        }else if direction == .left{
+                            witchImage = "WITCH-LEFT"
+                            defineMoviment(actualPosition: levelActualPosition, offset: -1)
+                        }else if direction == .right{
+                            witchImage = "WITCH-RIGHT"
+                            defineMoviment(actualPosition: levelActualPosition, offset: 1)
+                        }else{
+                            print("none")
+                        }
+                        self.gestureOffset = .zero
+                        self.direction = .none
+                        // Perform your action based on the direction here
+                        
+                    }
+            )
     }
 }
 
 extension LevelView{
+    
+    private func getDirection(from translation: CGSize) -> Direction {
+        let x = translation.width
+        let y = translation.height
+
+        if x > 50 && abs(y) < x {
+            return .right
+        } else if x < -50 && abs(y) < abs(x) {
+            return .left
+        } else if y > 50 && abs(x) < y {
+            return .down
+        } else if y < -50 && abs(x) < abs(y) {
+            return .up
+        }
+
+        return .none
+    }
     
     func refreshGame(){
         levelModel[levelNumber].levelMap = LevelModel.fases()[levelNumber].levelMap
