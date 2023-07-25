@@ -69,32 +69,6 @@ struct LevelView: View{
                                 .border(.white)
                         }.frame(alignment: .trailing)
                             .disabled(isGameOver)
-//                        Button(action:{
-//                            if levelNumber > 0{
-//                                refreshGame()
-//                                levelNumber -= 1
-//                                refreshGame()
-//                            }
-//                        }){
-//                            Text("Previous")
-//                                .foregroundColor(.white)
-//                                .padding()
-//                                .border(.white)
-//                        }.frame(width: 100, alignment: .trailing)
-//                            .disabled(isGameOver)
-//                        Button(action:{
-//                            if levelNumber < LevelModel.fases().count - 1{
-//                                refreshGame()
-//                                levelNumber += 1
-//                                refreshGame()
-//                            }
-//                        }){
-//                            Text("Next")
-//                                .foregroundColor(.white)
-//                                .padding()
-//                                .border(.white)
-//                        }.frame(width: 100, alignment: .trailing)
-//                            .disabled(isGameOver)
                         Button(action:{
                             refreshGame()
                         }){
@@ -144,7 +118,7 @@ struct LevelView: View{
                     }
                 }
                 
-            }.frame(width: 600, height: 600)
+            }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
                 .navigationBarBackButtonHidden(true)
                 .navigationViewStyle(StackNavigationViewStyle())
             
@@ -253,7 +227,7 @@ extension LevelView{
             }
         }
         //pushing a box
-        else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box {
+        else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box && !levelSpotsIndex.contains(levelActualPosition + offset) {
             if levelModel[levelNumber].levelMap[actualPosition + offset + offset] != wall && levelModel[levelNumber].levelMap[actualPosition + offset + offset] != box{
                 levelModel[levelNumber].levelMap[actualPosition] = grass
                 levelModel[levelNumber].levelMap[actualPosition + offset] = person
@@ -284,7 +258,7 @@ extension LevelView{
 }
 
 
-private struct LevelView_Previews: PreviewProvider {
+struct LevelView_Previews: PreviewProvider {
     static var previews: some View {
         LevelView(levelNumber: 0, levelModel: LevelModel.fases())
     }

@@ -22,7 +22,7 @@ struct LevelSelectorView: View {
 }
 
 
-internal struct LevelSelectorView_Previews: PreviewProvider {
+struct LevelSelectorView_Previews: PreviewProvider {
     static var previews: some View {
         LevelSelectorView()
     }
