@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        LevelView(levelNumber: 0, levelModel: LevelModel.fases())
+        StartGameView()
     }
 }
 
