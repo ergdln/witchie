@@ -35,14 +35,14 @@ struct LevelView: View{
     let grass: String = "⬜️"
     let person: String = "🙋🏿"
     let wall: String = "⬛️"
-    let spot: String = "🟨"
+    let spot: String = "🔯"
     let empty: String = "🟫"
     
     init(levelNumber: Int, levelModel: [LevelModel]) {
         self._levelNumber = State(initialValue: levelNumber)
         self._levelModel = State(initialValue: levelModel)
         self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset))
-        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🟨", in: levelModel[levelNumber].levelMap))
+        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap))
         self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
         self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
     }
@@ -207,7 +207,7 @@ extension LevelView{
         levelModel[levelNumber].levelMap = LevelModel.fases()[levelNumber].levelMap
         levelActualPosition = levelStartPosition
         levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
-        levelSpotsIndex = LevelModel.getIndexes(of: "🟨", in: levelModel[levelNumber].levelMap)
+        levelSpotsIndex = LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap)
         levelStartPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
         levelActualPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
     }
