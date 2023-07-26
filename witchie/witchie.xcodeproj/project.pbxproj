@@ -57,7 +57,6 @@
 		6EFCA0EF2A69A9F50008AAC5 /* witchie */ = {
 			isa = PBXGroup;
 			children = (
-				6EFCA0FF2A69AB780008AAC5 /* New Group */,
 				6EFCA0FE2A69AB570008AAC5 /* Constants */,
 				6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */,
 				6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */,
@@ -83,13 +82,6 @@
 				6EFCA1042A69ACDB0008AAC5 /* ContentComponent.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		6EFCA0FF2A69AB780008AAC5 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
