@@ -16,8 +16,8 @@ struct LevelSelectorView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 25) {
-                ForEach(Array(0..<LevelModel.fases().count), id: \.self) { level in
-                    NavigationLink(destination: LevelView(levelNumber: level, levelModel: LevelModel.fases())) {
+                ForEach(Array(0..<LevelModel.patchOne().count), id: \.self) { level in
+                    NavigationLink(destination: LevelView(levelNumber: level, levelModel: LevelModel.patchOne())) {
                         HStack{
                             Text("Level \(level + 1)").font(.largeTitle)
                             if isCompleted[level]{
@@ -26,18 +26,20 @@ struct LevelSelectorView: View {
                             
                         }
                     }.disabled(shouldDisable(level: level))
-                    }
+                    
                 }
                 SoundToggle(soundOn: $soundOn, audioPlayerManager: audioPlayerManager)
             }
             .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+            .onAppear{
+                isCompleted = LevelCompleted.isCompleted
+            }
         }
-        .navigationBarBackButtonHidden()
         .onAppear {
             audioPlayerManager.setupAudioPlayer()
-            isCompleted = LevelCompleted.isCompleted
             //audioPlayerManager.playSound()
         }
+        .navigationBarBackButtonHidden()
     }
     
     func shouldDisable(level: Int) -> Bool{
