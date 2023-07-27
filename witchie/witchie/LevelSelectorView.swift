@@ -27,6 +27,7 @@ struct LevelSelectorView: View {
         .navigationBarBackButtonHidden()
         .onAppear {
             audioPlayerManager.setupAudioPlayer()
+            //audioPlayerManager.playSound()
         }
     }
 }

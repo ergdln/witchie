@@ -79,9 +79,9 @@
 				472873B42A6B2EA80021B646 /* LevelView.swift */,
 				47333D432A69D380001E478E /* LevelModel.swift */,
 				C06C155E2A71A5AF00A7FE9E /* StartGameView.swift */,
+				C06C15662A71AD2300A7FE9E /* SoundToggle.swift */,
 				6EFCA0F42A69A9F60008AAC5 /* Assets.xcassets */,
 				6EFCA0F62A69A9F60008AAC5 /* Preview Content */,
-				C06C15662A71AD2300A7FE9E /* SoundToggle.swift */,
 			);
 			path = witchie;
 			sourceTree = "<group>";

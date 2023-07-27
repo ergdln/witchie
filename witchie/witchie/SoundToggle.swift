@@ -69,17 +69,17 @@ class AudioPlayerManager: ObservableObject {
         audioPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
         audioPlayer?.numberOfLoops = -1
 
-        // Adicionar um observador para notificar mudanças em soundOn
-        self.objectWillChange
-            .sink { [weak self] _ in
-                guard let self = self else { return }
-                if self.soundOn {
-                    self.playSound()
-                } else {
-                    self.stopSound()
-                }
-            }
-            .store(in: &cancellables)
+//         Adicionar um observador para notificar mudanças em soundOn
+//        self.objectWillChange
+//            .sink { [weak self] _ in
+//                guard let self = self else { return }
+//                if self.soundOn {
+//                    self.playSound()
+//                } else {
+//                    self.stopSound()
+//                }
+//            }
+//            .store(in: &cancellables)
     }
 
     func playSound() {

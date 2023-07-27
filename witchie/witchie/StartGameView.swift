@@ -120,11 +120,6 @@ struct StartGameView: View {
                     }.navigationBarBackButtonHidden(true)
                 }
            }
-                .onAppear {
-                    // Criar o AVAudioPlayer no início do jogo
-                    audioPlayerManager.setupAudioPlayer()
-                    audioPlayerManager.playSound()
-            }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
