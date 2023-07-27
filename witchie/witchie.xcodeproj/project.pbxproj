@@ -54,6 +54,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47889F152A72EEA1005EB560 /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				472873B42A6B2EA80021B646 /* LevelView.swift */,
+			);
+			path = Level;
+			sourceTree = "<group>";
+		};
+		47889F162A72EEDE005EB560 /* LevelSelector */ = {
+			isa = PBXGroup;
+			children = (
+				47889ED22A704C32005EB560 /* LevelSelectorView.swift */,
+			);
+			path = LevelSelector;
+			sourceTree = "<group>";
+		};
+		47889F172A72EEF4005EB560 /* StartGame */ = {
+			isa = PBXGroup;
+			children = (
+				C06C155E2A71A5AF00A7FE9E /* StartGameView.swift */,
+			);
+			path = StartGame;
+			sourceTree = "<group>";
+		};
+		47889F182A72EF17005EB560 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6EFCA0FE2A69AB570008AAC5 /* Constants */,
+				47889ED42A717098005EB560 /* LevelCompleted.swift */,
+				47333D432A69D380001E478E /* LevelModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		47889F192A72EF4C005EB560 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				47889F1A2A72EF66005EB560 /* Components */,
+				47889F1B2A72EF75005EB560 /* Modules */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		47889F1A2A72EF66005EB560 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		47889F1B2A72EF75005EB560 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				47889F172A72EEF4005EB560 /* StartGame */,
+				47889F162A72EEDE005EB560 /* LevelSelector */,
+				47889F152A72EEA1005EB560 /* Level */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		47889F1C2A72EFF2005EB560 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				C06C15662A71AD2300A7FE9E /* SoundToggle.swift */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		6EFCA0E42A69A9F50008AAC5 = {
 			isa = PBXGroup;
 			children = (
@@ -73,16 +141,12 @@
 		6EFCA0EF2A69A9F50008AAC5 /* witchie */ = {
 			isa = PBXGroup;
 			children = (
-				C06C15592A71A54900A7FE9E /* Resources */,
-				6EFCA0FE2A69AB570008AAC5 /* Constants */,
 				6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */,
 				6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */,
-				47889ED22A704C32005EB560 /* LevelSelectorView.swift */,
-				472873B42A6B2EA80021B646 /* LevelView.swift */,
-				47333D432A69D380001E478E /* LevelModel.swift */,
-				C06C155E2A71A5AF00A7FE9E /* StartGameView.swift */,
-				C06C15662A71AD2300A7FE9E /* SoundToggle.swift */,
-				47889ED42A717098005EB560 /* LevelCompleted.swift */,
+				47889F1C2A72EFF2005EB560 /* Sound */,
+				C06C15592A71A54900A7FE9E /* Resources */,
+				47889F182A72EF17005EB560 /* Models */,
+				47889F192A72EF4C005EB560 /* UI */,
 				6EFCA0F42A69A9F60008AAC5 /* Assets.xcassets */,
 				6EFCA0F62A69A9F60008AAC5 /* Preview Content */,
 			);
