@@ -125,32 +125,45 @@ struct LevelView: View{
             //MARK: Changes the screen when the game is over
             if isGameOver{
                 ZStack{
-                    Image("BACKGROUND")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
-                    
-                    VStack{
-                        Image("L2COMPLETED")
+                    if levelNumber != LevelModel.patchOne().count - 1{
+                        Image("BACKGROUND")
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 700, height: 700)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
                         
-                        Button{
-                            if levelNumber < LevelModel.fases().count - 1{
+                        VStack{
+//                            Image("L2COMPLETED")
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(width: 700, height: 700)
+                            Text("terminasse o nivel \(levelNumber + 1), mas foi facil")
+                            Text("vamo ver se no nivel \(levelNumber + 2) tu eh pica msm")
+                            Button{
                                 refreshGame()
                                 levelNumber += 1
                                 refreshGame()
                                 isGameOver.toggle()
+                            }label: {
+                                Image("OK")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 50)
                             }
+                        }.frame(width:500, alignment: .trailing)
+                    }else{
+                        Text("TAPORRA ZERASSE BOY")
+                        Button{
+                            refreshGame()
+                            isGameOver.toggle()
+                            dismiss()
                         }label: {
                             Image("OK")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 100, height: 50)
                         }
-                    }.frame(width:500, alignment: .trailing)
-                }
+                    }
+                }.foregroundColor(.white)
             }
         }
         
@@ -204,7 +217,7 @@ extension LevelView{
     }
     
     func refreshGame(){
-        levelModel[levelNumber].levelMap = LevelModel.fases()[levelNumber].levelMap
+        levelModel[levelNumber].levelMap = LevelModel.patchOne()[levelNumber].levelMap
         levelActualPosition = levelStartPosition
         levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
         levelSpotsIndex = LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap)
@@ -242,6 +255,7 @@ extension LevelView{
         //checking if the level is done
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
+            LevelCompleted.isCompleted[levelNumber] = true
         }
     }
     
@@ -260,6 +274,6 @@ extension LevelView{
 
 struct LevelView_Previews: PreviewProvider {
     static var previews: some View {
-        LevelView(levelNumber: 0, levelModel: LevelModel.fases())
+        LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())
     }
 }

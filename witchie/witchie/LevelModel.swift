@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LevelModel{
+    
     //the width of a line
     var levelOffset: Int
     
@@ -16,7 +17,7 @@ struct LevelModel{
 }
 
 extension LevelModel{
-    static func fases() -> [LevelModel]{
+    static func patchOne() -> [LevelModel]{
         return[
             LevelModel(
                 levelOffset: 8,
@@ -189,6 +190,7 @@ extension LevelModel{
             ),
         ]
     }
+    
     static func getIndexes(of element: String, in array: [String]) -> [Int] {
         var result = [Int]()
         for (index, value) in array.enumerated() {
