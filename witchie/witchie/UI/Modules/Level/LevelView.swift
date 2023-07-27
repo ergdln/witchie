@@ -18,10 +18,12 @@ struct LevelView: View{
     @State var levelSpotsIndex: [Int]
     @State var levelActualPosition: Int
     @State var levelStartPosition: Int
+    
     //MARK: VARIABLES
     @State private var isGameOver = false
     @State private var gestureOffset: CGSize = .zero
     @State private var direction: Direction = .none
+    @State private var playerMovements: Int = 0
 
     enum Direction {
         case none, up, down, left, right
@@ -69,6 +71,12 @@ struct LevelView: View{
                                 .border(.white)
                         }.frame(alignment: .trailing)
                             .disabled(isGameOver)
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 100, height: 50)
+                            Text(String(playerMovements))
+                                .foregroundColor(.white)
+                        }
                         Button(action:{
                             refreshGame()
                         }){
@@ -176,14 +184,18 @@ struct LevelView: View{
                     }
                     .onEnded { gesture in
                         if direction == .down{
+                            playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
                         }else if direction == .up{
+                            playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }else if direction == .left{
                             witchImage = "WITCH-LEFT"
+                            playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: -1)
                         }else if direction == .right{
                             witchImage = "WITCH-RIGHT"
+                            playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: 1)
                         }else{
                             print("none")
@@ -216,6 +228,7 @@ extension LevelView{
     }
     
     func refreshGame(){
+        playerMovements = 0
         levelModel[levelNumber].levelMap = LevelModel.patchOne()[levelNumber].levelMap
         levelActualPosition = levelStartPosition
         levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
