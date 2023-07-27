@@ -24,7 +24,6 @@ struct StartGameView: View {
                         .aspectRatio(contentMode: .fill)
                         .opacity(0.8)
                         .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
-                    
                     VStack{
                         ZStack{
                             //gerar esse bagulho com loops dps
