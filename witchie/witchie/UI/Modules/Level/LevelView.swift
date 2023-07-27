@@ -136,8 +136,7 @@ struct LevelView: View{
 //                                .resizable()
 //                                .aspectRatio(contentMode: .fit)
 //                                .frame(width: 700, height: 700)
-                            Text("terminasse o nivel \(levelNumber + 1), mas foi facil")
-                            Text("vamo ver se no nivel \(levelNumber + 2) tu eh pica msm")
+                            Text(levelModel[levelNumber].levelDialogue)
                             Button{
                                 refreshGame()
                                 levelNumber += 1
