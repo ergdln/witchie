@@ -20,7 +20,7 @@ App Developed in the challenge Feijoada at the Apple Developer Academy | UFPE. W
 </p>
 
 ### Demonstration Vídeo:
-[![Demo](https://i.imgur.com/0LQ4P1S.png)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[![Demo](https://i.imgur.com/9Rn1lAX.png)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ## About the App
 Here is some incredible text about our app!
