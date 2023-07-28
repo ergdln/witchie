@@ -131,6 +131,28 @@ extension LevelModel{
             ),
             // LEVEL 6
             LevelModel(
+                levelOffset: 9,
+                levelDialogue: "Eita quanta correria pra lá e pra cá, chega to tontinha!",
+                levelMap: [
+                    
+                    // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
+                    //Onboarding
+                     "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                     "⬛️", "🔯", "⬜️", "⬛️", "⬛️", "⬛️", "🔯", "🔯", "⬛️",
+                     "⬛️", "⬜️", "⬜️", "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                     "⬛️", "📦", "⬜️", "⬜️", "⬜️", "📦", "⬜️", "📦", "⬛️",
+                     "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️", "⬜️", "⬛️",
+                     "⬛️", "⬜️", "⬛️", "⬜️", "🙋🏿", "⬜️", "⬜️", "⬜️", "⬛️",
+                     "⬛️", "⬜️", "⬜️", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                     "⬛️", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "📦", "⬛️",
+                     "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️", "⬜️", "⬜️", "⬛️",
+                     "⬛️", "🔯", "🔯", "⬛️", "⬛️", "⬛️", "⬜️", "🔯", "⬛️",
+                     "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    
+                ]
+            ),
+            // LEVEL 7
+            LevelModel(
                 levelOffset: 8,
                 levelDialogue: "Meus parabéns viu? Essa ai era um divisor de águas, se chegasse até aqui talvez tenha algum futuro nesse trabalho…",
                 levelMap: [
@@ -150,7 +172,7 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 7
+            // LEVEL 8
             LevelModel(
                 levelOffset: 8,
                 levelDialogue: "Lembra o que eu falei sobre querer empurrar de uma vez? Pois é percebi que não lembrou! Tem que pensar antes de sair me jogando por ai, assim tu só vai machucar minha artrose.",
@@ -170,7 +192,7 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 8
+            // LEVEL 9
             LevelModel(
                 levelOffset: 8,
                 levelDialogue: "Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.",
@@ -190,7 +212,7 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 9
+            // LEVEL 10
             LevelModel(
                 levelOffset: 8,
                 levelDialogue: "CARAMBA! Quem foi o que teve a capacidade de pensar nessa coisa tão simples e diabólica??? Se eu pudesse até eu desistia depois dessa!",
