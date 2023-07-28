@@ -9,7 +9,7 @@ import SwiftUI
 import AVFAudio
 
 struct LevelSelectorView: View {
-    @State private var soundOn = false
+    @State private var soundOn = true
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @State var isCompleted: [Bool] = LevelCompleted.isCompleted
 

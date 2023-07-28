@@ -16,7 +16,7 @@ struct ContentView: View {
             .onAppear {
                 // Criar o AVAudioPlayer no início do jogo
                 audioPlayerManager.setupAudioPlayer()
-                // audioPlayerManager.playSound()
+                audioPlayerManager.playSound()
         }
             .environmentObject(audioPlayerManager)
     }
