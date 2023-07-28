@@ -9,8 +9,8 @@ import SwiftUI
 import AVFAudio
 
 struct LevelSelectorView: View {
-    @State private var soundOn = false
-    @StateObject private var audioPlayerManager = AudioPlayerManager()
+    @State private var soundOn = true
+    @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @State var isCompleted: [Bool] = LevelCompleted.isCompleted
 
     var body: some View {
@@ -23,21 +23,15 @@ struct LevelSelectorView: View {
                             if isCompleted[level]{
                                 Text("✅")
                             }
-                            
                         }
                     }.disabled(shouldDisable(level: level))
-                    
                 }
-                SoundToggle(soundOn: $soundOn, audioPlayerManager: audioPlayerManager)
+                SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager)
             }
             .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
             .onAppear{
                 isCompleted = LevelCompleted.isCompleted
             }
-        }
-        .onAppear {
-            audioPlayerManager.setupAudioPlayer()
-            //audioPlayerManager.playSound()
         }
         .navigationBarBackButtonHidden()
     }

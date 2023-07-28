@@ -13,11 +13,12 @@ struct ContentView: View {
     @StateObject var audioPlayerManager = AudioPlayerManager()
     var body: some View {
         StartGameView()
-//            .onAppear {
-//                // Criar o AVAudioPlayer no início do jogo
-//                audioPlayerManager.setupAudioPlayer()
-//                audioPlayerManager.playSound()
-//        }
+            .onAppear {
+                // Criar o AVAudioPlayer no início do jogo
+                audioPlayerManager.setupAudioPlayer()
+                audioPlayerManager.playSound()
+        }
+            .environmentObject(audioPlayerManager)
     }
 }
 
