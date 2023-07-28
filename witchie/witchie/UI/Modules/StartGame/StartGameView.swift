@@ -19,7 +19,7 @@ struct StartGameView: View {
         NavigationView{
             NavigationLink(destination: LevelSelectorView()){
                 ZStack{
-                    Image("BACKGROUND")
+                    Image(ImageAsset.BACKGROUND)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .opacity(0.8)
@@ -29,48 +29,50 @@ struct StartGameView: View {
                             //gerar esse bagulho com loops dps
                             Group{
                                 Group{
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
                                 }
                                 Group{
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
-                                    drawingDacingElements(image: "CAULDRON-CLEAN")
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
                                 }
                                 Group{
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
                                 }
                                 Group{
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
-                                    drawingDacingElements(image: "SPOT-CLEAN")
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
                                 }
                             }
                             
@@ -80,13 +82,13 @@ struct StartGameView: View {
                                 .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
                             
                             //lua tem declaração fixa de movimento
-                            Image("MOON")
+                            Image(ImageAsset.MOON)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 600, height: 600)
                             
                             //bruxinha principal tem declaraçao fixa de movimento
-                            Image("WITCH-START")
+                            Image(ImageAsset.WITCH_START)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 400, height: 400)

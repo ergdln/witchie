@@ -30,7 +30,7 @@ struct LevelView: View{
     }
     
     //witch first image
-    @State var witchImage: String = "WITCH-LEFT"
+    @State var witchImage: String = ImageAsset.TILE_WITCH_LEFT
     
     //Rename de map elements
     let box: String = "📦"
@@ -54,7 +54,7 @@ struct LevelView: View{
     //MARK: THE GAME VIEW
     var body: some View{
         ZStack{
-            Image("BACKGROUND")
+            Image(ImageAsset.BACKGROUND)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
@@ -80,7 +80,7 @@ struct LevelView: View{
                         Button(action:{
                             refreshGame()
                         }){
-                           Image("REFRESH")
+                            Image(ImageAsset.REFRESH_BUTTON)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 50)
@@ -94,22 +94,22 @@ struct LevelView: View{
                 LazyVGrid(columns: levelGrid, spacing: 0){
                     ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
                         if levelModel[levelNumber].levelMap[num] == wall{
-                            Image("Brick")
+                            Image(ImageAsset.TILE_BRICK)
                                 .resizable()
                                 .scaledToFill()
                         }
                         else if levelModel[levelNumber].levelMap[num] == grass{
-                            Image("GRASS")
+                            Image(ImageAsset.TILE_GRASS)
                                 .resizable()
                                 .scaledToFill()
                         }
                         else if levelModel[levelNumber].levelMap[num] == spot{
-                            Image("SPOT")
+                            Image(ImageAsset.TILE_SPOT)
                                 .resizable()
                                 .scaledToFill()
                         }
                         else if levelModel[levelNumber].levelMap[num] == box{
-                            Image("CAULDRON")
+                            Image(ImageAsset.TILE_CAULDRON)
                                 .resizable()
                                 .scaledToFill()
                         }
@@ -119,7 +119,7 @@ struct LevelView: View{
                                 .scaledToFill()
                         }
                         else if levelModel[levelNumber].levelMap[num] == empty{
-                            Image("empty")
+                            Image(ImageAsset.EMPTY)
                                 .resizable()
                                 .scaledToFill()
                         }
@@ -134,7 +134,7 @@ struct LevelView: View{
             if isGameOver{
                 ZStack{
                     if levelNumber != LevelModel.patchOne().count - 1{
-                        Image("BACKGROUND")
+                        Image(ImageAsset.BACKGROUND)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
@@ -151,7 +151,7 @@ struct LevelView: View{
                                 refreshGame()
                                 isGameOver.toggle()
                             }label: {
-                                Image("OK")
+                                Image(ImageAsset.OK_BUTTON)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 50)
@@ -164,7 +164,7 @@ struct LevelView: View{
                             isGameOver.toggle()
                             dismiss()
                         }label: {
-                            Image("OK")
+                            Image(ImageAsset.OK_BUTTON)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 100, height: 50)
@@ -190,11 +190,11 @@ struct LevelView: View{
                             playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }else if direction == .left{
-                            witchImage = "WITCH-LEFT"
+                            witchImage = ImageAsset.TILE_WITCH_LEFT
                             playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: -1)
                         }else if direction == .right{
-                            witchImage = "WITCH-RIGHT"
+                            witchImage = ImageAsset.TILE_WITCH_RIGHT
                             playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: 1)
                         }else{

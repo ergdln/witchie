@@ -10,7 +10,6 @@ import Foundation
 struct ImageAsset{
     
     static let BACKGROUND = "BACKGROUND"
-    static let BRICK = "Brick"
     static let CAULDRON_CLEAN = "CAULDRON-CLEAN"
     static let EMPTY = "empty"
     static let LIVAICON = "LIVAICON"
@@ -18,9 +17,10 @@ struct ImageAsset{
     static let OK_BUTTON = "OK"
     static let REFRESH_BUTTON = "REFRESH"
     static let SPOT_CLEAN = "SPOT-CLEAN"
-    static let WITCH_START = "WICH-START"
+    static let WITCH_START = "WITCH-START"
     
     // GAME TILES
+    static let TILE_BRICK = "Brick"
     static let TILE_CAULDRON = "CAULDRON"
     static let TILE_GRASS = "GRASS"
     static let TILE_SPOT = "SPOT"
