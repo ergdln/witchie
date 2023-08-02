@@ -14,26 +14,28 @@ struct LevelSelectorView: View {
     @State var isCompleted: [Bool] = LevelCompleted.isCompleted
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 25) {
-                ForEach(Array(0..<LevelModel.patchOne().count), id: \.self) { level in
-                    NavigationLink(destination: LevelView(levelNumber: level, levelModel: LevelModel.patchOne())) {
-                        HStack{
-                            Text("Level \(level + 1)").font(.largeTitle)
-                            if isCompleted[level]{
-                                Text("✅")
-                            }
+            NavigationStack {
+                ScrollView {
+                    VStack(spacing: 25) {
+                        ForEach(Array(0..<LevelModel.patchOne().count), id: \.self) { level in
+                            NavigationLink(destination: LevelView(levelNumber: level, levelModel: LevelModel.patchOne())) {
+                                HStack{
+                                    Text("Level \(level + 1)").font(.largeTitle)
+                                    if isCompleted[level]{
+                                        Text("✅")
+                                    }
+                                }
+                            }.disabled(shouldDisable(level: level))
                         }
-                    }.disabled(shouldDisable(level: level))
+                    }
+                    .frame(width: UIScreen.main.bounds.width)
+                    .onAppear{
+                        isCompleted = LevelCompleted.isCompleted
+                    }
                 }
                 SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager)
             }
-            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
-            .onAppear{
-                isCompleted = LevelCompleted.isCompleted
-            }
-        }
-        .navigationBarBackButtonHidden()
+            .navigationBarBackButtonHidden()
     }
     
     func shouldDisable(level: Int) -> Bool{
