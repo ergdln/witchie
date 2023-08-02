@@ -46,6 +46,27 @@ extension LevelModel{
             ),
             // LEVEL 2
             LevelModel(
+                levelOffset: 9,
+                levelDialogue: "Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!",
+                levelMap: [
+                    
+                    
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️", "⬜️", "📦", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "🔯", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬛️", "⬜️", "⬜️", "📦", "⬛️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "🔯", "⬛️", "⬛️",
+                    "⬛️", "⬛️", "⬜️", "⬜️", "📦", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "🔯", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "⬜️", "📦", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "🙋🏿", "🔯", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    
+                ]
+            ),
+            // LEVEL 3
+            LevelModel(
                 levelOffset: 8,
                 levelDialogue: "É… Não foi tão direto quanto antes mas até que você não foi mal, pronto pra seguir em frente?",
                 levelMap: [
@@ -65,7 +86,7 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 3
+            // LEVEL 4
             LevelModel(
                 levelOffset: 8,
                 levelDialogue: "Viu que era só parar e pensar invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!",
@@ -86,7 +107,50 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 4
+            // LEVEL 5
+            LevelModel(
+                levelOffset: 9,
+                levelDialogue: "Esquecesse de parar e pensar de novo né? E olhe que ainda tava simétrica pra deixar mais fácil.",
+                levelMap: [
+                    
+                    
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "📦", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "🔯", "⬛️",
+                    "⬛️", "⬜️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬛️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "🔯", "⬛️",
+                    "⬛️", "⬜️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "📦", "⬛️",
+                    "⬛️", "🙋🏿", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    
+                ]
+            ),
+            // LEVEL 6
+            LevelModel(
+                levelOffset: 9,
+                levelDialogue: "Eita como demora pra ouvir minhas dicas...",
+                levelMap: [
+                    
+                    
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "🔯", "⬜️", "📦", "⬜️", "📦", "⬜️", "🔯", "⬛️",
+                    "⬛️", "⬜️", "📦", "⬜️", "⬜️", "⬜️", "📦", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "🔯", "⬜️", "⬜️", "⬜️", "🔯", "⬜️", "⬛️",
+                    "⬛️", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "📦", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "📦", "🔯", "⬜️", "🔯", "📦", "⬜️", "⬛️",
+                    "⬛️", "🔯", "⬜️", "⬜️", "🙋🏿", "⬜️", "⬜️", "🔯", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    
+                ]
+            ),
+
+            // LEVEL 7
             LevelModel(
                 levelOffset: 9,
                 levelDialogue: "Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas viu?",
@@ -107,7 +171,7 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 5
+            // LEVEL 8
             LevelModel(
                 levelOffset: 8,
                 levelDialogue: "Esse padrão foi interessante, acho que vale a pena memorizar...",
@@ -127,7 +191,7 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 6
+            // LEVEL 9
             LevelModel(
                 levelOffset: 8,
                 levelDialogue: "Olha não vem jogar a culpa em mim não, minha filha que insistiu pra eu chamar o namorado arquiteto dela porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!",
@@ -149,7 +213,7 @@ extension LevelModel{
 
                 ]
             ),
-            // LEVEL 7
+            // LEVEL 10
             LevelModel(
                 levelOffset: 9,
                 levelDialogue: "Eita quanta correria pra lá e pra cá, chega to tontinha!",
@@ -163,15 +227,15 @@ extension LevelModel{
                      "⬛️", "📦", "⬜️", "⬜️", "⬜️", "📦", "⬜️", "📦", "⬛️",
                      "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️", "⬜️", "⬛️",
                      "⬛️", "⬜️", "⬛️", "⬜️", "🙋🏿", "⬜️", "⬜️", "⬜️", "⬛️",
-                     "⬛️", "⬜️", "⬜️", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
-                     "⬛️", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "📦", "⬛️",
+                     "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                     "⬛️", "📦", "⬜️", "📦", "⬜️", "⬜️", "⬜️", "📦", "⬛️",
                      "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️", "⬜️", "⬜️", "⬛️",
                      "⬛️", "🔯", "🔯", "⬛️", "⬛️", "⬛️", "⬜️", "🔯", "⬛️",
                      "⬛️", "⬛️", "⬛️", "⬛️", "🟫", "⬛️", "⬛️", "⬛️", "⬛️",
                     
                 ]
             ),
-            // LEVEL 8
+            // LEVEL 11
             LevelModel(
                 levelOffset: 8,
                 levelDialogue: "Meus parabéns viu? Essa ai era um divisor de águas, se chegasse até aqui talvez tenha algum futuro nesse trabalho…",
@@ -192,7 +256,7 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 9
+            // LEVEL 12
             LevelModel(
                 levelOffset: 8,
                 levelDialogue: "Lembra o que eu falei sobre querer empurrar de uma vez? Pois é percebi que não lembrou! Tem que pensar antes de sair me jogando por ai, assim tu só vai machucar minha artrose.",
@@ -232,10 +296,10 @@ extension LevelModel{
                     
                 ]
             ),
-            // LEVEL 11
+            // LEVEL 13
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "CARAMBA! Quem foi o que teve a capacidade de pensar nessa coisa tão simples e diabólica??? Se eu pudesse até eu desistia depois dessa!",
+                levelDialogue: "Colega isso nem tava na lista, como tu veio parar aqui??? E mais importante: POR QUE TU FICASSE ATÉ RESOLVER??? Vai dar um rolê",
                 levelMap: [
                     
                     //nivel que barreto VAI CHORAR
