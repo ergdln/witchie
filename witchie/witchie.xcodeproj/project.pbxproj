@@ -19,6 +19,7 @@
 		6EFCA1012A69AC460008AAC5 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA1002A69AC460008AAC5 /* ImageAsset.swift */; };
 		6EFCA1032A69AC920008AAC5 /* ColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA1022A69AC920008AAC5 /* ColorAsset.swift */; };
 		6EFCA1052A69ACDB0008AAC5 /* ContentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA1042A69ACDB0008AAC5 /* ContentComponent.swift */; };
+		C01DA0B12A7C431B00036FCD /* Borel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C01DA0B02A7C431B00036FCD /* Borel-Regular.ttf */; };
 		C0348A392A7431C3001A1EF7 /* SoundToggleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0348A382A7431C3001A1EF7 /* SoundToggleComponent.swift */; };
 		C06C155D2A71A56600A7FE9E /* CauldronAlert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C06C155B2A71A56600A7FE9E /* CauldronAlert.mp3 */; };
 		C06C155F2A71A5AF00A7FE9E /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06C155E2A71A5AF00A7FE9E /* StartGameView.swift */; };
@@ -40,6 +41,8 @@
 		6EFCA1002A69AC460008AAC5 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		6EFCA1022A69AC920008AAC5 /* ColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAsset.swift; sourceTree = "<group>"; };
 		6EFCA1042A69ACDB0008AAC5 /* ContentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentComponent.swift; sourceTree = "<group>"; };
+		C01DA0B02A7C431B00036FCD /* Borel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Borel-Regular.ttf"; sourceTree = "<group>"; };
+		C01DA0B22A7C446A00036FCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C0348A382A7431C3001A1EF7 /* SoundToggleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundToggleComponent.swift; sourceTree = "<group>"; };
 		C06C155B2A71A56600A7FE9E /* CauldronAlert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CauldronAlert.mp3; sourceTree = "<group>"; };
 		C06C155E2A71A5AF00A7FE9E /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 		6EFCA0EF2A69A9F50008AAC5 /* witchie */ = {
 			isa = PBXGroup;
 			children = (
+				C01DA0B22A7C446A00036FCD /* Info.plist */,
+				C01DA0AF2A7C41D700036FCD /* Fonts */,
 				6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */,
 				6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */,
 				47889F1C2A72EFF2005EB560 /* Sound */,
@@ -175,6 +180,14 @@
 				6EFCA1042A69ACDB0008AAC5 /* ContentComponent.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		C01DA0AF2A7C41D700036FCD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C01DA0B02A7C431B00036FCD /* Borel-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		C06C15592A71A54900A7FE9E /* Resources */ = {
@@ -245,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C06C15612A71A65A00A7FE9E /* LivaTheme.mp3 in Resources */,
+				C01DA0B12A7C431B00036FCD /* Borel-Regular.ttf in Resources */,
 				6EFCA0F82A69A9F60008AAC5 /* Preview Assets.xcassets in Resources */,
 				6EFCA0F52A69A9F60008AAC5 /* Assets.xcassets in Resources */,
 				C06C155D2A71A56600A7FE9E /* CauldronAlert.mp3 in Resources */,
@@ -402,6 +416,7 @@
 				DEVELOPMENT_TEAM = 5M8NVJZA75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = witchie/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -431,6 +446,7 @@
 				DEVELOPMENT_TEAM = 5M8NVJZA75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = witchie/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
