@@ -16,77 +16,103 @@ struct StartGameView: View {
     
     var body: some View{
         
-        NavigationView{
-            NavigationLink(destination: LevelSelectorView()){
+        NavigationStack{
                 ZStack{
-                    Image(ImageAsset.BACKGROUND)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .opacity(0.8)
+                    //the background
+                    Rectangle()
+                        .foregroundColor(Color(ColorAsset.WHITE))
                         .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
+                    //dacing elements
                     VStack{
                         ZStack{
                             
-                            //Draw ALL the 20 dacing elements in the background
-                            ForEach((0...10), id: \.self) { num in
+                            //draws all the 20 dacing elements in the background
+                            ForEach((0...20), id: \.self) { num in
                                 Group{
                                     drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
                                 }
                             }
-                           
-                            
-                            //sabe deus pq vc muda de cor
+                            //purple filter
                             Rectangle()
-                                .foregroundColor(.purple)
-                                .opacity(0.7)
+                                .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
+                                .opacity(0.95)
                                 .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
-                            ZStack{
+                            
+                            VStack(spacing: 10){
                                 
-                                //lua tem declaração fixa de movimento
-                                Image(ImageAsset.MOON)
+                                //logo witchie
+                                Image(ImageAsset.WITCH_LOGO)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+                                    .frame(width: UIScreen.main.bounds.width * 0.55)
                                 
-                                //bruxinha principal tem declaraçao fixa de movimento
-                                Image(ImageAsset.WITCH_START)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5)
-                                    .offset(x: {
-                                        if animatingJ && !animatingI {
-                                            return 100
-                                        }  else if animatingJ && animatingI {
-                                            return -20
-                                        } else {
-                                            return -95
+                                
+                                //moon and witchie assets dacing
+                                ZStack{
+                                    //dacing moon
+                                    Image(ImageAsset.MOON)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.width * 0.7)
+                                    
+                                    //dacing wichie
+                                    Image(ImageAsset.WITCH_START)
+                                        .resizable()
+                                        .rotationEffect(.radians(Double(0.15)))
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5)
+                                        .offset(x: {
+                                            if animatingJ && !animatingI {
+                                                return 100
+                                            }  else if animatingJ && animatingI {
+                                                return -20
+                                            } else {
+                                                return -95
+                                            }
+                                        }(),
+                                                y: {
+                                            if animatingJ && !animatingI {
+                                                return UIScreen.main.bounds.height * 0.1
+                                            }  else if animatingJ && animatingI {
+                                                return UIScreen.main.bounds.height * 0.1
+                                            } else {
+                                                return UIScreen.main.bounds.height * 0.1
+                                            }
+                                        }())
+                                        .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingJ)
+                                        .onAppear {
+                                            animatingJ.toggle()
                                         }
-                                    }(),
-                                            y: {
-                                        if animatingJ && !animatingI {
-                                            return UIScreen.main.bounds.height * 0.1
-                                        }  else if animatingJ && animatingI {
-                                            return UIScreen.main.bounds.height * 0.1
-                                        } else {
-                                            return UIScreen.main.bounds.height * 0.1
+                                        .onChange(of: animatingJ) { _ in
+                                            animatingI.toggle()
+                                            animatingJ.toggle()
                                         }
-                                    }())
-                                    .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingJ)
-                                    .onAppear {
-                                        animatingJ.toggle()
-                                    }
-                                    .onChange(of: animatingJ) { _ in
-                                        animatingI.toggle()
-                                        animatingJ.toggle()
-                                    }
-                            }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
-                                .navigationBarBackButtonHidden(true)
-                                .navigationViewStyle(StackNavigationViewStyle())
+                                }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+                                    .navigationBarBackButtonHidden(true)
+                                    .navigationViewStyle(StackNavigationViewStyle())
+                                
+                              
+                                NavigationLink {
+                                    LevelSelectorView()
+                                } label: {
+                                    Text("START GAME")
+                                        .background(Color(.orange))
+                                        .frame(width: UIScreen.main.bounds.width * 0.5)
+                                        .foregroundColor(.white)
+                                }
+                                
+                                NavigationLink {
+                                    AboutUsView()
+                                } label: {
+                                    Text("ABOUT US")
+                                        .foregroundColor(.white)
+                                   
+                                }
+                                
+                            }
                         }
                     }.navigationBarBackButtonHidden(true)
                 }
-           }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
@@ -111,7 +137,7 @@ extension StartGameView {
         return Image(image)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.4)
+            .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3)
             .rotationEffect(.radians(Double(rotationEffect)))
             .offset(x: {
                 if animatingJ && !animatingI {
