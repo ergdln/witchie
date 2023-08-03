@@ -18,44 +18,49 @@ struct LevelSelectorView: View {
         ZStack {
             Color(red: 255/255, green: 212/255, blue: 207/255)
                 .ignoresSafeArea()
-            VStack {
-                HStack{
+            VStack (spacing: 0) {
+                HStack (alignment: .center) {
                     Button{
                         dismiss()
                     }label: {
-                        Text("<- Voltar")
+                        Text("<- Voltar").font(.custom(ContentComponent.regular, size: 20))
                     }
                     Spacer()
                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager)
                 }
                 .padding(.horizontal)
                 ScrollView {
-                    Text("Níveis").font(.largeTitle)
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 300), spacing: UIScreen.main.bounds.width * 0.1), count: 3), spacing: 5) {
+                    Text("Níveis").font(.custom(ContentComponent.regular, size: 40))
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 300), spacing: 0), count: 3), spacing: 5) {
                         ForEach(Array(0..<LevelModel.patchOne().count), id: \.self) { level in
                             NavigationLink(destination: LevelView(levelNumber: level, levelModel: LevelModel.patchOne())) {
                                 VStack(alignment: .center, spacing: 0){
-                                    Text("\(level + 1)").font(.largeTitle)
+                                    Text("\(level + 1)").font(.custom(ContentComponent.regular, size: 35))
+                                        .padding(.bottom, -20)
                                     if isCompleted[level]{
                                         Image("CALDEIRAO")
                                             .resizable()
                                             .scaledToFit()
+                                            .scaleEffect(0.8)
                                     }else{
                                         if level != 0{
                                             if isCompleted[level - 1]{
                                                 Image("CALDEIRAOVAZIO")
                                                     .resizable()
                                                     .scaledToFit()
+                                                    .scaleEffect(0.8)
                                             }else{
                                                 Image("CALDEIRAO")
                                                     .resizable()
                                                     .scaledToFit()
+                                                    .scaleEffect(0.8)
                                                     .opacity(0.2)
                                             }
                                         }else{
                                             Image("CALDEIRAOVAZIO")
                                                 .resizable()
                                                 .scaledToFit()
+                                                .scaleEffect(0.8)
                                         }
                                         
                                     }
@@ -64,6 +69,7 @@ struct LevelSelectorView: View {
                         }
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.8)
+                    .padding(.vertical, -60)
                     .onAppear{
                         isCompleted = LevelCompleted.isCompleted
                     }
