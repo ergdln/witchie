@@ -11,7 +11,8 @@ struct SoundToggleComponent: View {
     @Binding var soundOn: Bool
     @ObservedObject var audioPlayerManager: AudioPlayerManager
     var body: some View {
-        Toggle("Sound \(soundOn ? "On" : "Off")", isOn: $soundOn)
+        Toggle("\(soundOn ? "🔈" : "🔇")", isOn: $soundOn)
+            .frame(width: 80)
             .padding()
             .onChange(of: soundOn) { newValue in
                 if newValue {

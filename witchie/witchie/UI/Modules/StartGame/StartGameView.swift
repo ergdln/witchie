@@ -16,7 +16,7 @@ struct StartGameView: View {
     
     var body: some View{
         
-        NavigationView{
+        NavigationStack{
             NavigationLink(destination: LevelSelectorView()){
                 ZStack{
                     Image(ImageAsset.BACKGROUND)
