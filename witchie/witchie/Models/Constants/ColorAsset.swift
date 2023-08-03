@@ -11,5 +11,6 @@ import Foundation
 
 struct ColorAsset{
     
-    static let test = " "
+    static let WHITE = "color-WHITE"
+    static let MAIN_PURPLE = "color-MAINPURPLE"
 }

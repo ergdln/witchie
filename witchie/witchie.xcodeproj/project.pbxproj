@@ -12,6 +12,7 @@
 		47889ED32A704C32005EB560 /* LevelSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889ED22A704C32005EB560 /* LevelSelectorView.swift */; };
 		47889ED52A717098005EB560 /* LevelCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889ED42A717098005EB560 /* LevelCompleted.swift */; };
 		47889F1E2A72F21B005EB560 /* ComponentX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889F1D2A72F21B005EB560 /* ComponentX.swift */; };
+		6EAB19B82A7C431B002047CD /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB19B72A7C431B002047CD /* AboutUsView.swift */; };
 		6EFCA0F12A69A9F50008AAC5 /* witchieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */; };
 		6EFCA0F32A69A9F50008AAC5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */; };
 		6EFCA0F52A69A9F60008AAC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EFCA0F42A69A9F60008AAC5 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		47889ED22A704C32005EB560 /* LevelSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectorView.swift; sourceTree = "<group>"; };
 		47889ED42A717098005EB560 /* LevelCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCompleted.swift; sourceTree = "<group>"; };
 		47889F1D2A72F21B005EB560 /* ComponentX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentX.swift; sourceTree = "<group>"; };
+		6EAB19B72A7C431B002047CD /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		6EFCA0ED2A69A9F50008AAC5 /* witchie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = witchie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = witchieApp.swift; sourceTree = "<group>"; };
 		6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				47889F172A72EEF4005EB560 /* StartGame */,
 				47889F162A72EEDE005EB560 /* LevelSelector */,
 				47889F152A72EEA1005EB560 /* Level */,
+				6EAB19B92A7C4329002047CD /* About Us */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -129,6 +132,14 @@
 				C06C15662A71AD2300A7FE9E /* AudioPlayerManager.swift */,
 			);
 			path = Sound;
+			sourceTree = "<group>";
+		};
+		6EAB19B92A7C4329002047CD /* About Us */ = {
+			isa = PBXGroup;
+			children = (
+				6EAB19B72A7C431B002047CD /* AboutUsView.swift */,
+			);
+			path = "About Us";
 			sourceTree = "<group>";
 		};
 		6EFCA0E42A69A9F50008AAC5 = {
@@ -278,6 +289,7 @@
 				C06C15672A71AD2300A7FE9E /* AudioPlayerManager.swift in Sources */,
 				6EFCA1012A69AC460008AAC5 /* ImageAsset.swift in Sources */,
 				6EFCA0F32A69A9F50008AAC5 /* ContentView.swift in Sources */,
+				6EAB19B82A7C431B002047CD /* AboutUsView.swift in Sources */,
 				6EFCA1032A69AC920008AAC5 /* ColorAsset.swift in Sources */,
 				6EFCA0F12A69A9F50008AAC5 /* witchieApp.swift in Sources */,
 				47889ED52A717098005EB560 /* LevelCompleted.swift in Sources */,
@@ -413,7 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"witchie/Preview Content\"";
-				DEVELOPMENT_TEAM = 5M8NVJZA75;
+				DEVELOPMENT_TEAM = 275GWT29UT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = witchie/Info.plist;
@@ -443,7 +455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"witchie/Preview Content\"";
-				DEVELOPMENT_TEAM = 5M8NVJZA75;
+				DEVELOPMENT_TEAM = 275GWT29UT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = witchie/Info.plist;
