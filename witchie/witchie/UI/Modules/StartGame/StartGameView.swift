@@ -26,98 +26,63 @@ struct StartGameView: View {
                         .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
                     VStack{
                         ZStack{
-                            //gerar esse bagulho com loops dps
-                            Group{
+                            
+                            //Draw ALL the 20 dacing elements in the background
+                            ForEach((0...10), id: \.self) { num in
                                 Group{
                                     drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                }
-                                Group{
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
-                                }
-                                Group{
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                }
-                                Group{
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
-                                    drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
                                     drawingDacingElements(image: ImageAsset.SPOT_CLEAN)
                                 }
                             }
+                           
                             
                             //sabe deus pq vc muda de cor
                             Rectangle()
+                                .foregroundColor(.purple)
                                 .opacity(0.7)
                                 .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
-                            
-                            //lua tem declaração fixa de movimento
-                            Image(ImageAsset.MOON)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 600, height: 600)
-                            
-                            //bruxinha principal tem declaraçao fixa de movimento
-                            Image(ImageAsset.WITCH_START)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 400, height: 400)
-                                .offset(x: {
-                                    if animatingJ && !animatingI {
-                                        return 100
-                                    }  else if animatingJ && animatingI {
-                                        return -20
-                                    } else {
-                                        return -95
+                            ZStack{
+                                
+                                //lua tem declaração fixa de movimento
+                                Image(ImageAsset.MOON)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+                                
+                                //bruxinha principal tem declaraçao fixa de movimento
+                                Image(ImageAsset.WITCH_START)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5)
+                                    .offset(x: {
+                                        if animatingJ && !animatingI {
+                                            return 100
+                                        }  else if animatingJ && animatingI {
+                                            return -20
+                                        } else {
+                                            return -95
+                                        }
+                                    }(),
+                                            y: {
+                                        if animatingJ && !animatingI {
+                                            return UIScreen.main.bounds.height * 0.1
+                                        }  else if animatingJ && animatingI {
+                                            return UIScreen.main.bounds.height * 0.1
+                                        } else {
+                                            return UIScreen.main.bounds.height * 0.1
+                                        }
+                                    }())
+                                    .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingJ)
+                                    .onAppear {
+                                        animatingJ.toggle()
                                     }
-                                }(),
-                                        y: {
-                                    if animatingJ && !animatingI {
-                                        return 100
-                                    }  else if animatingJ && animatingI {
-                                        return 100
-                                    } else {
-                                        return 100
+                                    .onChange(of: animatingJ) { _ in
+                                        animatingI.toggle()
+                                        animatingJ.toggle()
                                     }
-                                }())
-                                .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingJ)
-                                .onAppear {
-                                    animatingJ.toggle()
-                                }
-                                .onChange(of: animatingJ) { _ in
-                                    animatingI.toggle()
-                                    animatingJ.toggle()
-                                }
+                            }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+                                .navigationBarBackButtonHidden(true)
+                                .navigationViewStyle(StackNavigationViewStyle())
                         }
                     }.navigationBarBackButtonHidden(true)
                 }
@@ -141,12 +106,12 @@ extension StartGameView {
         let yOffSet2: Int = Int.random(in: -2000..<2000)
         let yOffSet3: Int = Int.random(in: -2000..<2000)
         //Image speed
-        let duration: Int = Int.random(in: 1..<10)
+        let duration: Int = Int.random(in: 30..<40)
     
         return Image(image)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 300, height: 300)
+            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.4)
             .rotationEffect(.radians(Double(rotationEffect)))
             .offset(x: {
                 if animatingJ && !animatingI {

@@ -126,7 +126,6 @@ struct LevelView: View{
                         }
                     }
                 }
-                
             }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
                 .navigationBarBackButtonHidden(true)
                 .navigationViewStyle(StackNavigationViewStyle())
