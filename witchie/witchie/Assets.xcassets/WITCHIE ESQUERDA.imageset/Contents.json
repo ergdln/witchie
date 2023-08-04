@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "MARCA.png",
+      "filename" : "WITCHIE ESQUERDA.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "MARCA@2x.png",
+      "filename" : "WITCHIE ESQUERDA@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "MARCA@3x.png",
+      "filename" : "WITCHIE ESQUERDA@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

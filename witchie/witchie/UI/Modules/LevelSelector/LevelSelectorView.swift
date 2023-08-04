@@ -38,26 +38,26 @@ struct LevelSelectorView: View {
                                     Text("\(level + 1)").font(.custom(ContentComponent.regular, size: 35))
                                         .padding(.bottom, -20)
                                     if isCompleted[level]{
-                                        Image("CALDEIRAO")
+                                        Image(ImageAsset.CAULDRON_FULL)
                                             .resizable()
                                             .scaledToFit()
                                             .scaleEffect(0.8)
                                     }else{
                                         if level != 0{
                                             if isCompleted[level - 1]{
-                                                Image("CALDEIRAOVAZIO")
+                                                Image(ImageAsset.CAULDRON_FULL)
                                                     .resizable()
                                                     .scaledToFit()
                                                     .scaleEffect(0.8)
                                             }else{
-                                                Image("CALDEIRAO")
+                                                Image(ImageAsset.CAULDRON_FULL)
                                                     .resizable()
                                                     .scaledToFit()
                                                     .scaleEffect(0.8)
                                                     .opacity(0.2)
                                             }
                                         }else{
-                                            Image("CALDEIRAOVAZIO")
+                                            Image(ImageAsset.CAULDRON_EMPTY)
                                                 .resizable()
                                                 .scaledToFit()
                                                 .scaleEffect(0.8)
