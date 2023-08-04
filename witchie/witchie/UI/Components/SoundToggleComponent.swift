@@ -11,16 +11,26 @@ struct SoundToggleComponent: View {
     @Binding var soundOn: Bool
     @ObservedObject var audioPlayerManager: AudioPlayerManager
     var body: some View {
-        Toggle("\(soundOn ? "🔈" : "🔇")", isOn: $soundOn)
-            .frame(width: 80)
-            .padding()
-            .onChange(of: soundOn) { newValue in
-                if newValue {
-                    audioPlayerManager.playSound()
-                } else {
-                    audioPlayerManager.stopSound()
-                }
+        
+        Button{
+            soundOn.toggle()
+        }label: {
+            if soundOn{
+                Image(ImageAsset.SOUND_ON)
+                    .resizable()
+            }else{
+                Image(ImageAsset.SOUND_OFF)
+                    .resizable()
             }
+        }
+        .frame(width: 33, height: 26)
+        .onChange(of: soundOn) { newValue in
+            if newValue {
+                audioPlayerManager.playSound()
+            } else {
+                audioPlayerManager.stopSound()
+            }
+        }
     }
 }
 

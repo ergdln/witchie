@@ -16,7 +16,7 @@ struct LevelSelectorView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 255/255, green: 212/255, blue: 207/255)
+            Color(red: 248/255, green: 239/255, blue: 235/255)
                 .ignoresSafeArea()
             VStack (spacing: 0) {
                 HStack (alignment: .center) {
@@ -26,10 +26,12 @@ struct LevelSelectorView: View {
                     Spacer()
                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager)
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 30)
+                Text("Níveis").font(.custom(ContentComponent.regular, size: 40))
+                    .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
+                    .padding(.top, 20)
                 ScrollView {
-                    Text("Níveis").font(.custom(ContentComponent.regular, size: 40))
-                        .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
+                    
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 300), spacing: 0), count: 3), spacing: 5) {
                         ForEach(Array(0..<LevelModel.patchOne().count), id: \.self) { level in
                             NavigationLink(destination: LevelView(levelNumber: level, levelModel: LevelModel.patchOne())) {
@@ -70,7 +72,6 @@ struct LevelSelectorView: View {
                         }
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.8)
-                    .padding(.top, -60)
                     .onAppear{
                         isCompleted = LevelCompleted.isCompleted
                     }
