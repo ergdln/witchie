@@ -8,5 +8,5 @@
 import Foundation
 
 struct LevelCompleted{
-    static var isCompleted: [Bool] = Array(repeating: true, count: LevelModel.patchOne().count)
+    static var isCompleted: [Bool] = Array(repeating: false, count: LevelModel.patchOne().count)
 }
