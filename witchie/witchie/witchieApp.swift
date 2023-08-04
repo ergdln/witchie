@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct witchieApp: App {
-    @StateObject private var dataController = DataManager()
+    @StateObject private var dataManager = DataManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environment(\.managedObjectContext, dataManager.container.viewContext)
         }
     }
 }

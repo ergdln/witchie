@@ -11,6 +11,8 @@ import AVFAudio
 struct ContentView: View {
     @State var audioPlayer: AVAudioPlayer!
     @StateObject var audioPlayerManager = AudioPlayerManager()
+    @Environment(\.managedObjectContext) var managedObjContext
+
     var body: some View {
         StartGameView()
             .onAppear {
