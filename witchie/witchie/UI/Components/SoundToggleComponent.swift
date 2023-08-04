@@ -14,6 +14,7 @@ struct SoundToggleComponent: View {
         
         Button{
             soundOn.toggle()
+            UserDefaults.standard.set(soundOn, forKey: "isSoundOn")
         }label: {
             if soundOn{
                 Image(ImageAsset.SOUND_ON)
@@ -30,6 +31,9 @@ struct SoundToggleComponent: View {
             } else {
                 audioPlayerManager.stopSound()
             }
+        }
+        .onAppear{
+            soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
         }
     }
 }

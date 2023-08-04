@@ -11,7 +11,7 @@ import Combine
 
 class AudioPlayerManager: ObservableObject {
     var audioPlayer: AVAudioPlayer?
-    @Published var soundOn: Bool = true // Adicionar @Published para notificar mudanças no soundOn
+    @Published var soundOn: Bool = UserDefaults.standard.bool(forKey: "isSoundOn") // Adicionar @Published para notificar mudanças no soundOn
 
     func setupAudioPlayer() {
         let sound = Bundle.main.path(forResource: "LivaTheme", ofType: "mp3")
