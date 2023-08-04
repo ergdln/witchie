@@ -69,7 +69,7 @@ struct LevelSelectorView: View {
                         }
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.8)
-                    .padding(.vertical, -60)
+                    .padding(.top, -60)
                     .onAppear{
                         isCompleted = LevelCompleted.isCompleted
                     }
