@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "MARCA.png",
+      "filename" : "VASSOURILDA.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "MARCA@2x.png",
+      "filename" : "VASSOURILDA@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "MARCA@3x.png",
+      "filename" : "VASSOURILDA@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

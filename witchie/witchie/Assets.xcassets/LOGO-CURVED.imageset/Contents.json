@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "MARCA.png",
+      "filename" : "Witchie.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "MARCA@2x.png",
+      "filename" : "Witchie@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "MARCA@3x.png",
+      "filename" : "Witchie@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

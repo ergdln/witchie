@@ -29,7 +29,7 @@ struct StartGameView: View {
                             //draws all the 20 dacing elements in the background
                             ForEach((0...20), id: \.self) { num in
                                 Group{
-                                    drawingDacingElements(image: ImageAsset.CAULDRON_CLEAN)
+                                    drawingDacingElements(image: ImageAsset.CAULDRON_FULL)
                                 }
                             }
                             //purple filter
@@ -90,7 +90,11 @@ struct StartGameView: View {
                                 }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
                                     .navigationBarBackButtonHidden(true)
                                     .navigationViewStyle(StackNavigationViewStyle())
-                                
+                                //gambiarra do carai
+                                //stack vazia só pra usar como spacer
+                                VStack{
+                                    
+                                }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.05)
                               
                                 NavigationLink {
                                     LevelSelectorView()
