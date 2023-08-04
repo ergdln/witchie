@@ -45,12 +45,12 @@ struct LevelSelectorView: View {
                                     }else{
                                         if level != 0{
                                             if isCompleted[level - 1]{
-                                                Image(ImageAsset.CAULDRON_FULL)
+                                                Image(ImageAsset.CAULDRON_EMPTY)
                                                     .resizable()
                                                     .scaledToFit()
                                                     .scaleEffect(0.8)
                                             }else{
-                                                Image(ImageAsset.CAULDRON_FULL)
+                                                Image(ImageAsset.CAULDRON_EMPTY)
                                                     .resizable()
                                                     .scaledToFit()
                                                     .scaleEffect(0.8)
