@@ -18,6 +18,7 @@ struct ImageAsset{
     static let REFRESH_BUTTON = "REFRESH"
     static let SPOT_CLEAN = "SPOT-CLEAN"
     static let WITCH_START = "WITCH-START"
+    static let WITCH_LOGO = "LOGO"
     
     // GAME TILES
     static let TILE_BRICK = "Brick"

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct LevelView: View{
     
-    
-    
     @State var levelNumber: Int
     @State var levelModel: [LevelModel]
     
@@ -126,7 +124,6 @@ struct LevelView: View{
                         }
                     }
                 }
-                
             }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
                 .navigationBarBackButtonHidden(true)
                 .navigationViewStyle(StackNavigationViewStyle())
@@ -269,6 +266,7 @@ extension LevelView{
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
             LevelCompleted.isCompleted[levelNumber] = true
+            UserDefaults.standard.set(LevelCompleted.isCompleted, forKey: "CurrentLevel")
         }
     }
     

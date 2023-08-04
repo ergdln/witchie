@@ -11,5 +11,5 @@ import Foundation
 
 struct ContentComponent{
     
-    static let TEXT_TEST = "test"
+    static let regular = "Borel-Regular"
 }
