@@ -20,10 +20,8 @@ struct LevelSelectorView: View {
                 .ignoresSafeArea()
             VStack (spacing: 0) {
                 HStack (alignment: .center) {
-                    Button{
+                    BackButton(color: ColorAsset.MAIN_PURPLE) {
                         dismiss()
-                    }label: {
-                        Text("<- Voltar").font(.custom(ContentComponent.regular, size: 20))
                     }
                     Spacer()
                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager)
@@ -31,12 +29,15 @@ struct LevelSelectorView: View {
                 .padding(.horizontal)
                 ScrollView {
                     Text("Níveis").font(.custom(ContentComponent.regular, size: 40))
+                        .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 300), spacing: 0), count: 3), spacing: 5) {
                         ForEach(Array(0..<LevelModel.patchOne().count), id: \.self) { level in
                             NavigationLink(destination: LevelView(levelNumber: level, levelModel: LevelModel.patchOne())) {
                                 VStack(alignment: .center, spacing: 0){
                                     Text("\(level + 1)").font(.custom(ContentComponent.regular, size: 35))
                                         .padding(.bottom, -20)
+                                        .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
+                                        .opacity(shouldDisable(level: level) ? 0.2 : 1)
                                     if isCompleted[level]{
                                         Image(ImageAsset.CAULDRON_FULL)
                                             .resizable()
