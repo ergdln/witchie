@@ -24,7 +24,7 @@ struct LevelSelectorView: View {
                         dismiss()
                     }
                     Spacer()
-                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager)
+                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_PURPLE)
                 }
                 .padding(.horizontal, 30)
                 Text("Níveis").font(.custom(ContentComponent.regular, size: 40))
