@@ -17,8 +17,13 @@ struct ContentView: View {
             .onAppear {
                 // Criar o AVAudioPlayer no início do jogo
                 audioPlayerManager.setupAudioPlayer()
-                audioPlayerManager.playSound()
+                if UserDefaults.standard.bool(forKey: "isSoundOn"){
+                    audioPlayerManager.playSound()
+                }else{
+                    audioPlayerManager.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
+                }
                 LevelCompleted.isCompleted = UserDefaults.standard.array(forKey: "CurrentLevel") as? [Bool] ?? LevelCompleted.isCompleted
+                
         }
             .environmentObject(audioPlayerManager)
     }

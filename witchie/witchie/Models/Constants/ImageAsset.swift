@@ -22,6 +22,8 @@ struct ImageAsset{
     static let SOUND_OFF = "SOUND-OFF"
     static let BROOM = "BROOM"
     static let LOGO_CURVED = "LOGO-CURVED"
+    static let ARROW_PURPLE = "ARROW_PURPLE"
+    static let ARROW_WHITE = "ARROW_WHITE"
     
     // IMAGENS SEM BACKGROUND
     static let SPOT_CLEAN = "SPOT-CLEAN"
