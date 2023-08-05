@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LevelView: View{
     
+    @State private var soundOn = true
+    @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @State var levelNumber: Int
     @State var levelModel: [LevelModel]
     
@@ -55,26 +57,35 @@ struct LevelView: View{
             Image(ImageAsset.BACKGROUND)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 1.1)
             
             VStack(alignment: .center, spacing: 10){
+                HStack(alignment: .center){
+                    Button{
+                        dismiss()
+                    }label: {
+                        Text("<").foregroundColor(Color(ColorAsset.WHITE))
+                            .font(.custom(ContentComponent.regular, size: 24))
+                                .padding(.bottom, -15)
+                    }
+                    Spacer()
+                    Text("Nível \(levelNumber + 1)")
+                        .font(.custom(ContentComponent.regular, size: 32))
+                            .foregroundColor(Color(ColorAsset.WHITE))
+                            .padding(.bottom, -20)
+                    Spacer()
+                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
+                }
+                Spacer()
                 ZStack{
                     HStack {
-                        Button(action:{
-                            dismiss()
-                        }){
-                            Text("Back to menu")
-                                .foregroundColor(.white)
-                                .padding()
-                                .border(.white)
-                        }.frame(alignment: .trailing)
-                            .disabled(isGameOver)
                         ZStack {
-                            Rectangle()
-                                .frame(width: 100, height: 50)
-                                .foregroundColor(.black)
+                            Image(ImageAsset.COUNTER)
                             Text(String(playerMovements))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color(ColorAsset.WHITE))
+                                    .font(.custom(ContentComponent.regular, size: 24))
+                                        .padding(.bottom, -15)
+                                        .padding(.leading, 41)
                         }
                         Button(action:{
                             refreshGame()
@@ -82,12 +93,11 @@ struct LevelView: View{
                             Image(ImageAsset.REFRESH_BUTTON)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: 100, height: 50)
+                                    .frame(height: 38)
                         }.frame(width: 200, alignment: .trailing)
                             .disabled(isGameOver)
                     }
                 }
-                Spacer()
                 
                 //MARK: GAME GRID
                 LazyVGrid(columns: levelGrid, spacing: 0){
@@ -124,7 +134,9 @@ struct LevelView: View{
                         }
                     }
                 }
-            }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+                .padding(.top, 20)
+                Spacer()
+            }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.8)
                 .navigationBarBackButtonHidden(true)
                 .navigationViewStyle(StackNavigationViewStyle())
             
@@ -285,6 +297,6 @@ extension LevelView{
 
 struct LevelView_Previews: PreviewProvider {
     static var previews: some View {
-        LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())
+        LevelView(levelNumber: 0, levelModel: LevelModel.patchOne()).environmentObject(AudioPlayerManager())
     }
 }

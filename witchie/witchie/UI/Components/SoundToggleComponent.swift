@@ -10,6 +10,7 @@ import SwiftUI
 struct SoundToggleComponent: View {
     @Binding var soundOn: Bool
     @ObservedObject var audioPlayerManager: AudioPlayerManager
+    var color: String
     var body: some View {
         
         Button{
@@ -17,11 +18,21 @@ struct SoundToggleComponent: View {
             UserDefaults.standard.set(soundOn, forKey: "isSoundOn")
         }label: {
             if soundOn{
-                Image(ImageAsset.SOUND_ON)
-                    .resizable()
+                if color == ColorAsset.MAIN_PURPLE{
+                    Image(ImageAsset.SOUND_ON_PURPLE)
+                        .resizable()
+                }else{
+                    Image(ImageAsset.SOUND_ON_WHITE)
+                }
+                
             }else{
-                Image(ImageAsset.SOUND_OFF)
-                    .resizable()
+                if color == ColorAsset.MAIN_PURPLE{
+                    Image(ImageAsset.SOUND_OFF_PURPLE)
+                        .resizable()
+                }else{
+                    Image(ImageAsset.SOUND_OFF_WHITE)
+                }
+                
             }
         }
         .frame(width: 33, height: 26)
@@ -40,6 +51,6 @@ struct SoundToggleComponent: View {
 
 struct SoundToggleComponent_Previews: PreviewProvider {
     static var previews: some View {
-        SoundToggleComponent(soundOn: .constant(true), audioPlayerManager: .init())
+        SoundToggleComponent(soundOn: .constant(false), audioPlayerManager: .init(), color: ColorAsset.WHITE)
     }
 }
