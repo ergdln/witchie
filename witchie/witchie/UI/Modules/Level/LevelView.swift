@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct LevelView: View{
     
@@ -63,6 +64,7 @@ struct LevelView: View{
                 HStack(alignment: .center){
                     Button{
                         dismiss()
+                        
                     }label: {
                         Text("<").foregroundColor(Color(ColorAsset.WHITE))
                             .font(.custom(ContentComponent.regular, size: 24))
@@ -102,35 +104,43 @@ struct LevelView: View{
                 //MARK: GAME GRID
                 LazyVGrid(columns: levelGrid, spacing: 0){
                     ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
-                        if levelModel[levelNumber].levelMap[num] == wall{
-                            Image(ImageAsset.TILE_BRICK)
-                                .resizable()
-                                .scaledToFill()
-                        }
-                        else if levelModel[levelNumber].levelMap[num] == grass{
-                            Image(ImageAsset.TILE_GRASS)
-                                .resizable()
-                                .scaledToFill()
-                        }
-                        else if levelModel[levelNumber].levelMap[num] == spot{
-                            Image(ImageAsset.TILE_SPOT)
-                                .resizable()
-                                .scaledToFill()
-                        }
-                        else if levelModel[levelNumber].levelMap[num] == box{
-                            Image(ImageAsset.TILE_CAULDRON)
-                                .resizable()
-                                .scaledToFill()
-                        }
-                        else if levelModel[levelNumber].levelMap[num] == person{
-                            Image(witchImage)
-                                .resizable()
-                                .scaledToFill()
-                        }
-                        else if levelModel[levelNumber].levelMap[num] == empty{
-                            Image(ImageAsset.EMPTY)
-                                .resizable()
-                                .scaledToFill()
+                        Group{
+                            if levelModel[levelNumber].levelMap[num] == wall{
+                                Image(ImageAsset.TILE_BRICK)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            else if levelModel[levelNumber].levelMap[num] == grass{
+                                Image(ImageAsset.TILE_GRASS)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            else if levelModel[levelNumber].levelMap[num] == spot{
+                                Image(ImageAsset.TILE_SPOT)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            //this only happens when a cauldron is in the mark place
+                            else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
+                                Image(ImageAsset.TILE_CAULDRON)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            else if levelModel[levelNumber].levelMap[num] == box{
+                                Image(ImageAsset.TILE_EMPTY_CAULDRON)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            else if levelModel[levelNumber].levelMap[num] == person{
+                                Image(witchImage)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            else if levelModel[levelNumber].levelMap[num] == empty{
+                                Image(ImageAsset.EMPTY)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
                         }
                     }
                 }
@@ -148,12 +158,7 @@ struct LevelView: View{
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
-                        
                         VStack{
-//                            Image("L2COMPLETED")
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fit)
-//                                .frame(width: 700, height: 700)
                             Text(levelModel[levelNumber].levelDialogue)
                             Button{
                                 refreshGame()
@@ -185,7 +190,6 @@ struct LevelView: View{
         }
         
         //MARK: New sliding game controls
-        
         .gesture(
                 DragGesture()
                     .onChanged { gesture in
@@ -194,18 +198,14 @@ struct LevelView: View{
                     }
                     .onEnded { gesture in
                         if direction == .down{
-                            playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
                         }else if direction == .up{
-                            playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }else if direction == .left{
                             witchImage = ImageAsset.TILE_WITCH_LEFT
-                            playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: -1)
                         }else if direction == .right{
                             witchImage = ImageAsset.TILE_WITCH_RIGHT
-                            playerMovements += 1
                             defineMoviment(actualPosition: levelActualPosition, offset: 1)
                         }else{
                             print("none")
@@ -217,9 +217,9 @@ struct LevelView: View{
             )
     }
 }
-
+//MARK: Game Functions
 extension LevelView{
-    
+
     private func getDirection(from translation: CGSize) -> Direction {
         let x = translation.width
         let y = translation.height
@@ -246,41 +246,64 @@ extension LevelView{
         levelStartPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
         levelActualPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
     }
-    //MARK: Game Functions
+    
     func defineMoviment(actualPosition: Int, offset: Int){
-        //walking in free space recursively
+        //WALKING IN FREE SPACE
         if levelModel[levelNumber].levelMap[actualPosition + offset] == grass {
             levelModel[levelNumber].levelMap.swapAt(actualPosition + offset, actualPosition)
             levelActualPosition = actualPosition + offset
-            //recursion
+            //recursion stop condition
             if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) {
-                //while walking you hit something, so it's time to stop walking
-            }
+                //here, nothing happens
+                //you hit something, so it's just time to stop walking
+                //then finally it's it time to count the movement:
+                playerMovements += 1
+
+            }//recursion is called when the next block is TILE_FLOOR
             else{
-                //keep moving
                 defineMoviment(actualPosition: levelActualPosition, offset: offset)
+                //keep walking
             }
         }
-        //pushing a box
+        //PUSHING A CAULDRON
         else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box && !levelSpotsIndex.contains(levelActualPosition + offset) {
-            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] != wall && levelModel[levelNumber].levelMap[actualPosition + offset + offset] != box{
+            //pushing a box into a mark (sound effects)
+            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] == spot{
                 levelModel[levelNumber].levelMap[actualPosition] = grass
                 levelModel[levelNumber].levelMap[actualPosition + offset] = person
                 levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
                 levelActualPosition = actualPosition + offset
             }
+            //pushing a cauldron in free space (same code, but no sounds effects)
+            else if levelModel[levelNumber].levelMap[actualPosition + offset + offset] != wall && levelModel[levelNumber].levelMap[actualPosition + offset + offset] != box{
+                levelModel[levelNumber].levelMap[actualPosition] = grass
+                levelModel[levelNumber].levelMap[actualPosition + offset] = person
+                levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
+                levelActualPosition = actualPosition + offset
+            }
+            //if you successfully pushed a box, update playerMovements
+            playerMovements += 1
         }
-        else{
-            //moving agains a wall or plate
-            //stop walking
-        }
-        //checking if the level is done
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
             LevelCompleted.isCompleted[levelNumber] = true
             UserDefaults.standard.set(LevelCompleted.isCompleted, forKey: "CurrentLevel")
         }
     }
+    
+//    func playCauldronSoundEffects(){
+//        var audioPlayer: AVAudioPlayer
+//        let url = Bundle.main.url(forResource: "CauldronAlert", withExtension: "mp3")
+//        guard url != nil else {
+//            return
+//        }
+//        do {
+//            audioPlayer = try AVAudioPlayer(contentsOf: url!)
+//            audioPlayer?.play()
+//        } catch {
+//
+//        }
+//    }
     
     //MARK: function that checks if the level is completed
     func isLevelCompleted(platesPosition: [Int]) -> Bool{
