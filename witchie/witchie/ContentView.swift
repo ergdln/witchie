@@ -14,12 +14,13 @@ struct ContentView: View {
 
     var body: some View {
         StartGameView()
+        //OnboardingView()
             .onAppear {
                 // Criar o AVAudioPlayer no início do jogo
                 audioPlayerManager.setupAudioPlayer()
                 if UserDefaults.standard.bool(forKey: "isSoundOn"){
                     audioPlayerManager.playSound()
-                }else{
+                } else {
                     audioPlayerManager.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
                 }
                 LevelCompleted.isCompleted = UserDefaults.standard.array(forKey: "CurrentLevel") as? [Bool] ?? LevelCompleted.isCompleted
