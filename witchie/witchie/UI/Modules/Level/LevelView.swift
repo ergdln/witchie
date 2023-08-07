@@ -253,7 +253,7 @@ extension LevelView{
             levelModel[levelNumber].levelMap.swapAt(actualPosition + offset, actualPosition)
             levelActualPosition = actualPosition + offset
             //recursion stop condition
-            if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) {
+            if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == spot) {
                 //here, nothing happens
                 //you hit something, so it's just time to stop walking
                 //then finally it's it time to count the movement:
@@ -268,11 +268,14 @@ extension LevelView{
         //PUSHING A CAULDRON
         else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box && !levelSpotsIndex.contains(levelActualPosition + offset) {
             //pushing a box into a mark (sound effects)
-            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] == spot{
+            // Gui olha aqui dps
+            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] == spot {
                 levelModel[levelNumber].levelMap[actualPosition] = grass
                 levelModel[levelNumber].levelMap[actualPosition + offset] = person
                 levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
                 levelActualPosition = actualPosition + offset
+                //if you successfully pushed a box, update playerMovements
+                playerMovements += 1
             }
             //pushing a cauldron in free space (same code, but no sounds effects)
             else if levelModel[levelNumber].levelMap[actualPosition + offset + offset] != wall && levelModel[levelNumber].levelMap[actualPosition + offset + offset] != box{
@@ -280,9 +283,9 @@ extension LevelView{
                 levelModel[levelNumber].levelMap[actualPosition + offset] = person
                 levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
                 levelActualPosition = actualPosition + offset
+                //if you successfully pushed a box, update playerMovements
+                playerMovements += 1
             }
-            //if you successfully pushed a box, update playerMovements
-            playerMovements += 1
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
