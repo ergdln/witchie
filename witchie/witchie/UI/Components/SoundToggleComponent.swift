@@ -51,6 +51,6 @@ struct SoundToggleComponent: View {
 
 struct SoundToggleComponent_Previews: PreviewProvider {
     static var previews: some View {
-        SoundToggleComponent(soundOn: .constant(false), audioPlayerManager: .init(), color: ColorAsset.WHITE)
+        SoundToggleComponent(soundOn: .constant(false), audioPlayerManager: .init(), color: ColorAsset.MAIN_WHITE)
     }
 }
