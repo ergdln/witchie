@@ -27,10 +27,14 @@ struct ImageAsset{
     static let ARROW_PURPLE = "ARROW_PURPLE"
     static let ARROW_WHITE = "ARROW_WHITE"
     static let COUNTER = "COUNTER"
+    static let PLAY_WITCHIE = "PLAY-WITCHIE"
+    static let SMOKE = "SMOKE"
+    static let BOTAO_COMECAR = "BOTAO-COMECAR"
     
     // IMAGENS SEM BACKGROUND
     static let SPOT_CLEAN = "SPOT-CLEAN"
     static let WITCH_START = "WITCH-START"
+    static let WITCHIE_HALF = "WITCHIE-HALF"
     
     // IMAGENS OPACAS
     static let CAULDRON_FULL_OPAQUE = "OPAQUE-FULL"

@@ -9,10 +9,12 @@ import AVFoundation
 
 struct StartGameView: View {
     
-    @State var audioPlayer: AVAudioPlayer!
     @State var animatingI = false
     @State var animatingJ = true
-    @StateObject var audioPlayerManager = AudioPlayerManager()
+    
+    @State private var soundOn = true
+    @State var audioPlayer: AVAudioPlayer!
+    @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     
     var body: some View{
         
@@ -20,7 +22,7 @@ struct StartGameView: View {
                 ZStack{
                     //the background
                     Rectangle()
-                        .foregroundColor(Color(ColorAsset.WHITE))
+                        .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                         .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
                     //dacing elements
                     VStack{
@@ -39,13 +41,20 @@ struct StartGameView: View {
                                 .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
                             
                             VStack(spacing: 10){
+                                HStack (alignment: .center) {
+                                    Spacer()
+                                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
+                                }
+                                .padding(.horizontal, 32.0)
+                                .frame(width: UIScreen.main.bounds.width)
+                                
+                                Spacer()
                                 
                                 //logo witchie
                                 Image(ImageAsset.WITCH_LOGO)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: UIScreen.main.bounds.width * 0.55)
-                                
                                 
                                 //moon and witchie assets dacing
                                 ZStack{
@@ -99,21 +108,19 @@ struct StartGameView: View {
                                 NavigationLink {
                                     LevelSelectorView()
                                 } label: {
-                                    Text("START GAME")
-                                        .background(Color(.orange))
-                                        .frame(width: UIScreen.main.bounds.width * 0.5)
-                                        .foregroundColor(.white)
+                                    Image(ImageAsset.BOTAO_COMECAR)
                                 }
                                 
                                 NavigationLink {
                                     AboutUsView()
                                 } label: {
-                                    Text("ABOUT US")
+                                    Text("sobre nós")
+                                        .font(.custom(ContentComponent.regular, size: 24))
                                         .foregroundColor(.white)
-                                   
                                 }
-                                
+                                Spacer()
                             }
+                            .frame(height: UIScreen.main.bounds.height * 0.9)
                         }
                     }.navigationBarBackButtonHidden(true)
                 }

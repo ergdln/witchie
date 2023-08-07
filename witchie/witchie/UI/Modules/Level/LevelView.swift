@@ -66,17 +66,17 @@ struct LevelView: View{
                         dismiss()
                         
                     }label: {
-                        Text("<").foregroundColor(Color(ColorAsset.WHITE))
+                        Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .font(.custom(ContentComponent.regular, size: 24))
                                 .padding(.bottom, -15)
                     }
                     Spacer()
                     Text("Nível \(levelNumber + 1)")
                         .font(.custom(ContentComponent.regular, size: 32))
-                            .foregroundColor(Color(ColorAsset.WHITE))
+                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .padding(.bottom, -20)
                     Spacer()
-                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
+                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                 }
                 Spacer()
                 ZStack{
@@ -84,7 +84,7 @@ struct LevelView: View{
                         ZStack {
                             Image(ImageAsset.COUNTER)
                             Text(String(playerMovements))
-                                .foregroundColor(Color(ColorAsset.WHITE))
+                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                     .font(.custom(ContentComponent.regular, size: 24))
                                         .padding(.bottom, -15)
                                         .padding(.leading, 41)
