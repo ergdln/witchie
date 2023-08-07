@@ -27,6 +27,14 @@
 		C06C155F2A71A5AF00A7FE9E /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06C155E2A71A5AF00A7FE9E /* StartGameView.swift */; };
 		C06C15612A71A65A00A7FE9E /* LivaTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C06C15602A71A65A00A7FE9E /* LivaTheme.mp3 */; };
 		C06C15672A71AD2300A7FE9E /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06C15662A71AD2300A7FE9E /* AudioPlayerManager.swift */; };
+		C092ED6B2A801A580052F0AD /* Onboarding1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED6A2A801A580052F0AD /* Onboarding1.swift */; };
+		C092ED6D2A801A710052F0AD /* Onboarding2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED6C2A801A710052F0AD /* Onboarding2.swift */; };
+		C092ED6F2A801A7C0052F0AD /* Onboarding3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED6E2A801A7C0052F0AD /* Onboarding3.swift */; };
+		C092ED712A801A8B0052F0AD /* Onboarding4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED702A801A8B0052F0AD /* Onboarding4.swift */; };
+		C092ED732A801A940052F0AD /* Onboarding5.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED722A801A940052F0AD /* Onboarding5.swift */; };
+		C092ED762A80235D0052F0AD /* JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED752A80235D0052F0AD /* JumpButton.swift */; };
+		C092ED782A802E980052F0AD /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED772A802E980052F0AD /* NextButton.swift */; };
+		C092ED7A2A815B7C0052F0AD /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED792A815B7C0052F0AD /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +60,14 @@
 		C06C155E2A71A5AF00A7FE9E /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		C06C15602A71A65A00A7FE9E /* LivaTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LivaTheme.mp3; sourceTree = "<group>"; };
 		C06C15662A71AD2300A7FE9E /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		C092ED6A2A801A580052F0AD /* Onboarding1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding1.swift; sourceTree = "<group>"; };
+		C092ED6C2A801A710052F0AD /* Onboarding2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2.swift; sourceTree = "<group>"; };
+		C092ED6E2A801A7C0052F0AD /* Onboarding3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding3.swift; sourceTree = "<group>"; };
+		C092ED702A801A8B0052F0AD /* Onboarding4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding4.swift; sourceTree = "<group>"; };
+		C092ED722A801A940052F0AD /* Onboarding5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding5.swift; sourceTree = "<group>"; };
+		C092ED752A80235D0052F0AD /* JumpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpButton.swift; sourceTree = "<group>"; };
+		C092ED772A802E980052F0AD /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		C092ED792A815B7C0052F0AD /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +130,8 @@
 				47889F1D2A72F21B005EB560 /* ComponentX.swift */,
 				C0348A382A7431C3001A1EF7 /* SoundToggleComponent.swift */,
 				47B53B852A7DACF200E3DADC /* BackButton.swift */,
+				C092ED752A80235D0052F0AD /* JumpButton.swift */,
+				C092ED772A802E980052F0AD /* NextButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -121,6 +139,7 @@
 		47889F1B2A72EF75005EB560 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C092ED692A801A3B0052F0AD /* Onboarding */,
 				47889F172A72EEF4005EB560 /* StartGame */,
 				47889F162A72EEDE005EB560 /* LevelSelector */,
 				47889F152A72EEA1005EB560 /* Level */,
@@ -213,6 +232,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C092ED692A801A3B0052F0AD /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C092ED6A2A801A580052F0AD /* Onboarding1.swift */,
+				C092ED6C2A801A710052F0AD /* Onboarding2.swift */,
+				C092ED6E2A801A7C0052F0AD /* Onboarding3.swift */,
+				C092ED702A801A8B0052F0AD /* Onboarding4.swift */,
+				C092ED722A801A940052F0AD /* Onboarding5.swift */,
+				C092ED792A815B7C0052F0AD /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,20 +318,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C092ED6F2A801A7C0052F0AD /* Onboarding3.swift in Sources */,
+				C092ED6B2A801A580052F0AD /* Onboarding1.swift in Sources */,
 				472873B52A6B2EA80021B646 /* LevelView.swift in Sources */,
 				C06C155F2A71A5AF00A7FE9E /* StartGameView.swift in Sources */,
 				47333D442A69D380001E478E /* LevelModel.swift in Sources */,
 				C06C15672A71AD2300A7FE9E /* AudioPlayerManager.swift in Sources */,
+				C092ED782A802E980052F0AD /* NextButton.swift in Sources */,
+				C092ED712A801A8B0052F0AD /* Onboarding4.swift in Sources */,
 				6EFCA1012A69AC460008AAC5 /* ImageAsset.swift in Sources */,
+				C092ED6D2A801A710052F0AD /* Onboarding2.swift in Sources */,
+				C092ED762A80235D0052F0AD /* JumpButton.swift in Sources */,
 				6EFCA0F32A69A9F50008AAC5 /* ContentView.swift in Sources */,
 				6EAB19B82A7C431B002047CD /* AboutUsView.swift in Sources */,
 				6EFCA1032A69AC920008AAC5 /* ColorAsset.swift in Sources */,
+				C092ED732A801A940052F0AD /* Onboarding5.swift in Sources */,
 				6EFCA0F12A69A9F50008AAC5 /* witchieApp.swift in Sources */,
 				47889ED52A717098005EB560 /* LevelCompleted.swift in Sources */,
 				47889ED32A704C32005EB560 /* LevelSelectorView.swift in Sources */,
 				C0348A392A7431C3001A1EF7 /* SoundToggleComponent.swift in Sources */,
 				47889F1E2A72F21B005EB560 /* ComponentX.swift in Sources */,
 				6EFCA1052A69ACDB0008AAC5 /* ContentComponent.swift in Sources */,
+				C092ED7A2A815B7C0052F0AD /* OnboardingView.swift in Sources */,
 				47B53B862A7DACF200E3DADC /* BackButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

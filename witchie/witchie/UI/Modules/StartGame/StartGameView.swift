@@ -106,7 +106,8 @@ struct StartGameView: View {
                                 }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.05)
                               
                                 NavigationLink {
-                                    LevelSelectorView()
+                                    OnboardingView()
+                                    //LevelSelectorView()
                                 } label: {
                                     Image(ImageAsset.BOTAO_COMECAR)
                                 }
