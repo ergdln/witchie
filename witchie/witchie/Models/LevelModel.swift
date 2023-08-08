@@ -323,7 +323,6 @@ extension LevelModel{
                 levelDialogue: "Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.",
                 levelMap: [
                     
-                    //nivel que barreto CHOROU
                      "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
                      "⬛️", "🔯", "⬛️", "🔯", "⬛️", "⬛️", "🔯", "⬛️",
                      "⬛️", "⬜️", "⬛️", "⬜️", "⬛️", "⬛️", "⬜️", "⬛️",
@@ -343,7 +342,6 @@ extension LevelModel{
                 levelDialogue: "Colega isso nem tava na lista, como tu veio parar aqui??? E mais importante: POR QUE TU FICASSE ATÉ RESOLVER??? Vai dar um rolê",
                 levelMap: [
                     
-                    //nivel que barreto VAI CHORAR
                     "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
                     "⬛️", "🔯", "📦", "🙋🏿", "📦", "⬜️", "🔯", "⬛️",
                     "⬛️", "🔯", "📦", "⬜️", "📦", "⬜️", "🔯", "⬛️",

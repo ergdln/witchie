@@ -84,8 +84,8 @@ struct LevelView: View{
                     Spacer()
                     Text("Nível \(levelNumber + 1)")
                         .font(.custom(ContentComponent.regular, size: 32))
-                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                            .padding(.bottom, -20)
+                        .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                        .padding(.bottom, -20)
                     Spacer()
                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                 }
@@ -96,9 +96,9 @@ struct LevelView: View{
                             Image(ImageAsset.COUNTER)
                             Text(String(playerMovements))
                                 .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                    .font(.custom(ContentComponent.regular, size: 24))
-                                        .padding(.bottom, -15)
-                                        .padding(.leading, 41)
+                                .font(.custom(ContentComponent.regular, size: 24))
+                                .padding(.bottom, -15)
+                                .padding(.leading, 41)
                         }
                         Button(action:{
                             refreshGame()
@@ -198,20 +198,33 @@ struct LevelView: View{
                                 .padding(.bottom, -15)
                         }
                         Spacer()
-                        Button{
-                            refreshGame()
-                            levelNumber += 1
-                            refreshGame()
-                            isGameOver.toggle()
-                        }label: {
+                        if (levelNumber < LevelModel.patchOne().count - 1) {
+                            Button{
+                                refreshGame()
+                                levelNumber += 1
+                                refreshGame()
+                                isGameOver.toggle()
+                            }
+                        label: {
                             Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.268)
-
                         }
+                        }
+                        else {
+                            NavigationLink(destination: StartGameView()) {
+                                Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.268)
+                            }                        .simultaneousGesture(TapGesture().onEnded({
+                                UserSettings.isNotFirstTime = true
+                            }))
+                        }
+                        
                     }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height)
-
+                    
                 }
             }
         }
@@ -235,8 +248,6 @@ struct LevelView: View{
                         }else if direction == .right{
                             witchImage = ImageAsset.TILE_WITCH_RIGHT
                             defineMoviment(actualPosition: levelActualPosition, offset: 1)
-                        }else{
-                            print("none")
                         }
                         self.gestureOffset = .zero
                         self.direction = .none
@@ -321,7 +332,7 @@ extension LevelView{
             LevelCompleted.isCompleted[levelNumber] = true
             UserDefaults.standard.set(LevelCompleted.isCompleted, forKey: "CurrentLevel")
             UserDefaults.standard.set(true, forKey: "isNotFirstTime")
-                
+            
         }
     }
     
