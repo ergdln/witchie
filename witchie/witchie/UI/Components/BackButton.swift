@@ -19,7 +19,7 @@ struct BackButton: View {
             HStack {
                 if color == ColorAsset.MAIN_PURPLE{
                     Image(ImageAsset.ARROW_PURPLE)
-                }else if color == ColorAsset.WHITE{
+                }else if color == ColorAsset.MAIN_WHITE{
                     Image(ImageAsset.ARROW_WHITE)
                 }
                 Text("voltar").font(.custom(ContentComponent.regular, size: 20))

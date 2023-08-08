@@ -66,17 +66,17 @@ struct LevelView: View{
                         dismiss()
                         
                     }label: {
-                        Text("<").foregroundColor(Color(ColorAsset.WHITE))
+                        Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .font(.custom(ContentComponent.regular, size: 24))
                             .padding(.bottom, -15)
                     }
                     Spacer()
                     Text("Nível \(levelNumber + 1)")
                         .font(.custom(ContentComponent.regular, size: 32))
-                        .foregroundColor(Color(ColorAsset.WHITE))
-                        .padding(.bottom, -20)
+                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                            .padding(.bottom, -20)
                     Spacer()
-                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
+                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                 }
                 Spacer()
                 ZStack{
@@ -84,10 +84,10 @@ struct LevelView: View{
                         ZStack {
                             Image(ImageAsset.COUNTER)
                             Text(String(playerMovements))
-                                .foregroundColor(Color(ColorAsset.WHITE))
-                                .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
-                                .padding(.leading, 41)
+                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .font(.custom(ContentComponent.regular, size: 24))
+                                        .padding(.bottom, -15)
+                                        .padding(.leading, 41)
                         }
                         Button(action:{
                             refreshGame()
@@ -163,7 +163,7 @@ struct LevelView: View{
                             Button{
                                 dismiss()
                             }label: {
-                                Text("<").foregroundColor(Color(ColorAsset.WHITE))
+                                Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                     .font(.custom(ContentComponent.regular, size: 24))
                                     .padding(.bottom, -15)
                                     .opacity(0)
@@ -171,7 +171,7 @@ struct LevelView: View{
                             Spacer()
                             Text("Nível \(levelNumber + 1)")
                                 .font(.custom(ContentComponent.regular, size: 32))
-                                .foregroundColor(Color(ColorAsset.WHITE))
+                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                 .padding(.bottom, -20)
                             Spacer()
                             SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
@@ -271,7 +271,7 @@ extension LevelView{
             levelModel[levelNumber].levelMap.swapAt(actualPosition + offset, actualPosition)
             levelActualPosition = actualPosition + offset
             //recursion stop condition
-            if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) {
+            if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == spot) {
                 //here, nothing happens
                 //you hit something, so it's just time to stop walking
                 //then finally it's it time to count the movement:
@@ -286,11 +286,14 @@ extension LevelView{
         //PUSHING A CAULDRON
         else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box && !levelSpotsIndex.contains(levelActualPosition + offset) {
             //pushing a box into a mark (sound effects)
-            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] == spot{
+            // Gui olha aqui dps
+            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] == spot {
                 levelModel[levelNumber].levelMap[actualPosition] = grass
                 levelModel[levelNumber].levelMap[actualPosition + offset] = person
                 levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
                 levelActualPosition = actualPosition + offset
+                //if you successfully pushed a box, update playerMovements
+                playerMovements += 1
             }
             //pushing a cauldron in free space (same code, but no sounds effects)
             else if levelModel[levelNumber].levelMap[actualPosition + offset + offset] != wall && levelModel[levelNumber].levelMap[actualPosition + offset + offset] != box{
@@ -298,9 +301,9 @@ extension LevelView{
                 levelModel[levelNumber].levelMap[actualPosition + offset] = person
                 levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
                 levelActualPosition = actualPosition + offset
+                //if you successfully pushed a box, update playerMovements
+                playerMovements += 1
             }
-            //if you successfully pushed a box, update playerMovements
-            playerMovements += 1
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
