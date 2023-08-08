@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "CALDEIRÃO CHEIO.png",
+      "filename" : "CAULDRON-ONBOARDING.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CALDEIRÃO CHEIO@2x.png",
+      "filename" : "CAULDRON-ONBOARDING@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "CALDEIRÃO CHEIO@3x.png",
+      "filename" : "CAULDRON-ONBOARDING@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
