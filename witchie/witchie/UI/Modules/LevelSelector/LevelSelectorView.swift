@@ -75,7 +75,7 @@ struct LevelSelectorView: View {
                     .onAppear{
                         isCompleted = LevelCompleted.isCompleted
                     }
-                }
+                }.scrollIndicators(.hidden)
             }
             .navigationBarBackButtonHidden()
         }
