@@ -62,14 +62,25 @@ struct LevelView: View{
             
             VStack(alignment: .center, spacing: 10){
                 HStack(alignment: .center){
-                    Button{
-                        dismiss()
-                        
-                    }label: {
-                        Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                            .font(.custom(ContentComponent.regular, size: 24))
-                            .padding(.bottom, -15)
+                    if UserSettings.isNotFirstTime{
+                        Button{
+                            dismiss()
+                        }label:{
+                            Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                .font(.custom(ContentComponent.regular, size: 24))
+                                .padding(.bottom, -15)
+                        }
+                    }else{
+                        NavigationLink(destination: StartGameView()) {
+                            Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                .font(.custom(ContentComponent.regular, size: 24))
+                                .padding(.bottom, -15)
+                        }
+                        .simultaneousGesture(TapGesture().onEnded({
+                            UserSettings.isNotFirstTime = true
+                        }))
                     }
+                    
                     Spacer()
                     Text("Nível \(levelNumber + 1)")
                         .font(.custom(ContentComponent.regular, size: 32))
@@ -309,6 +320,8 @@ extension LevelView{
             self.isGameOver.toggle()
             LevelCompleted.isCompleted[levelNumber] = true
             UserDefaults.standard.set(LevelCompleted.isCompleted, forKey: "CurrentLevel")
+            UserDefaults.standard.set(true, forKey: "isNotFirstTime")
+                
         }
     }
     
@@ -344,3 +357,5 @@ struct LevelView_Previews: PreviewProvider {
         LevelView(levelNumber: 0, levelModel: LevelModel.patchOne()).environmentObject(AudioPlayerManager())
     }
 }
+
+

@@ -10,3 +10,7 @@ import Foundation
 struct LevelCompleted{
     static var isCompleted: [Bool] = Array(repeating: false, count: LevelModel.patchOne().count)
 }
+
+struct UserSettings{
+    static var isNotFirstTime: Bool = false
+}

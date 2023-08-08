@@ -15,10 +15,11 @@ struct StartGameView: View {
     @State private var soundOn = true
     @State var audioPlayer: AVAudioPlayer!
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
+    @State private var path = NavigationPath()
     
     var body: some View{
         
-        NavigationStack{
+        NavigationStack(path: $path){
                 ZStack{
                     //the background
                     Rectangle()
@@ -106,8 +107,11 @@ struct StartGameView: View {
                                 }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.05)
                               
                                 NavigationLink {
-                                    OnboardingView()
-                                    //LevelSelectorView()
+                                    if UserSettings.isNotFirstTime{
+                                        LevelSelectorView()
+                                    }else{
+                                        OnboardingView()
+                                    }
                                 } label: {
                                     Image(ImageAsset.BOTAO_COMECAR)
                                 }
