@@ -6,16 +6,31 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 struct ContentView: View {
+    @State var audioPlayer: AVAudioPlayer!
+    @StateObject var audioPlayerManager = AudioPlayerManager()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        StartGameView()
+        //OnboardingView()
+            .onAppear {
+                
+                // Criar o AVAudioPlayer no início do jogo
+                audioPlayerManager.setupAudioPlayer()
+                if UserDefaults.standard.bool(forKey: "isSoundOn"){
+                    audioPlayerManager.playSound()
+                } else {
+                    audioPlayerManager.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
+                }
+                LevelCompleted.isCompleted = UserDefaults.standard.array(forKey: "CurrentLevel") as? [Bool] ?? LevelCompleted.isCompleted
+                UserSettings.isNotFirstTime = UserDefaults.standard.bool(forKey: "isNotFirstTime")
+                print(UserSettings.isNotFirstTime)
+                print(UserDefaults.standard.bool(forKey: "isNotFirstTime"))
+                
         }
-        .padding()
+            .environmentObject(audioPlayerManager)
     }
 }
 
