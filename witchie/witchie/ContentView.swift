@@ -16,6 +16,7 @@ struct ContentView: View {
         StartGameView()
         //OnboardingView()
             .onAppear {
+                
                 // Criar o AVAudioPlayer no início do jogo
                 audioPlayerManager.setupAudioPlayer()
                 if UserDefaults.standard.bool(forKey: "isSoundOn"){
@@ -24,6 +25,9 @@ struct ContentView: View {
                     audioPlayerManager.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
                 }
                 LevelCompleted.isCompleted = UserDefaults.standard.array(forKey: "CurrentLevel") as? [Bool] ?? LevelCompleted.isCompleted
+                UserSettings.isNotFirstTime = UserDefaults.standard.bool(forKey: "isNotFirstTime")
+                print(UserSettings.isNotFirstTime)
+                print(UserDefaults.standard.bool(forKey: "isNotFirstTime"))
                 
         }
             .environmentObject(audioPlayerManager)
