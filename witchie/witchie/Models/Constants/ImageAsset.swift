@@ -27,6 +27,8 @@ struct ImageAsset{
     static let ARROW_PURPLE = "ARROW_PURPLE"
     static let ARROW_WHITE = "ARROW_WHITE"
     static let COUNTER = "COUNTER"
+    static let DIALOGUE_RECTANGLE = "DIALOGUE_RECTANGLE"
+    static let NEXT_BUTTON_DIALOGUE = "NEXT_BUTTON_DIALOGUE"
     
     // IMAGENS SEM BACKGROUND
     static let SPOT_CLEAN = "SPOT-CLEAN"
