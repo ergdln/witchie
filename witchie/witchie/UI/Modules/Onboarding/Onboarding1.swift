@@ -15,7 +15,7 @@ struct Onboarding1: View {
                 HStack (alignment: .center) {
                     Spacer()
                     NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
-                        JumpButton(color: ColorAsset.WHITE)
+                        JumpButton(color: ColorAsset.MAIN_WHITE)
                     }
                     .padding(.top, UIScreen.main.bounds.height * 0.06)
                     .padding(.trailing, UIScreen.main.bounds.width * 0.07)
@@ -32,7 +32,7 @@ struct Onboarding1: View {
             Spacer()
             HStack {
                 Spacer()
-                NextButton(color: ColorAsset.WHITE) {
+                NextButton(color: ColorAsset.MAIN_WHITE) {
                     //addToOnboardingNumber()
                 }
                 .padding(.bottom, UIScreen.main.bounds.height * 0.06)

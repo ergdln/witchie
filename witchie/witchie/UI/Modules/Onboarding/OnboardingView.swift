@@ -17,7 +17,7 @@ struct OnboardingView: View {
                         HStack (alignment: .center) {
                             Spacer()
                             NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
-                                JumpButton(color: ColorAsset.WHITE)
+                                JumpButton(color: ColorAsset.MAIN_WHITE)
                             }
                             .padding(.top, UIScreen.main.bounds.height * 0.06)
                             .padding(.trailing, UIScreen.main.bounds.width * 0.07)
@@ -34,7 +34,7 @@ struct OnboardingView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        NextButton(color: ColorAsset.WHITE) {
+                        NextButton(color: ColorAsset.MAIN_WHITE) {
                             addToOnboardingNumber()
                         }
                         .padding(.bottom, UIScreen.main.bounds.height * 0.06)
@@ -100,7 +100,7 @@ struct OnboardingView: View {
                                 Spacer()
                                     .frame(width: UIScreen.main.bounds.width * 0.84)
                                 NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
-                                    JumpButton(color: ColorAsset.WHITE)
+                                    JumpButton(color: ColorAsset.MAIN_WHITE)
                                 }
                                 .padding(.top, UIScreen.main.bounds.height * 0.06)
                                 .padding(.trailing, UIScreen.main.bounds.width * 0.14)
@@ -118,7 +118,7 @@ struct OnboardingView: View {
                         HStack {
                             Spacer()
                                 .frame(width: UIScreen.main.bounds.width * 0.84)
-                            NextButton(color: ColorAsset.WHITE) {
+                            NextButton(color: ColorAsset.MAIN_WHITE) {
                                 addToOnboardingNumber()
                             }
                             .padding(.bottom, UIScreen.main.bounds.height * 0.06)
@@ -153,7 +153,7 @@ struct OnboardingView: View {
                         HStack (alignment: .center) {
                             Spacer()
                             NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
-                                JumpButton(color: ColorAsset.WHITE)
+                                JumpButton(color: ColorAsset.MAIN_WHITE)
                             }
                             .padding(.top, UIScreen.main.bounds.height * 0.03)
                             .padding(.trailing, UIScreen.main.bounds.width * 0.07)
@@ -170,7 +170,7 @@ struct OnboardingView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        NextButton(color: ColorAsset.WHITE) {
+                        NextButton(color: ColorAsset.MAIN_WHITE) {
                             addToOnboardingNumber()
                         }
                         .padding(.bottom, UIScreen.main.bounds.height * 0.06)
@@ -203,7 +203,7 @@ struct OnboardingView: View {
                             HStack {
                                 Spacer()
                                 NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
-                                    JumpButton(color: ColorAsset.WHITE)
+                                    JumpButton(color: ColorAsset.MAIN_WHITE)
                                 }
                                 .padding(.top, UIScreen.main.bounds.height * 0.06)
                                 .padding(.trailing, UIScreen.main.bounds.width * 0.12)
@@ -221,7 +221,7 @@ struct OnboardingView: View {
                         HStack {
                             Spacer()
                                 .frame(width: UIScreen.main.bounds.width * 0.84)
-                            NextButton(color: ColorAsset.WHITE) {
+                            NextButton(color: ColorAsset.MAIN_WHITE) {
                                 addToOnboardingNumber()
                             }
                             .padding(.bottom, UIScreen.main.bounds.height * 0.06)
@@ -282,7 +282,7 @@ struct OnboardingView: View {
                                 HStack {
                                     Image(systemName: "arrow.forward").font(.custom(ContentComponent.regular, size: 40))
                                         .underline()
-                                        .foregroundColor(Color(ColorAsset.WHITE))
+                                        .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                         .padding(.bottom, -10)
                                 }
                             }

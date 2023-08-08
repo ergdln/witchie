@@ -42,7 +42,7 @@ struct Onboarding5: View {
                         HStack {
                             Image(systemName: "arrow.forward").font(.custom(ContentComponent.regular, size: 40))
                                 .underline()
-                                .foregroundColor(Color(ColorAsset.WHITE))
+                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                 .padding(.bottom, -10)
                         }
                     }

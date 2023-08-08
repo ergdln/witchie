@@ -24,7 +24,7 @@ struct JumpButton: View {
 
 struct JumpButton_Previews: PreviewProvider {
     static var previews: some View {
-        JumpButton(color: ColorAsset.WHITE)
+        JumpButton(color: ColorAsset.MAIN_WHITE)
     }
 }
 

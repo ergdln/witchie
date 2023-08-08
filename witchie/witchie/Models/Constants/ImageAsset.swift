@@ -36,6 +36,8 @@ struct ImageAsset {
     static let ARROW_PURPLE = "ARROW_PURPLE"
     static let ARROW_WHITE = "ARROW_WHITE"
     static let COUNTER = "COUNTER"
+    static let DIALOGUE_RECTANGLE = "DIALOGUE_RECTANGLE"
+    static let NEXT_BUTTON_DIALOGUE = "NEXT_BUTTON_DIALOGUE"
     static let PLAY_WITCHIE = "PLAY-WITCHIE"
     static let SMOKE = "SMOKE"
     static let BOTAO_COMECAR = "BOTAO-COMECAR"

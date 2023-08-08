@@ -28,7 +28,7 @@ struct NextButton: View {
 
 struct NextButton_Previews: PreviewProvider {
     static var previews: some View {
-        NextButton(color: ColorAsset.WHITE){
+        NextButton(color: ColorAsset.MAIN_WHITE){
             
         }
     }

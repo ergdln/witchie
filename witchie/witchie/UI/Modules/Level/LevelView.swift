@@ -25,7 +25,7 @@ struct LevelView: View{
     @State private var gestureOffset: CGSize = .zero
     @State private var direction: Direction = .none
     @State private var playerMovements: Int = 0
-
+    
     enum Direction {
         case none, up, down, left, right
     }
@@ -68,7 +68,7 @@ struct LevelView: View{
                     }label: {
                         Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
+                            .padding(.bottom, -15)
                     }
                     Spacer()
                     Text("Nível \(levelNumber + 1)")
@@ -93,9 +93,9 @@ struct LevelView: View{
                             refreshGame()
                         }){
                             Image(ImageAsset.REFRESH_BUTTON)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 38)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 38)
                         }.frame(width: 200, alignment: .trailing)
                             .disabled(isGameOver)
                     }
@@ -153,50 +153,67 @@ struct LevelView: View{
             //MARK: Changes the screen when the game is over
             if isGameOver{
                 ZStack{
-                    if levelNumber != LevelModel.patchOne().count - 1{
-                        Image(ImageAsset.BACKGROUND)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.height * 1.5)
-                        VStack{
-                            Text(levelModel[levelNumber].levelDialogue)
+                    Image(ImageAsset.BACKGROUND)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 1.1)
+                    VStack (alignment: .center, spacing: 10){
+                        Spacer()
+                        HStack{
                             Button{
-                                refreshGame()
-                                levelNumber += 1
-                                refreshGame()
-                                isGameOver.toggle()
+                                dismiss()
                             }label: {
-                                Image(ImageAsset.OK_BUTTON)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 100, height: 50)
-                            }
-                        }.frame(width:500, alignment: .trailing)
-                    }else{
-                        Text("TAPORRA ZERASSE BOY")
+                                Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .font(.custom(ContentComponent.regular, size: 24))
+                                    .padding(.bottom, -15)
+                                    .opacity(0)
+                            }.disabled(true)
+                            Spacer()
+                            Text("Nível \(levelNumber + 1)")
+                                .font(.custom(ContentComponent.regular, size: 32))
+                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                .padding(.bottom, -20)
+                            Spacer()
+                            SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
+                        }
+                        Spacer()
+                        ZStack{
+                            Image(ImageAsset.DIALOGUE_RECTANGLE)
+                            Text(levelModel[levelNumber].levelDialogue)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 278, height: 337)
+                                .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
+                                .font(.custom(ContentComponent.regular, size: 18))
+                                .padding(.bottom, -15)
+                        }
+                        Spacer()
                         Button{
                             refreshGame()
+                            levelNumber += 1
+                            refreshGame()
                             isGameOver.toggle()
-                            dismiss()
                         }label: {
-                            Image(ImageAsset.OK_BUTTON)
+                            Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 50)
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.268)
+
                         }
-                    }
-                }.foregroundColor(.white)
+                    }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height)
+
+                }
             }
         }
         
         //MARK: New sliding game controls
         .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        self.gestureOffset = gesture.translation
-                        self.direction = self.getDirection(from: gesture.translation)
-                    }
-                    .onEnded { gesture in
+            DragGesture()
+                .onChanged { gesture in
+                    self.gestureOffset = gesture.translation
+                    self.direction = self.getDirection(from: gesture.translation)
+                }
+                .onEnded { gesture in
+                    if (!isGameOver){
                         if direction == .down{
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
                         }else if direction == .up{
@@ -214,16 +231,17 @@ struct LevelView: View{
                         self.direction = .none
                         
                     }
-            )
+                }
+        )
     }
 }
 //MARK: Game Functions
 extension LevelView{
-
+    
     private func getDirection(from translation: CGSize) -> Direction {
         let x = translation.width
         let y = translation.height
-
+        
         if x > 25 && abs(y) < x {
             return .right
         } else if x < -25 && abs(y) < abs(x) {
@@ -233,7 +251,7 @@ extension LevelView{
         } else if y < -25 && abs(x) < abs(y) {
             return .up
         }
-
+        
         return .none
     }
     
@@ -258,7 +276,7 @@ extension LevelView{
                 //you hit something, so it's just time to stop walking
                 //then finally it's it time to count the movement:
                 playerMovements += 1
-
+                
             }//recursion is called when the next block is TILE_FLOOR
             else{
                 defineMoviment(actualPosition: levelActualPosition, offset: offset)
@@ -294,19 +312,19 @@ extension LevelView{
         }
     }
     
-//    func playCauldronSoundEffects(){
-//        var audioPlayer: AVAudioPlayer
-//        let url = Bundle.main.url(forResource: "CauldronAlert", withExtension: "mp3")
-//        guard url != nil else {
-//            return
-//        }
-//        do {
-//            audioPlayer = try AVAudioPlayer(contentsOf: url!)
-//            audioPlayer?.play()
-//        } catch {
-//
-//        }
-//    }
+    //    func playCauldronSoundEffects(){
+    //        var audioPlayer: AVAudioPlayer
+    //        let url = Bundle.main.url(forResource: "CauldronAlert", withExtension: "mp3")
+    //        guard url != nil else {
+    //            return
+    //        }
+    //        do {
+    //            audioPlayer = try AVAudioPlayer(contentsOf: url!)
+    //            audioPlayer?.play()
+    //        } catch {
+    //
+    //        }
+    //    }
     
     //MARK: function that checks if the level is completed
     func isLevelCompleted(platesPosition: [Int]) -> Bool{
