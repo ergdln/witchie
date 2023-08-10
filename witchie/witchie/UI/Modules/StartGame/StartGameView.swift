@@ -101,7 +101,6 @@ struct StartGameView: View {
                                         }
                                 }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.width * 0.8)
                                     .navigationBarBackButtonHidden(true)
-                                    .navigationViewStyle(StackNavigationViewStyle())
                                 //gambiarra do carai
                                 //stack vazia só pra usar como spacer
                                 VStack{
@@ -131,7 +130,7 @@ struct StartGameView: View {
                         }
                     }.navigationBarBackButtonHidden(true)
                 }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 extension StartGameView {

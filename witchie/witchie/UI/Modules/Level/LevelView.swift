@@ -161,7 +161,6 @@ struct LevelView: View{
                 Spacer()
             }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.height * 0.8)
                 .navigationBarBackButtonHidden(true)
-                .navigationViewStyle(StackNavigationViewStyle())
             
             //MARK: Changes the screen when the game is over
             if isGameOver{
@@ -232,6 +231,7 @@ struct LevelView: View{
         }
         
         //MARK: New sliding game controls
+        #if !os(tvOS)
         .gesture(
             DragGesture()
                 .onChanged { gesture in
@@ -257,6 +257,7 @@ struct LevelView: View{
                     }
                 }
         )
+        #endif
     }
 }
 //MARK: Game Functions
