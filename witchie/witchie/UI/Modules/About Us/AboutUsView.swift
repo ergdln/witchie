@@ -12,6 +12,8 @@ struct AboutUsView: View {
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @Environment(\.dismiss) private var dismiss
     
+    var safeDimensionManager = DimensionManager.shared
+    
     var body: some View {
         ZStack {
             Color(ColorAsset.MAIN_PURPLE)
@@ -126,14 +128,14 @@ struct AboutUsView: View {
                         HStack {
                             Image(ImageAsset.WITCHIE_HALF)
                                 .resizable()
-                                .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height * 0.25)
+                                .frame(width: safeDimensionManager.dimensions.width * 0.3, height: safeDimensionManager.dimensions.height * 0.25)
                             Spacer()
                         }
                         HStack {
                             Spacer()
                             Image(ImageAsset.PLAY_WITCHIE)
                                 .resizable()
-                                .frame(width: UIScreen.main.bounds.width * 0.75, height: UIScreen.main.bounds.height * 0.15)
+                                .frame(width: safeDimensionManager.dimensions.width * 0.75, height: safeDimensionManager.dimensions.height * 0.15)
                         }
                         .padding(.top, 40.0)
                     }
