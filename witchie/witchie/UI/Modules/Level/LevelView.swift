@@ -26,6 +26,8 @@ struct LevelView: View{
     @State private var direction: Direction = .none
     @State private var playerMovements: Int = 0
     
+    var safeDimensionManager = DimensionManager.shared
+    
     enum Direction {
         case none, up, down, left, right
     }
@@ -58,7 +60,7 @@ struct LevelView: View{
             Image(ImageAsset.BACKGROUND)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 1.1)
+                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 1.1)
             
             VStack(alignment: .center, spacing: 10){
                 HStack(alignment: .center){
@@ -157,9 +159,8 @@ struct LevelView: View{
                 }
                 .padding(.top, 20)
                 Spacer()
-            }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.8)
+            }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.height * 0.8)
                 .navigationBarBackButtonHidden(true)
-                .navigationViewStyle(StackNavigationViewStyle())
             
             //MARK: Changes the screen when the game is over
             if isGameOver{
@@ -167,7 +168,7 @@ struct LevelView: View{
                     Image(ImageAsset.BACKGROUND)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 1.1)
+                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 1.1)
                     VStack (alignment: .center, spacing: 10){
                         Spacer()
                         HStack{
@@ -209,7 +210,7 @@ struct LevelView: View{
                             Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.268)
+                                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 0.268)
                         }
                         }
                         else {
@@ -217,19 +218,20 @@ struct LevelView: View{
                                 Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.268)
+                                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 0.268)
                             }                        .simultaneousGesture(TapGesture().onEnded({
                                 UserSettings.isNotFirstTime = true
                             }))
                         }
                         
-                    }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height)
+                    }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.height)
                     
                 }
             }
         }
         
         //MARK: New sliding game controls
+        #if !os(tvOS)
         .gesture(
             DragGesture()
                 .onChanged { gesture in
@@ -255,6 +257,7 @@ struct LevelView: View{
                     }
                 }
         )
+        #endif
     }
 }
 //MARK: Game Functions

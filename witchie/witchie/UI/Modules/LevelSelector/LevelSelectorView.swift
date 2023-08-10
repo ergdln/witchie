@@ -13,6 +13,8 @@ struct LevelSelectorView: View {
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @State var isCompleted: [Bool] = LevelCompleted.isCompleted
     @Environment(\.dismiss) private var dismiss
+    
+    var safeDimensionManager = DimensionManager.shared
 
     var body: some View {
         ZStack {
@@ -71,7 +73,7 @@ struct LevelSelectorView: View {
                             }.disabled(shouldDisable(level: level))
                         }
                     }
-                    .frame(width: UIScreen.main.bounds.width * 0.8)
+                    .frame(width: safeDimensionManager.dimensions.width * 0.8)
                     .onAppear{
                         isCompleted = LevelCompleted.isCompleted
                     }
