@@ -26,7 +26,7 @@ extension LevelModel{
             // LEVEL 1
             LevelModel(
                 levelOffset: 7,
-                levelDialogue: "Caramba olha como você foi rápido! Tenho certeza que se continuar assim a Vassorilda volta ao normal rapidinho, vamo pra próxima sala?",
+                levelDialogue: "Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?",
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -66,7 +66,7 @@ extension LevelModel{
             // LEVEL 3
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "É… Não foi tão direto quanto antes mas até que você não foi mal, pronto pra seguir em frente?",
+                levelDialogue: "É… Não foi tão direto quanto antes, mas até que você não foi mal.",
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -87,7 +87,7 @@ extension LevelModel{
             // LEVEL 4
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Viu que era só parar e pensar invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!",
+                levelDialogue: "Viu que era só parar e pensar ao invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!",
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -108,7 +108,7 @@ extension LevelModel{
             // LEVEL 5
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Parecia óbvio né? Pois ta aí a lição de nunca confiar em ninguém!!!",
+                levelDialogue: "Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!",
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -130,7 +130,7 @@ extension LevelModel{
             // LEVEL 6
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Esquecesse de parar e pensar de novo né? E olhe que ainda tava simétrica pra deixar mais fácil.",
+                levelDialogue: "Esquecesse de parar e pensar de novo, né? E olhe que ainda tava tudo simétrico pra deixar mais fácil.",
                 levelMap: [
                     
                     
@@ -172,7 +172,7 @@ extension LevelModel{
             // LEVEL 8
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Olha não vem jogar a culpa em mim não, minha filha que insistiu pra eu chamar o namorado arquiteto dela porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!",
+                levelDialogue: "Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!",
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -194,7 +194,7 @@ extension LevelModel{
             // LEVEL 9
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas viu?",
+                levelDialogue: "Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.",
                 levelMap: [
                     
                     
@@ -235,7 +235,7 @@ extension LevelModel{
             // LEVEL 11
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "To começando a achar que botaram esses círculos em lugares complicadinhos de propósito...",
+                levelDialogue: "Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...",
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -257,7 +257,7 @@ extension LevelModel{
             // LEVEL 12
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Meus parabéns viu? Essa ai era um divisor de águas, se chegasse até aqui talvez tenha algum futuro nesse trabalho…",
+                levelDialogue: "Meus parabéns, viu? Essa aí era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…",
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -278,7 +278,7 @@ extension LevelModel{
             // LEVEL 13
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Eu nem sabia que tinha tanto caldeirão assim, ta bom de fazer um bazar.",
+                levelDialogue: "Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.",
                 levelMap: [
                     
                     
@@ -298,7 +298,7 @@ extension LevelModel{
             // LEVEL 14
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Eita quanta correria pra lá e pra cá, chega to tontinha!",
+                levelDialogue: "Eita quanta correria pra lá e pra cá, chega tô tontinha!",
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -336,10 +336,91 @@ extension LevelModel{
                     
                 ]
             ),
-            /*// FASE EXTRA
+            // LEVEL 16
+            LevelModel(
+                levelOffset: 9,
+                levelDialogue: "Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.",
+                levelMap: [
+                    
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "🔯", "📦", "⬜️", "🙋🏿", "⬜️", "📦", "🔯", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "📦", "⬜️", "📦", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "📦", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "🔯", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "🔯", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "🔯", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️"
+                    
+                ]
+            ),
+            //FASE 17
+            LevelModel(
+                levelOffset: 9,
+                levelDialogue: "Falei cedo demais.",
+                levelMap: [
+                    
+                    // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
+                    //Onboarding
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "🔯", "⬜️", "🔯", "🔯", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️", "⬛️", "⬜️", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "⬜️", "⬛️", "⬛️", "⬛️", "⬜️", "⬛️",
+                    "⬛️", "🔯", "⬜️", "⬜️", "⬜️", "📦", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "🔯", "⬜️", "⬜️", "⬜️", "📦", "⬜️", "🙋🏿", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "📦", "⬜️", "📦", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    
+                ]
+            ),
+            // FASE 18
+            LevelModel(
+                levelOffset: 9,
+                levelDialogue: "Como é que cabe tanto caldeirão numa sala só?????",
+                levelMap: [
+                    
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "⬛️", "🔯", "🔯", "🔯", "🔯", "🔯", "🔯", "⬛️",
+                    "⬛️", "🔯", "📦", "📦", "📦", "📦", "📦", "📦", "⬛️",
+                    "⬛️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "📦", "🙋🏿", "⬛️",
+                    "⬛️", "🔯", "📦", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️"
+                    
+                ]
+            ),
+            // FASE 19
+            LevelModel(
+                levelOffset: 9,
+                levelDialogue: "Esses círculos não acabam nunca? Minhas costas não aguentam mais.",
+                levelMap: [
+                    
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
+                    "⬛️", "🔯", "⬜️", "⬜️", "🔯", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬛️", "⬜️", "📦", "⬜️", "⬛️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "📦", "⬜️", "⬛️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "🔯", "📦", "⬜️", "🙋🏿", "⬜️", "📦", "🔯", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬛️", "⬜️", "📦", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬛️", "⬜️", "📦", "⬜️", "⬛️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬜️", "⬛️",
+                    "⬛️", "⬜️", "⬜️", "⬜️", "🔯", "⬜️", "⬜️", "🔯", "⬛️",
+                    "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️"
+                    
+                ]
+            ),
+            // FASE 20
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Colega isso nem tava na lista, como tu veio parar aqui??? E mais importante: POR QUE TU FICASSE ATÉ RESOLVER??? Vai dar um rolê",
+                levelDialogue: "Depois dessa eu vou me APOSENTAR!",
                 levelMap: [
                     
                     "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
@@ -354,7 +435,7 @@ extension LevelModel{
                     "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️"
                     
                 ]
-            ),*/
+            ),
         ]
     }
     
