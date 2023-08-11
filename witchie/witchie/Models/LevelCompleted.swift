@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct LevelCompleted{
     static var isCompleted: [Bool] = Array(repeating: false, count: LevelModel.patchOne().count)

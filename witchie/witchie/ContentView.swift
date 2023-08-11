@@ -16,6 +16,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader{geo in
             StartGameView()
+            LevelView(levelNumber: 0, levelModel: LevelModel.patchOne()).environmentObject(AudioPlayerManager())
             //OnboardingView()
                 .onAppear {
                     //Ler o tamanho do dispositivo
@@ -39,6 +40,9 @@ struct ContentView: View {
                     UserSettings.isNotFirstTime = UserDefaults.standard.bool(forKey: "isNotFirstTime")
                     
             }
+                .onChange(of: geo.size, perform: { newValue in
+                    dimensionManager.dimensions = geo.size
+                })
                 .environmentObject(audioPlayerManager)
         }
         .ignoresSafeArea()
