@@ -14,5 +14,4 @@ struct LevelCompleted{
 
 struct UserSettings{
     static var isNotFirstTime: Bool = false
-    static var deviceOrientation: UIDeviceOrientation = .portrait
 }

@@ -25,9 +25,8 @@ struct LevelView: View{
     @State private var gestureOffset: CGSize = .zero
     @State private var direction: Direction = .none
     @State private var playerMovements: Int = 0
-    @State private var orientation = UIDeviceOrientation.unknown
     
-    var safeDimensionManager = DimensionManager.shared
+    @StateObject var safeDimensionManager = DimensionManager.shared
     
     enum Direction {
         case none, up, down, left, right
@@ -60,7 +59,7 @@ struct LevelView: View{
     //MARK: THE GAME VIEW
     var body: some View{
         ZStack{
-            if orientation.isPortrait{
+            if safeDimensionManager.dimensions.height > safeDimensionManager.dimensions.width{
                 Image(ImageAsset.BACKGROUND)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -232,14 +231,11 @@ struct LevelView: View{
                 }
             }
             else{
-                
+                Text("EITA VIROU LANDSCAPE")
             }
         }
-        .onRotate { newOrientation in
-            orientation = newOrientation
-        }
         .onAppear{
-            orientation = UserSettings.deviceOrientation
+            
         }
         //MARK: New sliding game controls
         #if os(iOS)
@@ -292,6 +288,7 @@ extension LevelView{
     }
     
     func refreshGame(){
+        print(safeDimensionManager.dimensions)
         playerMovements = 0
         levelModel[levelNumber].levelMap = LevelModel.patchOne()[levelNumber].levelMap
         levelActualPosition = levelStartPosition
