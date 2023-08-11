@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct LevelCompleted{
     static var isCompleted: [Bool] = Array(repeating: false, count: LevelModel.patchOne().count)
@@ -13,4 +14,5 @@ struct LevelCompleted{
 
 struct UserSettings{
     static var isNotFirstTime: Bool = false
+    static var deviceOrientation: UIDeviceOrientation = .portrait
 }

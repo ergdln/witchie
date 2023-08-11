@@ -25,6 +25,7 @@ struct LevelView: View{
     @State private var gestureOffset: CGSize = .zero
     @State private var direction: Direction = .none
     @State private var playerMovements: Int = 0
+    @State private var orientation = UIDeviceOrientation.unknown
     
     var safeDimensionManager = DimensionManager.shared
     
@@ -44,12 +45,14 @@ struct LevelView: View{
     let empty: String = "🟫"
     
     init(levelNumber: Int, levelModel: [LevelModel]) {
+        
         self._levelNumber = State(initialValue: levelNumber)
         self._levelModel = State(initialValue: levelModel)
         self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset))
         self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap))
         self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
         self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
+        
     }
     
     @Environment(\.dismiss) private var dismiss
@@ -57,42 +60,40 @@ struct LevelView: View{
     //MARK: THE GAME VIEW
     var body: some View{
         ZStack{
-            Image(ImageAsset.BACKGROUND)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 1.1)
-            
-            VStack(alignment: .center, spacing: 10){
-                HStack(alignment: .center){
-                    if UserSettings.isNotFirstTime{
-                        Button{
-                            dismiss()
-                        }label:{
-                            Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
+            if orientation.isPortrait{
+                Image(ImageAsset.BACKGROUND)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
+                VStack(alignment: .center, spacing: 10) {
+                    HStack(alignment: .center) {
+                        if UserSettings.isNotFirstTime{
+                            Button{
+                                dismiss()
+                            }label:{
+                                Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .font(.custom(ContentComponent.regular, size: 24))
+                                    .padding(.bottom, -15)
+                            }
+                        }else{
+                            NavigationLink(destination: StartGameView()) {
+                                Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .font(.custom(ContentComponent.regular, size: 24))
+                                    .padding(.bottom, -15)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded({
+                                UserSettings.isNotFirstTime = true
+                            }))
                         }
-                    }else{
-                        NavigationLink(destination: StartGameView()) {
-                            Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
-                        }
-                        .simultaneousGesture(TapGesture().onEnded({
-                            UserSettings.isNotFirstTime = true
-                        }))
+                        Spacer()
+                        Text("Nível \(levelNumber + 1)")
+                            .font(.custom(ContentComponent.regular, size: 32))
+                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                            .padding(.bottom, -20)
+                        Spacer()
+                        SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                     }
-                    
                     Spacer()
-                    Text("Nível \(levelNumber + 1)")
-                        .font(.custom(ContentComponent.regular, size: 32))
-                        .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                        .padding(.bottom, -20)
-                    Spacer()
-                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
-                }
-                Spacer()
-                ZStack{
                     HStack {
                         ZStack {
                             Image(ImageAsset.COUNTER)
@@ -102,6 +103,7 @@ struct LevelView: View{
                                 .padding(.bottom, -15)
                                 .padding(.leading, 41)
                         }
+                        Spacer()
                         Button(action:{
                             refreshGame()
                         }){
@@ -109,129 +111,138 @@ struct LevelView: View{
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 38)
-                        }.frame(width: 200, alignment: .trailing)
-                            .disabled(isGameOver)
+                        }.disabled(isGameOver)
                     }
-                }
+                    LazyVGrid(columns: levelGrid, spacing: 0){
+                        ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
+                            Group{
+                                if levelModel[levelNumber].levelMap[num] == wall{
+                                    Image(ImageAsset.TILE_BRICK)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == grass{
+                                    Image(ImageAsset.TILE_GRASS)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == spot{
+                                    Image(ImageAsset.TILE_SPOT)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                //this only happens when a cauldron is in the mark place
+                                else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
+                                    Image(ImageAsset.TILE_CAULDRON)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == box{
+                                    Image(ImageAsset.TILE_EMPTY_CAULDRON)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == person{
+                                    Image(witchImage)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == empty{
+                                    Image(ImageAsset.EMPTY)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                            }
+                        }
+                    }
+                    .padding(.top, 20)
+                    Spacer()
+                }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.height * 0.8)
+                    .navigationBarBackButtonHidden(true)
                 
-                //MARK: GAME GRID
-                LazyVGrid(columns: levelGrid, spacing: 0){
-                    ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
-                        Group{
-                            if levelModel[levelNumber].levelMap[num] == wall{
-                                Image(ImageAsset.TILE_BRICK)
-                                    .resizable()
-                                    .scaledToFill()
+                //MARK: Changes the screen when the game is over
+                if isGameOver{
+                    ZStack{
+                        Image(ImageAsset.BACKGROUND)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
+                        VStack(alignment: .center, spacing: 10) {
+                            Spacer()
+                            HStack{
+                                Button{
+                                    dismiss()
+                                }label: {
+                                    Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                        .font(.custom(ContentComponent.regular, size: 24))
+                                        .padding(.bottom, -15)
+                                        .opacity(0)
+                                }.disabled(true)
+                                Spacer()
+                                Text("Nível \(levelNumber + 1)")
+                                    .font(.custom(ContentComponent.regular, size: 32))
+                                    .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .padding(.bottom, -20)
+                                Spacer()
+                                SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
                             }
-                            else if levelModel[levelNumber].levelMap[num] == grass{
-                                Image(ImageAsset.TILE_GRASS)
+                            .padding(.horizontal, safeDimensionManager.dimensions.width * 0.1)
+                            Spacer()
+                            ZStack{
+                                Image(ImageAsset.DIALOGUE_RECTANGLE)
                                     .resizable()
-                                    .scaledToFill()
+                                    .aspectRatio(contentMode: .fit)
+                                Text(levelModel[levelNumber].levelDialogue)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
+                                    .font(.custom(ContentComponent.regular, size: 100))
+                                    .minimumScaleFactor(0.01)
+                                    .lineLimit(10)
+                                    .padding(.horizontal,safeDimensionManager.dimensions.width * 0.08)
+                                    .padding(.vertical, safeDimensionManager.dimensions.height * 0.05)
+                            }.frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
+                            Spacer()
+                            if (levelNumber < LevelModel.patchOne().count - 1) {
+                                Button{
+                                    refreshGame()
+                                    levelNumber += 1
+                                    refreshGame()
+                                    isGameOver.toggle()
+                                }
+                                label: {
+                                    Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                }
                             }
-                            else if levelModel[levelNumber].levelMap[num] == spot{
-                                Image(ImageAsset.TILE_SPOT)
-                                    .resizable()
-                                    .scaledToFill()
-                            }
-                            //this only happens when a cauldron is in the mark place
-                            else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
-                                Image(ImageAsset.TILE_CAULDRON)
-                                    .resizable()
-                                    .scaledToFill()
-                            }
-                            else if levelModel[levelNumber].levelMap[num] == box{
-                                Image(ImageAsset.TILE_EMPTY_CAULDRON)
-                                    .resizable()
-                                    .scaledToFill()
-                            }
-                            else if levelModel[levelNumber].levelMap[num] == person{
-                                Image(witchImage)
-                                    .resizable()
-                                    .scaledToFill()
-                            }
-                            else if levelModel[levelNumber].levelMap[num] == empty{
-                                Image(ImageAsset.EMPTY)
-                                    .resizable()
-                                    .scaledToFill()
+                            else {
+                                NavigationLink(destination: StartGameView()) {
+                                    Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 0.268)
+                                }                        .simultaneousGesture(TapGesture().onEnded({
+                                    UserSettings.isNotFirstTime = true
+                                }))
                             }
                         }
+                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                     }
-                }
-                .padding(.top, 20)
-                Spacer()
-            }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.height * 0.8)
-                .navigationBarBackButtonHidden(true)
-            
-            //MARK: Changes the screen when the game is over
-            if isGameOver{
-                ZStack{
-                    Image(ImageAsset.BACKGROUND)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 1.1)
-                    VStack (alignment: .center, spacing: 10){
-                        Spacer()
-                        HStack{
-                            Button{
-                                dismiss()
-                            }label: {
-                                Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                    .font(.custom(ContentComponent.regular, size: 24))
-                                    .padding(.bottom, -15)
-                                    .opacity(0)
-                            }.disabled(true)
-                            Spacer()
-                            Text("Nível \(levelNumber + 1)")
-                                .font(.custom(ContentComponent.regular, size: 32))
-                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .padding(.bottom, -20)
-                            Spacer()
-                            SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
-                        }
-                        Spacer()
-                        ZStack{
-                            Image(ImageAsset.DIALOGUE_RECTANGLE)
-                            Text(levelModel[levelNumber].levelDialogue)
-                                .multilineTextAlignment(.center)
-                                .frame(width: 278, height: 337)
-                                .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
-                                .font(.custom(ContentComponent.regular, size: 18))
-                                .padding(.bottom, -15)
-                        }
-                        Spacer()
-                        if (levelNumber < LevelModel.patchOne().count - 1) {
-                            Button{
-                                refreshGame()
-                                levelNumber += 1
-                                refreshGame()
-                                isGameOver.toggle()
-                            }
-                        label: {
-                            Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 0.268)
-                        }
-                        }
-                        else {
-                            NavigationLink(destination: StartGameView()) {
-                                Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 0.268)
-                            }                        .simultaneousGesture(TapGesture().onEnded({
-                                UserSettings.isNotFirstTime = true
-                            }))
-                        }
-                        
-                    }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.height)
-                    
                 }
             }
+            else{
+                
+            }
         }
-        
+        .onRotate { newOrientation in
+            orientation = newOrientation
+        }
+        .onAppear{
+            orientation = UserSettings.deviceOrientation
+        }
         //MARK: New sliding game controls
-        #if !os(tvOS)
+        #if os(iOS)
         .gesture(
             DragGesture()
                 .onChanged { gesture in
@@ -368,7 +379,7 @@ extension LevelView{
 
 struct LevelView_Previews: PreviewProvider {
     static var previews: some View {
-        LevelView(levelNumber: 0, levelModel: LevelModel.patchOne()).environmentObject(AudioPlayerManager())
+        ContentView()
     }
 }
 
