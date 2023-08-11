@@ -15,7 +15,7 @@ struct ContentView: View {
 
     var body: some View {
         GeometryReader{geo in
-//            StartGameView()
+            StartGameView()
             LevelView(levelNumber: 0, levelModel: LevelModel.patchOne()).environmentObject(AudioPlayerManager())
             //OnboardingView()
                 .onAppear {
