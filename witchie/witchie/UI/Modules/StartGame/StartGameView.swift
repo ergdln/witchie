@@ -19,21 +19,21 @@ struct StartGameView: View {
     
     var safeDimensionManager = DimensionManager.shared
     
-    var body: some View{
+    var body: some View {
         
-        NavigationStack(path: $path){
-                ZStack{
+        NavigationStack(path: $path) {
+                ZStack {
                     //the background
                     Rectangle()
                         .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                         .frame(width: safeDimensionManager.dimensions.width * 1.5, height: safeDimensionManager.dimensions.height * 1.5)
                     //dacing elements
-                    VStack{
-                        ZStack{
+                    VStack {
+                        ZStack {
                             
                             //draws all the 20 dacing elements in the background
                             ForEach((0...20), id: \.self) { num in
-                                Group{
+                                Group {
                                     drawingDacingElements(image: ImageAsset.CAULDRON_FULL)
                                 }
                             }
@@ -43,7 +43,7 @@ struct StartGameView: View {
                                 .opacity(0.95)
                                 .frame(width: safeDimensionManager.dimensions.width * 1.5, height: safeDimensionManager.dimensions.height * 1.5)
                             
-                            VStack(spacing: 10){
+                            VStack(spacing: 10) {
                                 HStack (alignment: .center) {
                                     Spacer()
                                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
@@ -58,14 +58,15 @@ struct StartGameView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: safeDimensionManager.dimensions.width * 0.55)
-                                
+                                Spacer()
+                                    .frame(height: safeDimensionManager.dimensions.height * 0.01)
                                 //moon and witchie assets dacing
-                                ZStack{
+                                ZStack {
                                     //dacing moon
                                     Image(ImageAsset.MOON)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(width: safeDimensionManager.dimensions.width * 0.7, height: safeDimensionManager.dimensions.width * 0.7)
+                                        .frame(width: safeDimensionManager.dimensions.width * 0.7, height: safeDimensionManager.dimensions.height * 0.7)
                                     
                                     //dacing wichie
                                     Image(ImageAsset.WITCH_START)
@@ -101,21 +102,21 @@ struct StartGameView: View {
                                         }
                                 }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.width * 0.8)
                                     .navigationBarBackButtonHidden(true)
-                                //gambiarra do carai
-                                //stack vazia só pra usar como spacer
-                                VStack{
-                                    
-                                }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 0.05)
+
+                                Spacer()
+                                    .frame(height: safeDimensionManager.dimensions.height * 0.02)
                               
                                 NavigationLink {
-                                    if UserSettings.isNotFirstTime{
+                                    if UserSettings.isNotFirstTime {
                                         LevelSelectorView()
-                                    }else{
+                                    } else {
                                         OnboardingView()
                                     }
                                 } label: {
                                     Image(ImageAsset.BOTAO_COMECAR)
                                 }
+                                Spacer()
+                                    .frame(height: safeDimensionManager.dimensions.height * 0.001)
                                 
                                 NavigationLink {
                                     AboutUsView()
