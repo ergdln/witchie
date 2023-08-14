@@ -12,6 +12,9 @@ struct StartGameView: View {
     @State var animatingI = false
     @State var animatingJ = true
     
+    @State var animatingK = false
+    @State var animatingW = true
+    
     @State private var soundOn = true
     @State var audioPlayer: AVAudioPlayer!
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
@@ -75,31 +78,38 @@ struct StartGameView: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: safeDimensionManager.dimensions.width * 0.5, height: safeDimensionManager.dimensions.width * 0.5)
                                         .offset(x: {
-                                            if animatingJ && !animatingI {
+                                            if animatingW && !animatingK {
                                                 return 100
-                                            }  else if animatingJ && animatingI {
+                                            }  else if animatingW && animatingK {
                                                 return -20
                                             } else {
                                                 return -95
                                             }
                                         }(),
                                                 y: {
-                                            if animatingJ && !animatingI {
-                                                return safeDimensionManager.dimensions.height * 0.1
-                                            }  else if animatingJ && animatingI {
-                                                return safeDimensionManager.dimensions.height * 0.1
+                                            if animatingW && !animatingK {
+                                                return 100
+                                            }  else if animatingW && animatingK {
+                                                return 100
                                             } else {
-                                                return safeDimensionManager.dimensions.height * 0.1
+                                                return 100
                                             }
                                         }())
-                                        .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingJ)
+                                        .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingW)
                                         .onAppear {
+                                            animatingW.toggle()
                                             animatingJ.toggle()
+                                        }
+                                        .onChange(of: animatingW) { _ in
+                                            animatingK.toggle()
+                                        // LEGACY
+                                        // quer emoção? descomente a linha abaixo
+                                        // animatingW.toggle()
                                         }
                                         .onChange(of: animatingJ) { _ in
                                             animatingI.toggle()
-                                            animatingJ.toggle()
                                         }
+                                      
                                 }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.width * 0.8)
                                     .navigationBarBackButtonHidden(true)
 
@@ -176,7 +186,8 @@ extension StartGameView {
                 }
             }())
             .animation(.easeInOut(duration: Double(duration)).repeatForever(), value: animatingJ)
-        
+            .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingJ)
+           
         
     }
 }
