@@ -14,7 +14,7 @@ struct ContentView: View {
     @StateObject var dimensionManager = DimensionManager.shared
 
     var body: some View {
-        GeometryReader{geo in
+        GeometryReader { geo in
             StartGameView()
                 .onAppear {
                     //Ler o tamanho do dispositivo

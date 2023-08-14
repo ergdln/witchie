@@ -26,9 +26,10 @@ struct AboutUsView: View {
                     Spacer()
                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                 }
-                .padding(.horizontal, 32.0)
+                .padding([.horizontal,.top], 32.0)
 
                 Spacer()
+                    .frame(height: safeDimensionManager.dimensions.height * 0.05)
                 VStack(spacing: 8.0) {
                     Text("Sobre Nós")
                         .font(.custom(ContentComponent.regular, size: 40))
@@ -41,6 +42,7 @@ struct AboutUsView: View {
                 }
                 .padding(.horizontal, 48.0)
                 Spacer()
+                    .frame(height: safeDimensionManager.dimensions.height * 0.05)
                 VStack(spacing: 8.0) {
                     HStack {
                         Text("Ernesto Gonçalves")
@@ -51,19 +53,6 @@ struct AboutUsView: View {
                             .frame(height: 1.0)
                             .foregroundColor(Color(ColorAsset.BAR_PURPLE))
                         Text("Creator")
-                            .font(.custom(ContentComponent.regular, size: 16))
-                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                            .fixedSize()
-                    }
-                    HStack {
-                        Text("João Pedro Barreto")
-                            .font(.custom(ContentComponent.regular, size: 16))
-                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                            .fixedSize()
-                        Rectangle()
-                            .frame(height: 1.0)
-                            .foregroundColor(Color(ColorAsset.BAR_PURPLE))
-                        Text("Dev")
                             .font(.custom(ContentComponent.regular, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
@@ -108,6 +97,19 @@ struct AboutUsView: View {
                             .fixedSize()
                     }
                     HStack {
+                        Text("João Pedro Barreto")
+                            .font(.custom(ContentComponent.regular, size: 16))
+                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                            .fixedSize()
+                        Rectangle()
+                            .frame(height: 1.0)
+                            .foregroundColor(Color(ColorAsset.BAR_PURPLE))
+                        Text("Dev")
+                            .font(.custom(ContentComponent.regular, size: 16))
+                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                            .fixedSize()
+                    }
+                    HStack {
                         Text("Thales Fraga")
                             .font(.custom(ContentComponent.regular, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
@@ -123,6 +125,7 @@ struct AboutUsView: View {
                 }
                 .padding(.horizontal, 48.0)
                 Spacer()
+                    .frame(height: safeDimensionManager.dimensions.height * 0.01)
                 HStack {
                     ZStack {
                         HStack {
