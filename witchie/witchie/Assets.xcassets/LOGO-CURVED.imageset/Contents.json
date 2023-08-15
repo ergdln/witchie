@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Witchie.png",
+      "filename" : "LOGO-CURVED.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Witchie@2x.png",
+      "filename" : "LOGO-CURVED@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Witchie@3x.png",
+      "filename" : "LOGO-CURVED@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

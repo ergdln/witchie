@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "CAULDRON-EMPTY-WITH-BACKGROUND.png",
+      "filename" : "TILE_HOLE.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CAULDRON-EMPTY-WITH-BACKGROUND@2x.png",
+      "filename" : "TILE_HOLE@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "CAULDRON-EMPTY-WITH-BACKGROUND@3x.png",
+      "filename" : "TILE_HOLE@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

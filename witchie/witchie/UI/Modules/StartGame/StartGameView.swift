@@ -9,9 +9,11 @@ import AVFoundation
 
 struct StartGameView: View {
     
+    //background cauldrons booleans for movement
     @State var animatingI = false
     @State var animatingJ = true
     
+    //witchie booleans for movement 
     @State var animatingK = false
     @State var animatingW = true
     
@@ -35,7 +37,7 @@ struct StartGameView: View {
                         ZStack {
                             
                             //draws all the 20 dacing elements in the background
-                            ForEach((0...20), id: \.self) { num in
+                            ForEach((0...25), id: \.self) { num in
                                 Group {
                                     drawingDacingElements(image: ImageAsset.CAULDRON_FULL)
                                 }
@@ -57,12 +59,35 @@ struct StartGameView: View {
                                 Spacer()
                                 
                                 //logo witchie
-                                Image(ImageAsset.WITCH_LOGO)
+                                Image(ImageAsset.WITCH_LOGO_CURVED)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: safeDimensionManager.dimensions.width * 0.55)
-                                Spacer()
-                                    .frame(height: safeDimensionManager.dimensions.height * 0.01)
+                                    .frame(width: safeDimensionManager.dimensions.width * 0.7, height: safeDimensionManager.dimensions.width * 0.3)
+                                    .offset(x: {
+                                        if animatingW && !animatingK {
+                                            return 0
+                                        }  else if animatingW && animatingK {
+                                            return 0
+                                        } else {
+                                            return 0
+                                        }
+                                    }(),
+                                            y: {
+                                        if animatingW && !animatingK {
+                                            return safeDimensionManager.dimensions.width * 0.13
+                                        }  else if animatingW && animatingK {
+                                            return 0
+                                        } else {
+                                            return safeDimensionManager.dimensions.width * 0.1
+                                            
+                                        }
+                                    }())
+                                    .animation(.easeInOut(duration: 3).repeatForever(), value: animatingW)
+                                
+                                
+//                                Spacer()
+//                                    .frame(height: safeDimensionManager.dimensions.height * 0.01)
+                                
                                 //moon and witchie assets dacing
                                 ZStack {
                                     //dacing moon
@@ -88,11 +113,11 @@ struct StartGameView: View {
                                         }(),
                                                 y: {
                                             if animatingW && !animatingK {
-                                                return 100
+                                                return safeDimensionManager.dimensions.width * 0.15
                                             }  else if animatingW && animatingK {
-                                                return 100
+                                                return safeDimensionManager.dimensions.width * 0.15
                                             } else {
-                                                return 100
+                                                return safeDimensionManager.dimensions.width * 0.15
                                             }
                                         }())
                                         .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingW)

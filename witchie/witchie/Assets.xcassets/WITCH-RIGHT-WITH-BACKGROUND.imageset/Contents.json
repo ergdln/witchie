@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "WITCH-RIGHT.png",
+      "filename" : "WITCH-RIGHT-WITH-BACKGROUND.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "WITCH-RIGHT-WITH-BACKGROUND@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "WITCH-RIGHT-WITH-BACKGROUND@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
