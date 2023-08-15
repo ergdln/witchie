@@ -29,7 +29,7 @@ extension LevelModel{
                 levelDialogue: "Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?",
                 levelMap: [
                     
-                    // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
+                    // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     //Onboarding
                      "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "🟫",
                      "⬛️", "🙋🏿", "⬛️", "⬜️", "⬜️", "⬛️", "🟫",

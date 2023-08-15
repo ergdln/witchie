@@ -43,6 +43,10 @@ struct LevelView: View{
     let spot: String = "🔯"
     let empty: String = "🟫"
     
+    //future map elements
+    let crate: String = "🗄️"
+    let hole: String = "🕳️"
+    
     init(levelNumber: Int, levelModel: [LevelModel]) {
         
         self._levelNumber = State(initialValue: levelNumber)
@@ -122,6 +126,16 @@ struct LevelView: View{
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == grass{
                                     Image(ImageAsset.TILE_GRASS)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == hole{
+                                    Image(ImageAsset.TILE_HOLE)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == crate{
+                                    Image(ImageAsset.TILE_CRATE)
                                         .resizable()
                                         .scaledToFill()
                                 }
@@ -208,12 +222,12 @@ struct LevelView: View{
                                     refreshGame()
                                     isGameOver.toggle()
                                 }
-                                label: {
-                                    Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
-                                }
+                            label: {
+                                Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                            }
                             }
                             else {
                                 NavigationLink(destination: StartGameView()) {
@@ -238,7 +252,7 @@ struct LevelView: View{
             
         }
         //MARK: New sliding game controls
-        #if os(iOS)
+#if os(iOS)
         .gesture(
             DragGesture()
                 .onChanged { gesture in
@@ -264,7 +278,7 @@ struct LevelView: View{
                     }
                 }
         )
-        #endif
+#endif
     }
 }
 //MARK: Game Functions
@@ -299,8 +313,14 @@ extension LevelView{
     }
     
     func defineMoviment(actualPosition: Int, offset: Int){
+        //FACED A HOLE
+        if levelModel[levelNumber].levelMap[actualPosition + offset] == hole {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                refreshGame()
+            }
+        }
         //WALKING IN FREE SPACE
-        if levelModel[levelNumber].levelMap[actualPosition + offset] == grass {
+        else if levelModel[levelNumber].levelMap[actualPosition + offset] == grass {
             levelModel[levelNumber].levelMap.swapAt(actualPosition + offset, actualPosition)
             levelActualPosition = actualPosition + offset
             //recursion stop condition
@@ -316,6 +336,16 @@ extension LevelView{
                 //keep walking
             }
         }
+        //PUSHING CRATE
+               else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == crate && levelModel[levelNumber].levelMap[actualPosition + offset + offset] == grass{
+                   
+                   levelModel[levelNumber].levelMap[actualPosition] = grass
+                   levelModel[levelNumber].levelMap[actualPosition + offset] = person
+                   levelModel[levelNumber].levelMap[actualPosition + offset + offset] = crate
+                   levelActualPosition = actualPosition + offset
+                   //if you successfully pushed a box, update playerMovements
+                   playerMovements += 1
+               }
         //PUSHING A CAULDRON
         else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box && !levelSpotsIndex.contains(levelActualPosition + offset) {
             //pushing a box into a mark (sound effects)
