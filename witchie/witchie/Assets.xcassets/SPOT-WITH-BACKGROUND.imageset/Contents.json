@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "SPOT.png",
+      "filename" : "SPOT-WITH-BACKGROUND.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "SPOT-WITH-BACKGROUND@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "SPOT-WITH-BACKGROUND@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
