@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "CHÃO.png",
+      "filename" : "GRASS.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CHÃO@2x.png",
+      "filename" : "GRASS@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "CHÃO@3x.png",
+      "filename" : "GRASS@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
