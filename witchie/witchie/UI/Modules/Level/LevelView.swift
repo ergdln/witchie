@@ -339,7 +339,7 @@ extension LevelView{
             levelModel[levelNumber].levelMap.swapAt(actualPosition + offset, actualPosition)
             levelActualPosition = actualPosition + offset
             //recursion stop condition
-            if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == spot) {
+            if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == spot) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == crate) {
                 //here, nothing happens
                 //you hit something, so it's just time to stop walking
                 //then finally it's it time to count the movement:

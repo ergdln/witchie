@@ -43,6 +43,7 @@ struct ContentView: View {
                     dimensionManager.dimensions = geo.size
                 })
                 .environmentObject(audioPlayerManager)
+                .preferredColorScheme(.dark)
         }
         .ignoresSafeArea()
     }
