@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Onboarding 1 Background.png",
+      "filename" : "Vector 7.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Onboarding 1 Background@2x.png",
+      "filename" : "Vector 7@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Onboarding 1 Background@3x.png",
+      "filename" : "Vector 7@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

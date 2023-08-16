@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "CAULDRON-ONBOARDING.png",
+      "filename" : "CALDEIRAO.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CAULDRON-ONBOARDING@2x.png",
+      "filename" : "CALDEIRAO@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "CAULDRON-ONBOARDING@3x.png",
+      "filename" : "CALDEIRAO@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
