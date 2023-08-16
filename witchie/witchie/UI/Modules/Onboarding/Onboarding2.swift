@@ -32,12 +32,16 @@ struct Onboarding2: View {
                         .padding(.trailing, safeDimensionManager.dimensions.width * 0.14)
                     }
                     Text(ContentComponent.TEXT_ONBOARDING2)
-                        .background(Image(ImageAsset.DIALOGUE_123))
-                        .frame(width: safeDimensionManager.dimensions.width * 0.84)
-                        .padding(.vertical, safeDimensionManager.dimensions.height * 0.11)
+                        .padding(safeDimensionManager.dimensions.height * 0.04)
+                        .background(
+                            Image(ImageAsset.DIALOGUE_123)
+                                .resizable()
+                                .scaledToFill())
+                        .frame(width: (safeDimensionManager.dimensions.height * 0.31)/0.77, height: safeDimensionManager.dimensions.height * 0.31)
                         .multilineTextAlignment(.center)
-                        .font(.custom(ContentComponent.regular, size: 20))
+                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
+                        //.border(.green)
                 }
                 Spacer()
                 HStack {

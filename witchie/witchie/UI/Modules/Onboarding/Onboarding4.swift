@@ -23,12 +23,14 @@ struct Onboarding4: View {
                         .padding(.trailing, safeDimensionManager.dimensions.width * 0.12)
                     }
                     Text(ContentComponent.TEXT_ONBOARDING4)
-                        .frame(width: safeDimensionManager.dimensions.width * 0.84)
-                        .padding(.vertical, safeDimensionManager.dimensions.height * 0.07)
-                        .background(Color(ColorAsset.LIGHT_BEGE))
-                        .cornerRadius(20)
+                        .padding(safeDimensionManager.dimensions.height * 0.04)
+                        .background(
+                            Image(ImageAsset.DIALOGUE_45)
+                                .resizable()
+                                .scaledToFill())
+                        .frame(width: (safeDimensionManager.dimensions.height * 0.38)/0.94, height: safeDimensionManager.dimensions.height * 0.38)
                         .multilineTextAlignment(.center)
-                        .font(.custom(ContentComponent.regular, size: 20))
+                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                 }
                 Spacer()
@@ -54,10 +56,9 @@ struct Onboarding4: View {
                 HStack {
                     Image(ImageAsset.ONBOARDING4_WITCHIE)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: safeDimensionManager.dimensions.width * 1.015, height: safeDimensionManager.dimensions.height * 0.41)
+                        .aspectRatio(contentMode: .fill)
                     Spacer()
-                        .frame(width: safeDimensionManager.dimensions.width - (safeDimensionManager.dimensions.width * 0.9)/2)
+                        .frame(width: safeDimensionManager.dimensions.width * 0.85)
                 }
             }
         }

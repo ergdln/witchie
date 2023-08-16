@@ -30,6 +30,8 @@ struct Onboarding3: View {
             }
             .overlay {
                 VStack {
+                    Spacer()
+                        .frame(height: safeDimensionManager.dimensions.height * 0.03)
                     HStack {
                         Image(ImageAsset.BUBBLE)
                             .resizable()
@@ -40,39 +42,59 @@ struct Onboarding3: View {
                     }
                 }
             }
+            .overlay {
+                VStack {
+                    HStack {
+                        Spacer()
+                            .frame(width: safeDimensionManager.dimensions.width * 0.2)
+                        Image(ImageAsset.BUBBLE)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: safeDimensionManager.dimensions.width * 0.28)
+                    }
+                    Spacer()
+                        .frame(height: safeDimensionManager.dimensions.height * 0.7)
+                }
+            }
             VStack {
                 VStack (spacing: safeDimensionManager.dimensions.height * 0.07) {
                     HStack (alignment: .center) {
                         Spacer()
-                            .frame(width: safeDimensionManager.dimensions.width * 0.64)
                         NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
                             JumpButton(color: ColorAsset.MAIN_WHITE)
                         }
-                        .padding(.top, safeDimensionManager.dimensions.height * 0.06)
+                        .padding(.top, safeDimensionManager.dimensions.height * 0.03)
+                        .padding(.trailing, safeDimensionManager.dimensions.height * 0.03)
                     }
                     Text(ContentComponent.TEXT_ONBOARDING2)
-                        .background(Image(ImageAsset.DIALOGUE_123))
-                        .frame(width: safeDimensionManager.dimensions.width * 0.84)
-                        .padding(.vertical, safeDimensionManager.dimensions.height * 0.11)
+                        .padding(safeDimensionManager.dimensions.height * 0.04)
+                        .background(
+                            Image(ImageAsset.DIALOGUE_123)
+                                .resizable()
+                                .scaledToFill())
+                        .frame(width: (safeDimensionManager.dimensions.height * 0.38)/0.94, height: safeDimensionManager.dimensions.height * 0.38)
                         .multilineTextAlignment(.center)
-                        .font(.custom(ContentComponent.regular, size: 20))
+                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                 }
                 Spacer()
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(height: safeDimensionManager.dimensions.height * 0.4)
                 HStack {
                     Spacer()
                     NextButton(color: ColorAsset.MAIN_WHITE) {
                         funcToDo()
                     }
-                    .padding(.bottom, safeDimensionManager.dimensions.height * 0.06)
-                   .padding(.trailing, safeDimensionManager.dimensions.width * 0.45)
+                    .padding(.trailing, safeDimensionManager.dimensions.height * 0.03)
+                    .padding(.bottom, safeDimensionManager.dimensions.height * 0.03)
                 }
             }
         }
         .overlay {
             VStack {
                 Spacer()
-                    .frame(height: safeDimensionManager.dimensions.height * 0.01)
+                    .frame(height: safeDimensionManager.dimensions.height * 0.04)
                 HStack {
                     Spacer()
                         .frame(width: safeDimensionManager.dimensions.width * 0.5)

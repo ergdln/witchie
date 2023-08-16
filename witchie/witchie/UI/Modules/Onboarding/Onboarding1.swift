@@ -22,11 +22,14 @@ struct Onboarding1: View {
                     .padding(.trailing, safeDimensionManager.dimensions.width * 0.07)
                 }
                 Text(ContentComponent.TEXT_ONBOARDING1)
-                    .background(Image(ImageAsset.DIALOGUE_123))
-                    .frame(width: safeDimensionManager.dimensions.width * 0.84, height: safeDimensionManager.dimensions.height * 0.33)
-                    .padding(.vertical, safeDimensionManager.dimensions.height * 0.04)
+                    .padding(safeDimensionManager.dimensions.height * 0.04)
+                    .background(
+                        Image(ImageAsset.DIALOGUE_123)
+                            .resizable()
+                            .scaledToFill())
+                    .frame(width: (safeDimensionManager.dimensions.height * 0.38)/0.94, height: safeDimensionManager.dimensions.height * 0.38)
                     .multilineTextAlignment(.center)
-                    .font(.custom(ContentComponent.regular, size: 20))
+                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
             }
             Spacer()
@@ -40,8 +43,9 @@ struct Onboarding1: View {
             }
         }
         .ignoresSafeArea()
+        //.border(.green)
         .background(Color(ColorAsset.MAIN_PURPLE))
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        //.frame(maxWidth: .infinity, maxHeight: .infinity)
         .edgesIgnoringSafeArea(.all)
         .overlay {
             VStack {

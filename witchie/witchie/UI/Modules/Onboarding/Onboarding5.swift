@@ -26,12 +26,14 @@ struct Onboarding5: View {
             VStack {
                 VStack  (spacing: safeDimensionManager.dimensions.height * 0.07) {
                     Text(ContentComponent.TEXT_ONBOARDING5)
-                        .frame(width: safeDimensionManager.dimensions.width * 0.84)
-                        .padding(.vertical, safeDimensionManager.dimensions.height * 0.15)
-                        .background(Color(ColorAsset.LIGHT_BEGE))
-                        .cornerRadius(20)
+                        .padding(safeDimensionManager.dimensions.height * 0.04)
+                        .background(
+                            Image(ImageAsset.DIALOGUE_45)
+                                .resizable()
+                                .scaledToFill())
+                        .frame(width: (safeDimensionManager.dimensions.height * 0.31)/0.77, height: safeDimensionManager.dimensions.height * 0.31)
                         .multilineTextAlignment(.center)
-                        .font(.custom(ContentComponent.regular, size: 20))
+                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                 }
                 .padding(.top, safeDimensionManager.dimensions.height * 0.15)
