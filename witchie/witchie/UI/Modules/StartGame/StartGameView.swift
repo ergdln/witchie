@@ -22,7 +22,7 @@ struct StartGameView: View {
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @State private var path = NavigationPath()
     
-    var safeDimensionManager = DimensionManager.shared
+    @StateObject var safeDimensionManager = DimensionManager.shared
     
     var body: some View {
         
@@ -31,7 +31,7 @@ struct StartGameView: View {
                     //the background
                     Rectangle()
                         .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                        .frame(width: safeDimensionManager.dimensions.width * 1.5, height: safeDimensionManager.dimensions.height * 1.5)
+                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                     //dacing elements
                     VStack {
                         ZStack {
@@ -46,7 +46,7 @@ struct StartGameView: View {
                             Rectangle()
                                 .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                                 .opacity(0.95)
-                                .frame(width: safeDimensionManager.dimensions.width * 1.5, height: safeDimensionManager.dimensions.height * 1.5)
+                                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                             
                             VStack(spacing: 10) {
                                 HStack (alignment: .center) {
@@ -54,9 +54,11 @@ struct StartGameView: View {
                                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                                 }
                                 .padding(.horizontal, 32.0)
+                                .padding(.top, safeDimensionManager.dimensions.height * 0.05)
                                 .frame(width: safeDimensionManager.dimensions.width)
+//                                .border(.green)
                                 
-                                Spacer()
+                                //Spacer()
                                 
                                 //logo witchie
                                 Image(ImageAsset.WITCH_LOGO_CURVED)
@@ -83,10 +85,6 @@ struct StartGameView: View {
                                         }
                                     }())
                                     .animation(.easeInOut(duration: 3).repeatForever(), value: animatingW)
-                                
-                                
-//                                Spacer()
-//                                    .frame(height: safeDimensionManager.dimensions.height * 0.01)
                                 
                                 //moon and witchie assets dacing
                                 ZStack {
@@ -162,10 +160,12 @@ struct StartGameView: View {
                                 }
                                 Spacer()
                             }
+                            .padding(.bottom, 32.0)
                             .frame(height: safeDimensionManager.dimensions.height * 0.9)
                         }
                     }.navigationBarBackButtonHidden(true)
                 }
+                .ignoresSafeArea()
         }
     }
 }
@@ -214,5 +214,11 @@ extension StartGameView {
             .animation(.easeInOut(duration: 3.5).repeatForever(), value: animatingJ)
            
         
+    }
+}
+
+struct StartGameView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

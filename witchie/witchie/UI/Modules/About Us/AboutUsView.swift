@@ -29,7 +29,7 @@ struct AboutUsView: View {
                 .padding([.horizontal,.top], 32.0)
 
                 Spacer()
-                    .frame(height: safeDimensionManager.dimensions.height * 0.05)
+                    //.frame(height: safeDimensionManager.dimensions.height * 0.05)
                 VStack(spacing: 8.0) {
                     Text("Sobre Nós")
                         .font(.custom(ContentComponent.regular, size: 40))
@@ -125,7 +125,7 @@ struct AboutUsView: View {
                 }
                 .padding(.horizontal, 48.0)
                 Spacer()
-                    .frame(height: safeDimensionManager.dimensions.height * 0.01)
+                    //.frame(height: safeDimensionManager.dimensions.height * 0.01)
                 HStack {
                     ZStack {
                         HStack {
