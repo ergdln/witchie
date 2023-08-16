@@ -21,7 +21,7 @@ struct LevelView: View{
     @State var levelStartPosition: Int
     
     //MARK: VARIABLES
-    @State private var isGameOver = false
+    @State private var isGameOver = true
     @State private var gestureOffset: CGSize = .zero
     @State private var direction: Direction = .none
     @State private var playerMovements: Int = 0
@@ -63,7 +63,7 @@ struct LevelView: View{
     //MARK: THE GAME VIEW
     var body: some View{
         ZStack{
-            if safeDimensionManager.dimensions.height > safeDimensionManager.dimensions.width{
+            if true {//safeDimensionManager.orientation == .portrait{
                 Image(ImageAsset.BACKGROUND)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -202,18 +202,19 @@ struct LevelView: View{
                             .padding(.horizontal, safeDimensionManager.dimensions.width * 0.1)
                             Spacer()
                             ZStack{
-                                Image(ImageAsset.DIALOGUE_RECTANGLE)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
                                 Text(levelModel[levelNumber].levelDialogue)
+                                    .padding(safeDimensionManager.dimensions.height * 0.04)
+                                    .background(
+                                        Image(ImageAsset.DIALOGUE_RECTANGLE)
+                                            .resizable()
+                                            .scaledToFill()
+                                    )
+                                    .frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
                                     .multilineTextAlignment(.center)
+                                    .font(.custom(ContentComponent.regular, size: 20))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
-                                    .font(.custom(ContentComponent.regular, size: 100))
-                                    .minimumScaleFactor(0.01)
-                                    .lineLimit(10)
-                                    .padding(.horizontal,safeDimensionManager.dimensions.width * 0.08)
-                                    .padding(.vertical, safeDimensionManager.dimensions.height * 0.05)
-                            }.frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
+                            }
+                                //.border(.green)
                             Spacer()
                             if (levelNumber < LevelModel.patchOne().count - 1) {
                                 Button{
@@ -248,9 +249,7 @@ struct LevelView: View{
                 Text("EITA VIROU LANDSCAPE")
             }
         }
-        .onAppear{
-            
-        }
+        .ignoresSafeArea()
         //MARK: New sliding game controls
 #if os(iOS)
         .gesture(
