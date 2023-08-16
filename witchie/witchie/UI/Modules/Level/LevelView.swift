@@ -26,6 +26,10 @@ struct LevelView: View{
     @State private var direction: Direction = .none
     @State private var playerMovements: Int = 0
     
+    //Onboarding things
+    @State var showOnboarding: Bool
+    private let images = (1...11).map { String(format: "frame-%d", $0) }.map { Image($0) }
+    
     @StateObject var safeDimensionManager = DimensionManager.shared
     
     enum Direction {
@@ -47,7 +51,7 @@ struct LevelView: View{
     let crate: String = "🗄️"
     let hole: String = "🕳️"
     
-    init(levelNumber: Int, levelModel: [LevelModel]) {
+    init(levelNumber: Int, levelModel: [LevelModel], showOnboarding: Bool = false) {
         
         self._levelNumber = State(initialValue: levelNumber)
         self._levelModel = State(initialValue: levelModel)
@@ -55,7 +59,7 @@ struct LevelView: View{
         self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap))
         self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
         self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
-        
+        self._showOnboarding = State(initialValue: showOnboarding)
     }
     
     @Environment(\.dismiss) private var dismiss
@@ -173,6 +177,17 @@ struct LevelView: View{
                 }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.height * 0.8)
                     .navigationBarBackButtonHidden(true)
                 
+                //MARK: Changes the screen when coming from onboarding
+                if showOnboarding{
+                    ZStack{
+                        Color.black
+                            .opacity(0.4)
+                        AnimatingImage(images: images)
+                            .frame(height: safeDimensionManager.dimensions.height / 2)
+                            .padding(.leading, safeDimensionManager.dimensions.width * 0.13)
+                    }
+                }
+                
                 //MARK: Changes the screen when the game is over
                 if isGameOver{
                     ZStack{
@@ -211,7 +226,7 @@ struct LevelView: View{
                                     )
                                     .frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
                                     .multilineTextAlignment(.center)
-                                    .font(.custom(ContentComponent.regular, size: 20))
+                                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
                                 //.border(.green)
@@ -262,6 +277,7 @@ struct LevelView: View{
                     if (!isGameOver){
                         if direction == .down{
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
+                            showOnboarding = false
                         }else if direction == .up{
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }else if direction == .left{

@@ -279,7 +279,7 @@ struct OnboardingView: View {
                         HStack {
                             Spacer()
                                 .frame(width: safeDimensionManager.dimensions.width * 0.84)
-                            NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
+                            NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne(), showOnboarding: true)) {
                                 HStack {
                                     Image(systemName: "arrow.forward").font(.custom(ContentComponent.regular, size: 40))
                                         .underline()
