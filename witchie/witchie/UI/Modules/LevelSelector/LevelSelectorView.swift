@@ -11,8 +11,15 @@ import AVFAudio
 struct LevelSelectorView: View {
     @State private var soundOn = true
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
-    @State var isCompleted: [Bool] = LevelCompleted.isCompleted
+    @State var isCompleted: [Bool]
     @Environment(\.dismiss) private var dismiss
+    var patch: Int
+    
+    init(patch: Int) {
+        self.patch = patch
+        self._isCompleted  = State(initialValue: LevelCompleted.isCompleted[patch]!)
+    }
+    
     
     var safeDimensionManager = DimensionManager.shared
 
@@ -35,8 +42,8 @@ struct LevelSelectorView: View {
                 ScrollView {
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 300), spacing: 0), count: 3), spacing: 5) {
-                        ForEach(Array(0..<LevelModel.patchOne().count), id: \.self) { level in
-                            NavigationLink(destination: LevelView(levelNumber: level, levelModel: LevelModel.patchOne())) {
+                        ForEach(Array(0..<LevelModel.getLevels(chapter: 1).count), id: \.self) { level in
+                            NavigationLink(destination: LevelView(patch: patch, levelNumber: level)) {
                                 VStack(alignment: .center, spacing: 0){
                                     Text("\(level + 1)").font(.custom(ContentComponent.regular, size: 35))
                                         .padding(.bottom, -20)
@@ -75,11 +82,14 @@ struct LevelSelectorView: View {
                     }
                     .frame(width: safeDimensionManager.dimensions.width * 0.8)
                     .onAppear{
-                        isCompleted = LevelCompleted.isCompleted
+                        isCompleted = LevelCompleted.isCompleted[patch]!
                     }
                 }.scrollIndicators(.hidden)
             }
             .navigationBarBackButtonHidden()
+        }
+        .onAppear{
+            print(UserSettings.records)
         }
     }
     
@@ -87,7 +97,7 @@ struct LevelSelectorView: View {
     func shouldDisable(level: Int) -> Bool{
         if level == 0{
             return false
-        }else if level == LevelModel.patchOne().count - 1{
+        }else if level == LevelModel.getLevels(chapter: 1).count - 1{
             if isCompleted[level - 1]{
                 return false
             }
@@ -100,7 +110,7 @@ struct LevelSelectorView: View {
 
 struct LevelSelectorView_Previews: PreviewProvider {
     static var previews: some View {
-        LevelSelectorView()
+        LevelSelectorView(patch: 1)
             .environmentObject(AudioPlayerManager())
     }
 }

@@ -141,7 +141,7 @@ struct StartGameView: View {
                               
                                 NavigationLink {
                                     if UserSettings.isNotFirstTime {
-                                        LevelSelectorView()
+                                        LevelSelectorView(patch: 1)
                                     } else {
                                         OnboardingView()
                                     }

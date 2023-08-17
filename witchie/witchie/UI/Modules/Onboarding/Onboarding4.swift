@@ -16,7 +16,7 @@ struct Onboarding4: View {
                 VStack  (spacing: safeDimensionManager.dimensions.height * 0.07) {
                     HStack {
                         Spacer()
-                        NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
+                        NavigationLink(destination: LevelView(patch: 1, levelNumber: 0)) {
                             JumpButton(color: ColorAsset.MAIN_WHITE)
                         }
                         .padding(.top, safeDimensionManager.dimensions.height * 0.06)
