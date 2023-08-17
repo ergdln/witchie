@@ -41,12 +41,12 @@ struct LevelSelectorView: View {
                     .padding(.top, 20)
                 ScrollView {
                     
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 300), spacing: 0), count: 3), spacing: 5) {
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 300), spacing: 0), count: 3), spacing: 30) {
                         ForEach(Array(0..<LevelModel.getLevels(chapter: 1).count), id: \.self) { level in
                             NavigationLink(destination: LevelView(patch: patch, levelNumber: level)) {
                                 VStack(alignment: .center, spacing: 0){
                                     Text("\(level + 1)").font(.custom(ContentComponent.regular, size: 35))
-                                        .padding(.bottom, -20)
+                                        .padding(.bottom, -30)
                                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                                         .opacity(shouldDisable(level: level) ? 0.2 : 1)
                                     if isCompleted[level]{
@@ -57,7 +57,7 @@ struct LevelSelectorView: View {
                                                 .scaleEffect(0.8)
                                             VStack {
                                                 Spacer()
-                                                StepCounter(imageName: ImageAsset.BEST_RECORD, playerMovements: UserSettings.records[patch][level])
+                                                StepCounter(imageName: ImageAsset.BEST_RECORD, playerMovements: UserSettings.records[patch]![level], type: .levelSelectorView)
                                             }
                                         }
                                     }else{

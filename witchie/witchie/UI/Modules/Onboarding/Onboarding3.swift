@@ -74,7 +74,7 @@ struct Onboarding3: View {
                                 .scaledToFill())
                         .frame(width: (safeDimensionManager.dimensions.height * 0.38)/0.94, height: safeDimensionManager.dimensions.height * 0.38)
                         .multilineTextAlignment(.center)
-                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
+                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                 }
                 Spacer()

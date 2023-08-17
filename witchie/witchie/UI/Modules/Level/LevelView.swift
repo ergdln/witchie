@@ -103,7 +103,7 @@ struct LevelView: View{
                     }
                     Spacer()
                     HStack {
-                        StepCounter(imageName: ImageAsset.COUNTER, playerMovements: playerMovements)
+                        StepCounter(imageName: ImageAsset.COUNTER, playerMovements: playerMovements, type: .levelView)
                         Spacer()
                         Button(action:{
                             refreshGame()
@@ -220,7 +220,7 @@ struct LevelView: View{
                                     )
                                     .frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
                                     .multilineTextAlignment(.center)
-                                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
+                                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
                                 //.border(.green)
@@ -382,9 +382,10 @@ extension LevelView{
             LevelCompleted.isCompleted[patch]![levelNumber] = true
             UserDefaults.standard.set(LevelCompleted.isCompleted[patch], forKey: patch == 1 ? "CurrentLevel" : "CurrentLevel\(patch)")
             UserDefaults.standard.set(true, forKey: "isNotFirstTime")
-            UserSettings.records[patch]![levelNumber] = playerMovements
-            UserDefaults.standard.set(UserSettings.records[patch], forKey: "records\(patch)")
-            
+            if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
+                UserSettings.records[patch]![levelNumber] = playerMovements
+                UserDefaults.standard.set(UserSettings.records[patch], forKey: "records\(patch)")
+            }
         }
     }
     
