@@ -40,6 +40,7 @@ struct ImageAsset {
     static let BOTAO_COMECAR = "BOTAO-COMECAR"
     static let CAULDRON_ONBOARDING = "CAULDRON-ONBOARDING"
     static let CAULDRON_ONBOARDING_BIG = "CAULDRON-ONBOARDING-BIG"
+    static let BEST_RECORD = "BEST-RECORD"
     
     // IMAGENS SEM BACKGROUND
     static let SPOT_CLEAN = "SPOT-CLEAN"

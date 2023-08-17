@@ -18,9 +18,19 @@ struct LevelModel{
     //map
     var levelMap: [String]
     
+    
+    
 }
 
 extension LevelModel{
+    
+    static func getLevels(chapter:Int) -> [LevelModel]{
+        if chapter == 1{
+            return patchOne()
+        }
+        return []
+    }
+    
     static func patchOne() -> [LevelModel]{
         return[
             // LEVEL 1
@@ -461,6 +471,8 @@ extension LevelModel{
             ),
         ]
     }
+    
+    
     
     static func getIndexes(of element: String, in array: [String]) -> [Int] {
         var result = [Int]()

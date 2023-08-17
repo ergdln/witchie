@@ -14,6 +14,7 @@ struct LevelView: View{
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @State var levelNumber: Int
     @State var levelModel: [LevelModel]
+    var patch: Int
     
     @State var levelGrid: [GridItem]
     @State var levelSpotsIndex: [Int]
@@ -51,14 +52,14 @@ struct LevelView: View{
     let crate: String = "🗄️"
     let hole: String = "🕳️"
     
-    init(levelNumber: Int, levelModel: [LevelModel], showOnboarding: Bool = false) {
-        
+    init(patch: Int, levelNumber: Int, showOnboarding: Bool = false) {
+        self.patch = patch
         self._levelNumber = State(initialValue: levelNumber)
-        self._levelModel = State(initialValue: levelModel)
-        self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset))
-        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap))
-        self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
-        self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
+        self._levelModel = State(initialValue: LevelModel.getLevels(chapter: patch))
+        self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: LevelModel.getLevels(chapter: patch)[levelNumber].levelOffset))
+        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🔯", in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap))
+        self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
+        self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
         self._showOnboarding = State(initialValue: showOnboarding)
     }
     
@@ -102,14 +103,7 @@ struct LevelView: View{
                     }
                     Spacer()
                     HStack {
-                        ZStack {
-                            Image(ImageAsset.COUNTER)
-                            Text(String(playerMovements))
-                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
-                                .padding(.leading, 41)
-                        }
+                        StepCounter(imageName: ImageAsset.COUNTER, playerMovements: playerMovements, type: .levelView)
                         Spacer()
                         Button(action:{
                             refreshGame()
@@ -226,12 +220,12 @@ struct LevelView: View{
                                     )
                                     .frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
                                     .multilineTextAlignment(.center)
-                                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
+                                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
                                 //.border(.green)
                             Spacer()
-                            if (levelNumber < LevelModel.patchOne().count - 1) {
+                            if (levelNumber < LevelModel.getLevels(chapter: 1).count - 1) {
                                 Button{
                                     refreshGame()
                                     levelNumber += 1
@@ -319,7 +313,7 @@ extension LevelView{
     func refreshGame(){
         print(safeDimensionManager.dimensions)
         playerMovements = 0
-        levelModel[levelNumber].levelMap = LevelModel.patchOne()[levelNumber].levelMap
+        levelModel[levelNumber].levelMap = LevelModel.getLevels(chapter: 1)[levelNumber].levelMap
         levelActualPosition = levelStartPosition
         levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
         levelSpotsIndex = LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap)
@@ -385,10 +379,13 @@ extension LevelView{
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
-            LevelCompleted.isCompleted[levelNumber] = true
-            UserDefaults.standard.set(LevelCompleted.isCompleted, forKey: "CurrentLevel")
+            LevelCompleted.isCompleted[patch]![levelNumber] = true
+            UserDefaults.standard.set(LevelCompleted.isCompleted[patch], forKey: patch == 1 ? "CurrentLevel" : "CurrentLevel\(patch)")
             UserDefaults.standard.set(true, forKey: "isNotFirstTime")
-            
+            if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
+                UserSettings.records[patch]![levelNumber] = playerMovements
+                UserDefaults.standard.set(UserSettings.records[patch], forKey: "records\(patch)")
+            }
         }
     }
     

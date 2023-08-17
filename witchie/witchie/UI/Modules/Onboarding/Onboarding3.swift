@@ -60,7 +60,7 @@ struct Onboarding3: View {
                 VStack (spacing: safeDimensionManager.dimensions.height * 0.07) {
                     HStack (alignment: .center) {
                         Spacer()
-                        NavigationLink(destination: LevelView(levelNumber: 0, levelModel: LevelModel.patchOne())) {
+                        NavigationLink(destination: LevelView(patch: 1, levelNumber: 0, showOnboarding: true)) {
                             JumpButton(color: ColorAsset.MAIN_WHITE)
                         }
                         .padding(.top, safeDimensionManager.dimensions.height * 0.03)
@@ -74,7 +74,7 @@ struct Onboarding3: View {
                                 .scaledToFill())
                         .frame(width: (safeDimensionManager.dimensions.height * 0.38)/0.94, height: safeDimensionManager.dimensions.height * 0.38)
                         .multilineTextAlignment(.center)
-                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * 0.023))
+                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                 }
                 Spacer()
