@@ -16,6 +16,7 @@
 		47889ED52A717098005EB560 /* LevelCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889ED42A717098005EB560 /* LevelCompleted.swift */; };
 		47889F1E2A72F21B005EB560 /* ComponentX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889F1D2A72F21B005EB560 /* ComponentX.swift */; };
 		47B53B862A7DACF200E3DADC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53B852A7DACF200E3DADC /* BackButton.swift */; };
+		5BF016322A8EAAF20012751E /* StepCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016312A8EAAF20012751E /* StepCounter.swift */; };
 		6EAB19B82A7C431B002047CD /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB19B72A7C431B002047CD /* AboutUsView.swift */; };
 		6EFCA0F12A69A9F50008AAC5 /* witchieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */; };
 		6EFCA0F32A69A9F50008AAC5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */; };
@@ -50,6 +51,7 @@
 		47889ED42A717098005EB560 /* LevelCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCompleted.swift; sourceTree = "<group>"; };
 		47889F1D2A72F21B005EB560 /* ComponentX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentX.swift; sourceTree = "<group>"; };
 		47B53B852A7DACF200E3DADC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		5BF016312A8EAAF20012751E /* StepCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounter.swift; sourceTree = "<group>"; };
 		6EAB19B72A7C431B002047CD /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		6EFCA0ED2A69A9F50008AAC5 /* witchie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = witchie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = witchieApp.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				C092ED752A80235D0052F0AD /* JumpButton.swift */,
 				C092ED772A802E980052F0AD /* NextButton.swift */,
 				4725D4762A8D49F9002166EE /* AnimatingImage.swift */,
+				5BF016312A8EAAF20012751E /* StepCounter.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				6EFCA1052A69ACDB0008AAC5 /* ContentComponent.swift in Sources */,
 				C092ED7A2A815B7C0052F0AD /* OnboardingView.swift in Sources */,
 				47B53B862A7DACF200E3DADC /* BackButton.swift in Sources */,
+				5BF016322A8EAAF20012751E /* StepCounter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

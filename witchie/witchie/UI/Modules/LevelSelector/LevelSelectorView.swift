@@ -50,10 +50,16 @@ struct LevelSelectorView: View {
                                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                                         .opacity(shouldDisable(level: level) ? 0.2 : 1)
                                     if isCompleted[level]{
-                                        Image(ImageAsset.CAULDRON_FULL)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .scaleEffect(0.8)
+                                        ZStack{
+                                            Image(ImageAsset.CAULDRON_FULL)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .scaleEffect(0.8)
+                                            VStack {
+                                                Spacer()
+                                                StepCounter(imageName: ImageAsset.BEST_RECORD, playerMovements: UserSettings.records[patch][level])
+                                            }
+                                        }
                                     }else{
                                         if level != 0{
                                             if isCompleted[level - 1]{

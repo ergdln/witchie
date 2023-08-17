@@ -103,14 +103,7 @@ struct LevelView: View{
                     }
                     Spacer()
                     HStack {
-                        ZStack {
-                            Image(ImageAsset.COUNTER)
-                            Text(String(playerMovements))
-                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
-                                .padding(.leading, 41)
-                        }
+                        StepCounter(imageName: ImageAsset.COUNTER, playerMovements: playerMovements)
                         Spacer()
                         Button(action:{
                             refreshGame()
