@@ -25,7 +25,7 @@ struct Onboarding2: View {
                     HStack (alignment: .center) {
                         Spacer()
                             .frame(width: safeDimensionManager.dimensions.width * 0.84)
-                        NavigationLink(destination: LevelView(patch: 1, levelNumber: 0)) {
+                        NavigationLink(destination: LevelView(patch: 1, levelNumber: 0, showOnboarding: true)) {
                             JumpButton(color: ColorAsset.MAIN_WHITE)
                         }
                         .padding(.top, safeDimensionManager.dimensions.height * 0.06)
