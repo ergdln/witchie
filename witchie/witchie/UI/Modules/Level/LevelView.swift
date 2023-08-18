@@ -220,7 +220,7 @@ struct LevelView: View{
                                     )
                                     .frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
                                     .multilineTextAlignment(.center)
-                                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
+                                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT * 0.98))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
                                 //.border(.green)
