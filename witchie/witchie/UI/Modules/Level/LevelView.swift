@@ -244,7 +244,7 @@ struct LevelView: View{
                                     Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
-                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height * 0.268)
+                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
                                 }                        .simultaneousGesture(TapGesture().onEnded({
                                     UserSettings.isNotFirstTime = true
                                 }))
