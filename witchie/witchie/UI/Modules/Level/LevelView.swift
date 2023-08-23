@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import StoreKit
 
 struct LevelView: View{
     
@@ -15,6 +16,8 @@ struct LevelView: View{
     @State var levelNumber: Int
     @State var levelModel: [LevelModel]
     var patch: Int
+    
+    @Environment(\.requestReview) var requestReview
     
     @State var levelGrid: [GridItem]
     @State var levelSpotsIndex: [Int]
@@ -26,6 +29,7 @@ struct LevelView: View{
     @State private var gestureOffset: CGSize = .zero
     @State private var direction: Direction = .none
     @State private var playerMovements: Int = 0
+    
     
     //Onboarding things
     @State var showOnboarding: Bool
@@ -227,6 +231,12 @@ struct LevelView: View{
                             Spacer()
                             if (levelNumber < LevelModel.getLevels(chapter: 1).count - 1) {
                                 Button{
+                                    if (UserSettings.hasReviewed == false && levelNumber == 4) {
+                                        requestReview()
+                                        UserDefaults.standard.set(true, forKey: "hasReviewed")
+                                        UserSettings.hasReviewed = UserDefaults.standard.bool(forKey: "hasReviewed")
+
+                                    }
                                     refreshGame()
                                     levelNumber += 1
                                     refreshGame()

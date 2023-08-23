@@ -14,9 +14,4 @@ struct LevelCompleted{
         ]
 }
 
-struct UserSettings{
-    static var isNotFirstTime: Bool = false
-    static var records: [Int: [Int]] = [
-        1: Array(repeating: 0, count: LevelModel.patchOne().count)
-    ]
-}
+

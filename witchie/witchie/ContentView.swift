@@ -60,7 +60,7 @@ struct ContentView: View {
                     
                     //pega se é a primeira vez do usuário
                     UserSettings.isNotFirstTime = UserDefaults.standard.bool(forKey: "isNotFirstTime")
-                    
+                    UserSettings.hasReviewed = UserDefaults.standard.bool(forKey: "hasReviewed")
                     //aqui começamos a salvar os recordes, a lógica é a mesma lá de cima, com a diferença que agora o patch 1 vai usar a chave "records1" o que facilita nossa vida depois
                     
                     for i in (1...UserSettings.records.count){
