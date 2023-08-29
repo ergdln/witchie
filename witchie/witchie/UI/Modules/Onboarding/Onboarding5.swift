@@ -33,7 +33,7 @@ struct Onboarding5: View {
                                 .scaledToFill())
                         .frame(width: (safeDimensionManager.dimensions.height * 0.31)/0.77, height: safeDimensionManager.dimensions.height * 0.31)
                         .multilineTextAlignment(.center)
-                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
+                        .font(.custom(ContentComponent.BOREL_REGULAR, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                 }
                 .padding(.top, safeDimensionManager.dimensions.height * 0.15)
@@ -43,7 +43,7 @@ struct Onboarding5: View {
                         .frame(width: safeDimensionManager.dimensions.width * 0.84)
                     NavigationLink(destination: LevelView(patch: 1, levelNumber: 0, showOnboarding: true)) {
                         HStack {
-                            Image(systemName: "arrow.forward").font(.custom(ContentComponent.regular, size: 40))
+                            Image(systemName: "arrow.forward").font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
                                 .underline()
                                 .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                 .padding(.bottom, -10)

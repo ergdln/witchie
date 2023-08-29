@@ -17,7 +17,7 @@ struct NextButton: View {
             funcToDo()
         } label: {
             HStack {
-                Image(systemName: "arrow.forward").font(.custom(ContentComponent.regular, size: 40))
+                Image(systemName: "arrow.forward").font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
                     .underline()
                     .foregroundColor(Color(color))
                     .padding(.bottom, -10)

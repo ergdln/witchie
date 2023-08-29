@@ -22,7 +22,7 @@ struct BackButton: View {
                 }else if color == ColorAsset.MAIN_WHITE{
                     Image(ImageAsset.ARROW_WHITE)
                 }
-                Text("voltar").font(.custom(ContentComponent.regular, size: 20))
+                Text(ContentComponent.BACK).font(.custom(ContentComponent.BOREL_REGULAR, size: 20))
                     .underline()
                     .foregroundColor(Color(color))
                     .padding(.bottom, -10)

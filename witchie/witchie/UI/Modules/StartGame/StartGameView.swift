@@ -155,7 +155,7 @@ struct StartGameView: View {
                                     AboutUsView()
                                 } label: {
                                     Text("sobre nós")
-                                        .font(.custom(ContentComponent.regular, size: 24))
+                                        .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
                                         .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                 }
                                 Spacer()
