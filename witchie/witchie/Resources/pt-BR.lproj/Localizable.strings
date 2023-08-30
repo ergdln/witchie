@@ -6,12 +6,15 @@
   
 */
 //START GAME VIEW
-"begin_game" = "começar";
-"about_us" = "sobre nós";
+"begin_game" = "Começar";
+"about_us" = "Sobre nós";
 
 //ABOUT US VIEW
 "wwdc2023_winner" = "Jogo vencedor do Swift Student Challenge 2023 🥇";
 "creator" = "Criador";
+"game_designer" = "Game Designer";
+"designer" = "Designer";
+"dev" = "Dev";
 
 //OTHERS
 "level" = "Nível";
@@ -23,7 +26,7 @@
 "text_onboarding1" = "Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.";
 "text_onboarding2" = "Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.";
 "text_onboarding3" = "Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.";
-"text_onboarding4" = "O problema é que, com a\n Vassorilda sabotada, eu\n não consigo me mover\ndireito, por isso preciso da\n sua ajuda.";
+"text_onboarding4" = "O problema é que, com a Vassorilda sabotada, eu não consigo me mover\ndireito, por isso preciso da sua ajuda.";
 "text_onboarding5" = "Eaí, pronto para o desafio?";
 
 //DIALOGUES

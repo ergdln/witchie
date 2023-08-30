@@ -7,13 +7,16 @@
 */
 
 //START GAME VIEW
-"begin_game" = "empezar";
-"about_us" = "sobre nosotros";
+"begin_game" = "Empezar";
+"about_us" = "Acerca de";
 
 //ABOUT US VIEW
 //Jogo vencedor do Swift Student Challenge 2023 🥇
 "wwdc2023_winner" = "Juego ganador del Swift Student Challenge 2023 🥇";
 "creator" = "Creador";
+"game_designer" = "Diseñador de Juegos";
+"designer" = "Diseñadora";
+"dev" = "Dev";
 
 //OTHERS
 "level" = "Nivel";
@@ -23,7 +26,7 @@
 
 //MARK: ONBOARDING TEXTS
 //Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
-"text_onboarding1" = "Oye, tú ahí, vamos al grano porque no tengo tiempo para charlas. Soy Witchie.";
+"text_onboarding1" = "Oye, tú ahí, vamos al grano porque no tengo tiempo para charlas.\n\n Soy Witchie.";
 //Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.
 "text_onboarding2" = "Alguien llenó mi guarida con hechizos molestos y están saboteando a Vassorilda.";
 //Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.

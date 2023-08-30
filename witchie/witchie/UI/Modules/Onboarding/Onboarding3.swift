@@ -66,7 +66,7 @@ struct Onboarding3: View {
                         .padding(.top, safeDimensionManager.dimensions.height * 0.03)
                         .padding(.trailing, safeDimensionManager.dimensions.height * 0.03)
                     }
-                    Text(ContentComponent.TEXT_ONBOARDING2)
+                    Text(ContentComponent.TEXT_ONBOARDING3)
                         .padding(safeDimensionManager.dimensions.height * 0.04)
                         .background(
                             Image(ImageAsset.DIALOGUE_123)

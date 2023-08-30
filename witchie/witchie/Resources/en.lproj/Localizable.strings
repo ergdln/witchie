@@ -7,23 +7,26 @@
 */
 
 //START GAME VIEW
-"begin_game" = "begin";
-"about_us" = "about us";
+"begin_game" = "Begin";
+"about_us" = "About us";
 
 //ABOUT US VIEW
 //Jogo vencedor do Swift Student Challenge 2023 🥇
 "wwdc2023_winner" = "Winning Game of the Swift Student Challenge 2023 🥇";
 "creator" = "Creator";
+"game_designer" = "Game Designer";
+"designer" = "Designer";
+"dev" = "Dev";
 
 //OTHERS
 "level" = "Level";
 "levels" = "Levels";
-"back" = "back";
-"jump" = "jump";
+"back" = "Back";
+"jump" = "Skip";
 
 //MARK: ONBOARDING TEXTS
 //Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
-"text_onboarding1" = "Hey, you there, let's cut to the chase 'cause I ain't got time for small talk. I'm Witchie.";
+"text_onboarding1" = "Hey, you there, let's cut to the chase 'cause I ain't got time for small talk.\n\n I'm Witchie.";
 //Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.
 "text_onboarding2" = "Somebody filled my lair with annoying spells, and they're sabotaging Vassorilda.";
 //Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.
