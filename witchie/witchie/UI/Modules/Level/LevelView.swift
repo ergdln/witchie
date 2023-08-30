@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import FirebaseAnalytics
 
 struct LevelView: View{
     
@@ -379,6 +380,8 @@ extension LevelView{
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
+            Analytics.logEvent(AnalyticsEventLevelEnd, parameters: [AnalyticsParameterLevelName: "\(levelNumber)"])
+            Analytics.logEvent("levelCompleted", parameters: nil)
             LevelCompleted.isCompleted[patch]![levelNumber] = true
             UserDefaults.standard.set(LevelCompleted.isCompleted[patch], forKey: patch == 1 ? "CurrentLevel" : "CurrentLevel\(patch)")
             UserDefaults.standard.set(true, forKey: "isNotFirstTime")
