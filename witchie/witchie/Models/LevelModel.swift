@@ -36,10 +36,10 @@ extension LevelModel{
             // LEVEL 1
             LevelModel(
                 levelOffset: 7,
-                levelDialogue: "Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_1,
                 levelMap: [
                     
-                    // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
+                    // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = gra≠ss,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     //Onboarding
                      "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "🟫",
                      "⬛️", "🙋🏿", "⬛️", "⬜️", "⬜️", "⬛️", "🟫",
@@ -55,7 +55,7 @@ extension LevelModel{
             // LEVEL 2
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_2,
                 levelMap: [
                     
                     
@@ -76,7 +76,7 @@ extension LevelModel{
             // LEVEL 3
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "É… Não foi tão direto quanto antes, mas até que você não foi mal.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_3,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -97,7 +97,7 @@ extension LevelModel{
             // LEVEL 4
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Viu que era só parar e pensar ao invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_4,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -118,7 +118,7 @@ extension LevelModel{
             // LEVEL 5
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_5,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -140,7 +140,7 @@ extension LevelModel{
             // LEVEL 6
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Esquecesse de parar e pensar de novo, né? E olhe que ainda tava tudo simétrico pra deixar mais fácil.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_6,
                 levelMap: [
                     
                     
@@ -161,7 +161,7 @@ extension LevelModel{
             // LEVEL 7
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Eita como demora pra ouvir minhas dicas...",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_7,
                 levelMap: [
                     
                     
@@ -182,7 +182,7 @@ extension LevelModel{
             // LEVEL 8
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_8,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -204,7 +204,7 @@ extension LevelModel{
             // LEVEL 9
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_9,
                 levelMap: [
                     
                     
@@ -225,7 +225,7 @@ extension LevelModel{
             // LEVEL 10
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Esse padrão foi interessante, acho que vale a pena memorizar...",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_10,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
                     //nivel que barreto VAI CHORAR
@@ -245,7 +245,7 @@ extension LevelModel{
             // LEVEL 11
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_11,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -267,7 +267,7 @@ extension LevelModel{
             // LEVEL 12
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Meus parabéns, viu? Essa aí era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_12,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -288,7 +288,7 @@ extension LevelModel{
             // LEVEL 13
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_13,
                 levelMap: [
                     
                     
@@ -308,7 +308,7 @@ extension LevelModel{
             // LEVEL 14
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Eita quanta correria pra lá e pra cá, chega tô tontinha!",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_14,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -330,7 +330,7 @@ extension LevelModel{
             // LEVEL 15
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_15,
                 levelMap: [
                     
                      "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
@@ -349,7 +349,7 @@ extension LevelModel{
             // LEVEL 16
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_16,
                 levelMap: [
                     
                     "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
@@ -369,7 +369,7 @@ extension LevelModel{
             //FASE 17
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Falei cedo demais.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_17,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate.
@@ -391,7 +391,7 @@ extension LevelModel{
             // FASE 18
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Como é que cabe tanto caldeirão numa sala só?????",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_18,
                 levelMap: [
                     
                     "🟫", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
@@ -410,7 +410,7 @@ extension LevelModel{
             // FASE 19
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Esses círculos não acabam nunca? Minhas costas não aguentam mais.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_19,
                 levelMap: [
                     
                     "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",
@@ -430,7 +430,7 @@ extension LevelModel{
             // FASE 20
             LevelModel(
                 levelOffset: 10,
-                levelDialogue: "Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_20,
                 levelMap: [
                     
                     "🟫", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "🟫", "🟫",
@@ -453,7 +453,7 @@ extension LevelModel{
             // FASE 21
             LevelModel(
                 levelOffset: 8,
-                levelDialogue: "Depois dessa eu vou me APOSENTAR!",
+                levelDialogue: ContentComponent.LEVEL_DIALOGUE_21,
                 levelMap: [
                     
                     "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️", "⬛️",

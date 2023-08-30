@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  witchie
+
+  Created by Guilherme Souza on 28/08/23.
+  
+*/
+
+//START GAME VIEW
+"begin_game" = "Démarrer";
+"about_us" = "À propos";
+
+//ABOUT US VIEW
+//Jogo vencedor do Swift Student Challenge 2023 🥇
+"wwdc2023_winner" = "Jeu gagnant du Swift Student Challenge 2023 🥇";
+"creator" = "Créateur";
+"game_designer" = "Game Designer";
+"designer" = "Designer";
+"dev" = "Dév";
+
+//OTHERS
+"level" = "Niveau";
+"levels" = "Niveaux";
+"back" = "retour";
+"jump" = "sauter";
+
+//MARK: ONBOARDING TEXTS
+//Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
+"text_onboarding1" = "Hé, toi, soyons directs car je n'ai pas le temps pour les bavardages.\n\n Je suis Witchie";
+//Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.
+"text_onboarding2" = "Quelqu'un a rempli mon antre de sorts agaçants et ils sabotent Vassorilda.";
+//Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.
+"text_onboarding3" = "Heureusement, je suis très astucieuse et je sais comment résoudre ça : il suffit de placer mes chaudrons sur les marques magiques pour les neutraliser.";
+//O problema é que, com a\n Vassorilda sabotada, eu\n não consigo me mover\ndireito, por isso preciso da\n sua ajuda.
+"text_onboarding4" = "Le problème, c'est qu'avec Vassorilda sabotée, je ne peux pas me déplacer correctement, donc j'ai besoin de ton aide.";
+//Eaí, pronto para o desafio?
+"text_onboarding5" = "Alors, es-tu prêt pour le défi?";
+
+//MARK: DIALOGUES
+//Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?
+"level_dialogue_1" = "Wow, regarde comme tu as été rapide! Je suis sûr que si tu continues comme ça, Vassorilda reviendra à la normale en un rien de temps. On passe à la prochaine salle?";
+//Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!
+"level_dialogue_2" = "En montant et descendant l'escalier... Je pense que la clé est de trouver les motifs !";
+//É… Não foi tão direto quanto antes, mas até que você não foi mal.
+"level_dialogue_3" = "Eh bien... Ce n'était pas aussi simple que précédemment, mais tu t'en es pas trop mal sorti.";
+//Viu que era só parar e pensar ao invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!
+"level_dialogue_4" = "Vois-tu, tout ce que tu avais à faire était de t'arrêter et de réfléchir au lieu de tout pousser en même temps! La hâte est mauvaise conseillère, tu sais!";
+//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_5" = "Ça semblait évident, n'est-ce pas? Eh bien, voilà la leçon à ne jamais faire confiance à personne!!!";
+//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_6" = "Il semble que tu aies encore oublié de t'arrêter et de réfléchir, hein? Et c'était même symétrique pour rendre les choses plus faciles.";
+//Eita como demora pra ouvir minhas dicas...
+"level_dialogue_7" = "Wow, tu prends vraiment ton temps pour écouter mes indices...";
+//Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!
+"level_dialogue_8" = "Écoute, ne me rejette pas la faute, d'accord? C'était ma fille qui insistait pour que j'appelle son petit ami arcitecte parce qu'il avait des idées 'modernes' pour mes pièces... Qu'est-ce qui ne va pas avec la vieille et classique toile d'araignée, hein?!";
+//Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.
+"level_dialogue_9" = "Juste parce que ça semble simple ne signifie pas que c'est le cas! Garde toujours à l'esprit que les murs sont tes amis.";
+//Esse padrão foi interessante, acho que vale a pena memorizar...
+"level_dialogue_10" = "Ce motif était assez intéressant, je pense que tu devrais le surveiller...";
+//Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...
+"level_dialogue_11" = "Je commence à penser qu'ils ont intentionnellement placé ces cercles dans des endroits compliqués...";
+//Meus parabéns, viu? Essa aí era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…
+"level_dialogue_12" = "Tu sais quoi... Félicitations! Celui-ci a tout changé. Si tu es arrivé jusque-là, peut-être as-tu un avenir dans ce domaine...";
+//Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.
+"level_dialogue_13" = "Je ne savais même pas que j'avais autant de chaudrons, je pense que je vais faire une vente de garage.";
+//Eita quanta correria pra lá e pra cá, chega tô tontinha!
+"level_dialogue_14" = "Wow, tellement de va-et-vient, je suis même un peu étourdi(e)!";
+//Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.
+"level_dialogue_15" = "Je pense que je n'ai jamais vu quelqu'un appuyer autant de fois sur le bouton de rafraîchissement, il est peut-être bloqué maintenant.";
+//Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.
+"level_dialogue_16" = "D'accord, celui-ci a été un souffle d'air frais après tant de salles intenses.";
+//Falei cedo demais.
+"level_dialogue_17" = "J'ai parlé trop vite...";
+//Como é que cabe tanto caldeirão numa sala só?????
+"level_dialogue_18" = "Comment diable ont-ils réussi à caser autant de chaudrons dans une seule pièce????";
+//Esses círculos não acabam nunca? Minhas costas não aguentam mais.
+"level_dialogue_19" = "Ces cercles magiques n'en finissent-ils jamais ? Mon dos n'en peut plus.";
+//Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.
+"level_dialogue_20" = "Je ne vais même pas te blâmer pour le retard sur celui-ci. En fait, si tu as besoin d'un psychologue, j'ai des recommandations.";
+//Depois dessa eu vou me APOSENTAR!
+"level_dialogue_21" = "Je vais PRENDRE MA RETRAITE après celui-là!";

@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  witchie
+
+  Created by Guilherme Souza on 28/08/23.
+  
+*/
+
+//START GAME VIEW
+"begin_game" = "Begin";
+"about_us" = "About us";
+
+//ABOUT US VIEW
+//Jogo vencedor do Swift Student Challenge 2023 🥇
+"wwdc2023_winner" = "Winning Game of the Swift Student Challenge 2023 🥇";
+"creator" = "Creator";
+"game_designer" = "Game Designer";
+"designer" = "Designer";
+"dev" = "Dev";
+
+//OTHERS
+"level" = "Level";
+"levels" = "Levels";
+"back" = "Back";
+"jump" = "Skip";
+
+//MARK: ONBOARDING TEXTS
+//Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
+"text_onboarding1" = "Hey, you there, let's cut to the chase 'cause I ain't got time for small talk.\n\n I'm Witchie.";
+//Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.
+"text_onboarding2" = "Somebody filled my lair with annoying spells, and they're sabotaging Vassorilda.";
+//Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.
+"text_onboarding3" = "Fortunately, I'm quite clever and I know how to solve it: just place my cauldrons on top of the magical marks to neutralize them.";
+//O problema é que, com a\n Vassorilda sabotada, eu\n não consigo me mover\ndireito, por isso preciso da\n sua ajuda.
+"text_onboarding4" = "The issue is, with Vassorilda sabotaged, I can't move properly, so I need your help.";
+//Eaí, pronto para o desafio?
+"text_onboarding5" = "So, are you ready for the challenge?";
+
+//MARK: DIALOGUES
+//Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?
+"level_dialogue_1" = "Wow, look at how fast you are! I'm sure if you keep it up, Vassorilda will be back to normal in no time. Ready for the next room?";
+//Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!
+"level_dialogue_2" = "Going up and down the staircase... I think the key is finding the patterns!";
+//É… Não foi tão direto quanto antes, mas até que você não foi mal.
+"level_dialogue_3" = "Well... It wasn't as straightforward as before, but you didn't do too bad.";
+//Viu que era só parar e pensar ao invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!
+"level_dialogue_4" = "See, all you had to do was stop and think instead of pushing everything at once! Haste makes waste, you know!";
+//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_5" = "Seemed obvious, right? Well, there's the lesson to never trust anyone!!!";
+//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_6" = "It seems you forgot to stop and think again, huh? And it was even symmetric to make it easier.";
+//Eita como demora pra ouvir minhas dicas...
+"level_dialogue_7" = "Wow, you take quite a while to listen to my hints...";
+//Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!
+"level_dialogue_8" = "Look, don't put the blame on me, okay? My daughter was the one who kept insisting I called her architect boyfriend 'cause he had some 'modern' ideas for my rooms... What's wrong with the old and classic spiderweb, huh?!";
+//Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.
+"level_dialogue_9" = "Just because it seems simple doesn't mean it is! Always keep in mind that the walls are your friends.";
+//Esse padrão foi interessante, acho que vale a pena memorizar...
+"level_dialogue_10" = "This pattern was quite interesting, I think you should keep an eye on it...";
+//Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...
+"level_dialogue_11" = "I'm starting to think they placed these circles in tricky spots intentionally...";
+//Meus parabéns, viu? Essa aí era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…
+"level_dialogue_12" = "Do you know what... Congratulations! This one was a game-changer. If you made it this far, maybe you've got a future in this line of work...";
+//Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.
+"level_dialogue_13" = "I didn't even know that I had so many cauldrons, I think I'll do a garage sale.";
+//Eita quanta correria pra lá e pra cá, chega tô tontinha!
+"level_dialogue_14" = "Wow, so much running around, I'm even a little dizzy!";
+//Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.
+"level_dialogue_15" = "I think I've never seen someone push the refresh button so many times, it actually might be stuck now.";
+//Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.
+"level_dialogue_16" = "Ok, this one was a breath of fresh air after so many intense rooms.";
+//Falei cedo demais.
+"level_dialogue_17" = "I spoke too soon...";
+//Como é que cabe tanto caldeirão numa sala só?????
+"level_dialogue_18" = "How on earth do they fit so many cauldrons in just one room????";
+//Esses círculos não acabam nunca? Minhas costas não aguentam mais.
+"level_dialogue_19" = "Do these magic circles ever end? My back can't take it anymore.";
+//Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.
+"level_dialogue_20" = "I won't even blame you for the delay on this one. Actually, if you need a psychologist, I've got recommendations.";
+//Depois dessa eu vou me APOSENTAR!
+"level_dialogue_21" = "I'll RETIRE after this one!";

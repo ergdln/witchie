@@ -66,7 +66,7 @@ struct Onboarding3: View {
                         .padding(.top, safeDimensionManager.dimensions.height * 0.03)
                         .padding(.trailing, safeDimensionManager.dimensions.height * 0.03)
                     }
-                    Text(ContentComponent.TEXT_ONBOARDING2)
+                    Text(ContentComponent.TEXT_ONBOARDING3)
                         .padding(safeDimensionManager.dimensions.height * 0.04)
                         .background(
                             Image(ImageAsset.DIALOGUE_123)
@@ -74,7 +74,7 @@ struct Onboarding3: View {
                                 .scaledToFill())
                         .frame(width: (safeDimensionManager.dimensions.height * 0.38)/0.94, height: safeDimensionManager.dimensions.height * 0.38)
                         .multilineTextAlignment(.center)
-                        .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
+                        .font(.custom(ContentComponent.BOREL_REGULAR, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                 }
                 Spacer()

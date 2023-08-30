@@ -41,25 +41,25 @@ struct LevelView: View{
     @State var witchImage: String = ImageAsset.TILE_WITCH_LEFT
     
     //Rename de map elements
-    let box: String = "📦"
-    let grass: String = "⬜️"
-    let person: String = "🙋🏿"
-    let wall: String = "⬛️"
-    let spot: String = "🔯"
-    let empty: String = "🟫"
+    let box = ContentComponent.BOX
+    let grass = ContentComponent.GRASS
+    let person = ContentComponent.PERSON
+    let wall = ContentComponent.WALL
+    let spot = ContentComponent.SPOT
+    let empty = ContentComponent.EMPTY
     
     //future map elements
-    let crate: String = "🗄️"
-    let hole: String = "🕳️"
+    let crate = ContentComponent.CRATE
+    let hole = ContentComponent.HOLE
     
     init(patch: Int, levelNumber: Int, showOnboarding: Bool = false) {
         self.patch = patch
         self._levelNumber = State(initialValue: levelNumber)
         self._levelModel = State(initialValue: LevelModel.getLevels(chapter: patch))
         self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: LevelModel.getLevels(chapter: patch)[levelNumber].levelOffset))
-        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🔯", in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap))
-        self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
-        self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
+        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: spot, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap))
+        self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
+        self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
         self._showOnboarding = State(initialValue: showOnboarding)
     }
     
@@ -79,14 +79,14 @@ struct LevelView: View{
                             Button{
                                 dismiss()
                             }label:{
-                                Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                    .font(.custom(ContentComponent.regular, size: 24))
+                                Text(ContentComponent.BACK_SYSTEM).foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
                                     .padding(.bottom, -15)
                             }
                         }else{
                             NavigationLink(destination: StartGameView()) {
-                                Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                    .font(.custom(ContentComponent.regular, size: 24))
+                                Text(ContentComponent.BACK_SYSTEM).foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
                                     .padding(.bottom, -15)
                             }
                             .simultaneousGesture(TapGesture().onEnded({
@@ -94,8 +94,8 @@ struct LevelView: View{
                             }))
                         }
                         Spacer()
-                        Text("Nível \(levelNumber + 1)")
-                            .font(.custom(ContentComponent.regular, size: 32))
+                        Text("\(ContentComponent.LEVEL) \(levelNumber + 1)")
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 32))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .padding(.bottom, -20)
                         Spacer()
@@ -195,14 +195,14 @@ struct LevelView: View{
                                 Button{
                                     dismiss()
                                 }label: {
-                                    Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                        .font(.custom(ContentComponent.regular, size: 24))
+                                    Text(ContentComponent.BACK_SYSTEM).foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                        .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
                                         .padding(.bottom, -15)
                                         .opacity(0)
                                 }.disabled(true)
                                 Spacer()
-                                Text("Nível \(levelNumber + 1)")
-                                    .font(.custom(ContentComponent.regular, size: 32))
+                                Text("\(ContentComponent.LEVEL) \(levelNumber + 1)")
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 32))
                                     .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                     .padding(.bottom, -20)
                                 Spacer()
@@ -220,7 +220,7 @@ struct LevelView: View{
                                     )
                                     .frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
                                     .multilineTextAlignment(.center)
-                                    .font(.custom(ContentComponent.regular, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT * 0.98))
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT * 0.98))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
                                 //.border(.green)
@@ -316,9 +316,9 @@ extension LevelView{
         levelModel[levelNumber].levelMap = LevelModel.getLevels(chapter: 1)[levelNumber].levelMap
         levelActualPosition = levelStartPosition
         levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
-        levelSpotsIndex = LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap)
-        levelStartPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
-        levelActualPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
+        levelSpotsIndex = LevelModel.getIndexes(of: spot, in: levelModel[levelNumber].levelMap)
+        levelStartPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]
+        levelActualPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]
     }
     
     func defineMoviment(actualPosition: Int, offset: Int){

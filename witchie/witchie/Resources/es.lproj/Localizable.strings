@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  witchie
+
+  Created by Guilherme Souza on 28/08/23.
+  
+*/
+
+//START GAME VIEW
+"begin_game" = "Empezar";
+"about_us" = "Acerca de";
+
+//ABOUT US VIEW
+//Jogo vencedor do Swift Student Challenge 2023 🥇
+"wwdc2023_winner" = "Juego ganador del Swift Student Challenge 2023 🥇";
+"creator" = "Creador";
+"game_designer" = "Diseñador de Juegos";
+"designer" = "Diseñadora";
+"dev" = "Dev";
+
+//OTHERS
+"level" = "Nivel";
+"levels" = "Niveles";
+"back" = "atrás";
+"jump" = "saltar";
+
+//MARK: ONBOARDING TEXTS
+//Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
+"text_onboarding1" = "Oye, tú ahí, vamos al grano porque no tengo tiempo para charlas.\n\n Soy Witchie.";
+//Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.
+"text_onboarding2" = "Alguien llenó mi guarida con hechizos molestos y están saboteando a Vassorilda.";
+//Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.
+"text_onboarding3" = "Afortunadamente, soy bastante astuta y sé cómo resolverlo: solo tienes que colocar mis calderos sobre las marcas mágicas para neutralizarlas.";
+//O problema é que, com a\n Vassorilda sabotada, eu\n não consigo me mover\ndireito, por isso preciso da\n sua ajuda.
+"text_onboarding4" = "El problema es que, con Vassorilda saboteada, no puedo moverme correctamente, así que necesito tu ayuda.";
+//Eaí, pronto para o desafio?
+"text_onboarding5" = "Entonces, ¿estás listo para el desafío?";
+
+//MARK: DIALOGUES
+//Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?
+"level_dialogue_1" = "¡Vaya, mira qué rápido eres! Estoy segura de que si sigues así, Vassorilda volverá a la normalidad en poco tiempo. ¿Listo para la siguiente sala?";
+//Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!
+"level_dialogue_2" = "Subiendo y bajando la escalera... Creo que la clave está en encontrar los patrones.";
+//É… Não foi tão direto quanto antes, mas até que você não foi mal.
+"level_dialogue_3" = "Bueno... No fue tan directo como antes, pero no lo hiciste tan mal.";
+//Viu que era só parar e pensar ao invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!
+"level_dialogue_4" = "Ves, todo lo que tenías que hacer era detenerte y pensar en lugar de empujar todo de una vez. ¡La prisa es mala consejera, ya sabes!";
+//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_5" = "Parecía obvio, ¿verdad? Bueno, aquí está la lección de nunca confiar en nadie!!!";
+//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_6" = "Parece que olvidaste detenerte y pensar de nuevo, ¿eh? Y además, era simétrico para hacerlo más fácil.";
+//Eita como demora pra ouvir minhas dicas...
+"level_dialogue_7" = "Vaya, te tomas bastante tiempo para escuchar mis pistas...";
+//Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!
+"level_dialogue_8" = "Mira, no me eches la culpa a mí, ¿vale? Mi hija fue quien insistió en que llamara a su novio arquitecto porque tenía algunas ideas 'modernas' para mis habitaciones... ¿Qué hay de malo en la vieja y clásica tela de araña, ¿eh?!";
+//Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.
+"level_dialogue_9" = "¡Solo porque parezca sencillo no significa que lo sea! Siempre ten en mente que las paredes son tus amigas.";
+//Esse padrão foi interessante, acho que vale a pena memorizar...
+"level_dialogue_10" = "Este patrón fue bastante interesante, creo que deberías mantener un ojo en él...";
+//Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...
+"level_dialogue_11" = "Empiezo a pensar que colocaron estos círculos en lugares complicados a propósito...";
+//Meus parabéns, viu? Essa aí era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…
+"level_dialogue_12" = "¿Sabes qué... Felicidades! Este fue un punto de inflexión. Si has llegado hasta aquí, tal vez tengas un futuro en esta línea de trabajo...";
+//Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.
+"level_dialogue_13" = "Ni siquiera sabía que tenía tantos calderos, creo que haré una venta de garaje.";
+//Eita quanta correria pra lá e pra cá, chega tô tontinha!
+"level_dialogue_14" = "¡Vaya, tanta carrera de un lado a otro, incluso me siento un poco mareada!";
+//Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.
+"level_dialogue_15" = "Creo que nunca había visto a alguien presionar el botón de actualización tantas veces, ahora podría estar atascado.";
+//Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.
+"level_dialogue_16" = "Vale, este fue un soplo de aire fresco después de tantas salas intensas.";
+//Falei cedo demais.
+"level_dialogue_17" = "Hablé demasiado pronto...";
+//Como é que cabe tanto caldeirão numa sala só?????
+"level_dialogue_18" = "¿Cómo diablos lograron meter tantos calderos en una sola habitación?";
+//Esses círculos não acabam nunca? Minhas costas não aguentam mais.
+"level_dialogue_19" = "¿Estos círculos mágicos alguna vez terminan? Mi espalda ya no puede más.";
+//Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.
+"level_dialogue_20" = "Ni siquiera te culparé por la demora en este. De hecho, si necesitas un psicólogo, tengo recomendaciones.";
+//Depois dessa eu vou me APOSENTAR!
+"level_dialogue_21" = "¡Me RETIRARÉ después de este!";
