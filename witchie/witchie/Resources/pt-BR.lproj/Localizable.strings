@@ -17,37 +17,37 @@
 "dev" = "Dev";
 
 //OTHERS
-"level" = "Nível";
-"levels" = "Níveis";
+"level" = "Nıvel";
+"levels" = "Nıveis";
 "back" = "voltar";
 "jump" = "pular";
 
 //ONBOARDING TEXTS
-"text_onboarding1" = "Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.";
+"text_onboarding1" = "Ei, você aı, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.";
 "text_onboarding2" = "Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.";
 "text_onboarding3" = "Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.";
-"text_onboarding4" = "O problema é que, com a Vassorilda sabotada, eu não consigo me mover\ndireito, por isso preciso da sua ajuda.";
-"text_onboarding5" = "Eaí, pronto para o desafio?";
+"text_onboarding4" = "O problema é que, com a Vassorilda sabotada, eu não consigo me mover direito, por isso preciso da sua ajuda.";
+"text_onboarding5" = "Eaı, pronto para o desafio?";
 
 //DIALOGUES
 "level_dialogue_1" = "Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?";
 "level_dialogue_2" = "Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!";
 "level_dialogue_3" = "É… Não foi tão direto quanto antes, mas até que você não foi mal.";
 "level_dialogue_4" = "Viu que era só parar e pensar ao invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!";
-"level_dialogue_5" = "Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!";
+"level_dialogue_5" = "Parecia óbvio, né? Pois tá aı a lição de nunca confiar em ninguém!!!";
 "level_dialogue_6" = "Esquecesse de parar e pensar de novo, né? E olhe que ainda tava tudo simétrico pra deixar mais fácil.";
 "level_dialogue_7" = "Eita como demora pra ouvir minhas dicas...";
 "level_dialogue_8" = "Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!";
 "level_dialogue_9" = "Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.";
 "level_dialogue_10" = "Esse padrão foi interessante, acho que vale a pena memorizar...";
-"level_dialogue_11" = "Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...";
-"level_dialogue_12" = "Meus parabéns, viu? Essa aí era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…";
+"level_dialogue_11" = "Tô começando a achar que botaram esses cırculos em lugares complicadinhos de propósito...";
+"level_dialogue_12" = "Meus parabéns, viu? Essa aı era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…";
 "level_dialogue_13" = "Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.";
 "level_dialogue_14" = "Eita quanta correria pra lá e pra cá, chega tô tontinha!";
 "level_dialogue_15" = "Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.";
 "level_dialogue_16" = "Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.";
 "level_dialogue_17" = "Falei cedo demais.";
 "level_dialogue_18" = "Como é que cabe tanto caldeirão numa sala só?????";
-"level_dialogue_19" = "Esses círculos não acabam nunca? Minhas costas não aguentam mais.";
+"level_dialogue_19" = "Esses cırculos não acabam nunca? Minhas costas não aguentam mais.";
 "level_dialogue_20" = "Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.";
 "level_dialogue_21" = "Depois dessa eu vou me APOSENTAR!";
