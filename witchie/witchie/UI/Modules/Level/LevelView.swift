@@ -262,7 +262,7 @@ struct LevelView: View{
                 Text("EITA VIROU LANDSCAPE")
             }
         }
-        .
+    
         .onReceive(timer) { _ in
             guard timerOn else {return}
             timePlayed += 1
@@ -332,7 +332,6 @@ extension LevelView{
     }
     
     fileprivate func levelAnalytics() {
-        Analytics.logEvent(AnalyticsEventLevelEnd, parameters: [AnalyticsParameterLevel: levelNumber])
         Analytics.logEvent("average_steps_per_level", parameters: [AnalyticsParameterLevel: levelNumber, "player_movements": playerMovements, "time_played": timePlayed])
     }
     
