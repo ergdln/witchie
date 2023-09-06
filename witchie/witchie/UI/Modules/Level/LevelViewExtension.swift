@@ -31,7 +31,7 @@ extension LevelView{
     func refreshGame(){
         //print(safeDimensionManager.dimensions)
         playerMovements = 0
-        levelModel[levelNumber].levelMap = LevelModel.getLevels(chapter: 1)[levelNumber].levelMap
+        levelModel[levelNumber].levelMap = LevelModel.getLevels(chapter: patch)[levelNumber].levelMap
         levelActualPosition = levelStartPosition
         levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
         levelSpotsIndex = LevelModel.getIndexes(of: spot, in: levelModel[levelNumber].levelMap)
