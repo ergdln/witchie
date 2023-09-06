@@ -18,7 +18,7 @@ struct LevelSelectorView: View {
     init(patch: Int) {
         self.patch = patch
         if self.patch == 1{
-            self._isCompleted  = State(initialValue: LevelCompleted.isCompleted[patch]!)
+            self._isCompleted  = State(initialValue: LevelCompleted.isCompleted[1]!)
         }else{
             var arrayBool: [Bool] = []
             for i in UserSettings.records[patch]!{
@@ -101,7 +101,19 @@ struct LevelSelectorView: View {
                     }
                     .frame(width: safeDimensionManager.dimensions.width * 0.8)
                     .onAppear{
-                        isCompleted = LevelCompleted.isCompleted[patch]!
+                        if self.patch == 1{
+                            isCompleted  = LevelCompleted.isCompleted[1]!
+                        }else{
+                            var arrayBool: [Bool] = []
+                            for i in UserSettings.records[patch]!{
+                                if i == 0{
+                                    arrayBool.append(false)
+                                }else{
+                                    arrayBool.append(true)
+                                }
+                            }
+                            isCompleted  = arrayBool
+                        }
                     }
                 }.scrollIndicators(.hidden)
             }

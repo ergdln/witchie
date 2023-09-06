@@ -98,8 +98,10 @@ extension LevelView{
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
-            LevelCompleted.isCompleted[patch]![levelNumber] = true
-            UserDefaults.standard.set(LevelCompleted.isCompleted[patch], forKey: patch == 1 ? "CurrentLevel" : "CurrentLevel\(patch)")
+            if patch == 1{
+                LevelCompleted.isCompleted[1]![levelNumber] = true
+                UserDefaults.standard.set(LevelCompleted.isCompleted[1], forKey: "CurrentLevel")
+            }
             UserDefaults.standard.set(true, forKey: "isNotFirstTime")
             if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
                 UserSettings.records[patch]![levelNumber] = playerMovements
