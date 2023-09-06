@@ -176,7 +176,7 @@ struct LevelView: View{
                     ZStack{
                         Color.black
                             .opacity(0.4)
-                        AnimatingImage(images: images)
+                        AnimatingImage(images: images, interval: 0.1)
                             .frame(height: safeDimensionManager.dimensions.height / 2)
                             .padding(.leading, safeDimensionManager.dimensions.width * 0.13)
                     }
