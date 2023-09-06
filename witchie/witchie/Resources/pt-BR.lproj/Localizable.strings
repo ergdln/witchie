@@ -21,15 +21,17 @@
 "levels" = "Nıveis";
 "back" = "voltar";
 "jump" = "pular";
+"chapters" = "capítulos";
 
-//ONBOARDING TEXTS
+//MARK: EPISODE 1
+//ONBOARDING TEXTS CHAPTER 1
 "text_onboarding1" = "Ei, você aı, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.";
 "text_onboarding2" = "Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.";
 "text_onboarding3" = "Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.";
 "text_onboarding4" = "O problema é que, com a Vassorilda sabotada, eu não consigo me mover direito, por isso preciso da sua ajuda.";
 "text_onboarding5" = "Eaı, pronto para o desafio?";
 
-//DIALOGUES
+//BETWEEN LEVELS CHAPTER 1
 "level_dialogue_1" = "Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?";
 "level_dialogue_2" = "Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!";
 "level_dialogue_3" = "É… Não foi tão direto quanto antes, mas até que você não foi mal.";
@@ -38,16 +40,47 @@
 "level_dialogue_6" = "Esquecesse de parar e pensar de novo, né? E olhe que ainda tava tudo simétrico pra deixar mais fácil.";
 "level_dialogue_7" = "Eita como demora pra ouvir minhas dicas...";
 "level_dialogue_8" = "Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!";
-"level_dialogue_9" = "Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.";
+"level_dialogue_9" = "Né que você finalmente conseguiu sair desse quarto? Parece que a Vassorilda tá começando a voltar ao normal, acho que agora podemos dar uma respirada no jardim!";
 "level_dialogue_10" = "Esse padrão foi interessante, acho que vale a pena memorizar...";
 "level_dialogue_11" = "Tô começando a achar que botaram esses cırculos em lugares complicadinhos de propósito...";
 "level_dialogue_12" = "Meus parabéns, viu? Essa aı era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…";
 "level_dialogue_13" = "Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.";
 "level_dialogue_14" = "Eita quanta correria pra lá e pra cá, chega tô tontinha!";
-"level_dialogue_15" = "Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.";
+"level_dialogue_15" = "É… você até tá ficando bom nisso, duas estrelas são melhores que uma!";
 "level_dialogue_16" = "Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.";
 "level_dialogue_17" = "Falei cedo demais.";
 "level_dialogue_18" = "Como é que cabe tanto caldeirão numa sala só?????";
 "level_dialogue_19" = "Esses cırculos não acabam nunca? Minhas costas não aguentam mais.";
 "level_dialogue_20" = "Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.";
-"level_dialogue_21" = "Depois dessa eu vou me APOSENTAR!";
+"level_dialogue_21" = "Eu não dava nada por você mas fui surpreendido, talvez você seja o melhor ajudante que eu já tive.";
+
+//MARK: EPISODE 2
+//BETWEEN EPISODES TEXTS CHAPTER 2
+"chapter2_entry_text1" = "Ufa, depois de tantas salas arrumadas, é hora de dar uma pausa. Meu ciático não aguenta mais!";
+"chapter2_entry_text2" = "Vamos para o meu jardim! O ar lá é muito fresco e você vai amar conhecer minhas plantinhas, a minha filha preferida é a Gertrudes!";
+"chapter2_entry_text3" = "Pera.. O que aconteceu aqui? Todos os meu vasos estão vazios e espalhados por aı... GERTRUDES, NÃAAAAAAO";
+"chapter2_entry_text4" = "MALDITOS! Precisamos cuidar disso agora, ninguém mexe com meus nenens!";
+"chapter2_entry_text5" = "Temos que colocar os vasos na terra mágica para as plantas voltarem ao normal! Não se preocupe, podemos usar os arbustos para nos movermos melhor.";
+
+//BETWEEN LEVELS CHAPTER 2
+"chapter2_level_dialogue_1" = "Entendeu como funcionam os arbustos? Assim com você, eles não servem só para decoração.";
+"chapter2_level_dialogue_2" = "Ok, talvez eu tenha exagerado na quantidade de arbustos. Cuidado pra não se perder por aı.";
+"chapter2_level_dialogue_3" = "O cenário mudou, mas algumas coisas nunca mudam. Nem todas as jogadas são tão diretas ao ponto assim, lembre de pensar um pouco mais.";
+"chapter2_level_dialogue_4" = "Esqueceu de tudo que aprendeu lá em casa, né? Fique atento que aqui vai precisar também!";
+"chapter2_level_dialogue_5" = "Essa planta é o equivalente à um peixe beta, ela não tolera outras plantas, por isso ela está solitária.";
+"chapter2_level_dialogue_6" = "Toma cuidado na hora de empurrar os arbustos, às vezes atrapalha mais do que ajuda.";
+"chapter2_level_dialogue_7" = "Você começou bem, mas agora tá desacelerando. Seria uma metáfora da vida?";
+"chapter2_level_dialogue_8" = "Minhas plantas estavam ansiosas pra te conhecer, mas aparentemente sua performance no capıtulo anterior nos deu falsas esperanças. Uma pena.";
+"chapter2_level_dialogue_9" = "Um jardim dentro de um jardim, talvez eu tenha me inspirado em um filme famoso... Sabe qual é ou você só é mais um sem cultura?";
+"chapter2_level_dialogue_10" = "Começou cercado, né? Se acostuma que a vida é assim!";
+"chapter2_level_dialogue_11" = "Se tu só ficar empurrando sem pensar, nunca vai conseguir passar logo das fases...";
+"chapter2_level_dialogue_12" = "Empurra pra um lado, empurra pro outro... nada de novo sob o sol!";
+"chapter2_level_dialogue_13" = "Meus jardins são cheios de belos corredores, olha que sorte a sua ter a honra de trabalhar neles!";
+"chapter2_level_dialogue_14" = "Assim como nós bruxas, as melhores plantas florescem sob pressão.";
+"chapter2_level_dialogue_15" = "Esse é um dos meus jardins favoritos. Ele é grande e majestososo, bem diferente de certas pessoas...";
+"chapter2_level_dialogue_16" = "Eu fiz esse jardim em homenagem à um jogo que eu adorava na infância. Saudade de ser criança, não existiam boletos pra pagar..";
+"chapter2_level_dialogue_17" = "As plantas estão brotando como se fossem feijões mágicos! Talvez você também possa aprender uma coisa ou duas com elas.";
+"chapter2_level_dialogue_18" = "Notei que você está empurrando esses arbustos como se eles fossem seus sonhos: com força, mas sem esperança.";
+"chapter2_level_dialogue_19" = "Até as abóboras se transformam em carruagens com mais facilidade do que você coloca as plantas no lugar.";
+"chapter2_level_dialogue_20" = "FINALMENTE ENCONTRAMOS A GERTRUDES!!! Tive que fazer um jardim especial para minha plantinha especial.";
+"chapter2_level_dialogue_21" = "Finalmente o jardim está florido novamente, e a Gertrudes está mais linda do que nunca! E conseguimos terminar logo antes da época mais especial do ano...";

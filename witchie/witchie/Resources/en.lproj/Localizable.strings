@@ -23,8 +23,10 @@
 "levels" = "Levels";
 "back" = "Back";
 "jump" = "Skip";
+"chapters" = "chapters"
 
-//MARK: ONBOARDING TEXTS
+//MARK: EPISODE 1
+//ONBOARDING TEXTS CHAPTER
 //Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
 "text_onboarding1" = "Hey, you there, let's cut to the chase 'cause I ain't got time for small talk.\n\n I'm Witchie.";
 //Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.
@@ -36,7 +38,7 @@
 //Eaí, pronto para o desafio?
 "text_onboarding5" = "So, are you ready for the challenge?";
 
-//MARK: DIALOGUES
+//BETWEEN LEVELS CHAPTER 1
 //Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?
 "level_dialogue_1" = "Wow, look at how fast you are! I'm sure if you keep it up, Vassorilda will be back to normal in no time. Ready for the next room?";
 //Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!
@@ -53,8 +55,8 @@
 "level_dialogue_7" = "Wow, you take quite a while to listen to my hints...";
 //Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!
 "level_dialogue_8" = "Look, don't put the blame on me, okay? My daughter was the one who kept insisting I called her architect boyfriend 'cause he had some 'modern' ideas for my rooms... What's wrong with the old and classic spiderweb, huh?!";
-//Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.
-"level_dialogue_9" = "Just because it seems simple doesn't mean it is! Always keep in mind that the walls are your friends.";
+//Né que você finalmente conseguiu sair desse quarto? Parece que a Vassorilda tá começando a voltar ao normal, acho que agora podemos dar uma respirada no jardim!
+"level_dialogue_9" = "So you finally managed to get out of that room? It seems Vassorilda is starting to get back to normal. I think we can take a breather in the garden now!";
 //Esse padrão foi interessante, acho que vale a pena memorizar...
 "level_dialogue_10" = "This pattern was quite interesting, I think you should keep an eye on it...";
 //Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...
@@ -65,8 +67,8 @@
 "level_dialogue_13" = "I didn't even know that I had so many cauldrons, I think I'll do a garage sale.";
 //Eita quanta correria pra lá e pra cá, chega tô tontinha!
 "level_dialogue_14" = "Wow, so much running around, I'm even a little dizzy!";
-//Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.
-"level_dialogue_15" = "I think I've never seen someone push the refresh button so many times, it actually might be stuck now.";
+//É… você até tá ficando bom nisso, duas estrelas são melhores que uma!
+"level_dialogue_15" = "Well... you're actually getting good at this. Two stars are better than one!";
 //Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.
 "level_dialogue_16" = "Ok, this one was a breath of fresh air after so many intense rooms.";
 //Falei cedo demais.
@@ -77,5 +79,62 @@
 "level_dialogue_19" = "Do these magic circles ever end? My back can't take it anymore.";
 //Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.
 "level_dialogue_20" = "I won't even blame you for the delay on this one. Actually, if you need a psychologist, I've got recommendations.";
-//Depois dessa eu vou me APOSENTAR!
-"level_dialogue_21" = "I'll RETIRE after this one!";
+//Eu não dava nada por você mas fui surpreendido, talvez você seja o melhor ajudante que eu já tive.
+"level_dialogue_21" = "I didn't expect much from you, but I was surprised. Maybe you're the best assistant I've ever had.";
+
+//MARK: EPISODE 2
+//BETWEEN EPISODES TEXTS CHAPTER 2
+//Ufa, depois de tantas salas arrumadas, é hora de dar uma pausa. Meu ciático não aguenta mais!
+"chapter2_entry_text1" = "Phew, after so many rooms tidied up, it's time to take a break. My sciatica can't take it anymore!";
+//Vamos para o meu jardim! O ar lá é muito fresco e você vai amar conhecer minhas plantinhas, a minha filha preferida é a Gertrudes!
+"chapter2_entry_text2" = "Let's go to my garden! The air there is very fresh, and you'll love meeting my little plants. My favorite daughter is Gertrudes!";
+//Pera.. O que aconteceu aqui? Todos os meu vasos estão vazios e espalhados por aı... GERTRUDES, NÃAAAAAAO
+"chapter2_entry_text3" = "Hold on... What happened here? All my pots are empty and scattered around... GERTRUDES, NOOOOOOO!";
+//MALDITOS! Precisamos cuidar disso agora, ninguém mexe com meus nenens!
+"chapter2_entry_text4" = "SCOUNDRELS! We need to take care of this now, nobody messes with my little ones!";
+//Temos que colocar os vasos na terra mágica para as plantas voltarem ao normal! Não se preocupe, podemos usar os arbustos para nos movermos melhor.
+"chapter2_entry_text5" = "We have to put the pots in the magical soil for the plants to return to normal! Don't worry, we can use the bushes to move around better.";
+
+//BETWEEN LEVELS CHAPTER 2
+//Entendeu como funcionam os arbustos? Assim com você, eles não servem só para decoração.
+"chapter2_level_dialogue_1" = "Did you understand how the bushes work? Just like you, they're not just for decoration.";
+//Ok, talvez eu tenha exagerado na quantidade de arbustos. Cuidado pra não se perder por aí.
+"chapter2_level_dialogue_2" = "Ok, maybe I've exaggerated on the amount of bushes. Be careful not to lose yourself out there.";
+//O cenário mudou, mas algumas coisas nunca mudam. Nem todas as jogadas são tão diretas ao ponto assim, lembre de pensar um pouco mais.
+"chapter2_level_dialogue_3" = "The scenery has changed, but some things never change. Not all moves are as straightforward as they seem; remember to think a bit more.";
+//Esqueceu de tudo que aprendeu lá em casa, né? Fique atento que aqui vai precisar também!
+"chapter2_level_dialogue_4" = "You've forgotten everything you learned back at home, huh? Stay alert, you'll need it here too!";
+//Essa planta é o equivalente à um peixe beta, ela não tolera outras plantas, por isso ela está solitária.
+"chapter2_level_dialogue_5" = "This plant is the equivalent of a betta fish; it doesn't tolerate other plants, so it's quite solitary.";
+//Toma cuidado na hora de empurrar os arbustos, às vezes atrapalha mais do que ajuda.
+"chapter2_level_dialogue_6" = "Be careful when pushing the bushes; sometimes it hinders more than it helps.";
+//Você começou bem, mas agora tá desacelerando. Seria uma metáfora da vida?
+"chapter2_level_dialogue_7" = "You started well, but now you're slowing down. Is this a metaphor for life?";
+//Minhas plantas estavam ansiosas pra te conhecer, mas aparentemente sua performance no capítulo anterior nos deu falsas esperanças. Uma pena.
+"chapter2_level_dialogue_8" = "My plants were eager to meet you, but apparently, your performance in the previous chapter gave us false hope. What a shame.";
+//Um jardim dentro de um jardim, talvez eu tenha me inspirado em um filme famoso... Sabe qual é ou você só é mais um sem cultura?
+"chapter2_level_dialogue_9" = "A garden within a garden, maybe I was inspired by a famous movie... Do you know which one, or are you just another uncultured soul?";
+//Começou cercado, né? Se acostuma que a vida é assim!
+"chapter2_level_dialogue_10" = "You started off surrounded, didn't you? Get used to it; life's like that";
+//Se tu só ficar empurrando sem pensar, nunca vai conseguir passar logo das fases...
+"chapter2_level_dialogue_11" = "If you keep pushing without thinking, you'll never get through the levels quickly...";
+//Empurra pra um lado, empurra pro outro... nada de novo sob o sol!
+"chapter2_level_dialogue_12" = "Pushing to one side, pushing to the other... nothing new under the sun!";
+//Meus jardins são cheios de belos corredores, olha que sorte a sua ter a honra de trabalhar neles!
+"chapter2_level_dialogue_13" = "My gardens are filled with beautiful corridors, lucky you to have the honor of working in them!";
+//Assim como nós bruxas, as melhores plantas florescem sob pressão.
+"chapter2_level_dialogue_14" = "Just like us witches, the best plants bloom under pressure.";
+//Esse é um dos meus jardins favoritos. Ele é grande e majestososo, bem diferente de certas pessoas...
+"chapter2_level_dialogue_15" = "This is one of my favorite gardens. It's large and majestic, quite unlike certain individuals...";
+//Eu fiz esse jardim em homenagem à um jogo que eu adorava na infância. Saudade de ser criança, não existiam boletos pra pagar...
+"chapter2_level_dialogue_16" = "I created this garden as a tribute to a game I loved in my childhood. I miss being a kid, there were no bills to pay...";
+//As plantas estão brotando como se fossem feijões mágicos! Talvez você também possa aprender uma coisa ou duas com elas.
+"chapter2_level_dialogue_17" = "The plants are sprouting like magic beans! Perhaps you can learn a thing or two from them as well.";
+//Notei que você está empurrando esses arbustos como se eles fossem seus sonhos: com força, mas sem esperança.
+"chapter2_level_dialogue_18" = "I've noticed you're pushing those bushes as if they were your dreams: forcefully, but without hope.";
+//Até as abóboras se transformam em carruagens com mais facilidade do que você coloca as plantas no lugar.
+"chapter2_level_dialogue_19" = "Even pumpkins turn into carriages more easily than you place the plants in position.";
+//FINALMENTE ENCONTRAMOS A GERTRUDES!!! Tive que fazer um jardim especial para minha plantinha especial.
+"chapter2_level_dialogue_20" = "WE FINALLY FOUND GERTRUDE!!! I had to create a special garden for my special little plant.";
+//Finalmente o jardim está florido novamente, e a Gertrudes está mais linda do que nunca! E conseguimos terminar logo antes da época mais especial do ano...
+"chapter2_level_dialogue_21" = "The garden is finally in bloom again, and Gertrude looks more beautiful than ever! And we managed to finish just in time for the most special time of the year...";

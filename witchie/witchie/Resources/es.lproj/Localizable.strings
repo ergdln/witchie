@@ -23,59 +23,118 @@
 "levels" = "Niveles";
 "back" = "atrás";
 "jump" = "saltar";
+"chapters" = "capıtulos";
 
-//MARK: ONBOARDING TEXTS
-//Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
-"text_onboarding1" = "Oye, tú ahí, vamos al grano porque no tengo tiempo para charlas.\n\n Soy Witchie.";
+//MARK: EPISODE 1
+//ONBOARDING TEXTS CHAPTER 1
+//Ei, você aı, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
+"text_onboarding1" = "Oye, tú ahı, vamos al grano porque no tengo tiempo para charlas.\n\n Soy Witchie.";
 //Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.
 "text_onboarding2" = "Alguien llenó mi guarida con hechizos molestos y están saboteando a Vassorilda.";
 //Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.
 "text_onboarding3" = "Afortunadamente, soy bastante astuta y sé cómo resolverlo: solo tienes que colocar mis calderos sobre las marcas mágicas para neutralizarlas.";
 //O problema é que, com a\n Vassorilda sabotada, eu\n não consigo me mover\ndireito, por isso preciso da\n sua ajuda.
-"text_onboarding4" = "El problema es que, con Vassorilda saboteada, no puedo moverme correctamente, así que necesito tu ayuda.";
-//Eaí, pronto para o desafio?
-"text_onboarding5" = "Entonces, ¿estás listo para el desafío?";
+"text_onboarding4" = "El problema es que, con Vassorilda saboteada, no puedo moverme correctamente, ası que necesito tu ayuda.";
+//Eaı, pronto para o desafio?
+"text_onboarding5" = "Entonces, ¿estás listo para el desafıo?";
 
-//MARK: DIALOGUES
+//BETWEEN LEVELS CHAPTER 1
 //Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?
-"level_dialogue_1" = "¡Vaya, mira qué rápido eres! Estoy segura de que si sigues así, Vassorilda volverá a la normalidad en poco tiempo. ¿Listo para la siguiente sala?";
+"level_dialogue_1" = "¡Vaya, mira qué rápido eres! Estoy segura de que si sigues ası, Vassorilda volverá a la normalidad en poco tiempo. ¿Listo para la siguiente sala?";
 //Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!
 "level_dialogue_2" = "Subiendo y bajando la escalera... Creo que la clave está en encontrar los patrones.";
 //É… Não foi tão direto quanto antes, mas até que você não foi mal.
 "level_dialogue_3" = "Bueno... No fue tan directo como antes, pero no lo hiciste tan mal.";
 //Viu que era só parar e pensar ao invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!
-"level_dialogue_4" = "Ves, todo lo que tenías que hacer era detenerte y pensar en lugar de empujar todo de una vez. ¡La prisa es mala consejera, ya sabes!";
-//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
-"level_dialogue_5" = "Parecía obvio, ¿verdad? Bueno, aquí está la lección de nunca confiar en nadie!!!";
-//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_4" = "Ves, todo lo que tenıas que hacer era detenerte y pensar en lugar de empujar todo de una vez. ¡La prisa es mala consejera, ya sabes!";
+//Parecia óbvio, né? Pois tá aı a lição de nunca confiar em ninguém!!!
+"level_dialogue_5" = "Parecıa obvio, ¿verdad? Bueno, aquı está la lección de nunca confiar en nadie!!!";
+//Parecia óbvio, né? Pois tá aı a lição de nunca confiar em ninguém!!!
 "level_dialogue_6" = "Parece que olvidaste detenerte y pensar de nuevo, ¿eh? Y además, era simétrico para hacerlo más fácil.";
 //Eita como demora pra ouvir minhas dicas...
 "level_dialogue_7" = "Vaya, te tomas bastante tiempo para escuchar mis pistas...";
 //Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!
-"level_dialogue_8" = "Mira, no me eches la culpa a mí, ¿vale? Mi hija fue quien insistió en que llamara a su novio arquitecto porque tenía algunas ideas 'modernas' para mis habitaciones... ¿Qué hay de malo en la vieja y clásica tela de araña, ¿eh?!";
-//Não é porque parece simples que é! Fica sempre ligado que as paredes são suas amigas.
-"level_dialogue_9" = "¡Solo porque parezca sencillo no significa que lo sea! Siempre ten en mente que las paredes son tus amigas.";
+"level_dialogue_8" = "Mira, no me eches la culpa a mı, ¿vale? Mi hija fue quien insistió en que llamara a su novio arquitecto porque tenıa algunas ideas 'modernas' para mis habitaciones... ¿Qué hay de malo en la vieja y clásica tela de araña, ¿eh?!";
+//Né que você finalmente conseguiu sair desse quarto? Parece que a Vassorilda tá começando a voltar ao normal, acho que agora podemos dar uma respirada no jardim!
+"level_dialogue_9" = "¿Verdad que finalmente lograste salir de esa habitación? Parece que Vassorilda está empezando a volver a la normalidad. Creo que ahora podemos tomar un respiro en el jardın.";
 //Esse padrão foi interessante, acho que vale a pena memorizar...
-"level_dialogue_10" = "Este patrón fue bastante interesante, creo que deberías mantener un ojo en él...";
-//Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...
-"level_dialogue_11" = "Empiezo a pensar que colocaron estos círculos en lugares complicados a propósito...";
-//Meus parabéns, viu? Essa aí era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…
-"level_dialogue_12" = "¿Sabes qué... Felicidades! Este fue un punto de inflexión. Si has llegado hasta aquí, tal vez tengas un futuro en esta línea de trabajo...";
+"level_dialogue_10" = "Este patrón fue bastante interesante, creo que deberıas mantener un ojo en él...";
+//Tô começando a achar que botaram esses cırculos em lugares complicadinhos de propósito...
+"level_dialogue_11" = "Empiezo a pensar que colocaron estos cırculos en lugares complicados a propósito...";
+//Meus parabéns, viu? Essa aı era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…
+"level_dialogue_12" = "¿Sabes qué... Felicidades! Este fue un punto de inflexión. Si has llegado hasta aquı, tal vez tengas un futuro en esta lınea de trabajo...";
 //Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.
-"level_dialogue_13" = "Ni siquiera sabía que tenía tantos calderos, creo que haré una venta de garaje.";
+"level_dialogue_13" = "Ni siquiera sabıa que tenıa tantos calderos, creo que haré una venta de garaje.";
 //Eita quanta correria pra lá e pra cá, chega tô tontinha!
 "level_dialogue_14" = "¡Vaya, tanta carrera de un lado a otro, incluso me siento un poco mareada!";
-//Eu acho que nunca vi ninguém apertar tanto aquele botão, deve tá até emperrado agora.
-"level_dialogue_15" = "Creo que nunca había visto a alguien presionar el botón de actualización tantas veces, ahora podría estar atascado.";
+//É… você até tá ficando bom nisso, duas estrelas são melhores que uma!
+"level_dialogue_15" = "Bueno... te estás volviendo bueno en esto. ¡Dos estrellas son mejores que una!";
 //Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.
 "level_dialogue_16" = "Vale, este fue un soplo de aire fresco después de tantas salas intensas.";
 //Falei cedo demais.
 "level_dialogue_17" = "Hablé demasiado pronto...";
 //Como é que cabe tanto caldeirão numa sala só?????
 "level_dialogue_18" = "¿Cómo diablos lograron meter tantos calderos en una sola habitación?";
-//Esses círculos não acabam nunca? Minhas costas não aguentam mais.
-"level_dialogue_19" = "¿Estos círculos mágicos alguna vez terminan? Mi espalda ya no puede más.";
+//Esses cırculos não acabam nunca? Minhas costas não aguentam mais.
+"level_dialogue_19" = "¿Estos cırculos mágicos alguna vez terminan? Mi espalda ya no puede más.";
 //Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.
 "level_dialogue_20" = "Ni siquiera te culparé por la demora en este. De hecho, si necesitas un psicólogo, tengo recomendaciones.";
-//Depois dessa eu vou me APOSENTAR!
-"level_dialogue_21" = "¡Me RETIRARÉ después de este!";
+//Eu não dava nada por você mas fui surpreendido, talvez você seja o melhor ajudante que eu já tive.
+"level_dialogue_21" = "No esperaba mucho de ti, pero me sorprendiste. Tal vez seas el mejor asistente que he tenido.";
+
+//MARK: EPISODE 2
+//BETWEEN EPISODES TEXTS CHAPTER 2
+//Ufa, depois de tantas salas arrumadas, é hora de dar uma pausa. Meu ciático não aguenta mais!
+"chapter2_entry_text1" = "Uf, después de tantas habitaciones ordenadas, es hora de tomar un descanso. ¡Mi ciático ya no puede más!";
+//Vamos para o meu jardim! O ar lá é muito fresco e você vai amar conhecer minhas plantinhas, a minha filha preferida é a Gertrudes!
+"chapter2_entry_text2" = "¡Vamos a mi jardın! El aire allı es muy fresco, y te encantará conocer mis plantitas; mi hija favorita es Gertrudes.";
+//Pera.. O que aconteceu aqui? Todos os meu vasos estão vazios e espalhados por aı... GERTRUDES, NÃAAAAAAO
+"chapter2_entry_text3" = "Espera... ¿Qué ha sucedido aquı? Todos mis vasos están vacıos y esparcidos por ahı... ¡GERTRUDES, NOOOOOOO!";
+//MALDITOS! Precisamos cuidar disso agora, ninguém mexe com meus nenens!
+"chapter2_entry_text4" = "¡MALDITOS! Necesitamos ocuparnos de esto ahora, ¡nadie toca a mis bebés!";
+//Temos que colocar os vasos na terra mágica para as plantas voltarem ao normal! Não se preocupe, podemos usar os arbustos para nos movermos melhor.
+"chapter2_entry_text5" = "¡Tenemos que poner los vasos en la tierra mágica para que las plantas vuelvan a la normalidad! No te preocupes, podemos usar los arbustos para movernos mejor.";
+
+//BETWEEN LEVELS CHAPTER 2
+//Entendeu como funcionam os arbustos? Assim com você, eles não servem só para decoração.
+"chapter2_level_dialogue_1" = "¿Entendiste cómo funcionan los arbustos? Al igual que tú, no son solo para decorar.";
+//Ok, talvez eu tenha exagerado na quantidade de arbustos. Cuidado pra não se perder por aı.
+"chapter2_level_dialogue_2" = "Está bien, quizás exageré con la cantidad de arbustos. Ten cuidado de no perderte por ahı.";
+//O cenário mudou, mas algumas coisas nunca mudam. Nem todas as jogadas são tão diretas ao ponto assim, lembre de pensar um pouco mais.
+"chapter2_level_dialogue_3" = "El escenario ha cambiado, pero algunas cosas nunca cambian. No todos los movimientos son tan simples como parecen; recuerda pensar un poco más.";
+//Esqueceu de tudo que aprendeu lá em casa, né? Fique atento que aqui vai precisar também!
+"chapter2_level_dialogue_4" = "¿Olvidaste todo lo que aprendiste en casa, eh? Mantente alerta, también lo necesitarás aquı.";
+//Essa planta é o equivalente à um peixe beta, ela não tolera outras plantas, por isso ela está solitária.
+"chapter2_level_dialogue_5" = "Esta planta es el equivalente a un pez betta; no tolera otras plantas, por lo que es bastante solitaria.";
+//Toma cuidado na hora de empurrar os arbustos, às vezes atrapalha mais do que ajuda.
+"chapter2_level_dialogue_6" = "Ten cuidado al empujar los arbustos; a veces más bien entorpece que ayuda.";
+//Você começou bem, mas agora tá desacelerando. Seria uma metáfora da vida?
+"chapter2_level_dialogue_7" = "Comenzaste bien, pero ahora te estás desacelerando. ¿Es una metáfora de la vida?";
+//Minhas plantas estavam ansiosas pra te conhecer, mas aparentemente sua performance no capıtulo anterior nos deu falsas esperanças. Uma pena.
+"chapter2_level_dialogue_8" = "Mis plantas estaban ansiosas por conocerte, pero al parecer, tu desempeño en el capıtulo anterior nos dio falsas esperanzas. Qué lástima.";
+//Um jardim dentro de um jardim, talvez eu tenha me inspirado em um filme famoso... Sabe qual é ou você só é mais um sem cultura?
+"chapter2_level_dialogue_9" = "Un jardın dentro de otro jardın, tal vez me inspiré en una pelıcula famosa... ¿Sabes cuál es o eres simplemente otra alma inculta?";
+//Começou cercado, né? Se acostuma que a vida é assim!
+"chapter2_level_dialogue_10" = "Comenzaste rodeado, ¿verdad? Acostúmbrate; la vida es ası.";
+//Se tu só ficar empurrando sem pensar, nunca vai conseguir passar logo das fases...
+"chapter2_level_dialogue_11" = "Si sigues empujando sin pensar, nunca avanzarás rápidamente de niveles...";
+//Empurra pra um lado, empurra pro outro... nada de novo sob o sol!
+"chapter2_level_dialogue_12" = "Empuja hacia un lado, empuja hacia el otro... nada nuevo bajo el sol.";
+//Meus jardins são cheios de belos corredores, olha que sorte a sua ter a honra de trabalhar neles!
+"chapter2_level_dialogue_13" = "Mis jardines están llenos de hermosos corredores, tienes suerte de tener el honor de trabajar en ellos.";
+//Assim como nós bruxas, as melhores plantas florescem sob pressão.
+"chapter2_level_dialogue_14" = "Ası como nosotras, las brujas, las mejores plantas florecen bajo presión.";
+//Esse é um dos meus jardins favoritos. Ele é grande e majestososo, bem diferente de certas pessoas...
+"chapter2_level_dialogue_15" = "Este es uno de mis jardines favoritos. Es grande y majestuoso, bastante diferente a ciertas personas...";
+//Eu fiz esse jardim em homenagem à um jogo que eu adorava na infância. Saudade de ser criança, não existiam boletos pra pagar...
+"chapter2_level_dialogue_16" = "Creé este jardın en homenaje a un juego que amaba en mi infancia. Extraño ser un niño; no habıa facturas que pagar...";
+//As plantas estão brotando como se fossem feijões mágicos! Talvez você também possa aprender uma coisa ou duas com elas.
+"chapter2_level_dialogue_17" = "Las plantas están brotando como si fueran habichuelas mágicas. Tal vez puedas aprender una o dos cosas de ellas también.";
+//Notei que você está empurrando esses arbustos como se eles fossem seus sonhos: com força, mas sem esperança.
+"chapter2_level_dialogue_18" = "He notado que estás empujando esos arbustos como si fueran tus sueños: con fuerza, pero sin esperanza.";
+//Até as abóboras se transformam em carruagens com mais facilidade do que você coloca as plantas no lugar.
+"chapter2_level_dialogue_19" = "Incluso las calabazas se convierten en carruajes más fácilmente que como colocas las plantas en posición.";
+//FINALMENTE ENCONTRAMOS A GERTRUDES!!! Tive que fazer um jardim especial para minha plantinha especial.
+"chapter2_level_dialogue_20" = "¡FINALMENTE ENCONTRAMOS A GERTRUDES! Tuve que crear un jardın especial para mi pequeña planta especial.";
+//Finalmente o jardim está florido novamente, e a Gertrudes está mais linda do que nunca! E conseguimos terminar logo antes da época mais especial do ano...
+"chapter2_level_dialogue_21" = "El jardın finalmente está floreciendo de nuevo, y Gertrudes se ve más hermosa que nunca. Y logramos terminar justo a tiempo para la época más especial del año...";

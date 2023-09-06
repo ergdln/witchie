@@ -795,7 +795,7 @@ extension LevelModel{
             // LEVEL 16
             LevelModel(
                 levelOffset: 13,
-                levelDialogue: "Eu fiz esse jardim em homenagem à um jogo que eu adorava na infância. Inclusive, saudades dela, quando não existiam boletos pra pagar",
+                levelDialogue: "Eu fiz esse jardim em homenagem à um jogo que eu adorava na infância. Saudade de ser criança, não existiam boletos pra pagar..",
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
