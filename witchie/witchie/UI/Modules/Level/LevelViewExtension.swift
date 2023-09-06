@@ -33,7 +33,7 @@ extension LevelView{
         playerMovements = 0
         levelModel[levelNumber].levelMap = LevelModel.getLevels(chapter: patch)[levelNumber].levelMap
         levelActualPosition = levelStartPosition
-        levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
+        levelGrid = Array(repeating: GridItem(.flexible(minimum: 15, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
         levelSpotsIndex = LevelModel.getIndexes(of: spot, in: levelModel[levelNumber].levelMap)
         levelStartPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]
         levelActualPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]

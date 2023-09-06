@@ -58,7 +58,7 @@ struct LevelView: View{
         self.patch = patch
         self._levelNumber = State(initialValue: levelNumber)
         self._levelModel = State(initialValue: LevelModel.getLevels(chapter: patch))
-        self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: LevelModel.getLevels(chapter: patch)[levelNumber].levelOffset))
+        self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 15, maximum: 150), spacing: 0), count: LevelModel.getLevels(chapter: patch)[levelNumber].levelOffset))
         self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: spot, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap))
         self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
         self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
