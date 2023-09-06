@@ -17,7 +17,20 @@ struct LevelSelectorView: View {
     
     init(patch: Int) {
         self.patch = patch
-        self._isCompleted  = State(initialValue: LevelCompleted.isCompleted[patch]!)
+        if self.patch == 1{
+            self._isCompleted  = State(initialValue: LevelCompleted.isCompleted[patch]!)
+        }else{
+            var arrayBool: [Bool] = []
+            for i in UserSettings.records[patch]!{
+                if i == 0{
+                    arrayBool.append(false)
+                }else{
+                    arrayBool.append(true)
+                }
+            }
+            self._isCompleted  = State(initialValue: arrayBool)
+        }
+        
     }
     
     

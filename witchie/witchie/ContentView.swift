@@ -9,26 +9,19 @@ import SwiftUI
 import AVFAudio
 
 struct ContentView: View {
-    @State var audioPlayer: AVAudioPlayer!
     @StateObject var audioPlayerManager = AudioPlayerManager()
     @StateObject var dimensionManager = DimensionManager.shared
     
     var body: some View {
         GeometryReader { geo in
-            StartGameView()
-            //OnboardingView()
+            //StartGameView()
+            LevelView(patch: 2, levelNumber: 0, showOnboarding: true)
                 .onAppear {
                     //Ler o tamanho do dispositivo
                     dimensionManager.dimensions = geo.size
                     
                     // Criar o AVAudioPlayer no início do jogo
-                    audioPlayerManager.setupAudioPlayer()
-                    if UserDefaults.standard.bool(forKey: "isSoundOn"){
-                        audioPlayerManager.playSound()
-                    } else {
-                        audioPlayerManager.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
-                    }
-                    
+                    audioPlayerManager.gameStarted()
                     
                     
                     //Isso aqui foi como consegui fazer pra os usuários não perderem seu progresso:

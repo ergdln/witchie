@@ -37,6 +37,8 @@ struct LevelView: View{
         case none, up, down, left, right
     }
     
+    @State var showOnboarding2 = false
+    
     //witch first image
     @State var witchImage: String = ImageAsset.TILE_WITCH_LEFT
     
@@ -61,6 +63,7 @@ struct LevelView: View{
         self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
         self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
         self._showOnboarding = State(initialValue: showOnboarding)
+        
     }
     
     @Environment(\.dismiss) public var dismiss
@@ -174,11 +177,31 @@ struct LevelView: View{
                 //MARK: Changes the screen when coming from onboarding
                 if showOnboarding{
                     ZStack{
-                        Color.black
-                            .opacity(0.4)
-                        AnimatingImage(images: images, interval: 0.1)
-                            .frame(height: safeDimensionManager.dimensions.height / 2)
-                            .padding(.leading, safeDimensionManager.dimensions.width * 0.13)
+                        if patch == 1{
+                            Color.black
+                                .opacity(0.4)
+                            AnimatingImage(images: images, interval: 0.1)
+                                .frame(height: safeDimensionManager.dimensions.height / 2)
+                                .padding(.leading, safeDimensionManager.dimensions.width * 0.13)
+                        }else if patch == 2 && showOnboarding2{
+                            Color.black
+                                .opacity(0.4)
+                            VStack(spacing: 0){
+                                AnimatingImage(images: images, interval: 0.1)
+                                    .frame(height: safeDimensionManager.dimensions.height / 4)
+                                    .padding(.leading, safeDimensionManager.dimensions.width * 0.11)
+                                    .padding(.bottom, safeDimensionManager.dimensions.height * 0.2)
+                             
+                                Text("Essa é a parede móvel, você pode usá-la para se movimentar. Arraste para baixo para experimentar!")
+                                    .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                        .font(.custom(ContentComponent.BOREL_REGULAR, size: 18))
+                                        .padding(.top, 15)
+                                        .padding(.horizontal, 30)
+                                        .background(.purple.opacity(0.4))
+                                
+                            }
+                        }
+                        
                     }
                 }
                 
@@ -270,6 +293,7 @@ struct LevelView: View{
                 .onEnded { gesture in
                     if (!isGameOver){
                         if direction == .down{
+                            showOnboarding2 = false
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
                             showOnboarding = false
                         }else if direction == .up{
@@ -278,6 +302,9 @@ struct LevelView: View{
                             witchImage = ImageAsset.TILE_WITCH_LEFT
                             defineMoviment(actualPosition: levelActualPosition, offset: -1)
                         }else if direction == .right{
+                            if patch == 2 && levelNumber == 0 && showOnboarding{
+                                showOnboarding2 = true
+                            }
                             witchImage = ImageAsset.TILE_WITCH_RIGHT
                             defineMoviment(actualPosition: levelActualPosition, offset: 1)
                         }

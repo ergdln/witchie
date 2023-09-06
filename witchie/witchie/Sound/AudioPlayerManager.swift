@@ -26,5 +26,14 @@ class AudioPlayerManager: ObservableObject {
     func stopSound() {
         audioPlayer?.stop()
     }
+    
+    func gameStarted() {
+        self.setupAudioPlayer()
+        if UserDefaults.standard.bool(forKey: "isSoundOn"){
+            self.playSound()
+        } else {
+            self.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
+        }
+    }
 }
 
