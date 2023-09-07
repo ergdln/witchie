@@ -33,7 +33,7 @@ extension LevelView{
         playerMovements = 0
         levelModel[levelNumber].levelMap = LevelModel.getLevels(chapter: patch)[levelNumber].levelMap
         levelActualPosition = levelStartPosition
-        levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
+        levelGrid = Array(repeating: GridItem(.flexible(minimum: 15, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
         levelSpotsIndex = LevelModel.getIndexes(of: spot, in: levelModel[levelNumber].levelMap)
         levelStartPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]
         levelActualPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]
@@ -98,8 +98,10 @@ extension LevelView{
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
-            LevelCompleted.isCompleted[patch]![levelNumber] = true
-            UserDefaults.standard.set(LevelCompleted.isCompleted[patch], forKey: patch == 1 ? "CurrentLevel" : "CurrentLevel\(patch)")
+            if patch == 1{
+                LevelCompleted.isCompleted[1]![levelNumber] = true
+                UserDefaults.standard.set(LevelCompleted.isCompleted[1], forKey: "CurrentLevel")
+            }
             UserDefaults.standard.set(true, forKey: "isNotFirstTime")
             if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
                 UserSettings.records[patch]![levelNumber] = playerMovements

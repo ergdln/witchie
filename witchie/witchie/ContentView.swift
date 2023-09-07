@@ -9,26 +9,19 @@ import SwiftUI
 import AVFAudio
 
 struct ContentView: View {
-    @State var audioPlayer: AVAudioPlayer!
     @StateObject var audioPlayerManager = AudioPlayerManager()
     @StateObject var dimensionManager = DimensionManager.shared
     
     var body: some View {
         GeometryReader { geo in
             StartGameView()
-            //OnboardingView()
+            //LevelView(patch: 2, levelNumber: 0, showOnboarding: true)
                 .onAppear {
                     //Ler o tamanho do dispositivo
                     dimensionManager.dimensions = geo.size
                     
                     // Criar o AVAudioPlayer no início do jogo
-                    audioPlayerManager.setupAudioPlayer()
-                    if UserDefaults.standard.bool(forKey: "isSoundOn"){
-                        audioPlayerManager.playSound()
-                    } else {
-                        audioPlayerManager.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
-                    }
-                    
+                    audioPlayerManager.gameStarted()
                     
                     
                     //Isso aqui foi como consegui fazer pra os usuários não perderem seu progresso:
@@ -42,21 +35,6 @@ struct ContentView: View {
                         }
                         UserDefaults.standard.set(LevelCompleted.isCompleted[1], forKey: "CurrentLevel")
                     }
-                    //Depois pra cada patch subsequente ele tem uma chave única que é "CurrentLevel<numero_do_patch>"
-                    if LevelCompleted.isCompleted.count >= 2{
-                        for i in (2...LevelCompleted.isCompleted.count){
-                            //aqui dentro, pra cada patch existente, faz o mesmo que lá em cima
-                            LevelCompleted.isCompleted[i] = UserDefaults.standard.array(forKey: "CurrentLevel\(i)") as? [Bool] ?? LevelCompleted.isCompleted[i]
-                            if LevelCompleted.isCompleted[i]!.count < LevelModel.getLevels(chapter: i).count{
-                                let add = LevelModel.getLevels(chapter: i).count - LevelCompleted.isCompleted[i]!.count
-                                for _ in (0...add){
-                                    LevelCompleted.isCompleted[i]!.append(false)
-                                }
-                            }
-                        }
-                    }
-                    
-                    
                     
                     //pega se é a primeira vez do usuário
                     UserSettings.isNotFirstTime = UserDefaults.standard.bool(forKey: "isNotFirstTime")

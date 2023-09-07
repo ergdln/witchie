@@ -33,7 +33,7 @@ struct PatchSelectorView: View {
                 ScrollView {
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 90, maximum: 300), spacing: 0), count: 2), spacing: 30) {
-                        ForEach(Array(1..<LevelCompleted.isCompleted.count + 1), id: \.self) { patch in
+                        ForEach(Array(1..<UserSettings.records.count + 1), id: \.self) { patch in
                             NavigationLink(destination: LevelSelectorView(patch: patch)) {
                                 VStack(alignment: .center, spacing: 0){
                                     Text("\(patch)").font(.custom(ContentComponent.BOREL_REGULAR, size: 35))
@@ -67,7 +67,7 @@ struct PatchSelectorView: View {
         if patch == 1{
             return false
         }else{
-            return !LevelCompleted.isCompleted[patch-1]![8]
+            return UserSettings.records[patch-1]![8] == 0
         }
     }
 }

@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
+//Legado, não mexe e não apaga
 struct LevelCompleted{
     static var isCompleted: [Int:[Bool]] = [
             1: Array(repeating: false, count: LevelModel.patchOne().count),
-            2: Array(repeating: false, count: LevelModel.patchTwo().count),
         ]
 }
 
