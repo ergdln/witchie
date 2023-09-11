@@ -21,7 +21,7 @@ struct StepCounter: View {
                 Image(imageName)
                 Text(String(playerMovements))
                     .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                    .font(.custom(ContentComponent.regular, size: 24))
+                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
                     .padding(.bottom, -15)
                     .padding(.leading, 41)
             }
@@ -33,7 +33,7 @@ struct StepCounter: View {
                     .scaleEffect(0.8)
                 Text(String(playerMovements))
                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
-                    .font(.custom(ContentComponent.regular, size: dimensionManager.dimensions.height * ContentComponent.STEP_COUNTER_FONT))
+                    .font(.custom(ContentComponent.BOREL_REGULAR, size: dimensionManager.dimensions.height * ContentComponent.STEP_COUNTER_FONT))
                     .padding(.bottom, -10)
                     .padding(.leading, 41)
             }
