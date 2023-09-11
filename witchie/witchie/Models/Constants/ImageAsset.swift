@@ -56,7 +56,7 @@ struct ImageAsset {
     static let CAULDRON_FULL_OPAQUE = "OPAQUE-FULL"
     static let CAULDRON_EMPTY_OPAQUE = "OPAQUE-EMPTY"
     
-    //MARK: GAME TILES
+    //MARK: CHAPTER 1 GAME TILES
     static let TILE_BRICK = "BRICK"
     static let TILE_GRASS = "GRASS"
     static let TILE_CAULDRON = "CAULDRON-WITH-BACKGROUND"
@@ -66,5 +66,21 @@ struct ImageAsset {
     static let TILE_WITCH_RIGHT = "WITCH-RIGHT-WITH-BACKGROUND"
     static let TILE_CRATE = "CRATE"
     static let TILE_HOLE = "TILE_HOLE"
+    
+    //MARK: CHAPTER 2
+    static let GARDEN_BRICK = "GARDEN-BRICK"
+    static let TILE_GARDEN = "TILE-GARDEN"
+    static let TILE_BUSH = "TILE-BUSH"
+    static let TILE_MAGICAL_SOIL = "TILE-MAGICAL-SOIL"
+    static let TILE_BLOSSOMED = "TILE-BLOSSOMED-PLANT"
+    static let TILE_EMPTY_PLANT = "TILE-EMPTY-PLANT"
+    static let WITCHIE_GARDEN_LEFT = "WITCHIE2-LEFT-WITH-BACKGROUND"
+    static let WITCHIE_GARDEN_RIGHT = "WITCHIE2-RIGHT-WITH-BACKGROUND"
+    static let STAR_GREEN = "STAR-GREEN"
+    static let STAR_YELLOW = "STAR-YELLOW"
+    static let VASE_EMPTY = "VASE-EMPTY"
+    static let VASE_FULL = "VASE-FULL"
+    
+    
     
 }
