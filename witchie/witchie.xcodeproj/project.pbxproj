@@ -18,6 +18,8 @@
 		5B234C1D2A9FC5E400D0B83C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5B234C1C2A9FC5E400D0B83C /* FirebaseAnalytics */; };
 		5B234C1F2A9FC5E400D0B83C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5B234C1E2A9FC5E400D0B83C /* FirebaseDatabase */; };
 		5B234C212A9FC61900D0B83C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B234C202A9FC61900D0B83C /* GoogleService-Info.plist */; };
+		5B6B15D52AA7B628004C523C /* GoogleTagManager in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6B15D42AA7B628004C523C /* GoogleTagManager */; };
+		5B6B15D72AA7B772004C523C /* container in Resources */ = {isa = PBXBuildFile; fileRef = 5B6B15D62AA7B772004C523C /* container */; };
 		5BF016322A8EAAF20012751E /* StepCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016312A8EAAF20012751E /* StepCounter.swift */; };
 		5BF016342A8EB03D0012751E /* StepCounterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016332A8EB03D0012751E /* StepCounterType.swift */; };
 		6EAB19B82A7C431B002047CD /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB19B72A7C431B002047CD /* AboutUsView.swift */; };
@@ -54,6 +56,7 @@
 		47889F1D2A72F21B005EB560 /* ComponentX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentX.swift; sourceTree = "<group>"; };
 		47B53B852A7DACF200E3DADC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		5B234C202A9FC61900D0B83C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5B6B15D62AA7B772004C523C /* container */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = container; sourceTree = SOURCE_ROOT; };
 		5BF016312A8EAAF20012751E /* StepCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounter.swift; sourceTree = "<group>"; };
 		5BF016332A8EB03D0012751E /* StepCounterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounterType.swift; sourceTree = "<group>"; };
 		6EAB19B72A7C431B002047CD /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B6B15D52AA7B628004C523C /* GoogleTagManager in Frameworks */,
 				5B234C1F2A9FC5E400D0B83C /* FirebaseDatabase in Frameworks */,
 				5B234C1D2A9FC5E400D0B83C /* FirebaseAnalytics in Frameworks */,
 			);
@@ -218,6 +222,7 @@
 			children = (
 				C01DA0B22A7C446A00036FCD /* Info.plist */,
 				5B234C202A9FC61900D0B83C /* GoogleService-Info.plist */,
+				5B6B15D62AA7B772004C523C /* container */,
 				6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */,
 				6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */,
 				C01DA0AF2A7C41D700036FCD /* Fonts */,
@@ -299,6 +304,7 @@
 			packageProductDependencies = (
 				5B234C1C2A9FC5E400D0B83C /* FirebaseAnalytics */,
 				5B234C1E2A9FC5E400D0B83C /* FirebaseDatabase */,
+				5B6B15D42AA7B628004C523C /* GoogleTagManager */,
 			);
 			productName = witchie;
 			productReference = 6EFCA0ED2A69A9F50008AAC5 /* witchie.app */;
@@ -330,6 +336,7 @@
 			mainGroup = 6EFCA0E42A69A9F50008AAC5;
 			packageReferences = (
 				5B234C1B2A9FC5E400D0B83C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5B6B15D32AA7B628004C523C /* XCRemoteSwiftPackageReference "google-tag-manager-ios-sdk" */,
 			);
 			productRefGroup = 6EFCA0EE2A69A9F50008AAC5 /* Products */;
 			projectDirPath = "";
@@ -349,6 +356,7 @@
 				C01DA0B12A7C431B00036FCD /* Borel-Regular.ttf in Resources */,
 				6EFCA0F82A69A9F60008AAC5 /* Preview Assets.xcassets in Resources */,
 				6EFCA0F52A69A9F60008AAC5 /* Assets.xcassets in Resources */,
+				5B6B15D72AA7B772004C523C /* container in Resources */,
 				C06C155D2A71A56600A7FE9E /* CauldronAlert.mp3 in Resources */,
 				5B234C212A9FC61900D0B83C /* GoogleService-Info.plist in Resources */,
 			);
@@ -517,7 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"witchie/Preview Content\"";
-				DEVELOPMENT_TEAM = FQJGC4G68L;
+				DEVELOPMENT_TEAM = 275GWT29UT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = witchie/Info.plist;
@@ -553,7 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"witchie/Preview Content\"";
-				DEVELOPMENT_TEAM = FQJGC4G68L;
+				DEVELOPMENT_TEAM = 275GWT29UT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = witchie/Info.plist;
@@ -612,6 +620,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		5B6B15D32AA7B628004C523C /* XCRemoteSwiftPackageReference "google-tag-manager-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleanalytics/google-tag-manager-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -624,6 +640,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B234C1B2A9FC5E400D0B83C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		5B6B15D42AA7B628004C523C /* GoogleTagManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B6B15D32AA7B628004C523C /* XCRemoteSwiftPackageReference "google-tag-manager-ios-sdk" */;
+			productName = GoogleTagManager;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

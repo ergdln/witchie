@@ -28,7 +28,6 @@ struct LevelView: View{
     @State private var direction: Direction = .none
     @State private var playerMovements: Int = 0
     @State private var timePlayed: Int = 0
-    @State private var timerOn = true
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     //Onboarding things
@@ -262,10 +261,17 @@ struct LevelView: View{
                 Text("EITA VIROU LANDSCAPE")
             }
         }
-    
+        .onChange(of: levelNumber) { newValue in
+            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(newValue + 1)"])
+        }
+        .onAppear(){
+            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1)"])
+        }
+        //Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevel: levelNumber])
         .onReceive(timer) { _ in
-            guard timerOn else {return}
-            timePlayed += 1
+            if (!isGameOver){
+                timePlayed += 1
+            }
         }
         .ignoresSafeArea()
         //MARK: New sliding game controls
@@ -321,7 +327,6 @@ extension LevelView{
     
     func refreshGame(){
         print(safeDimensionManager.dimensions)
-        timerOn = true
         playerMovements = 0
         levelModel[levelNumber].levelMap = LevelModel.getLevels(chapter: 1)[levelNumber].levelMap
         levelActualPosition = levelStartPosition
@@ -331,10 +336,9 @@ extension LevelView{
         levelActualPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
     }
     
-    fileprivate func levelAnalytics() {
-        Analytics.logEvent("average_steps_per_level", parameters: [AnalyticsParameterLevel: levelNumber, "player_movements": playerMovements, "time_played": timePlayed])
+    fileprivate func levelEndAnalytics() {
+        Analytics.logEvent("level_completed", parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1) completed", "player_movements": playerMovements, "time_played": timePlayed])
     }
-    
     
     func defineMoviment(actualPosition: Int, offset: Int){
         //FACED A HOLE
@@ -394,9 +398,8 @@ extension LevelView{
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
-            timerOn.toggle()
-            levelAnalytics()
-            print(timePlayed)
+            levelEndAnalytics()
+            timePlayed = 0
             LevelCompleted.isCompleted[patch]![levelNumber] = true
             UserDefaults.standard.set(LevelCompleted.isCompleted[patch], forKey: patch == 1 ? "CurrentLevel" : "CurrentLevel\(patch)")
             UserDefaults.standard.set(true, forKey: "isNotFirstTime")
