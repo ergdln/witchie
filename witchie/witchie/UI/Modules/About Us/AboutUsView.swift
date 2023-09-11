@@ -20,7 +20,7 @@ struct AboutUsView: View {
                 .ignoresSafeArea()
             VStack {
                 HStack (alignment: .center) {
-                    BackButton(color: ColorAsset.MAIN_WHITE) {
+                    BackButton(color: ColorAsset.MAIN_WHITE, backStyle: ContentComponent.BACK) {
                         dismiss()
                     }
                     Spacer()

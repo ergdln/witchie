@@ -10,6 +10,7 @@ import SwiftUI
 struct BackButton: View {
     
     var color: String
+    var backStyle: String
     var funcToDo: ()->()
     
     var body: some View {
@@ -22,7 +23,8 @@ struct BackButton: View {
                 }else if color == ColorAsset.MAIN_WHITE{
                     Image(ImageAsset.ARROW_WHITE)
                 }
-                Text(ContentComponent.BACK).font(.custom(ContentComponent.BOREL_REGULAR, size: 20))
+                Text(backStyle)
+                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 20))
                     .underline()
                     .foregroundColor(Color(color))
                     .padding(.bottom, -10)
@@ -33,7 +35,7 @@ struct BackButton: View {
 
 struct BackButton_Previews: PreviewProvider {
     static var previews: some View {
-        BackButton(color: ColorAsset.MAIN_PURPLE){
+        BackButton(color: ColorAsset.MAIN_PURPLE, backStyle: ContentComponent.CHAPTER){
             
         }
     }

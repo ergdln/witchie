@@ -42,7 +42,7 @@ struct LevelSelectorView: View {
                 .ignoresSafeArea()
             VStack (spacing: 0) {
                 HStack (alignment: .center) {
-                    BackButton(color: ColorAsset.MAIN_PURPLE) {
+                    BackButton(color: ColorAsset.MAIN_PURPLE, backStyle: ContentComponent.CHAPTER) {
                         dismiss()
                     }
                     Spacer()
