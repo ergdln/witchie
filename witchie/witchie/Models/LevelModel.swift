@@ -479,7 +479,7 @@ extension LevelModel{
             // LEVEL 1
             LevelModel(
                 levelOffset: 7,
-                levelDialogue: "Entendeu como funcionam os arbustos? Assim com você, eles não servem só para decoração.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_1,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
@@ -498,7 +498,7 @@ extension LevelModel{
             // LEVEL 2
             LevelModel(
                 levelOffset: 7,
-                levelDialogue: "Ok, talvez eu tenha exagerado na quantidade de arbustos. Cuidado pra não se perder por aí.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_2,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
@@ -518,7 +518,7 @@ extension LevelModel{
             // LEVEL 3
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "O cenário mudou, mas algumas coisas nunca mudam. Nem todas as jogadas são tão diretas ao ponto assim, lembre de pensar um pouco mais.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_3,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
@@ -542,7 +542,7 @@ extension LevelModel{
             // LEVEL 4
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Esqueceu de tudo que aprendeu lá em casa, né? Fique atento que aqui vai precisar também!",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_4,
                 levelMap: [
                     
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
@@ -561,7 +561,7 @@ extension LevelModel{
             // LEVEL 5
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Essa planta é o equivalente à um peixe beta, ela não tolera outras plantas, por isso ela está solitária.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_5,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -583,7 +583,7 @@ extension LevelModel{
             // LEVEL 6
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Toma cuidado na hora de empurrar os arbustos, às vezes atrapalha mais do que ajuda.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_6,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -604,7 +604,7 @@ extension LevelModel{
             // LEVEL 7
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Você começou bem, mas agora tá desacelerando. Seria uma metáfora da vida?",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_7,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -625,7 +625,7 @@ extension LevelModel{
             // LEVEL 8
             LevelModel(
                 levelOffset: 15,
-                levelDialogue: "Minhas plantas estavam ansiosas pra te conhecer, mas aparentemente sua performance no capítulo anterior nos deu falsas esperanças. Uma pena.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_8,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -649,7 +649,7 @@ extension LevelModel{
             // LEVEL 9
             LevelModel(
                 levelOffset: 10,
-                levelDialogue: "Um jardim dentro de um jardim, talvez eu tenha me inspirado em um filme famoso... Sabe qual é ou você só é mais um sem cultura?",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_9,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -670,7 +670,7 @@ extension LevelModel{
             // LEVEL 10
             LevelModel(
                 levelOffset: 11,
-                levelDialogue: "Começou cercado, né? Se acostuma que a vida é assim!",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_10,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -691,7 +691,7 @@ extension LevelModel{
             // LEVEL 11
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Se tu só ficar empurrando sem pensar, nunca vai conseguir passar logo das fases...",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_11,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -712,7 +712,7 @@ extension LevelModel{
             // LEVEL 12
             LevelModel(
                 levelOffset: 9,
-                levelDialogue: "Empurra pra um lado, empurra pro outro... nada de novo sob o sol!",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_12,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -733,7 +733,7 @@ extension LevelModel{
             // LEVEL 13
             LevelModel(
                 levelOffset: 11,
-                levelDialogue: "Meus jardins são cheios de belos corredores, olha que sorte a sua ter a honra de trabalhar neles!",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_13,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -755,7 +755,7 @@ extension LevelModel{
             // LEVEL 14
             LevelModel(
                 levelOffset: 13,
-                levelDialogue: "Assim como nós, bruxas, as melhores plantas florescem sob pressão.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_14,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -772,7 +772,7 @@ extension LevelModel{
             // LEVEL 15
             LevelModel(
                 levelOffset: 13,
-                levelDialogue: "Esse é um dos meus jardins favoritos. Ele é grande e majestososo, bem diferente de certas pessoas...",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_15,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -795,7 +795,7 @@ extension LevelModel{
             // LEVEL 16
             LevelModel(
                 levelOffset: 13,
-                levelDialogue: "Eu fiz esse jardim em homenagem à um jogo que eu adorava na infância. Saudade de ser criança, não existiam boletos pra pagar..",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_16,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -816,7 +816,7 @@ extension LevelModel{
             // LEVEL 17
             LevelModel(
                 levelOffset: 13,
-                levelDialogue: "As plantas estão brotando como se fossem feijões mágicos! Talvez você também possa aprender uma coisa ou duas com elas.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_17,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -840,7 +840,7 @@ extension LevelModel{
             // LEVEL 18
             LevelModel(
                 levelOffset: 11,
-                levelDialogue: "Notei que você está empurrando esses arbustos como se eles fossem seus sonhos: com força, mas sem esperança.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_18,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -861,7 +861,7 @@ extension LevelModel{
             // LEVEL 19
             LevelModel(
                 levelOffset: 11,
-                levelDialogue: "Até as abóboras se transformam em carruagens com mais facilidade do que você coloca as plantas no lugar.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_19,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -882,7 +882,7 @@ extension LevelModel{
             // LEVEL 20
             LevelModel(
                 levelOffset: 11,
-                levelDialogue: "FINALMENTE ENCONTRAMOS A GERTRUDES!!! Tive que fazer um jardim especial para minha plantinha especial.",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_20,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
@@ -903,7 +903,7 @@ extension LevelModel{
             // LEVEL 21
             LevelModel(
                 levelOffset: 11,
-                levelDialogue: "Finalmente o jardim está florido novamente, e a Gertrudes está mais linda do que nunca! E conseguimos terminar logo antes da época mais especial do ano...",
+                levelDialogue: ContentComponent.CHAPTER2_LEVEL_DIALOGUE_21,
                 levelMap: [
                     // ⬛️ = wall, 📦 = box,  🙋🏿 = person,  ⬜️ = grass,   🔯 = plate, 🗄️ = crate, 🕳️ = hole
                     
