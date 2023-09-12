@@ -9,21 +9,25 @@ import SwiftUI
 
 struct PatchCard: View {
     let center = UnitPoint(x: 0.6, y: 0.7)
-    let gradientColor1 = Color(red: 23/255, green: 10/255, blue: 44/255)
-    let gradientColor2 = Color(red: 60/255, green: 20/255, blue: 111/255)
-    let bgColor = Color(red: 41/255, green: 27/255, blue: 83/255)
+    let gradientColor1: Color
+    let gradientColor2: Color
+    let bgColor: Color
+    let name: String
+    let stars: Int
+    let image: Image
     var body: some View {
         VStack{
-            Text("Covil")
+            Text(name)
                 .font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
                 .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                 .padding(.bottom, -20)
             HStack{
-                Image("STAR")
+                StarPath()
+                Image(stars >= 1 ? "STAR-FILL" : "STAR")
                 Spacer()
-                Image("STAR")
+                Image(stars >= 2 ? "STAR-FILL" : "STAR")
                 Spacer()
-                Image("STAR")
+                Image(stars >= 3 ? "STAR-FILL" : "STAR")
             }
             .frame(width: 200, height: 66)
             .padding(.horizontal, 15)
@@ -36,7 +40,7 @@ struct PatchCard: View {
                     .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                     .padding(.bottom, -20)
                 Spacer()
-                Image("IMAGE-PATCH1")
+                image
             }
             .padding(.leading, 35)
         }.frame(width: 298, height: 562)
@@ -47,11 +51,5 @@ struct PatchCard: View {
                                 angle: Angle(degrees: 210))
             )
             .cornerRadius(19)
-    }
-}
-
-struct PatchCard_Previews: PreviewProvider {
-    static var previews: some View {
-        PatchCard()
     }
 }

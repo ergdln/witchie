@@ -285,7 +285,7 @@ struct LevelView: View{
                 }
             }
             else{
-                Text("EITA VIROU LANDSCAPE")
+                 Text("EITA VIROU LANDSCAPE")
             }
         }
         .onChange(of: levelNumber) { newValue in

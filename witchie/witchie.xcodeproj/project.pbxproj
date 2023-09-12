@@ -10,13 +10,14 @@
 		470621882AB0E60B009CE47E /* PatchSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470621862AB0E60B009CE47E /* PatchSelectorViewModel.swift */; };
 		470621892AB0E60B009CE47E /* PatchSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470621872AB0E60B009CE47E /* PatchSelector.swift */; };
 		4706218B2AB0E783009CE47E /* PatchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706218A2AB0E783009CE47E /* PatchCard.swift */; };
+		4706218F2AB10875009CE47E /* StarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706218E2AB10875009CE47E /* StarPath.swift */; };
 		470FB7162AA654EF00F7D26A /* PatchSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FB7152AA654EF00F7D26A /* PatchSelectorView.swift */; };
 		4725D4772A8D49F9002166EE /* AnimatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725D4762A8D49F9002166EE /* AnimatingImage.swift */; };
 		472873B52A6B2EA80021B646 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472873B42A6B2EA80021B646 /* LevelView.swift */; };
 		47333D442A69D380001E478E /* LevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47333D432A69D380001E478E /* LevelModel.swift */; };
 		473781CE2A8595070019F255 /* DimensionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473781CD2A8595070019F255 /* DimensionManager.swift */; };
 		47889ED32A704C32005EB560 /* LevelSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889ED22A704C32005EB560 /* LevelSelectorView.swift */; };
-		47889ED52A717098005EB560 /* LevelCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889ED42A717098005EB560 /* LevelCompleted.swift */; };
+		47889ED52A717098005EB560 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889ED42A717098005EB560 /* UserSettings.swift */; };
 		47889F1E2A72F21B005EB560 /* ComponentX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889F1D2A72F21B005EB560 /* ComponentX.swift */; };
 		47B53B862A7DACF200E3DADC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53B852A7DACF200E3DADC /* BackButton.swift */; };
 		5B234C1D2A9FC5E400D0B83C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5B234C1C2A9FC5E400D0B83C /* FirebaseAnalytics */; };
@@ -56,13 +57,14 @@
 		470621862AB0E60B009CE47E /* PatchSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchSelectorViewModel.swift; sourceTree = "<group>"; };
 		470621872AB0E60B009CE47E /* PatchSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchSelector.swift; sourceTree = "<group>"; };
 		4706218A2AB0E783009CE47E /* PatchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchCard.swift; sourceTree = "<group>"; };
+		4706218E2AB10875009CE47E /* StarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPath.swift; sourceTree = "<group>"; };
 		470FB7152AA654EF00F7D26A /* PatchSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchSelectorView.swift; sourceTree = "<group>"; };
 		4725D4762A8D49F9002166EE /* AnimatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingImage.swift; sourceTree = "<group>"; };
 		472873B42A6B2EA80021B646 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		47333D432A69D380001E478E /* LevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelModel.swift; sourceTree = "<group>"; };
 		473781CD2A8595070019F255 /* DimensionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionManager.swift; sourceTree = "<group>"; };
 		47889ED22A704C32005EB560 /* LevelSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectorView.swift; sourceTree = "<group>"; };
-		47889ED42A717098005EB560 /* LevelCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCompleted.swift; sourceTree = "<group>"; };
+		47889ED42A717098005EB560 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		47889F1D2A72F21B005EB560 /* ComponentX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentX.swift; sourceTree = "<group>"; };
 		47B53B852A7DACF200E3DADC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		5B6B15D62AA7B772004C523C /* container */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = container; sourceTree = SOURCE_ROOT; };
@@ -121,6 +123,7 @@
 				470621862AB0E60B009CE47E /* PatchSelectorViewModel.swift */,
 				470621872AB0E60B009CE47E /* PatchSelector.swift */,
 				4706218A2AB0E783009CE47E /* PatchCard.swift */,
+				4706218E2AB10875009CE47E /* StarPath.swift */,
 			);
 			path = PatchSelector;
 			sourceTree = "<group>";
@@ -162,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				6EFCA0FE2A69AB570008AAC5 /* Constants */,
-				47889ED42A717098005EB560 /* LevelCompleted.swift */,
+				47889ED42A717098005EB560 /* UserSettings.swift */,
 				47333D432A69D380001E478E /* LevelModel.swift */,
 				5BF016352A8EB0490012751E /* Enums */,
 			);
@@ -413,6 +416,7 @@
 				470621882AB0E60B009CE47E /* PatchSelectorViewModel.swift in Sources */,
 				C06C38E22A8BF1CC00A2C02E /* Onboarding2.swift in Sources */,
 				470FB7162AA654EF00F7D26A /* PatchSelectorView.swift in Sources */,
+				4706218F2AB10875009CE47E /* StarPath.swift in Sources */,
 				C06C38E42A8C036200A2C02E /* Onboarding3.swift in Sources */,
 				C06C15672A71AD2300A7FE9E /* AudioPlayerManager.swift in Sources */,
 				6EB531CB2AA10CDE00A14705 /* LevelViewExtension.swift in Sources */,
@@ -426,7 +430,7 @@
 				6EAB19B82A7C431B002047CD /* AboutUsView.swift in Sources */,
 				6EFCA1032A69AC920008AAC5 /* ColorAsset.swift in Sources */,
 				6EFCA0F12A69A9F50008AAC5 /* witchieApp.swift in Sources */,
-				47889ED52A717098005EB560 /* LevelCompleted.swift in Sources */,
+				47889ED52A717098005EB560 /* UserSettings.swift in Sources */,
 				47889ED32A704C32005EB560 /* LevelSelectorView.swift in Sources */,
 				C0348A392A7431C3001A1EF7 /* SoundToggleComponent.swift in Sources */,
 				47889F1E2A72F21B005EB560 /* ComponentX.swift in Sources */,
