@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LevelModel{
+struct LevelModel {
     
     //the width of a line
     var levelOffset: Int
@@ -17,8 +17,6 @@ struct LevelModel{
     
     //map
     var levelMap: [String]
-    
-    
     
 }
 

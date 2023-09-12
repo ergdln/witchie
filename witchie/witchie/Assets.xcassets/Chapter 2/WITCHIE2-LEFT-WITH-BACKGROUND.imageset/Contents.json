@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "witchie2-left.png",
+      "filename" : "witchie-left.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "witchie2-left@2x.png",
+      "filename" : "witchie-left@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "witchie2-left@3x.png",
+      "filename" : "witchie-left@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
