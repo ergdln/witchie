@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "magical-soil.png",
+      "filename" : "FLOOR.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "magical-soil@2x.png",
+      "filename" : "FLOOR@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "magical-soil@3x.png",
+      "filename" : "FLOOR@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

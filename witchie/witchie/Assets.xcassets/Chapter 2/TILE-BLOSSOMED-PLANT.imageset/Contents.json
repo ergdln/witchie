@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "plat-blossomed.png",
+      "filename" : "blossomed.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "plat-blossomed@2x.png",
+      "filename" : "blossomed@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "plat-blossomed@3x.png",
+      "filename" : "blossomed@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

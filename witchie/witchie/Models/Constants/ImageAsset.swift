@@ -81,6 +81,4 @@ struct ImageAsset {
     static let VASE_EMPTY = "VASE-EMPTY"
     static let VASE_FULL = "VASE-FULL"
     
-    
-    
 }

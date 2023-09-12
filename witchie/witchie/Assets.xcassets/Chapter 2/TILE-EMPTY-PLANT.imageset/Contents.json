@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "plant-empty.png",
+      "filename" : "flower-empty.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "plant-empty@2x.png",
+      "filename" : "flower-empty@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "plant-empty@3x.png",
+      "filename" : "flower-empty@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
