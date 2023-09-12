@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAnalytics
 
 //MARK: Game Functions
 extension LevelView{
@@ -37,6 +38,10 @@ extension LevelView{
         levelSpotsIndex = LevelModel.getIndexes(of: spot, in: levelModel[levelNumber].levelMap)
         levelStartPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]
         levelActualPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]
+    }
+    
+    fileprivate func levelEndAnalytics() {
+        Analytics.logEvent("level_completed", parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1) completed", "player_movements": playerMovements, "time_played": timePlayed, "refreshes": refreshes])
     }
     
     //MARK: main movement function
@@ -98,6 +103,9 @@ extension LevelView{
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
+            levelEndAnalytics()
+            refreshes = 0
+            timePlayed = 0
             if patch == 1{
                 LevelCompleted.isCompleted[1]![levelNumber] = true
                 UserDefaults.standard.set(LevelCompleted.isCompleted[1], forKey: "CurrentLevel")

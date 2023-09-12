@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import FirebaseAnalytics
 
 struct LevelView: View{
     
@@ -22,10 +23,14 @@ struct LevelView: View{
     @State var levelStartPosition: Int
     
     //MARK: VARIABLES
+
     @State public var isGameOver = false
     @State public var gestureOffset: CGSize = .zero
     @State public var direction: Direction = .none
     @State public var playerMovements: Int = 0
+    @State public var timePlayed: Int = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State public var refreshes: Int = 0
     
     //Onboarding things
     @State var showOnboarding: Bool
@@ -110,6 +115,7 @@ struct LevelView: View{
                         Spacer()
                         Button(action:{
                             refreshGame()
+                            refreshes += 1
                         }){
                             Image(ImageAsset.REFRESH_BUTTON)
                                 .resizable()
@@ -279,6 +285,18 @@ struct LevelView: View{
             }
             else{
                 Text("EITA VIROU LANDSCAPE")
+            }
+        }
+        .onChange(of: levelNumber) { newValue in
+            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(newValue + 1)"])
+        }
+        .onAppear(){
+            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1)"])
+        }
+        //Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevel: levelNumber])
+        .onReceive(timer) { _ in
+            if (!isGameOver){
+                timePlayed += 1
             }
         }
         .ignoresSafeArea()
