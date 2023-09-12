@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import FirebaseAnalytics
 
 struct LevelView: View{
     
@@ -14,6 +15,7 @@ struct LevelView: View{
     @EnvironmentObject public var audioPlayerManager: AudioPlayerManager
     @State var levelNumber: Int
     @State var levelModel: [LevelModel]
+    
     var patch: Int
     
     @State var levelGrid: [GridItem]
@@ -22,10 +24,14 @@ struct LevelView: View{
     @State var levelStartPosition: Int
     
     //MARK: VARIABLES
+
     @State public var isGameOver = false
     @State public var gestureOffset: CGSize = .zero
     @State public var direction: Direction = .none
     @State public var playerMovements: Int = 0
+    @State public var timePlayed: Int = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State public var refreshes: Int = 0
     
     //Onboarding things
     @State var showOnboarding: Bool
@@ -110,6 +116,7 @@ struct LevelView: View{
                         Spacer()
                         Button(action:{
                             refreshGame()
+                            refreshes += 1
                         }){
                             Image(ImageAsset.REFRESH_BUTTON)
                                 .resizable()
@@ -121,12 +128,12 @@ struct LevelView: View{
                         ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
                             Group{
                                 if levelModel[levelNumber].levelMap[num] == wall{
-                                    Image(ImageAsset.TILE_BRICK)
+                                    Image(ImageAsset.GARDEN_BRICK)
                                         .resizable()
                                         .scaledToFill()
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == grass{
-                                    Image(ImageAsset.TILE_GRASS)
+                                    Image(ImageAsset.TILE_GARDEN)
                                         .resizable()
                                         .scaledToFill()
                                 }
@@ -136,28 +143,28 @@ struct LevelView: View{
                                         .scaledToFill()
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == crate{
-                                    Image(ImageAsset.TILE_CRATE)
+                                    Image(ImageAsset.TILE_BUSH)
                                         .resizable()
                                         .scaledToFill()
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == spot{
-                                    Image(ImageAsset.TILE_SPOT)
+                                    Image(ImageAsset.TILE_MAGICAL_SOIL)
                                         .resizable()
                                         .scaledToFill()
                                 }
                                 //this only happens when a cauldron is in the mark place
                                 else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
-                                    Image(ImageAsset.TILE_CAULDRON)
+                                    Image(ImageAsset.TILE_BLOSSOMED)
                                         .resizable()
                                         .scaledToFill()
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == box{
-                                    Image(ImageAsset.TILE_EMPTY_CAULDRON)
+                                    Image(ImageAsset.TILE_EMPTY_PLANT)
                                         .resizable()
                                         .scaledToFill()
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == person{
-                                    Image(witchImage)
+                                    Image(ImageAsset.WITCHIE_GARDEN_LEFT)
                                         .resizable()
                                         .scaledToFill()
                                 }
@@ -191,13 +198,13 @@ struct LevelView: View{
                                     .frame(height: safeDimensionManager.dimensions.height / 4)
                                     .padding(.leading, safeDimensionManager.dimensions.width * 0.11)
                                     .padding(.bottom, safeDimensionManager.dimensions.height * 0.2)
-                             
+                                
                                 Text("Essa é a parede móvel, você pode usá-la para se movimentar. Arraste para baixo para experimentar!")
                                     .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                        .font(.custom(ContentComponent.BOREL_REGULAR, size: 18))
-                                        .padding(.top, 15)
-                                        .padding(.horizontal, 30)
-                                        .background(.purple.opacity(0.4))
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 18))
+                                    .padding(.top, 15)
+                                    .padding(.horizontal, 30)
+                                    .background(.purple.opacity(0.4))
                                 
                             }
                         }
@@ -246,7 +253,7 @@ struct LevelView: View{
                                     .font(.custom(ContentComponent.BOREL_REGULAR, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT * 0.98))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
-                                //.border(.green)
+                            //.border(.green)
                             Spacer()
                             if (levelNumber < LevelModel.getLevels(chapter: 1).count - 1) {
                                 Button{
@@ -279,6 +286,18 @@ struct LevelView: View{
             }
             else{
                 Text("EITA VIROU LANDSCAPE")
+            }
+        }
+        .onChange(of: levelNumber) { newValue in
+            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(newValue + 1)"])
+        }
+        .onAppear(){
+            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1)"])
+        }
+        //Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevel: levelNumber])
+        .onReceive(timer) { _ in
+            if (!isGameOver){
+                timePlayed += 1
             }
         }
         .ignoresSafeArea()
