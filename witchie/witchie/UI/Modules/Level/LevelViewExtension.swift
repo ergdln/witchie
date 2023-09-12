@@ -41,7 +41,7 @@ extension LevelView{
     }
     
     fileprivate func levelEndAnalytics() {
-        Analytics.logEvent("level_completed", parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1) completed", "player_movements": playerMovements, "time_played": timePlayed])
+        Analytics.logEvent("level_completed", parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1) completed", "player_movements": playerMovements, "time_played": timePlayed, "refreshes": refreshes])
     }
     
     //MARK: main movement function
@@ -104,6 +104,7 @@ extension LevelView{
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             self.isGameOver.toggle()
             levelEndAnalytics()
+            refreshes = 0
             timePlayed = 0
             if patch == 1{
                 LevelCompleted.isCompleted[1]![levelNumber] = true

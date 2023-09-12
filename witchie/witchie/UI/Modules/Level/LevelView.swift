@@ -30,6 +30,8 @@ struct LevelView: View{
     @State public var playerMovements: Int = 0
     @State public var timePlayed: Int = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State public var refreshes: Int = 0
+    
     //Onboarding things
     @State var showOnboarding: Bool
     public let images = (1...11).map { String(format: "frame-%d", $0) }.map { Image($0) }
@@ -113,6 +115,7 @@ struct LevelView: View{
                         Spacer()
                         Button(action:{
                             refreshGame()
+                            refreshes += 1
                         }){
                             Image(ImageAsset.REFRESH_BUTTON)
                                 .resizable()
