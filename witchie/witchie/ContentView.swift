@@ -14,7 +14,9 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geo in
-            StartGameView()
+            OnboardingView()
+            //Patch2Transition1()
+            //StartGameView()
             //LevelView(patch: 2, levelNumber: 0, showOnboarding: true)
                 .onAppear {
                     //Ler o tamanho do dispositivo
