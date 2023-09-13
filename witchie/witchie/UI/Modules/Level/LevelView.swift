@@ -47,7 +47,7 @@ struct LevelView: View{
     @State var showOnboarding2 = false
     
     //witch first image
-    @State var witchImage: String = ImageAsset.TILE_WITCH_LEFT
+    @State var witchImage: String
     
     //Rename de map elements
     let box = ContentComponent.BOX
@@ -70,6 +70,7 @@ struct LevelView: View{
         self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
         self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
         self._showOnboarding = State(initialValue: showOnboarding)
+        self._witchImage = State(initialValue: ImageAsset.WITCHIE_GARDEN_LEFT)
         
     }
     
@@ -165,7 +166,7 @@ struct LevelView: View{
                                         .scaledToFill()
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == person{
-                                    Image(ImageAsset.WITCHIE_GARDEN_LEFT)
+                                    Image(witchImage)
                                         .resizable()
                                         .scaledToFill()
                                 }
@@ -319,13 +320,13 @@ struct LevelView: View{
                         }else if direction == .up{
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }else if direction == .left{
-                            witchImage = ImageAsset.TILE_WITCH_LEFT
+                            witchImage = ImageAsset.WITCHIE_GARDEN_LEFT
                             defineMoviment(actualPosition: levelActualPosition, offset: -1)
                         }else if direction == .right{
+                            witchImage = ImageAsset.WITCHIE_GARDEN_RIGHT
                             if patch == 2 && levelNumber == 0 && showOnboarding{
                                 showOnboarding2 = true
                             }
-                            witchImage = ImageAsset.TILE_WITCH_RIGHT
                             defineMoviment(actualPosition: levelActualPosition, offset: 1)
                         }
                         self.gestureOffset = .zero
