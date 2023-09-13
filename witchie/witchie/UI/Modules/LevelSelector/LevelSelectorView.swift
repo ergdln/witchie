@@ -34,7 +34,7 @@ struct LevelSelectorView: View {
     }
     
     
-    var safeDimensionManager = DimensionManager.shared
+    @StateObject var safeDimensionManager = DimensionManager.shared
 
     var body: some View {
         ZStack {
@@ -64,7 +64,7 @@ struct LevelSelectorView: View {
                                         .opacity(shouldDisable(level: level) ? 0.2 : 1)
                                     if isCompleted[level]{
                                         ZStack{
-                                            Image(ImageAsset.CAULDRON_FULL)
+                                            Image(patch == 1 ? ImageAsset.CAULDRON_FULL : ImageAsset.VASE_FULL)
                                                 .resizable()
                                                 .scaledToFit()
                                                 .scaleEffect(0.8)
@@ -76,19 +76,19 @@ struct LevelSelectorView: View {
                                     }else{
                                         if level != 0{
                                             if isCompleted[level - 1]{
-                                                Image(ImageAsset.CAULDRON_EMPTY)
+                                                Image(patch == 1 ? ImageAsset.CAULDRON_EMPTY : ImageAsset.VASE_EMPTY)
                                                     .resizable()
                                                     .scaledToFit()
                                                     .scaleEffect(0.8)
                                             }else{
-                                                Image(ImageAsset.CAULDRON_EMPTY)
+                                                Image(patch == 1 ? ImageAsset.CAULDRON_EMPTY : ImageAsset.VASE_EMPTY)
                                                     .resizable()
                                                     .scaledToFit()
                                                     .scaleEffect(0.8)
                                                     .opacity(0.2)
                                             }
                                         }else{
-                                            Image(ImageAsset.CAULDRON_EMPTY)
+                                            Image(patch == 1 ? ImageAsset.CAULDRON_EMPTY : ImageAsset.VASE_EMPTY)
                                                 .resizable()
                                                 .scaledToFit()
                                                 .scaleEffect(0.8)
