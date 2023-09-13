@@ -10,7 +10,7 @@ import AVFoundation
 import Combine
 
 class AudioPlayerManager: ObservableObject {
-    @StateObject var defaultsManager = DefaultsManager.shared
+    @ObservedObject var defaultsManager = DefaultsManager.shared
     var audioPlayer: AVAudioPlayer?
     @Published var soundOn: Bool = DefaultsManager.shared.getSoundPreference() // Adicionar @Published para notificar mudanças no soundOn
 

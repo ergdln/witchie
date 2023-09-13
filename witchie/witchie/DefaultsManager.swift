@@ -17,7 +17,6 @@ class DefaultsManager: ObservableObject{
     }
     
     func setUserFirstTime(value: Bool){
-        UserSettings.isNotFirstTime = value
         UserDefaults.standard.set(value, forKey: "isNotFirstTime")
     }
     
