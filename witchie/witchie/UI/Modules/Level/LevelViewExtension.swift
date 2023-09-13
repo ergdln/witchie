@@ -107,13 +107,11 @@ extension LevelView{
             refreshes = 0
             timePlayed = 0
             if patch == 1{
-                LevelCompleted.isCompleted[1]![levelNumber] = true
-                defaultsManager.setLevelCompleted()
+                defaultsManager.setLevelCompleted(level: levelNumber)
             }
             defaultsManager.setUserFirstTime(value: true)
             if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
-                UserSettings.records[patch]![levelNumber] = playerMovements
-                defaultsManager.setNewRecord(patch: patch)
+                defaultsManager.setNewRecord(patch: patch, level: levelNumber, value: playerMovements)
             }
         }
     }

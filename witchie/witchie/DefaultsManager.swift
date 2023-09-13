@@ -11,15 +11,18 @@ class DefaultsManager: ObservableObject{
     
     static var shared = DefaultsManager()
     
-    func setNewRecord(patch: Int){
+    func setNewRecord(patch: Int, level: Int, value: Int){
+        UserSettings.records[patch]![level] = value
         UserDefaults.standard.set(UserSettings.records[patch], forKey: "records\(patch)")
     }
     
     func setUserFirstTime(value: Bool){
-        UserDefaults.standard.set(true, forKey: "isNotFirstTime")
+        UserSettings.isNotFirstTime = value
+        UserDefaults.standard.set(value, forKey: "isNotFirstTime")
     }
     
-    func setLevelCompleted(){
+    func setLevelCompleted(level: Int){
+        LevelCompleted.isCompleted[1]![level] = true
         UserDefaults.standard.set(LevelCompleted.isCompleted[1], forKey: "CurrentLevel")
     }
     
