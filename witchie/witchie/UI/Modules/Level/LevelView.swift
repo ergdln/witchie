@@ -38,6 +38,7 @@ struct LevelView: View{
     public let images = (1...11).map { String(format: "frame-%d", $0) }.map { Image($0) }
     
     @StateObject var safeDimensionManager = DimensionManager.shared
+    @ObservedObject var defaultsManager = DefaultsManager.shared
     
     enum Direction {
         case none, up, down, left, right

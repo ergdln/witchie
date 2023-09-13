@@ -10,8 +10,9 @@ import AVFoundation
 import Combine
 
 class AudioPlayerManager: ObservableObject {
+    @StateObject var defaultsManager = DefaultsManager.shared
     var audioPlayer: AVAudioPlayer?
-    @Published var soundOn: Bool = UserDefaults.standard.bool(forKey: "isSoundOn") // Adicionar @Published para notificar mudanças no soundOn
+    @Published var soundOn: Bool = DefaultsManager.shared.getSoundPreference() // Adicionar @Published para notificar mudanças no soundOn
 
     func setupAudioPlayer() {
         let sound = Bundle.main.path(forResource: "LivaTheme", ofType: "mp3")
@@ -29,10 +30,10 @@ class AudioPlayerManager: ObservableObject {
     
     func gameStarted() {
         self.setupAudioPlayer()
-        if UserDefaults.standard.bool(forKey: "isSoundOn"){
+        if defaultsManager.getSoundPreference(){
             self.playSound()
         } else {
-            self.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
+            self.soundOn = defaultsManager.getSoundPreference()
         }
     }
 }

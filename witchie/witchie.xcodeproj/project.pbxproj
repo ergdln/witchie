@@ -11,6 +11,7 @@
 		470621892AB0E60B009CE47E /* PatchSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470621872AB0E60B009CE47E /* PatchSelector.swift */; };
 		4706218B2AB0E783009CE47E /* PatchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706218A2AB0E783009CE47E /* PatchCard.swift */; };
 		4706218F2AB10875009CE47E /* StarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706218E2AB10875009CE47E /* StarPath.swift */; };
+		470621912AB23B6C009CE47E /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470621902AB23B6C009CE47E /* DefaultsManager.swift */; };
 		470FB7162AA654EF00F7D26A /* PatchSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FB7152AA654EF00F7D26A /* PatchSelectorView.swift */; };
 		4725D4772A8D49F9002166EE /* AnimatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725D4762A8D49F9002166EE /* AnimatingImage.swift */; };
 		472873B52A6B2EA80021B646 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472873B42A6B2EA80021B646 /* LevelView.swift */; };
@@ -58,6 +59,7 @@
 		470621872AB0E60B009CE47E /* PatchSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchSelector.swift; sourceTree = "<group>"; };
 		4706218A2AB0E783009CE47E /* PatchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchCard.swift; sourceTree = "<group>"; };
 		4706218E2AB10875009CE47E /* StarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPath.swift; sourceTree = "<group>"; };
+		470621902AB23B6C009CE47E /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		470FB7152AA654EF00F7D26A /* PatchSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchSelectorView.swift; sourceTree = "<group>"; };
 		4725D4762A8D49F9002166EE /* AnimatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingImage.swift; sourceTree = "<group>"; };
 		472873B42A6B2EA80021B646 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				5B6B15D62AA7B772004C523C /* container */,
 				6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */,
 				6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */,
+				470621902AB23B6C009CE47E /* DefaultsManager.swift */,
 				C01DA0AF2A7C41D700036FCD /* Fonts */,
 				473781CC2A8594F50019F255 /* Dimensions */,
 				47889F1C2A72EFF2005EB560 /* Sound */,
@@ -406,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C06C38E02A8BE50600A2C02E /* Onboarding1.swift in Sources */,
+				470621912AB23B6C009CE47E /* DefaultsManager.swift in Sources */,
 				5BF016342A8EB03D0012751E /* StepCounterType.swift in Sources */,
 				473781CE2A8595070019F255 /* DimensionManager.swift in Sources */,
 				C06C38E82A8C048D00A2C02E /* Onboarding5.swift in Sources */,

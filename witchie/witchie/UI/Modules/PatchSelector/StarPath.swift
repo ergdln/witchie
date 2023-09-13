@@ -9,10 +9,12 @@ import SwiftUI
 
 struct StarPath: View{
     
+    let color: Color
+    
     let pathBounds = UIBezierPath.calculateBounds(paths: [.star])
     
     var body: some View{
-        ScaledBezier(bezier: .star, pathBounds: pathBounds).foregroundColor(.yellow)
+        ScaledBezier(bezier: .star, pathBounds: pathBounds).foregroundColor(color)
     }
 }
 
@@ -86,6 +88,6 @@ extension UIBezierPath {
 
 struct StarPath_Previews: PreviewProvider {
     static var previews: some View {
-        StarPath()
+        StarPath(color: .yellow)
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SoundToggleComponent: View {
+    @StateObject var defaultsManager = DefaultsManager.shared
     @Binding var soundOn: Bool
     @ObservedObject var audioPlayerManager: AudioPlayerManager
     var color: String
@@ -15,7 +16,7 @@ struct SoundToggleComponent: View {
         
         Button{
             soundOn.toggle()
-            UserDefaults.standard.set(soundOn, forKey: "isSoundOn")
+            defaultsManager.setSoundPreference(value: soundOn)
         }label: {
             if soundOn{
                 if color == ColorAsset.MAIN_PURPLE{
@@ -44,7 +45,7 @@ struct SoundToggleComponent: View {
             }
         }
         .onAppear{
-            soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
+            soundOn = defaultsManager.getSoundPreference()
         }
     }
 }

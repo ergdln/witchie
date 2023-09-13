@@ -13,6 +13,8 @@ import SwiftUI
 final class PatchSelectorViewModel: ObservableObject {
     @Published var soundOn = true
     
+    @ObservedObject var safeDimensionManager = DimensionManager.shared
+    
     @Published var cardInformations = [
         PatchInformations(name: "Covil", colors: PatchInformations.Colors(
             color1: Color(red: 23/255, green: 10/255, blue: 44/255),
@@ -44,5 +46,18 @@ final class PatchSelectorViewModel: ObservableObject {
         }else{
             return 0
         }
+    }
+    
+    func getScreenSize() -> DimensionsConfig{
+        
+        let cardSize = CGSize(width: safeDimensionManager.dimensions.width * 0.7641, height: safeDimensionManager.dimensions.height * 0.665)
+        
+        let starCointainerSize = CGSize(width: cardSize.width * 0.7684, height: cardSize.height * 0.1174)
+        
+        let starsSize = CGSize(width: starCointainerSize.height * 0.65, height: starCointainerSize.height * 0.65)
+        
+        return DimensionsConfig(card: cardSize,
+                                stars: starsSize,
+                                starContainer: starCointainerSize)
     }
 }
