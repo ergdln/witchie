@@ -49,6 +49,8 @@ struct ContentComponent {
     static let BACK_SYSTEM = Image(systemName: "chevron.backward")
     static let JUMP = String(localized: "jump")
     static let CHAPTER = String(localized: "chapters")
+    static let LAIR = String(localized: "lair")
+    static let GARDEN = String(localized: "garden")
     
     //MARK: CHAPTER 1
     
@@ -120,6 +122,9 @@ struct ContentComponent {
     static let CHAPTER2_ENTRY_TEXT4 = String(localized: "chapter2_entry_text4")
     //Temos que colocar os vasos na terra mágica para as plantas voltarem ao normal! Não se preocupe, podemos usar os arbustos para nos movermos melhor.
     static let CHAPTER2_ENTRY_TEXT5 = String(localized: "chapter2_entry_text5")
+    
+    //ANIMATION TEXT
+    static let ANIMATION_TEXT = String(localized: "animation_text")
 
     //BETWEEN LEVELS CHAPTER 2
     //Entendeu como funcionam os arbustos? Assim com você, eles não servem só para decoração.

@@ -70,15 +70,15 @@ extension LevelView{
             }
         }
         //PUSHING CRATE
-               else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == crate && levelModel[levelNumber].levelMap[actualPosition + offset + offset] == grass{
-                   
-                   levelModel[levelNumber].levelMap[actualPosition] = grass
-                   levelModel[levelNumber].levelMap[actualPosition + offset] = person
-                   levelModel[levelNumber].levelMap[actualPosition + offset + offset] = crate
-                   levelActualPosition = actualPosition + offset
-                   //if you successfully pushed a box, update playerMovements
-                   playerMovements += 1
-               }
+        else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == crate && levelModel[levelNumber].levelMap[actualPosition + offset + offset] == grass{
+            
+            levelModel[levelNumber].levelMap[actualPosition] = grass
+            levelModel[levelNumber].levelMap[actualPosition + offset] = person
+            levelModel[levelNumber].levelMap[actualPosition + offset + offset] = crate
+            levelActualPosition = actualPosition + offset
+            //if you successfully pushed a box, update playerMovements
+            playerMovements += 1
+        }
         //PUSHING A CAULDRON
         //pushing a cauldron to a magic mark
         else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box && !levelSpotsIndex.contains(levelActualPosition + offset) {
@@ -139,6 +139,13 @@ extension LevelView{
         else{
             return false
         }
+    }
+    
+    func getPatchAssets(patch: Int, images: [String]) -> String {
+        guard patch >= 1 && patch <= images.count else {
+            return "default_image" //caso seja um valor de patch inválido
+        }
+        return images[patch - 1] //subtrai 1 do patch para corresponder ao índice do array
     }
 }
 

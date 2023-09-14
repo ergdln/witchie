@@ -32,7 +32,7 @@ struct PatchSelectorView: View {
                 Spacer()
                 
                 
-                Text(ContentComponent.LEVELS).font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
+                Text(ContentComponent.CHAPTER).font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                     .padding(.top, 20)
                 
