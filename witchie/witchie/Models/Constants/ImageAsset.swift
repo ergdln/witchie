@@ -51,6 +51,7 @@ struct ImageAsset {
     static let WITCH_LEFT = "WITCH-LEFT"
     static let ONBOARDING4_WITCHIE = "ONBOARDING4-WITCHIE"
     static let ONBOARDING5_WITCHIE = "ONBOARDING5-WITCHIE"
+    static let WITCH_PATCH_CARD = "IMAGE-PATCH1"
     
     //MARK: OPAQUE IMAGES
     static let CAULDRON_FULL_OPAQUE = "OPAQUE-FULL"

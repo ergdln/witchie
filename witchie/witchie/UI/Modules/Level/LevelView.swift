@@ -63,14 +63,16 @@ struct LevelView: View{
     
     init(patch: Int, levelNumber: Int, showOnboarding: Bool = false) {
         self.patch = patch
+        
         self._levelNumber = State(initialValue: levelNumber)
         self._levelModel = State(initialValue: LevelModel.getLevels(chapter: patch))
         self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 15, maximum: 150), spacing: 0), count: LevelModel.getLevels(chapter: patch)[levelNumber].levelOffset))
         self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: spot, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap))
         self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
         self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
+        self._witchImage = State(initialValue: ImageAsset.WITCH_LEFT)
         self._showOnboarding = State(initialValue: showOnboarding)
-        self._witchImage = State(initialValue: ImageAsset.WITCHIE_GARDEN_LEFT)
+        
         
     }
     
@@ -130,12 +132,13 @@ struct LevelView: View{
                         ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
                             Group{
                                 if levelModel[levelNumber].levelMap[num] == wall{
-                                    Image(ImageAsset.GARDEN_BRICK)
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_BRICK, ImageAsset.GARDEN_BRICK]))
                                         .resizable()
                                         .scaledToFill()
+                                        
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == grass{
-                                    Image(ImageAsset.TILE_GARDEN)
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_GRASS, ImageAsset.TILE_GARDEN]))
                                         .resizable()
                                         .scaledToFill()
                                 }
@@ -150,18 +153,18 @@ struct LevelView: View{
                                         .scaledToFill()
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == spot{
-                                    Image(ImageAsset.TILE_MAGICAL_SOIL)
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_SPOT, ImageAsset.TILE_MAGICAL_SOIL]))
                                         .resizable()
                                         .scaledToFill()
                                 }
                                 //this only happens when a cauldron is in the mark place
                                 else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
-                                    Image(ImageAsset.TILE_BLOSSOMED)
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
                                         .resizable()
                                         .scaledToFill()
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == box{
-                                    Image(ImageAsset.TILE_EMPTY_PLANT)
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_EMPTY_CAULDRON, ImageAsset.TILE_EMPTY_PLANT]))
                                         .resizable()
                                         .scaledToFill()
                                 }
@@ -201,7 +204,7 @@ struct LevelView: View{
                                     .padding(.leading, safeDimensionManager.dimensions.width * 0.11)
                                     .padding(.bottom, safeDimensionManager.dimensions.height * 0.2)
                                 
-                                Text("Essa é a parede móvel, você pode usá-la para se movimentar. Arraste para baixo para experimentar!")
+                                Text(ContentComponent.ANIMATION_TEXT)
                                     .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                     .font(.custom(ContentComponent.BOREL_REGULAR, size: 18))
                                     .padding(.top, 15)
@@ -295,6 +298,8 @@ struct LevelView: View{
         }
         .onAppear(){
             Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1)"])
+            witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
+            
         }
         //Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevel: levelNumber])
         .onReceive(timer) { _ in
@@ -320,10 +325,10 @@ struct LevelView: View{
                         }else if direction == .up{
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }else if direction == .left{
-                            witchImage = ImageAsset.WITCHIE_GARDEN_LEFT
+                            witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
                             defineMoviment(actualPosition: levelActualPosition, offset: -1)
                         }else if direction == .right{
-                            witchImage = ImageAsset.WITCHIE_GARDEN_RIGHT
+                            witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_RIGHT, ImageAsset.WITCHIE_GARDEN_RIGHT])
                             if patch == 2 && levelNumber == 0 && showOnboarding{
                                 showOnboarding2 = true
                             }
