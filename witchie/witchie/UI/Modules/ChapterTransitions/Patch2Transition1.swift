@@ -29,23 +29,20 @@ struct Patch2Transition1: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: safeDimensionManager.dimensions.height * 0.15, height: safeDimensionManager.dimensions.height * 0.15)
                         }
-                        
                         HStack (alignment: .bottom) {
-                            
                             Image(ImageAsset.WITCH_START)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: safeDimensionManager.dimensions.height * 0.3, height: safeDimensionManager.dimensions.height * 0.3)
                                 .rotationEffect(.degrees(13.5))
                         }
-                        
                     }
                 }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
             //MARK: CAIXA DE TEXTO
-            VStack(spacing: 0){
-                Spacer()
+            VStack(){
+                Group{
                     Text(ContentComponent.TEXT_ONBOARDING1)
                         .padding(safeDimensionManager.dimensions.height * 0.04)
                         .background(
@@ -56,8 +53,7 @@ struct Patch2Transition1: View {
                         .multilineTextAlignment(.center)
                         .font(.custom(ContentComponent.BOREL_REGULAR, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT))
                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
-                Spacer()
-                Spacer()
+                }.padding(.top, safeDimensionManager.dimensions.height * 0.15)
                 Spacer()
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
