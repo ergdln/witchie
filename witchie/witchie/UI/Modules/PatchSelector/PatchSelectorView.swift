@@ -11,6 +11,9 @@ struct PatchSelectorView: View {
     @ObservedObject var viewModel = PatchSelectorViewModel()
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @Environment(\.dismiss) private var dismiss
+    
+    let lockColor1 = Color(red: 54/255, green: 54/255, blue: 54/255)
+    let lockColor2 = Color(red: 82/255, green: 82/255, blue: 82/255)
 
     var body: some View {
         ZStack {
@@ -29,35 +32,28 @@ struct PatchSelectorView: View {
                 }
                 .padding([.horizontal,.top], 32.0)
                 
-                Spacer()
-                
-                
                 Text(ContentComponent.CHAPTER).font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                     .padding(.top, 20)
                 
-                Spacer()
-                
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: Array(repeating: GridItem(.flexible(minimum: viewModel.getScreenSize().card.height * 1.1, maximum: 2000), spacing: 0), count: 1), spacing: 30){
+                    LazyHGrid(rows: Array(repeating: GridItem(.flexible(minimum: viewModel.screenSize.card.height * 1.1, maximum: 2000), spacing: 0), count: 1), spacing: 30){
                         ForEach(Array(1..<UserSettings.records.count + 1), id: \.self) { patch in
                             NavigationLink(destination: UserSettings.records[patch]![0] == 0 ? AnyView(OnboardingView()) : AnyView(LevelSelectorView(patch: patch))) {
-                                PatchCard(gradientColor1: viewModel.cardInformations[patch - 1].colors.color1,
-                                          gradientColor2: viewModel.cardInformations[patch - 1].colors.color2,
+                                PatchCard(gradientColor1: viewModel.shouldDisable(patch: patch) ? lockColor1 : viewModel.cardInformations[patch - 1].colors.color1,
+                                          gradientColor2: viewModel.shouldDisable(patch: patch) ? lockColor2 : viewModel.cardInformations[patch - 1].colors.color2,
                                           bgColor: viewModel.cardInformations[patch - 1].colors.bgColor,
                                           name: viewModel.cardInformations[patch - 1].name,
                                           stars: viewModel.getStars(patch: patch),
-                                          image: viewModel.cardInformations[patch - 1].image,
-                                          patch: patch)
-                                    .opacity(viewModel.shouldDisable(patch: patch) ? 0.5 : 1)
+                                          image: viewModel.shouldDisable(patch: patch) ? viewModel.cardInformations[patch - 1].lockedImage : viewModel.cardInformations[patch - 1].image,
+                                          patch: patch,
+                                          disable: viewModel.shouldDisable(patch: patch))
                             }.disabled(viewModel.shouldDisable(patch: patch))
                         }
                     }
                     .padding(.horizontal)
                 }
-                Spacer()
             }
-            .frame(width: viewModel.safeDimensionManager.dimensions.width, height: viewModel.safeDimensionManager.dimensions.height)
             .navigationBarBackButtonHidden()
         }
         .onAppear{

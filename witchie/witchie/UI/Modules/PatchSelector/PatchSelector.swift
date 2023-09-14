@@ -19,4 +19,5 @@ struct PatchInformations{
     var name: String
     var colors: Colors
     var image: Image
+    var lockedImage: Image
 }
