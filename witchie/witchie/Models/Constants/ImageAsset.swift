@@ -11,6 +11,7 @@ struct ImageAsset {
     
     //MARK: BACKGROUNDS
     static let BACKGROUND = "LEVEL_BACKGROUND"
+    static let BACKGROUND2 = "LEVEL_BACKGROUND2"
     
     //MARK: OTHERS
     static let BUBBLE = "BUBBLE"
@@ -81,5 +82,6 @@ struct ImageAsset {
     static let STAR_YELLOW = "STAR-YELLOW"
     static let VASE_EMPTY = "VASE-EMPTY"
     static let VASE_FULL = "VASE-FULL"
+    static let BUSH_BACKGROUND = "BUSH-BACKGROUND"
     
 }

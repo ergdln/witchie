@@ -16,7 +16,7 @@ final class PatchSelectorViewModel: ObservableObject {
     @ObservedObject var safeDimensionManager = DimensionManager.shared
     
     @Published var cardInformations = [
-        PatchInformations(name: ContentComponent.LAIR, colors: PatchInformations.Colors(
+        PatchInformations(name: ContentComponent.DEN, colors: PatchInformations.Colors(
             color1: Color(red: 23/255, green: 10/255, blue: 44/255),
             color2: Color(red: 60/255, green: 20/255, blue: 111/255),
             bgColor: Color(red: 41/255, green: 27/255, blue: 83/255)), image: Image(ImageAsset.WITCH_PATCH_CARD)
