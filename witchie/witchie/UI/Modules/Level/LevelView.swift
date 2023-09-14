@@ -260,7 +260,7 @@ struct LevelView: View{
                             }
                             //.border(.green)
                             Spacer()
-                            if (levelNumber < LevelModel.getLevels(chapter: 1).count - 1) {
+                            if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1) {
                                 Button{
                                     refreshGame()
                                     levelNumber += 1
@@ -275,12 +275,12 @@ struct LevelView: View{
                             }
                             }
                             else {
-                                NavigationLink(destination: StartGameView()) {
+                                NavigationLink(destination: PatchSelectorView()) {
                                     Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
-                                }                        .simultaneousGesture(TapGesture().onEnded({
+                                }       .simultaneousGesture(TapGesture().onEnded({
                                     UserSettings.isNotFirstTime = true
                                 }))
                             }
