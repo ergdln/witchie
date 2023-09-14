@@ -49,7 +49,7 @@ struct ContentComponent {
     static let BACK_SYSTEM = Image(systemName: "chevron.backward")
     static let JUMP = String(localized: "jump")
     static let CHAPTER = String(localized: "chapters")
-    static let LAIR = String(localized: "lair")
+    static let DEN = String(localized: "den")
     static let GARDEN = String(localized: "garden")
     
     //MARK: CHAPTER 1

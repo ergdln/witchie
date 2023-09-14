@@ -82,10 +82,14 @@ struct LevelView: View{
     var body: some View{
         ZStack{
             if true {//safeDimensionManager.orientation == .portrait{
-                Image(ImageAsset.BACKGROUND)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
+                if patch == 1 {
+                    Image(ImageAsset.BACKGROUND)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
+                } else {
+                    GardenBackground()
+                }
                 VStack(alignment: .center, spacing: 10) {
                     HStack(alignment: .center) {
                         if UserSettings.isNotFirstTime{
