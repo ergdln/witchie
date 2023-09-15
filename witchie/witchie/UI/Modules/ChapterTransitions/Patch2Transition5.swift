@@ -7,31 +7,37 @@
 
 import SwiftUI
 
-struct Patch2Transition1: View {
-    var funcToDo: () -> ()
+struct Patch2Transition5: View {
+    //var funcToDo: () -> ()
     @StateObject var safeDimensionManager = DimensionManager.shared
     var body: some View {
         ZStack{
-            //MARK: ILUSTRATIONS
+            //MARK: BRUXINHA, TEXTO, OBJETOS
             ZStack{
                 VStack{
                     Spacer()
-                    HStack{
-                        Image(ImageAsset.Transition2_Asset1)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: safeDimensionManager.dimensions.width * 0.9, height: safeDimensionManager.dimensions.width * 0.9)
+                    ZStack{
+
+                        
+                        
+                        //ilustraçoes aqui
+                        
+                        
+                        
+                        
+                        
+                        
                     }
                 }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-            //MARK: TEXT BOX
+            //MARK: CAIXA DE TEXTO
             VStack(){
-                ChapterTransitionTextBox(TransitionText: ContentComponent.CHAPTER2_ENTRY_TEXT1)
+                ChapterTransitionTextBox(TransitionText: ContentComponent.CHAPTER2_ENTRY_TEXT5)
                 Spacer()
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-            //MARK: BUTTONS
+            //MARK: BOTÕES
             HStack{
                 Spacer()
                 VStack(spacing: 0){
@@ -45,7 +51,7 @@ struct Patch2Transition1: View {
                         .frame(height: safeDimensionManager.dimensions.height * 0.75)
                     
                     NextButton(color: ColorAsset.MAIN_WHITE) {
-                        funcToDo()
+                       // funcToDo()
                     }
                     .padding(.bottom, safeDimensionManager.dimensions.height * 0.06)
                     .padding(.trailing, safeDimensionManager.dimensions.width * 0.1)
@@ -58,7 +64,7 @@ struct Patch2Transition1: View {
     }
 }
 
-struct Patch2Transition1_Previews: PreviewProvider {
+struct Patch2Transition5_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }

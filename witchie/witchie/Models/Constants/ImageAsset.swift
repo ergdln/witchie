@@ -67,6 +67,10 @@ struct ImageAsset {
     static let TILE_CRATE = "CRATE"
     static let TILE_HOLE = "TILE_HOLE"
     
+    //MARK: TRANSITION CHAPTER 2
+    static let Transition2_Asset1 = "TRANSITION2ASSET1"
+    static let Transition2_Asset2 = "TRANSITION1ASSET2"
+    
     //MARK: CHAPTER 2
     static let GARDEN_BRICK = "GARDEN-BRICK"
     static let TILE_GARDEN = "TILE-GARDEN"

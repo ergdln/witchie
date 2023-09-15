@@ -7,31 +7,31 @@
 
 import SwiftUI
 
-struct Patch2Transition1: View {
+struct Patch2Transition2: View {
     var funcToDo: () -> ()
     @StateObject var safeDimensionManager = DimensionManager.shared
     var body: some View {
         ZStack{
-            //MARK: ILUSTRATIONS
+            //MARK: BRUXINHA, TEXTO, OBJETOS
             ZStack{
                 VStack{
                     Spacer()
                     HStack{
-                        Image(ImageAsset.Transition2_Asset1)
+                        Image(ImageAsset.Transition2_Asset2)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: safeDimensionManager.dimensions.width * 0.9, height: safeDimensionManager.dimensions.width * 0.9)
+                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width)
                     }
                 }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-            //MARK: TEXT BOX
+            //MARK: CAIXA DE TEXTO
             VStack(){
-                ChapterTransitionTextBox(TransitionText: ContentComponent.CHAPTER2_ENTRY_TEXT1)
+                ChapterTransitionTextBox(TransitionText: ContentComponent.CHAPTER2_ENTRY_TEXT2)
                 Spacer()
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-            //MARK: BUTTONS
+            //MARK: BOTÕES
             HStack{
                 Spacer()
                 VStack(spacing: 0){
@@ -58,7 +58,7 @@ struct Patch2Transition1: View {
     }
 }
 
-struct Patch2Transition1_Previews: PreviewProvider {
+struct Patch2Transition2_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
