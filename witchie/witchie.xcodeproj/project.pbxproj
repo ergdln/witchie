@@ -48,6 +48,7 @@
 		C06C38E62A8C03EC00A2C02E /* Onboarding4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06C38E52A8C03EC00A2C02E /* Onboarding4.swift */; };
 		C06C38E82A8C048D00A2C02E /* Onboarding5.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06C38E72A8C048D00A2C02E /* Onboarding5.swift */; };
 		C07EA7ED2AB399EE0041B21F /* GardenBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EA7EC2AB399EE0041B21F /* GardenBackground.swift */; };
+		C07EA7F02AB491080041B21F /* DenBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EA7EF2AB491080041B21F /* DenBackground.swift */; };
 		C092ED762A80235D0052F0AD /* JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED752A80235D0052F0AD /* JumpButton.swift */; };
 		C092ED782A802E980052F0AD /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED772A802E980052F0AD /* NextButton.swift */; };
 		C092ED7A2A815B7C0052F0AD /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C092ED792A815B7C0052F0AD /* OnboardingView.swift */; };
@@ -96,6 +97,7 @@
 		C06C38E52A8C03EC00A2C02E /* Onboarding4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding4.swift; sourceTree = "<group>"; };
 		C06C38E72A8C048D00A2C02E /* Onboarding5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding5.swift; sourceTree = "<group>"; };
 		C07EA7EC2AB399EE0041B21F /* GardenBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenBackground.swift; sourceTree = "<group>"; };
+		C07EA7EF2AB491080041B21F /* DenBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenBackground.swift; sourceTree = "<group>"; };
 		C092ED752A80235D0052F0AD /* JumpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpButton.swift; sourceTree = "<group>"; };
 		C092ED772A802E980052F0AD /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		C092ED792A815B7C0052F0AD /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		47889F1A2A72EF66005EB560 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C07EA7EE2AB490BA0041B21F /* Chapter Backgrounds */,
 				47889F1D2A72F21B005EB560 /* ComponentX.swift */,
 				C0348A382A7431C3001A1EF7 /* SoundToggleComponent.swift */,
 				47B53B852A7DACF200E3DADC /* BackButton.swift */,
@@ -195,7 +198,6 @@
 				C092ED772A802E980052F0AD /* NextButton.swift */,
 				4725D4762A8D49F9002166EE /* AnimatingImage.swift */,
 				5BF016312A8EAAF20012751E /* StepCounter.swift */,
-				C07EA7EC2AB399EE0041B21F /* GardenBackground.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -310,6 +312,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C07EA7EE2AB490BA0041B21F /* Chapter Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				C07EA7EC2AB399EE0041B21F /* GardenBackground.swift */,
+				C07EA7EF2AB491080041B21F /* DenBackground.swift */,
+			);
+			path = "Chapter Backgrounds";
+			sourceTree = "<group>";
+		};
 		C092ED692A801A3B0052F0AD /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +431,7 @@
 				C06C38E62A8C03EC00A2C02E /* Onboarding4.swift in Sources */,
 				C06C155F2A71A5AF00A7FE9E /* StartGameView.swift in Sources */,
 				47333D442A69D380001E478E /* LevelModel.swift in Sources */,
+				C07EA7F02AB491080041B21F /* DenBackground.swift in Sources */,
 				470621882AB0E60B009CE47E /* PatchSelectorViewModel.swift in Sources */,
 				C06C38E22A8BF1CC00A2C02E /* Onboarding2.swift in Sources */,
 				470FB7162AA654EF00F7D26A /* PatchSelectorView.swift in Sources */,
@@ -591,7 +603,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"witchie/Preview Content\"";
-				DEVELOPMENT_TEAM = 275GWT29UT;
+				DEVELOPMENT_TEAM = Y587ZJ8Z8V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = witchie/Info.plist;
@@ -627,7 +639,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"witchie/Preview Content\"";
-				DEVELOPMENT_TEAM = 275GWT29UT;
+				DEVELOPMENT_TEAM = Y587ZJ8Z8V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = witchie/Info.plist;

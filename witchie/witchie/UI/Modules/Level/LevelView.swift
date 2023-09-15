@@ -82,6 +82,7 @@ struct LevelView: View{
     var body: some View{
         ZStack{
             if true {//safeDimensionManager.orientation == .portrait{
+                getPatchBackground(patch: patch, backgrounds: [AnyView(DenBackground()), AnyView( GardenBackground())])
                 if patch == 1 {
                     Image(ImageAsset.BACKGROUND)
                         .resizable()
