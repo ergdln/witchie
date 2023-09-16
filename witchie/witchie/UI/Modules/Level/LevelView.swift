@@ -24,7 +24,7 @@ struct LevelView: View{
     @State var levelStartPosition: Int
     
     //MARK: VARIABLES
-
+    
     @State public var isGameOver = false
     @State public var gestureOffset: CGSize = .zero
     @State public var direction: Direction = .none
@@ -140,7 +140,7 @@ struct LevelView: View{
                                     Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_BRICK, ImageAsset.GARDEN_BRICK]))
                                         .resizable()
                                         .scaledToFill()
-                                        
+                                    
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == grass{
                                     Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_GRASS, ImageAsset.TILE_GARDEN]))
@@ -263,9 +263,36 @@ struct LevelView: View{
                                     .font(.custom(ContentComponent.BOREL_REGULAR, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT * 0.98))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
-                            //.border(.green)
                             Spacer()
-                            if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1) {
+                            if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1 && (levelNumber != 8 && patch != 1)) {
+                                Button{
+                                    refreshGame()
+                                    levelNumber += 1
+                                    refreshGame()
+                                    isGameOver.toggle()
+                                }
+                            label: {
+                                Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                            }
+                            } else if (levelNumber == 8 && patch == 1 && !UserSettings.isNotFirstTime) || levelNumber == 20 {
+                                NavigationLink(destination: PatchSelectorView()) {
+                                    Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                }
+                                .simultaneousGesture(TapGesture().onEnded({
+//                                    if levelNumber == 8 {
+//                                        print("Level Number is \(levelNumber)")
+//                                        levelNumber += 1
+//                                        print("Level Number is \(levelNumber)")
+//                                    }
+                                    UserSettings.isNotFirstTime = true
+                                }))
+                            } else {
                                 Button{
                                     refreshGame()
                                     levelNumber += 1
@@ -279,23 +306,12 @@ struct LevelView: View{
                                     .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
                             }
                             }
-                            else {
-                                NavigationLink(destination: PatchSelectorView()) {
-                                    Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
-                                }       .simultaneousGesture(TapGesture().onEnded({
-                                    UserSettings.isNotFirstTime = true
-                                }))
-                            }
                         }
-                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                     }
+                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                 }
-            }
-            else{
-                 Text("EITA VIROU LANDSCAPE")
+            } else{
+                Text("EITA VIROU LANDSCAPE")
             }
         }
         .onChange(of: levelNumber) { newValue in
