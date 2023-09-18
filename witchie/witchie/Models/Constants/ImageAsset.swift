@@ -73,6 +73,7 @@ struct ImageAsset {
     static let Transition2_Asset3 = "TRANSITION2ASSET3"
     static let Transition2_Asset4 = "TRANSITION2ASSET4"
     static let Transition2_Asset5 = "TRANSITION2ASSET5"
+    static let DIALOGUE_GREENRECTANGLE_PATCH2 = "DIALOGUE_GREENRECTANGLE_PATCH2"
     
     //MARK: CHAPTER 2
     static let GARDEN_BRICK = "GARDEN-BRICK"

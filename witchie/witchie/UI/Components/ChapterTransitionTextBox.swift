@@ -10,12 +10,13 @@ import SwiftUI
 struct ChapterTransitionTextBox: View {
     @StateObject var safeDimensionManager = DimensionManager.shared
     var TransitionText: String
+    var textBoxBackgroundImage: String
     var body: some View {
         Group{
             Text(TransitionText)
                 .padding(safeDimensionManager.dimensions.height * 0.04)
                 .background(
-                    Image(ImageAsset.DIALOGUE_123)
+                    Image(textBoxBackgroundImage)
                         .resizable()
                         .scaledToFill())
                .frame(width: (safeDimensionManager.dimensions.height * 0.38)/0.94, height: safeDimensionManager.dimensions.height * 0.38)
@@ -29,6 +30,6 @@ struct ChapterTransitionTextBox: View {
 
 struct TransitionTextBoxView_Previews: PreviewProvider {
     static var previews: some View {
-        ChapterTransitionTextBox(TransitionText: "eae")
+        ChapterTransitionTextBox(TransitionText: "", textBoxBackgroundImage: "")
     }
 }
