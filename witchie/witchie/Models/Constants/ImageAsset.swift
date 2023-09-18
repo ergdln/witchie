@@ -9,10 +9,11 @@ import Foundation
 
 struct ImageAsset {
     
-    // BACKGROUNDS
+    //MARK: BACKGROUNDS
     static let BACKGROUND = "LEVEL_BACKGROUND"
+    static let BACKGROUND2 = "LEVEL_BACKGROUND2"
     
-    // OUTROS
+    //MARK: OTHERS
     static let BUBBLE = "BUBBLE"
     static let CAULDRON_FULL = "CAULDRON-FULL"
     static let CAULDRON_EMPTY = "CAULDRON-EMPTY"
@@ -38,11 +39,12 @@ struct ImageAsset {
     static let PLAY_WITCHIE = "PLAY-WITCHIE"
     static let SMOKE = "SMOKE"
     static let BOTAO_COMECAR = "BOTAO-COMECAR"
+    static let BEGIN_BUTTON_BACKGROUND = "BEGIN_BUTTON_BACKGROUND"
     static let CAULDRON_ONBOARDING = "CAULDRON-ONBOARDING"
     static let CAULDRON_ONBOARDING_BIG = "CAULDRON-ONBOARDING-BIG"
     static let BEST_RECORD = "BEST-RECORD"
     
-    // IMAGENS SEM BACKGROUND
+    //MARK: IMAGES WITHOUT BACKGROUND
     static let SPOT_CLEAN = "SPOT-CLEAN"
     static let WITCH_START = "WITCH-START"
     static let WITCHIE_HALF = "WITCHIE-HALF"
@@ -50,12 +52,15 @@ struct ImageAsset {
     static let WITCH_LEFT = "WITCH-LEFT"
     static let ONBOARDING4_WITCHIE = "ONBOARDING4-WITCHIE"
     static let ONBOARDING5_WITCHIE = "ONBOARDING5-WITCHIE"
+    static let WITCH_PATCH_CARD = "IMAGE-PATCH1"
+    static let VASE_PATCH_CARD = "IMAGE-PATCH2"
+    static let VASE_LOCKED = "VASE-LOCKED"
     
-    // IMAGENS OPACAS
+    //MARK: OPAQUE IMAGES
     static let CAULDRON_FULL_OPAQUE = "OPAQUE-FULL"
     static let CAULDRON_EMPTY_OPAQUE = "OPAQUE-EMPTY"
     
-    // GAME TILES
+    //MARK: CHAPTER 1 GAME TILES
     static let TILE_BRICK = "BRICK"
     static let TILE_GRASS = "GRASS"
     static let TILE_CAULDRON = "CAULDRON-WITH-BACKGROUND"
@@ -65,4 +70,20 @@ struct ImageAsset {
     static let TILE_WITCH_RIGHT = "WITCH-RIGHT-WITH-BACKGROUND"
     static let TILE_CRATE = "CRATE"
     static let TILE_HOLE = "TILE_HOLE"
+    
+    //MARK: CHAPTER 2
+    static let GARDEN_BRICK = "GARDEN-BRICK"
+    static let TILE_GARDEN = "TILE-GARDEN"
+    static let TILE_BUSH = "TILE-BUSH"
+    static let TILE_MAGICAL_SOIL = "TILE-MAGICAL-SOIL"
+    static let TILE_BLOSSOMED = "TILE-BLOSSOMED-PLANT"
+    static let TILE_EMPTY_PLANT = "TILE-EMPTY-PLANT"
+    static let WITCHIE_GARDEN_LEFT = "WITCHIE2-LEFT-WITH-BACKGROUND"
+    static let WITCHIE_GARDEN_RIGHT = "WITCHIE2-RIGHT-WITH-BACKGROUND"
+    static let STAR_GREEN = "STAR-GREEN"
+    static let STAR_YELLOW = "STAR-YELLOW"
+    static let VASE_EMPTY = "VASE-EMPTY"
+    static let VASE_FULL = "VASE-FULL"
+    static let BUSH_BACKGROUND = "BUSH-BACKGROUND"
+    
 }

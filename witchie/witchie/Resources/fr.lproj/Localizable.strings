@@ -1,0 +1,145 @@
+/* 
+  Localizable.strings
+  witchie
+
+  Created by Guilherme Souza on 28/08/23.
+  
+*/
+
+//START GAME VIEW
+"begin_game" = "Démarrer";
+"about_us" = "À propos";
+
+//ABOUT US VIEW
+//Jogo vencedor do Swift Student Challenge 2023 🥇
+"wwdc2023_winner" = "Jeu gagnant du Swift Student Challenge 2023 🥇";
+"creator" = "Créateur";
+"game_designer" = "Game Designer";
+"designer" = "Designer";
+"dev" = "Dév";
+
+//OTHERS
+"level" = "Niveau";
+"levels" = "Niveaux";
+"back" = "retour";
+"jump" = "sauter";
+"chapters" = "chapitres";
+"den" = "Tanière";
+"garden" = "Jardin";
+
+//MARK: EPISODE 1
+//ONBOARDING TEXTS CHAPTER 1
+//Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
+"text_onboarding1" = "Hé, toi, soyons directs car je n'ai pas le temps pour les bavardages.\n\n Je suis Witchie";
+//Alguém encheu meu covil de feitiços irritantes e eles estão sabotando a Vassorilda.
+"text_onboarding2" = "Quelqu'un a rempli mon antre de sorts agaçants et ils sabotent Vassorilda.";
+//Felizmente, sou muito esperta e sei como resolver: basta colocar meus caldeirões em cima das marcas mágicas para neutralizá-las.
+"text_onboarding3" = "Heureusement, je suis très astucieuse et je sais comment résoudre ça : il suffit de placer mes chaudrons sur les marques magiques pour les neutraliser.";
+//O problema é que, com a\n Vassorilda sabotada, eu\n não consigo me mover\ndireito, por isso preciso da\n sua ajuda.
+"text_onboarding4" = "Le problème, c'est qu'avec Vassorilda sabotée, je ne peux pas me déplacer correctement, donc j'ai besoin de ton aide.";
+//Eaí, pronto para o desafio?
+"text_onboarding5" = "Alors, es-tu prêt pour le défi?";
+
+//BETWEEN LEVELS CHAPTER 1
+//Caramba, olha como você foi rápido! Tenho certeza que, se continuar assim, a Vassorilda volta ao normal rapidinho. Vamo pra próxima sala?
+"level_dialogue_1" = "Wow, regarde comme tu as été rapide! Je suis sûr que si tu continues comme ça, Vassorilda reviendra à la normale en un rien de temps. On passe à la prochaine salle?";
+//Subindo e descendo a escadinha... Acho que encontrar os padrões é a chave!
+"level_dialogue_2" = "En montant et descendant l'escalier... Je pense que la clé est de trouver les motifs !";
+//É… Não foi tão direto quanto antes, mas até que você não foi mal.
+"level_dialogue_3" = "Eh bien... Ce n'était pas aussi simple que précédemment, mais tu t'en es pas trop mal sorti.";
+//Viu que era só parar e pensar ao invés de empurrar tudo de uma vez? A pressa é inimiga da perfeição!
+"level_dialogue_4" = "Vois-tu, tout ce que tu avais à faire était de t'arrêter et de réfléchir au lieu de tout pousser en même temps! La hâte est mauvaise conseillère, tu sais!";
+//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_5" = "Ça semblait évident, n'est-ce pas? Eh bien, voilà la leçon à ne jamais faire confiance à personne!!!";
+//Parecia óbvio, né? Pois tá aí a lição de nunca confiar em ninguém!!!
+"level_dialogue_6" = "Il semble que tu aies encore oublié de t'arrêter et de réfléchir, hein? Et c'était même symétrique pour rendre les choses plus faciles.";
+//Eita como demora pra ouvir minhas dicas...
+"level_dialogue_7" = "Wow, tu prends vraiment ton temps pour écouter mes indices...";
+//Olha, não vem jogar a culpa em mim não, viu! Minha filha que insistiu pra eu chamar o namorado arquiteto dela, porque ele tinha umas ideias “modernas” para as minhas salas… Qual o problema da velha e clássica teia de aranha?!?!
+"level_dialogue_8" = "Écoute, ne me rejette pas la faute, d'accord? C'était ma fille qui insistait pour que j'appelle son petit ami arcitecte parce qu'il avait des idées 'modernes' pour mes pièces... Qu'est-ce qui ne va pas avec la vieille et classique toile d'araignée, hein?!";
+//Né que você finalmente conseguiu sair desse quarto? Parece que a Vassorilda tá começando a voltar ao normal, acho que agora podemos dar uma respirada no jardim!
+"level_dialogue_9" = "N'est-ce pas que tu as enfin réussi à sortir de cette pièce ? Il semble que Vassorilda commence à revenir à la normale, je pense que nous pouvons maintenant prendre une pause dans le jardin !";
+//Esse padrão foi interessante, acho que vale a pena memorizar...
+"level_dialogue_10" = "Ce motif était assez intéressant, je pense que tu devrais le surveiller...";
+//Tô começando a achar que botaram esses círculos em lugares complicadinhos de propósito...
+"level_dialogue_11" = "Je commence à penser qu'ils ont intentionnellement placé ces cercles dans des endroits compliqués...";
+//Meus parabéns, viu? Essa aí era um divisor de águas. Se chegasse até aqui, talvez tenha algum futuro nesse trabalho…
+"level_dialogue_12" = "Tu sais quoi... Félicitations! Celui-ci a tout changé. Si tu es arrivé jusque-là, peut-être as-tu un avenir dans ce domaine...";
+//Eu nem sabia que eu tinha tanto caldeirão assim, acho que vou fazer um bazar.
+"level_dialogue_13" = "Je ne savais même pas que j'avais autant de chaudrons, je pense que je vais faire une vente de garage.";
+//Eita quanta correria pra lá e pra cá, chega tô tontinha!
+"level_dialogue_14" = "Wow, tellement de va-et-vient, je suis même un peu étourdi(e)!";
+//É… você até tá ficando bom nisso, duas estrelas são melhores que uma.
+"level_dialogue_15" = "Eh bien... tu es en train de devenir bon à cela, deux étoiles valent mieux qu'une.";
+//Ok, essa foi um respiro de tranquilidade depois desses últimas salas tão intensas.
+"level_dialogue_16" = "D'accord, celui-ci a été un souffle d'air frais après tant de salles intenses.";
+//Falei cedo demais.
+"level_dialogue_17" = "J'ai parlé trop vite...";
+//Como é que cabe tanto caldeirão numa sala só?????
+"level_dialogue_18" = "Comment diable ont-ils réussi à caser autant de chaudrons dans une seule pièce????";
+//Esses círculos não acabam nunca? Minhas costas não aguentam mais.
+"level_dialogue_19" = "Ces cercles magiques n'en finissent-ils jamais ? Mon dos n'en peut plus.";
+//Nessa daqui eu não vou nem te culpar pela demora. Inclusive, se precisar de um psicólogo tenho indicações.
+"level_dialogue_20" = "Je ne vais même pas te blâmer pour le retard sur celui-ci. En fait, si tu as besoin d'un psychologue, j'ai des recommandations.";
+//Eu não dava nada por você mas fui surpreendido, talvez você seja o melhor ajudante que eu já tive.
+"level_dialogue_21" = "Je n'attendais pas grand-chose de toi, mais j'ai été surpris. Peut-être es-tu le meilleur assistant que j'aie jamais eu.";
+
+//MARK: EPISODE 2
+//BETWEEN EPISODES TEXTS CHAPTER 2
+//Ufa, depois de tantas salas arrumadas, é hora de dar uma pausa. Meu ciático não aguenta mais!
+"chapter2_entry_text1" = "Ouf, après avoir rangé tant de pièces, il est temps de faire une pause. Mon sciatique ne supporte plus!";
+//Vamos para o meu jardim! O ar lá é muito fresco e você vai amar conhecer minhas plantinhas, a minha filha preferida é a Gertrudes!
+"chapter2_entry_text2" = "Allons dans mon jardin! L'air y est très frais, et tu vas adorer rencontrer mes petites plantes. Ma fille préférée est Gertrudes!";
+//Pera.. O que aconteceu aqui? Todos os meu vasos estão vazios e espalhados por aı... GERTRUDES, NÃAAAAAAO
+"chapter2_entry_text3" = "Attends... Qu'est-ce qui s'est passé ici? Tous mes pots sont vides et éparpillés... GERTRUDES, NOOOOOOOON!";
+//MALDITOS! Precisamos cuidar disso agora, ninguém mexe com meus nenens!
+"chapter2_entry_text4" = "MAUDITS! Nous devons nous occuper de ça maintenant, personne ne touche à mes petits!";
+//Temos que colocar os vasos na terra mágica para as plantas voltarem ao normal! Não se preocupe, podemos usar os arbustos para nos movermos melhor.
+"chapter2_entry_text5" = "Nous devons mettre les pots dans la terre magique pour que les plantes retrouvent leur état normal ! Ne t'inquiète pas, nous pouvons utiliser les buissons pour nous déplacer plus facilement.";
+
+//ANIMATION TEXT
+"animation_text" = "Ceci est un buisson mobile, vous pouvez l'utiliser pour vous déplacer. Faites glisser vers le bas pour essayer!";
+
+//BETWEEN LEVELS CHAPTER 2
+//Entendeu como funcionam os arbustos? Assim com você, eles não servem só para decoração.
+"chapter2_level_dialogue_1" = "Tu as compris comment fonctionnent les buissons? Tout comme toi, ils ne sont pas là que pour la décoration.";
+//Ok, talvez eu tenha exagerado na quantidade de arbustos. Cuidado pra não se perder por aí.
+"chapter2_level_dialogue_2" = "D'accord, peut-être que j'ai exagéré avec le nombre de buissons. Fais attention de ne pas te perdre là-bas.";
+//O cenário mudou, mas algumas coisas nunca mudam. Nem todas as jogadas são tão diretas ao ponto assim, lembre de pensar um pouco mais.
+"chapter2_level_dialogue_3" = "Le paysage a changé, mais certaines choses ne changent jamais. Tous les mouvements ne sont pas aussi simples qu'ils en ont l'air; rappelle-toi de réfléchir un peu plus.";
+//Esqueceu de tudo que aprendeu lá em casa, né? Fique atento que aqui vai precisar também!
+"chapter2_level_dialogue_4" = "Tu as oublié tout ce que tu as appris chez toi, hein? Reste vigilant, tu en auras besoin ici aussi!";
+//Essa planta é o equivalente à um peixe beta, ela não tolera outras plantas, por isso ela está solitária.
+"chapter2_level_dialogue_5" = "Cette plante est l'équivalent d'un poisson combattant; elle ne tolère pas d'autres plantes, elle est donc assez solitaire.";
+//Toma cuidado na hora de empurrar os arbustos, às vezes atrapalha mais do que ajuda.
+"chapter2_level_dialogue_6" = "Fais attention lorsque tu pousses les buissons; parfois, cela gêne plus que cela n'aide.";
+//Você começou bem, mas agora tá desacelerando. Seria uma metáfora da vida?
+"chapter2_level_dialogue_7" = "Tu as bien commencé, mais maintenant tu ralentis. Est-ce une métaphore de la vie?";
+//Minhas plantas estavam ansiosas pra te conhecer, mas aparentemente sua performance no capítulo anterior nos deu falsas esperanças. Uma pena.
+"chapter2_level_dialogue_8" = "Mes plantes étaient impatientes de te rencontrer, mais apparemment ta performance dans le chapitre précédent nous a donné de faux espoirs. Quel dommage.";
+//Um jardim dentro de um jardim, talvez eu tenha me inspirado em um filme famoso... Sabe qual é ou você só é mais um sem cultura?
+"chapter2_level_dialogue_9" = "Un jardin dans un jardin, peut-être ai-je été inspiré par un film célèbre... Tu sais lequel, ou es-tu juste une âme inculte de plus?";
+//Começou cercado, né? Se acostuma que a vida é assim!
+"chapter2_level_dialogue_10" = "Tu as commencé entouré, n'est-ce pas? Habitue-toi à ça; la vie est ainsi.";
+//Se tu só ficar empurrando sem pensar, nunca vai conseguir passar logo das fases...
+"chapter2_level_dialogue_11" = "Si tu continues à pousser sans réfléchir, tu ne passeras jamais rapidement les niveaux...";
+//Empurra pra um lado, empurra pro outro... nada de novo sob o sol!
+"chapter2_level_dialogue_12" = "Pousse d'un côté, pousse de l'autre... rien de nouveau sous le soleil!";
+//Meus jardins são cheios de belos corredores, olha que sorte a sua ter a honra de trabalhar neles!
+"chapter2_level_dialogue_13" = "Mes jardins sont remplis de magnifiques corridors, tu as de la chance d'avoir l'honneur de travailler dedans!";
+//Assim como nós bruxas, as melhores plantas florescem sob pressão.
+"chapter2_level_dialogue_14" = "Tout comme nous les sorcières, les meilleures plantes fleurissent sous pression.";
+//Esse é um dos meus jardins favoritos. Ele é grande e majestososo, bem diferente de certas pessoas...
+"chapter2_level_dialogue_15" = "C'est l'un de mes jardins préférés. Il est grand et majestueux, tout à fait contrairement à certaines personnes...";
+//Eu fiz esse jardim em homenagem à um jogo que eu adorava na infância. Saudade de ser criança, não existiam boletos pra pagar...
+"chapter2_level_dialogue_16" = "J'ai créé ce jardin en hommage à un jeu que j'aimais dans mon enfance. Tu me manques d'être enfant; il n'y avait pas de factures à payer...";
+//As plantas estão brotando como se fossem feijões mágicos! Talvez você também possa aprender uma coisa ou duas com elas.
+"chapter2_level_dialogue_17" = "Les plantes poussent comme des haricots magiques! Peut-être que tu peux aussi en apprendre une ou deux choses d'elles.";
+//Notei que você está empurrando esses arbustos como se eles fossem seus sonhos: com força, mas sem esperança.
+"chapter2_level_dialogue_18" = "J'ai remarqué que tu pousses ces buissons comme s'ils étaient tes rêves: avec force, mais sans espoir.";
+//Até as abóboras se transformam em carruagens com mais facilidade do que você coloca as plantas no lugar.
+"chapter2_level_dialogue_19" = "Même les citrouilles se transforment plus facilement en carrosses que tu ne mets en place les plantes.";
+//FINALMENTE ENCONTRAMOS A GERTRUDES!!! Tive que fazer um jardim especial para minha plantinha especial.
+"chapter2_level_dialogue_20" = "NOUS AVONS ENFIN TROUVÉ GERTRUDE!!! J'ai dû créer un jardin spécial pour ma petite plante spéciale.";
+//Finalmente o jardim está florido novamente, e a Gertrudes está mais linda do que nunca! E conseguimos terminar logo antes da época mais especial do ano...
+"chapter2_level_dialogue_21" = "Le jardin est enfin en fleurs à nouveau, et Gertrude est plus belle que jamais! Et nous avons réussi à terminer juste à temps pour le moment le plus spécial de l'année...";

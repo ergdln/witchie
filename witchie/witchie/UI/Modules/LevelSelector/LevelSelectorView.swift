@@ -17,11 +17,24 @@ struct LevelSelectorView: View {
     
     init(patch: Int) {
         self.patch = patch
-        self._isCompleted  = State(initialValue: LevelCompleted.isCompleted[patch]!)
+        if self.patch == 1{
+            self._isCompleted  = State(initialValue: LevelCompleted.isCompleted[1]!)
+        }else{
+            var arrayBool: [Bool] = []
+            for i in UserSettings.records[patch]!{
+                if i == 0{
+                    arrayBool.append(false)
+                }else{
+                    arrayBool.append(true)
+                }
+            }
+            self._isCompleted  = State(initialValue: arrayBool)
+        }
+        
     }
     
     
-    var safeDimensionManager = DimensionManager.shared
+    @StateObject var safeDimensionManager = DimensionManager.shared
 
     var body: some View {
         ZStack {
@@ -29,14 +42,14 @@ struct LevelSelectorView: View {
                 .ignoresSafeArea()
             VStack (spacing: 0) {
                 HStack (alignment: .center) {
-                    BackButton(color: ColorAsset.MAIN_PURPLE) {
+                    BackButton(color: ColorAsset.MAIN_PURPLE, backStyle: ContentComponent.CHAPTER) {
                         dismiss()
                     }
                     Spacer()
                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_PURPLE)
                 }
                 .padding([.horizontal,.top], 32.0)
-                Text("Níveis").font(.custom(ContentComponent.regular, size: 40))
+                Text(ContentComponent.LEVELS).font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                     .padding(.top, 20)
                 ScrollView {
@@ -45,13 +58,13 @@ struct LevelSelectorView: View {
                         ForEach(Array(0..<LevelModel.getLevels(chapter: 1).count), id: \.self) { level in
                             NavigationLink(destination: LevelView(patch: patch, levelNumber: level)) {
                                 VStack(alignment: .center, spacing: 0){
-                                    Text("\(level + 1)").font(.custom(ContentComponent.regular, size: 35))
+                                    Text("\(level + 1)").font(.custom(ContentComponent.BOREL_REGULAR, size: 35))
                                         .padding(.bottom, -30)
                                         .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                                         .opacity(shouldDisable(level: level) ? 0.2 : 1)
                                     if isCompleted[level]{
                                         ZStack{
-                                            Image(ImageAsset.CAULDRON_FULL)
+                                            Image(patch == 1 ? ImageAsset.CAULDRON_FULL : ImageAsset.VASE_FULL)
                                                 .resizable()
                                                 .scaledToFit()
                                                 .scaleEffect(0.8)
@@ -63,19 +76,19 @@ struct LevelSelectorView: View {
                                     }else{
                                         if level != 0{
                                             if isCompleted[level - 1]{
-                                                Image(ImageAsset.CAULDRON_EMPTY)
+                                                Image(patch == 1 ? ImageAsset.CAULDRON_EMPTY : ImageAsset.VASE_EMPTY)
                                                     .resizable()
                                                     .scaledToFit()
                                                     .scaleEffect(0.8)
                                             }else{
-                                                Image(ImageAsset.CAULDRON_EMPTY)
+                                                Image(patch == 1 ? ImageAsset.CAULDRON_EMPTY : ImageAsset.VASE_EMPTY)
                                                     .resizable()
                                                     .scaledToFit()
                                                     .scaleEffect(0.8)
                                                     .opacity(0.2)
                                             }
                                         }else{
-                                            Image(ImageAsset.CAULDRON_EMPTY)
+                                            Image(patch == 1 ? ImageAsset.CAULDRON_EMPTY : ImageAsset.VASE_EMPTY)
                                                 .resizable()
                                                 .scaledToFit()
                                                 .scaleEffect(0.8)
@@ -88,7 +101,19 @@ struct LevelSelectorView: View {
                     }
                     .frame(width: safeDimensionManager.dimensions.width * 0.8)
                     .onAppear{
-                        isCompleted = LevelCompleted.isCompleted[patch]!
+                        if self.patch == 1{
+                            isCompleted  = LevelCompleted.isCompleted[1]!
+                        }else{
+                            var arrayBool: [Bool] = []
+                            for i in UserSettings.records[patch]!{
+                                if i == 0{
+                                    arrayBool.append(false)
+                                }else{
+                                    arrayBool.append(true)
+                                }
+                            }
+                            isCompleted  = arrayBool
+                        }
                     }
                 }.scrollIndicators(.hidden)
             }

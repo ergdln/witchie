@@ -13,7 +13,7 @@ struct JumpButton: View {
     
     var body: some View {
         HStack {
-            Text("pular").font(.custom(ContentComponent.regular, size: 20))
+            Text(ContentComponent.JUMP).font(.custom(ContentComponent.BOREL_REGULAR, size: 20))
                 .underline()
                 .foregroundColor(Color(color))
                 .padding(.bottom, -10)
