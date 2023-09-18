@@ -1,0 +1,106 @@
+//
+//  SwiftUIView.swift
+//  witchie
+//
+//  Created by egln on 15/09/23.
+//
+
+import SwiftUI
+
+struct StarPath: View{
+    
+    let color: Color
+    
+    let pathBounds = UIBezierPath.calculateBounds(paths: [.star])
+    
+    var body: some View{
+        ScaledBezier(bezier: .star, pathBounds: pathBounds).foregroundColor(color)
+    }
+}
+
+struct ScaledBezier: Shape {
+    let bezier: UIBezierPath
+    let pathBounds: CGRect
+    
+    func path(in rect: CGRect) -> Path {
+        let pointScale = (rect.width >= rect.height) ? max(pathBounds.height, pathBounds.width) : min(pathBounds.height, pathBounds.width)
+        let pointTransform = CGAffineTransform(scaleX: 1/pointScale, y: 1/pointScale)
+        let path = Path(bezier.cgPath).applying(pointTransform)
+        let multiplier = min(rect.width, rect.height)
+        let transform = CGAffineTransform(scaleX: multiplier, y: multiplier)
+        
+        return path.applying(transform)
+    }
+}
+
+extension UIBezierPath {
+    static func calculateBounds(paths: [UIBezierPath]) -> CGRect {
+        let myPaths = UIBezierPath()
+        for path in paths {
+            myPaths.append(path)
+        }
+        return (myPaths.bounds)
+    }
+    /// The Unwrap logo as a Bezier path.
+    static var star: UIBezierPath {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 32.3, y: 3))
+        path.addLine(to: CGPoint(x: 149.8, y: 3))
+        path.addCurve(to: CGPoint(x: 158.1, y: 11.3), controlPoint1: CGPoint(x: 154.3, y: 3), controlPoint2: CGPoint(x: 158.1, y: 6.7))
+        path.addLine(to: CGPoint(x: 158.1, y: 16.2))
+        path.addCurve(to: CGPoint(x: 166.4, y: 24.5), controlPoint1: CGPoint(x: 158.1, y: 20.8), controlPoint2: CGPoint(x: 161.8, y: 24.5))
+        path.addLine(to: CGPoint(x: 171.7, y: 24.5))
+        path.addCurve(to: CGPoint(x: 180, y: 32.8), controlPoint1: CGPoint(x: 176.3, y: 24.5), controlPoint2: CGPoint(x: 180, y: 28.2))
+        path.addLine(to: CGPoint(x: 180, y: 141))
+        path.addCurve(to: CGPoint(x: 171.7, y: 149.2), controlPoint1: CGPoint(x: 180, y: 145.5), controlPoint2: CGPoint(x: 176.3, y: 149.2))
+        path.addLine(to: CGPoint(x: 166.4, y: 149.2))
+        path.addCurve(to: CGPoint(x: 158.1, y: 157.5), controlPoint1: CGPoint(x: 161.8, y: 149.2), controlPoint2: CGPoint(x: 158.1, y: 153))
+        path.addLine(to: CGPoint(x: 158.1, y: 161.4))
+        path.addCurve(to: CGPoint(x: 149.8, y: 169.7), controlPoint1: CGPoint(x: 158.1, y: 166), controlPoint2: CGPoint(x: 154.3, y: 169.7))
+        path.addLine(to: CGPoint(x: 10.9, y: 169.7))
+        path.addCurve(to: CGPoint(x: 2.6, y: 161.4), controlPoint1: CGPoint(x: 6.4, y: 169.7), controlPoint2: CGPoint(x: 2.6, y: 166))
+        path.addLine(to: CGPoint(x: 2.6, y: 32.8))
+        path.addCurve(to: CGPoint(x: 10.9, y: 24.5), controlPoint1: CGPoint(x: 2.6, y: 28.2), controlPoint2: CGPoint(x: 6.4, y: 24.5))
+        path.addLine(to: CGPoint(x: 15.8, y: 24.5))
+        path.addCurve(to: CGPoint(x: 24, y: 16.2), controlPoint1: CGPoint(x: 20.3, y: 24.5), controlPoint2: CGPoint(x: 24, y: 20.8))
+        path.addLine(to: CGPoint(x: 24, y: 11.3))
+        path.addCurve(to: CGPoint(x: 32.3, y: 3), controlPoint1: CGPoint(x: 24, y: 6.7), controlPoint2: CGPoint(x: 27.8, y: 3))
+        path.close()
+        return path
+    }
+}
+
+struct StarPath_Previews: PreviewProvider {
+    static var previews: some View {
+        StarPath(color: .yellow)
+    }
+}
+/*
+ 
+ let path = UIBezierPath()
+ path.move(to: CGPoint(x: 32.3, y: 3))
+ path.addLine(to: CGPoint(x: 149.8, y: 3))
+ path.addCurve(to: CGPoint(x: 158.1, y: 11.3), controlPoint1: CGPoint(x: 154.3, y: 3), controlPoint2: CGPoint(x: 158.1, y: 6.7))
+ path.addLine(to: CGPoint(x: 158.1, y: 16.2))
+ path.addCurve(to: CGPoint(x: 166.4, y: 24.5), controlPoint1: CGPoint(x: 158.1, y: 20.8), controlPoint2: CGPoint(x: 161.8, y: 24.5))
+ path.addLine(to: CGPoint(x: 171.7, y: 24.5))
+ path.addCurve(to: CGPoint(x: 180, y: 32.8), controlPoint1: CGPoint(x: 176.3, y: 24.5), controlPoint2: CGPoint(x: 180, y: 28.2))
+ path.addLine(to: CGPoint(x: 180, y: 141))
+ path.addCurve(to: CGPoint(x: 171.7, y: 149.2), controlPoint1: CGPoint(x: 180, y: 145.5), controlPoint2: CGPoint(x: 176.3, y: 149.2))
+ path.addLine(to: CGPoint(x: 166.4, y: 149.2))
+ path.addCurve(to: CGPoint(x: 158.1, y: 157.5), controlPoint1: CGPoint(x: 161.8, y: 149.2), controlPoint2: CGPoint(x: 158.1, y: 153))
+ path.addLine(to: CGPoint(x: 158.1, y: 161.4))
+ path.addCurve(to: CGPoint(x: 149.8, y: 169.7), controlPoint1: CGPoint(x: 158.1, y: 166), controlPoint2: CGPoint(x: 154.3, y: 169.7))
+ path.addLine(to: CGPoint(x: 10.9, y: 169.7))
+ path.addCurve(to: CGPoint(x: 2.6, y: 161.4), controlPoint1: CGPoint(x: 6.4, y: 169.7), controlPoint2: CGPoint(x: 2.6, y: 166))
+ path.addLine(to: CGPoint(x: 2.6, y: 32.8))
+ path.addCurve(to: CGPoint(x: 10.9, y: 24.5), controlPoint1: CGPoint(x: 2.6, y: 28.2), controlPoint2: CGPoint(x: 6.4, y: 24.5))
+ path.addLine(to: CGPoint(x: 15.8, y: 24.5))
+ path.addCurve(to: CGPoint(x: 24, y: 16.2), controlPoint1: CGPoint(x: 20.3, y: 24.5), controlPoint2: CGPoint(x: 24, y: 20.8))
+ path.addLine(to: CGPoint(x: 24, y: 11.3))
+ path.addCurve(to: CGPoint(x: 32.3, y: 3), controlPoint1: CGPoint(x: 24, y: 6.7), controlPoint2: CGPoint(x: 27.8, y: 3))
+ path.close()
+
+ 
+ 
+ */
