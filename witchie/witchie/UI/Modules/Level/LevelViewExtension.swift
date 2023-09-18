@@ -102,7 +102,7 @@ extension LevelView{
             }
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
                 showEnding.toggle()
             }
             self.isGameOver.toggle()
@@ -112,7 +112,7 @@ extension LevelView{
             if patch == 1{
                 defaultsManager.setLevelCompleted(level: levelNumber)
             }
-            defaultsManager.setUserFirstTime(value: true)
+            defaultsManager.setUserFirstTime(value: true, patch: patch)
             if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
                 defaultsManager.setNewRecord(patch: patch, level: levelNumber, value: playerMovements)
             }

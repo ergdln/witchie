@@ -140,7 +140,7 @@ struct StartGameView: View {
                                 .frame(height: safeDimensionManager.dimensions.height * 0.02)
                             
                             NavigationLink {
-                                if UserSettings.isNotFirstTime {
+                                if UserSettings.isNotFirstTime[0] {
                                     PatchSelectorView()
                                 } else {
                                     OnboardingView()

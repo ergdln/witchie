@@ -96,7 +96,7 @@ struct LevelView: View{
                 }
                 VStack(alignment: .center, spacing: 10) {
                     HStack(alignment: .center) {
-                        if UserSettings.isNotFirstTime{
+                        if UserSettings.isNotFirstTime[patch - 1]{
                             Button{
                                 dismiss()
                             }label:{
@@ -111,7 +111,7 @@ struct LevelView: View{
                                     .padding(.bottom, -15)
                             }
                             .simultaneousGesture(TapGesture().onEnded({
-                                UserSettings.isNotFirstTime = true
+                                UserSettings.isNotFirstTime[patch - 1] = true
                             }))
                         }
                         Spacer()
@@ -289,7 +289,7 @@ struct LevelView: View{
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
                             }
-                            } else if (levelNumber == 8 && patch == 1 && !UserSettings.isNotFirstTime) || levelNumber == 20 {
+                            } else if (levelNumber == 8 && patch == 1 && !UserSettings.isNotFirstTime[patch - 1]) || levelNumber == 20 {
                                 NavigationLink(destination: PatchSelectorView()) {
                                     Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
                                         .resizable()
@@ -302,7 +302,7 @@ struct LevelView: View{
 //                                        levelNumber += 1
 //                                        print("Level Number is \(levelNumber)")
 //                                    }
-                                    UserSettings.isNotFirstTime = true
+                                    UserSettings.isNotFirstTime[patch - 1] = true
                                 }))
                             } else {
                                 Button{
