@@ -26,6 +26,7 @@ struct LevelView: View{
     //MARK: VARIABLES
     
     @State public var isGameOver = false
+    @State public var showEnding = false
     @State public var gestureOffset: CGSize = .zero
     @State public var direction: Direction = .none
     @State public var playerMovements: Int = 0
@@ -36,6 +37,8 @@ struct LevelView: View{
     //Onboarding things
     @State var showOnboarding: Bool
     public let images = (1...11).map { String(format: "frame-%d", $0) }.map { Image($0) }
+    public let patch1animaiton = (1...9).map { String(format: "GIF_CAUDRON_%d", $0)}.map {Image($0)}
+    public let patch2animation = (1...21).map { String(format: "BLOSSOM_%d", $0)}.map {Image($0)}
     
     @StateObject var safeDimensionManager = DimensionManager.shared
     @ObservedObject var defaultsManager = DefaultsManager.shared
@@ -164,9 +167,14 @@ struct LevelView: View{
                                 }
                                 //this only happens when a cauldron is in the mark place
                                 else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
-                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
-                                        .resizable()
-                                        .scaledToFill()
+                                    if !isGameOver{
+                                        Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
+                                            .resizable()
+                                            .scaledToFill()
+                                    }else{
+                                        getAnimation(patch: patch)
+                                    }
+                                    
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == box{
                                     Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_EMPTY_CAULDRON, ImageAsset.TILE_EMPTY_PLANT]))
@@ -204,17 +212,20 @@ struct LevelView: View{
                             Color.black
                                 .opacity(0.4)
                             VStack(spacing: 0){
+                                Spacer()
                                 AnimatingImage(images: images, interval: 0.1)
                                     .frame(height: safeDimensionManager.dimensions.height / 4)
                                     .padding(.leading, safeDimensionManager.dimensions.width * 0.11)
                                     .padding(.bottom, safeDimensionManager.dimensions.height * 0.2)
+                                Spacer()
                                 
                                 Text(ContentComponent.ANIMATION_TEXT)
                                     .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                     .font(.custom(ContentComponent.BOREL_REGULAR, size: 18))
                                     .padding(.top, 15)
                                     .padding(.horizontal, 30)
-                                    .background(.purple.opacity(0.4))
+                                    .background(Rectangle().foregroundColor(.green).cornerRadius(8).opacity(0.6).padding(.horizontal))
+                                Spacer()
                                 
                             }
                         }
@@ -223,7 +234,7 @@ struct LevelView: View{
                 }
                 
                 //MARK: Changes the screen when the game is over
-                if isGameOver{
+                if showEnding{
                     ZStack{
                         Image(ImageAsset.BACKGROUND)
                             .resizable()
@@ -270,6 +281,7 @@ struct LevelView: View{
                                     levelNumber += 1
                                     refreshGame()
                                     isGameOver.toggle()
+                                    showEnding.toggle()
                                 }
                             label: {
                                 Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
@@ -298,6 +310,7 @@ struct LevelView: View{
                                     levelNumber += 1
                                     refreshGame()
                                     isGameOver.toggle()
+                                    showEnding.toggle()
                                 }
                             label: {
                                 Image(ImageAsset.NEXT_BUTTON_DIALOGUE)

@@ -102,6 +102,9 @@ extension LevelView{
             }
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+                showEnding.toggle()
+            }
             self.isGameOver.toggle()
             levelEndAnalytics()
             refreshes = 0
@@ -153,6 +156,15 @@ extension LevelView{
             return AnyView(Text("default_background"))
         }
         return backgrounds[patch - 1]
+    }
+    
+    func getAnimation(patch: Int) -> AnimatingImage{
+        if patch == 1{
+            return AnimatingImage(images: patch1animaiton, interval: 0.05)
+        }else if patch == 2{
+            return AnimatingImage(images: patch2animation, interval: 0.07, shouldLock: true)
+        }
+        return AnimatingImage(images: patch2animation, interval: 0.07, shouldLock: true)
     }
 }
 
