@@ -12,6 +12,7 @@ struct Onboarding1: View {
     @StateObject var safeDimensionManager = DimensionManager.shared
     var body: some View {
         VStack {
+            //
             VStack (spacing: safeDimensionManager.dimensions.height * 0.07) {
                 HStack (alignment: .center) {
                     Spacer()
