@@ -11,6 +11,7 @@ struct ImageAsset {
     
     //MARK: BACKGROUNDS
     static let BACKGROUND = "LEVEL_BACKGROUND"
+    static let BACKGROUND2 = "LEVEL_BACKGROUND2"
     
     //MARK: OTHERS
     static let BUBBLE = "BUBBLE"
@@ -51,6 +52,9 @@ struct ImageAsset {
     static let WITCH_LEFT = "WITCH-LEFT"
     static let ONBOARDING4_WITCHIE = "ONBOARDING4-WITCHIE"
     static let ONBOARDING5_WITCHIE = "ONBOARDING5-WITCHIE"
+    static let WITCH_PATCH_CARD = "IMAGE-PATCH1"
+    static let VASE_PATCH_CARD = "IMAGE-PATCH2"
+    static let VASE_LOCKED = "VASE-LOCKED"
     
     //MARK: OPAQUE IMAGES
     static let CAULDRON_FULL_OPAQUE = "OPAQUE-FULL"
@@ -88,5 +92,6 @@ struct ImageAsset {
     static let STAR_YELLOW = "STAR-YELLOW"
     static let VASE_EMPTY = "VASE-EMPTY"
     static let VASE_FULL = "VASE-FULL"
+    static let BUSH_BACKGROUND = "BUSH-BACKGROUND"
     
 }

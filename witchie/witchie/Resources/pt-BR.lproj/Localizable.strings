@@ -22,6 +22,8 @@
 "back" = "voltar";
 "jump" = "pular";
 "chapters" = "capítulos";
+"den" = "Covil";
+"garden" = "Jardim";
 
 //MARK: EPISODE 1
 //ONBOARDING TEXTS CHAPTER 1
@@ -61,6 +63,9 @@
 "chapter2_entry_text3" = "Pera.. O que aconteceu aqui? Todos os meu vasos estão vazios e espalhados por aı... GERTRUDES, NÃAAAAAAO";
 "chapter2_entry_text4" = "MALDITOS! Precisamos cuidar disso agora, ninguém mexe com meus nenens!";
 "chapter2_entry_text5" = "Temos que colocar os vasos na terra mágica para as plantas voltarem ao normal! Não se preocupe, podemos usar os arbustos para nos movermos melhor.";
+
+//ANIMATION TEXT
+"animation_text" = "Essa é a parede móvel, você pode usá-la para se movimentar. Arraste para baixo para experimentar!";
 
 //BETWEEN LEVELS CHAPTER 2
 "chapter2_level_dialogue_1" = "Entendeu como funcionam os arbustos? Assim com você, eles não servem só para decoração.";

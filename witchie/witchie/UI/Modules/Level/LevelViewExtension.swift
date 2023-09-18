@@ -70,15 +70,15 @@ extension LevelView{
             }
         }
         //PUSHING CRATE
-               else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == crate && levelModel[levelNumber].levelMap[actualPosition + offset + offset] == grass{
-                   
-                   levelModel[levelNumber].levelMap[actualPosition] = grass
-                   levelModel[levelNumber].levelMap[actualPosition + offset] = person
-                   levelModel[levelNumber].levelMap[actualPosition + offset + offset] = crate
-                   levelActualPosition = actualPosition + offset
-                   //if you successfully pushed a box, update playerMovements
-                   playerMovements += 1
-               }
+        else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == crate && levelModel[levelNumber].levelMap[actualPosition + offset + offset] == grass{
+            
+            levelModel[levelNumber].levelMap[actualPosition] = grass
+            levelModel[levelNumber].levelMap[actualPosition + offset] = person
+            levelModel[levelNumber].levelMap[actualPosition + offset + offset] = crate
+            levelActualPosition = actualPosition + offset
+            //if you successfully pushed a box, update playerMovements
+            playerMovements += 1
+        }
         //PUSHING A CAULDRON
         //pushing a cauldron to a magic mark
         else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box && !levelSpotsIndex.contains(levelActualPosition + offset) {
@@ -107,13 +107,11 @@ extension LevelView{
             refreshes = 0
             timePlayed = 0
             if patch == 1{
-                LevelCompleted.isCompleted[1]![levelNumber] = true
-                UserDefaults.standard.set(LevelCompleted.isCompleted[1], forKey: "CurrentLevel")
+                defaultsManager.setLevelCompleted(level: levelNumber)
             }
-            UserDefaults.standard.set(true, forKey: "isNotFirstTime")
+            defaultsManager.setUserFirstTime(value: true)
             if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
-                UserSettings.records[patch]![levelNumber] = playerMovements
-                UserDefaults.standard.set(UserSettings.records[patch], forKey: "records\(patch)")
+                defaultsManager.setNewRecord(patch: patch, level: levelNumber, value: playerMovements)
             }
         }
     }
@@ -141,6 +139,20 @@ extension LevelView{
         else{
             return false
         }
+    }
+    
+    func getPatchAssets(patch: Int, images: [String]) -> String {
+        guard patch >= 1 && patch <= images.count else {
+            return "default_image" //caso seja um valor de patch inválido
+        }
+        return images[patch - 1] //subtrai 1 do patch para corresponder ao índice do array
+    }
+    
+    func getPatchBackground(patch: Int, backgrounds: [AnyView]) -> AnyView {
+        guard patch >= 1 && patch <= backgrounds.count else {
+            return AnyView(Text("default_background"))
+        }
+        return backgrounds[patch - 1]
     }
 }
 

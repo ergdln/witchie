@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "VASE-EMPTY.png",
+      "filename" : "Tela do Level.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "VASE-EMPTY@2x.png",
+      "filename" : "Tela do Level@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "VASE-EMPTY@3x.png",
+      "filename" : "Tela do Level@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
