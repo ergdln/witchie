@@ -44,8 +44,13 @@ struct Patch2Transition5: View {
                     Spacer()
                         .frame(height: safeDimensionManager.dimensions.height * 0.75)
                     
-                    NextButton(color: ColorAsset.MAIN_WHITE) {
-                       // funcToDo()
+                    NavigationLink(destination: LevelView(patch: 2, levelNumber: 0, showOnboarding: true)) {
+                        HStack {
+                            Image(systemName: "arrow.forward").font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
+                                .underline()
+                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                .padding(.bottom, -10)
+                        }
                     }
                     .padding(.bottom, safeDimensionManager.dimensions.height * 0.06)
                     .padding(.trailing, safeDimensionManager.dimensions.width * 0.1)
