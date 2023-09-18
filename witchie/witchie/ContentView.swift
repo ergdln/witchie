@@ -14,9 +14,10 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geo in
-            AnythingCanFlyRandomly()
-            //OnboardingView()
             Patch2TransitionView()
+            //AnythingCanFlyRandomly()
+            //OnboardingView()
+            //StarPath(color: Color(ColorAsset.BAR_PURPLE))
             //StartGameView()
             //LevelView(patch: 2, levelNumber: 0, showOnboarding: true)
                 .onAppear {

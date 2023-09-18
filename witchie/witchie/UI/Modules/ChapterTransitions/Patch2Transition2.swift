@@ -12,11 +12,11 @@ struct Patch2Transition2: View {
     @StateObject var safeDimensionManager = DimensionManager.shared
     var body: some View {
         ZStack{
-            //MARK: BRUXINHA, TEXTO, OBJETOS
+            //MARK: ILUSTRATIONS
             ZStack{
                 VStack{
                     Spacer()
-                    HStack{
+                    ZStack{
                         Image(ImageAsset.Transition2_Asset2)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -25,13 +25,13 @@ struct Patch2Transition2: View {
                 }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-            //MARK: CAIXA DE TEXTO
+            //MARK: TEXT BOX
             VStack(){
                 ChapterTransitionTextBox(TransitionText: ContentComponent.CHAPTER2_ENTRY_TEXT2)
                 Spacer()
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-            //MARK: BOTÕES
+            //MARK: BUTTONS
             HStack{
                 Spacer()
                 VStack(spacing: 0){

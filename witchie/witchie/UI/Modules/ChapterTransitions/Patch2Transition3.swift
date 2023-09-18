@@ -12,32 +12,26 @@ struct Patch2Transition3: View {
     @StateObject var safeDimensionManager = DimensionManager.shared
     var body: some View {
         ZStack{
-            //MARK: BRUXINHA, TEXTO, OBJETOS
+            //MARK: ILUSTRATIONS
             ZStack{
                 VStack{
                     Spacer()
                     ZStack{
-
-                        
-                        
-                        //ilustraçoes aqui
-                        
-                        
-                        
-                        
-                        
-                        
+                        Image(ImageAsset.Transition2_Asset3)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width)
                     }
                 }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-            //MARK: CAIXA DE TEXTO
+            //MARK: TEXT BOX
             VStack(){
                 ChapterTransitionTextBox(TransitionText: ContentComponent.CHAPTER2_ENTRY_TEXT3)
                 Spacer()
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-            //MARK: BOTÕES
+            //MARK: BUTTONS
             HStack{
                 Spacer()
                 VStack(spacing: 0){
@@ -58,7 +52,7 @@ struct Patch2Transition3: View {
                 }
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
-        }.background(Color(ColorAsset.MAIN_PURPLE))
+        }.background(Color(ColorAsset.BACKGROUND_GREEN))
             .ignoresSafeArea()
             .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
     }

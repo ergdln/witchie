@@ -5,6 +5,21 @@
 //  Created by egln on 14/09/23.
 //
 
+//
+//
+//
+//
+//
+//
+// THIS COMPONENT IS NOT WORKING YET
+// 
+//
+//
+//
+//
+//
+//
+
 import SwiftUI
 
 struct AnythingCanFlyRandomly: View {
@@ -12,7 +27,6 @@ struct AnythingCanFlyRandomly: View {
     //booleans for movement
     @State var animatingM = false
     @State var animatingN = true
-
     var body: some View {
         ZStack{
             ForEach((0...1000), id: \.self) { num in

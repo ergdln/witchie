@@ -16,7 +16,7 @@ struct Patch2Transition1: View {
             ZStack{
                 VStack{
                     Spacer()
-                    HStack{
+                    ZStack{
                         Image(ImageAsset.Transition2_Asset1)
                             .resizable()
                             .aspectRatio(contentMode: .fit)

@@ -18,4 +18,5 @@ struct ColorAsset{
     static let VIBRANT_PURPLE = "VIBRANT-PURPLE"
     static let WHITE = "color-WHITE"
     static let MAIN_BEGE = "color-MAINBEGE"
+    static let BACKGROUND_GREEN = "BACKGROUND-GREEN"
 }
