@@ -27,7 +27,7 @@ struct LevelView: View{
     @State var levelStartPosition: Int
     
     //MARK: VARIABLES
-
+    
     @State public var isGameOver = false
     @State public var gestureOffset: CGSize = .zero
     @State public var direction: Direction = .none
@@ -85,6 +85,7 @@ struct LevelView: View{
     var body: some View{
         ZStack{
             if true {//safeDimensionManager.orientation == .portrait{
+                getPatchBackground(patch: patch, backgrounds: [AnyView(DenBackground()), AnyView( GardenBackground())])
                 if patch == 1 {
                     Image(ImageAsset.BACKGROUND)
                         .resizable()
@@ -142,7 +143,7 @@ struct LevelView: View{
                                     Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_BRICK, ImageAsset.GARDEN_BRICK]))
                                         .resizable()
                                         .scaledToFill()
-                                        
+                                    
                                 }
                                 else if levelModel[levelNumber].levelMap[num] == grass{
                                     Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_GRASS, ImageAsset.TILE_GARDEN]))
@@ -265,10 +266,9 @@ struct LevelView: View{
                                     .font(.custom(ContentComponent.BOREL_REGULAR, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT * 0.98))
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
-                            //.border(.green)
                             Spacer()
                             if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1) {
-                                if (levelNumber == 2){
+                                if (levelNumber == 8){
                                     if UserSettings.hasSeenNewChapter == true {
                                         Button{
                                                 refreshGame()
@@ -311,23 +311,12 @@ struct LevelView: View{
                                 }
                                 }
                             }
-                            else {
-                                NavigationLink(destination: PatchSelectorView()) {
-                                    Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
-                                }       .simultaneousGesture(TapGesture().onEnded({
-                                    UserSettings.isNotFirstTime = true
-                                }))
-                            }
                         }
-                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                     }
+                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                 }
-            }
-            else{
-                 Text("EITA VIROU LANDSCAPE")
+            } else{
+                Text("EITA VIROU LANDSCAPE")
             }
         }
         .onChange(of: levelNumber) { newValue in

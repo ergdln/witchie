@@ -156,5 +156,12 @@ extension LevelView{
         }
         return images[patch - 1] //subtrai 1 do patch para corresponder ao índice do array
     }
+    
+    func getPatchBackground(patch: Int, backgrounds: [AnyView]) -> AnyView {
+        guard patch >= 1 && patch <= backgrounds.count else {
+            return AnyView(Text("default_background"))
+        }
+        return backgrounds[patch - 1]
+    }
 }
 

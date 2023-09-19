@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "DIALOGUE_GREENRECTANGLE_PATCH2DIALOGUE_RECTANGLE_ONBOARDING123.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "DIALOGUE_GREENRECTANGLE_PATCH2@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "DIALOGUE_GREENRECTANGLE_PATCH2@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
