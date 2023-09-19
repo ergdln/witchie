@@ -37,7 +37,7 @@ struct StartGameView: View {
                     ZStack {
                         
                         //draws all the 20 dacing elements in the background
-                        ForEach((0...25), id: \.self) { num in
+                        ForEach((0...55), id: \.self) { num in
                             Group {
                                 drawingDacingElements(image: ImageAsset.CAULDRON_FULL)
                             }
