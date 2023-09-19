@@ -35,19 +35,26 @@ struct Patch2Transition5: View {
             HStack{
                 Spacer()
                 VStack(spacing: 0){
+                    //HIDDEN SKIP BUTTON
                     NavigationLink(destination: LevelView(patch: 2, levelNumber: 0, showOnboarding: true)) {
                         JumpButton(color: ColorAsset.MAIN_WHITE)
                     }
                     .padding(.top, safeDimensionManager.dimensions.height * 0.06)
                     .padding(.trailing, safeDimensionManager.dimensions.width * 0.07)
+                    .hidden()
                     
                     Spacer()
                         .frame(height: safeDimensionManager.dimensions.height * 0.75)
                     
-                    NextButton(color: ColorAsset.MAIN_WHITE) {
-                       // funcToDo()
-                    }
-                    .padding(.bottom, safeDimensionManager.dimensions.height * 0.06)
+                    //NEXT BUTTON
+                    Group{
+                        HStack {
+                            Image(systemName: "arrow.forward").font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
+                                .underline()
+                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                .padding(.bottom, -10)
+                        }
+                    }.padding(.bottom, safeDimensionManager.dimensions.height * 0.06)
                     .padding(.trailing, safeDimensionManager.dimensions.width * 0.1)
                 }
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)

@@ -1,13 +1,13 @@
 //
-//  Transition1.swift
+//  Onboarding3.swift
 //  witchie
 //
-//  Created by egln on 13/09/23.
+//  Created by Guilherme Souza on 15/08/23.
 //
 
 import SwiftUI
 
-struct Patch2Transition2: View {
+struct Patch1Transition3: View {
     var funcToDo: () -> ()
     @StateObject var safeDimensionManager = DimensionManager.shared
     var body: some View {
@@ -17,17 +17,17 @@ struct Patch2Transition2: View {
                 VStack{
                     Spacer()
                     ZStack{
-                        Image(ImageAsset.Transition2_Asset2)
+                        Image(ImageAsset.Transition1_Asset3)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width)
+                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 2)
                     }
                 }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
             //MARK: TEXT BOX
             VStack(){
-                ChapterTransitionTextBox(TransitionText: ContentComponent.CHAPTER2_ENTRY_TEXT2, textBoxBackgroundImage: ImageAsset.DIALOGUE_123)
+                ChapterTransitionTextBox(TransitionText: ContentComponent.TEXT_ONBOARDING3, textBoxBackgroundImage: ImageAsset.DIALOGUE_123)
                 Spacer()
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             
@@ -36,7 +36,7 @@ struct Patch2Transition2: View {
                 Spacer()
                 VStack(spacing: 0){
                     //SKIP BUTTON
-                    NavigationLink(destination: LevelView(patch: 2, levelNumber: 0, showOnboarding: true)) {
+                    NavigationLink(destination: LevelView(patch: 1, levelNumber: 0, showOnboarding: true)) {
                         JumpButton(color: ColorAsset.MAIN_WHITE)
                     }
                     .padding(.top, safeDimensionManager.dimensions.height * 0.06)
@@ -60,7 +60,7 @@ struct Patch2Transition2: View {
     }
 }
 
-struct Patch2Transition2_Previews: PreviewProvider {
+struct Onboarding3_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
