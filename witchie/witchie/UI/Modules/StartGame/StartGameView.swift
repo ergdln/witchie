@@ -143,7 +143,7 @@ struct StartGameView: View {
                                 if UserSettings.isNotFirstTime {
                                     PatchSelectorView()
                                 } else {
-                                    OnboardingView()
+                                    Patch1TransitionView()
                                 }
                             } label: {
                                 ZStack {
