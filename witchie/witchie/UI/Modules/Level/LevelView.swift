@@ -302,7 +302,7 @@ struct LevelView: View{
                                                 .aspectRatio(contentMode: .fill)
                                                 .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
                                         }       .simultaneousGesture(TapGesture().onEnded({
-                                            UserSettings.isNotFirstTime = true
+                                            UserSettings.isNotFirstTime[patch - 1] = true
                                             UserSettings.hasSeenNewChapter = true
                                             defaultsManager.setSeenChapter(value: true)
                                         }))

@@ -62,7 +62,7 @@ final class PatchSelectorViewModel: ObservableObject {
     
     func getOnboarding(patch:Int) -> AnyView{
         if patch == 1{
-            return AnyView(OnboardingView())
+            return AnyView(Patch1TransitionView())
         }
         return AnyView(Patch2TransitionView())
     }
