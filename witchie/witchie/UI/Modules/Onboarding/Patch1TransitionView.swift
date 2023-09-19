@@ -7,43 +7,44 @@
 
 import SwiftUI
 
-struct OnboardingView: View {
-    @State var OnboardingNumber = 1
+struct Patch1TransitionView: View {
+    @State var transitionNumber = 1
     var safeDimensionManager = DimensionManager.shared
     var body: some View {
         VStack {
             
             //MARK: ONBOARDING 1
-            if OnboardingNumber == 1 {
-                Onboarding1() {
-                    OnboardingNumber += 1
+            if transitionNumber == 1 {
+                Patch1Transition1() {
+                    transitionNumber += 1
                 }
             }
             
             //MARK: ONBOARDING 2
-            if OnboardingNumber == 2 {
-                Onboarding2() {
-                    OnboardingNumber += 1
+            if transitionNumber == 2 {
+                Patch1Transition2() {
+                    transitionNumber += 1
                 }
             }
             
             //MARK: ONBOARDING 3
-            if OnboardingNumber == 3 {
-                Onboarding3() {
-                    OnboardingNumber += 1
+            if transitionNumber == 3 {
+                Patch1Transition3() {
+                    transitionNumber += 1
                 }
             }
             
             //MARK: ONBOARDING 4
-            if OnboardingNumber == 4 {
-                Onboarding4() {
-                    OnboardingNumber += 1
+            if transitionNumber == 4 {
+                Patch1Transition4() {
+                    transitionNumber += 1
                 }
             }
             
             //MARK: ONBOARDING 5
-            if OnboardingNumber == 5 {
-                Onboarding5()
+            if transitionNumber == 5 {
+                Patch1Transition5(){
+                }
             }
         }
         .navigationBarBackButtonHidden(true)

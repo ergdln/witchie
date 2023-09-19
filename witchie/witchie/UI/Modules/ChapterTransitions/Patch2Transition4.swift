@@ -35,6 +35,7 @@ struct Patch2Transition4: View {
             HStack{
                 Spacer()
                 VStack(spacing: 0){
+                    //SKIP BUTTON
                     NavigationLink(destination: LevelView(patch: 2, levelNumber: 0, showOnboarding: true)) {
                         JumpButton(color: ColorAsset.MAIN_WHITE)
                     }
@@ -44,6 +45,7 @@ struct Patch2Transition4: View {
                     Spacer()
                         .frame(height: safeDimensionManager.dimensions.height * 0.75)
                     
+                    //NEXT BUTTON
                     NextButton(color: ColorAsset.MAIN_WHITE) {
                         funcToDo()
                     }
