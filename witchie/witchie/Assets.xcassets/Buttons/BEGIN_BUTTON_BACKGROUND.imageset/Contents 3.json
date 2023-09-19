@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Ellipse 42.png",
+      "filename" : "BOTAO-COMECAR.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Ellipse 42@2x.png",
+      "filename" : "BOTAO-COMECAR@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Ellipse 42@3x.png",
+      "filename" : "BOTAO-COMECAR@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

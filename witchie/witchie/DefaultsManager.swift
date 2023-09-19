@@ -20,6 +20,10 @@ class DefaultsManager: ObservableObject{
         UserDefaults.standard.set(value, forKey: "isNotFirstTime")
     }
     
+    func setSeenChapter(value: Bool){
+        UserDefaults.standard.set(value, forKey: "hasSeenNewChapter")
+    }
+    
     func setLevelCompleted(level: Int){
         LevelCompleted.isCompleted[1]![level] = true
         UserDefaults.standard.set(LevelCompleted.isCompleted[1], forKey: "CurrentLevel")
@@ -48,6 +52,8 @@ class DefaultsManager: ObservableObject{
         
         //pega se é a primeira vez do usuário
         UserSettings.isNotFirstTime = UserDefaults.standard.bool(forKey: "isNotFirstTime")
+        
+        UserSettings.hasSeenNewChapter = UserDefaults.standard.bool(forKey: "hasSeenNewChapter")
         
         //aqui começamos a salvar os recordes, a lógica é a mesma lá de cima, com a diferença que agora o patch 1 vai usar a chave "records1" o que facilita nossa vida depois
         

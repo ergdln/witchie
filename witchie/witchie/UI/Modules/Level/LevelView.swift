@@ -7,16 +7,19 @@
 
 import SwiftUI
 import AVFoundation
+import StoreKit
 import FirebaseAnalytics
 
 struct LevelView: View{
     
     @State public var soundOn = true
     @EnvironmentObject public var audioPlayerManager: AudioPlayerManager
-    @State var levelNumber: Int
+    @State public var levelNumber: Int
     @State var levelModel: [LevelModel]
     
     var patch: Int
+    
+    @Environment(\.requestReview) var requestReview
     
     @State var levelGrid: [GridItem]
     @State var levelSpotsIndex: [Int]
@@ -264,47 +267,49 @@ struct LevelView: View{
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
                             Spacer()
-                            if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1 && (levelNumber != 8 && patch != 1)) {
-                                Button{
-                                    refreshGame()
-                                    levelNumber += 1
-                                    refreshGame()
-                                    isGameOver.toggle()
+                            if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1) {
+                                if (levelNumber == 8){
+                                    if UserSettings.hasSeenNewChapter == true {
+                                        Button{
+                                                refreshGame()
+                                                levelNumber += 1
+                                                refreshGame()
+                                                isGameOver.toggle()
+                                            }
+                                        label: {
+                                            Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                        }
+                                    }
+                                    else {
+                                        NavigationLink(destination: PatchSelectorView()) {
+                                            Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                        }       .simultaneousGesture(TapGesture().onEnded({
+                                            UserSettings.isNotFirstTime = true
+                                            UserSettings.hasSeenNewChapter = true
+                                            defaultsManager.setSeenChapter(value: true)
+                                        }))
+                                    }
                                 }
-                            label: {
-                                Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
-                            }
-                            } else if (levelNumber == 8 && patch == 1 && !UserSettings.isNotFirstTime) || levelNumber == 20 {
-                                NavigationLink(destination: PatchSelectorView()) {
+                                else {
+                                    Button{
+                                        refreshGame()
+                                        levelNumber += 1
+                                        refreshGame()
+                                        isGameOver.toggle()
+                                    }
+                                label: {
                                     Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
                                 }
-                                .simultaneousGesture(TapGesture().onEnded({
-//                                    if levelNumber == 8 {
-//                                        print("Level Number is \(levelNumber)")
-//                                        levelNumber += 1
-//                                        print("Level Number is \(levelNumber)")
-//                                    }
-                                    UserSettings.isNotFirstTime = true
-                                }))
-                            } else {
-                                Button{
-                                    refreshGame()
-                                    levelNumber += 1
-                                    refreshGame()
-                                    isGameOver.toggle()
                                 }
-                            label: {
-                                Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
-                            }
                             }
                         }
                     }
