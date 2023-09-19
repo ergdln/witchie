@@ -44,6 +44,14 @@ extension LevelView{
         Analytics.logEvent("level_completed", parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1) completed", "player_movements": playerMovements, "time_played": timePlayed, "refreshes": refreshes])
     }
     
+    fileprivate func showReviewPrompt() {
+            //Asking for Evaluation when it's the first time passing Level 6
+            if (UserSettings.records[1]![5] == 0 || UserSettings.records[2]![5] == 0) && levelNumber == 5 {
+                requestReview()
+            }
+        }
+    
+    
     //MARK: main movement function
     func defineMoviment(actualPosition: Int, offset: Int){
         //FACED A HOLE
@@ -106,6 +114,7 @@ extension LevelView{
                 showEnding.toggle()
             }
             self.isGameOver.toggle()
+            showReviewPrompt()
             levelEndAnalytics()
             refreshes = 0
             timePlayed = 0

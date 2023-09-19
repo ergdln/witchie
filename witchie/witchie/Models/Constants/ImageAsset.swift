@@ -60,6 +60,13 @@ struct ImageAsset {
     static let CAULDRON_FULL_OPAQUE = "OPAQUE-FULL"
     static let CAULDRON_EMPTY_OPAQUE = "OPAQUE-EMPTY"
     
+    //MARK: TRANSITION CHAPTER 1
+    static let Transition1_Asset1 = "TRANSITION1ASSET1"
+    static let Transition1_Asset2 = "TRANSITION1ASSET2"
+    static let Transition1_Asset3 = "TRANSITION1ASSET3"
+    static let Transition1_Asset4 = "TRANSITION1ASSET4"
+    static let Transition1_Asset5 = "TRANSITION1ASSET5"
+    
     //MARK: CHAPTER 1 GAME TILES
     static let TILE_BRICK = "BRICK"
     static let TILE_GRASS = "GRASS"
