@@ -27,7 +27,7 @@ struct Patch1Transition5: View {
             
             //MARK: TEXT BOX
             VStack(){
-                ChapterTransitionTextBox(TransitionText: ContentComponent.TEXT_ONBOARDING4, textBoxBackgroundImage: ImageAsset.DIALOGUE_123)
+                ChapterTransitionTextBox(TransitionText: ContentComponent.TEXT_ONBOARDING5, textBoxBackgroundImage: ImageAsset.DIALOGUE_123)
                 Spacer()
             }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
             

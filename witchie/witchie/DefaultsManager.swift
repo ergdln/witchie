@@ -16,8 +16,10 @@ class DefaultsManager: ObservableObject{
         UserDefaults.standard.set(UserSettings.records[patch], forKey: "records\(patch)")
     }
     
-    func setUserFirstTime(value: Bool){
-        UserDefaults.standard.set(value, forKey: "isNotFirstTime")
+    func setUserFirstTime(value: Bool, patch:Int){
+        var newArray = UserDefaults.standard.array(forKey: "firstTime") as? [Bool] ?? UserSettings.isNotFirstTime
+        newArray[patch - 1] = value
+        UserDefaults.standard.set(newArray, forKey: "firstTime")
     }
     
     func setSeenChapter(value: Bool){
@@ -37,6 +39,7 @@ class DefaultsManager: ObservableObject{
         return UserDefaults.standard.bool(forKey: "isSoundOn")
     }
     
+    
     func gameStarted(){
         //Isso aqui foi como consegui fazer pra os usuários não perderem seu progresso:
         //Primeiro ele recebe os dados da chave que já existia "CurrentLevel"
@@ -50,8 +53,9 @@ class DefaultsManager: ObservableObject{
             UserDefaults.standard.set(LevelCompleted.isCompleted[1], forKey: "CurrentLevel")
         }
         
+        
         //pega se é a primeira vez do usuário
-        UserSettings.isNotFirstTime = UserDefaults.standard.bool(forKey: "isNotFirstTime")
+        UserSettings.isNotFirstTime = UserDefaults.standard.array(forKey: "firstTime") as? [Bool] ?? UserSettings.isNotFirstTime
         
         UserSettings.hasSeenNewChapter = UserDefaults.standard.bool(forKey: "hasSeenNewChapter")
         

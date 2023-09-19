@@ -39,7 +39,7 @@ struct PatchSelectorView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: Array(repeating: GridItem(.flexible(minimum: viewModel.screenSize.card.height * 1.1, maximum: 2000), spacing: 0), count: 1), spacing: 30){
                         ForEach(Array(1..<UserSettings.records.count + 1), id: \.self) { patch in
-                            NavigationLink(destination: UserSettings.records[patch]![0] == 0 ? AnyView(Patch1TransitionView()) : AnyView(LevelSelectorView(patch: patch))) {
+                            NavigationLink(destination: UserSettings.records[patch]![0] == 0 ? AnyView(viewModel.getOnboarding(patch: patch)) : AnyView(LevelSelectorView(patch: patch))) {
                                 PatchCard(gradientColor1: viewModel.shouldDisable(patch: patch) ? lockColor1 : viewModel.cardInformations[patch - 1].colors.color1,
                                           gradientColor2: viewModel.shouldDisable(patch: patch) ? lockColor2 : viewModel.cardInformations[patch - 1].colors.color2,
                                           bgColor: viewModel.cardInformations[patch - 1].colors.bgColor,

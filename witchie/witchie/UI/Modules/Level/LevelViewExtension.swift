@@ -110,6 +110,9 @@ extension LevelView{
             }
         }
         if isLevelCompleted(platesPosition: levelSpotsIndex){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
+                showEnding.toggle()
+            }
             self.isGameOver.toggle()
             showReviewPrompt()
             levelEndAnalytics()
@@ -118,7 +121,7 @@ extension LevelView{
             if patch == 1{
                 defaultsManager.setLevelCompleted(level: levelNumber)
             }
-            defaultsManager.setUserFirstTime(value: true)
+            defaultsManager.setUserFirstTime(value: true, patch: patch)
             if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
                 defaultsManager.setNewRecord(patch: patch, level: levelNumber, value: playerMovements)
             }
@@ -162,6 +165,15 @@ extension LevelView{
             return AnyView(Text("default_background"))
         }
         return backgrounds[patch - 1]
+    }
+    
+    func getAnimation(patch: Int) -> AnimatingImage{
+        if patch == 1{
+            return AnimatingImage(images: patch1animaiton, interval: 0.05)
+        }else if patch == 2{
+            return AnimatingImage(images: patch2animation, interval: 0.07, shouldLock: true)
+        }
+        return AnimatingImage(images: patch2animation, interval: 0.07, shouldLock: true)
     }
 }
 
