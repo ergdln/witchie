@@ -222,13 +222,25 @@ struct LevelView: View{
                                     .padding(.bottom, safeDimensionManager.dimensions.height * 0.2)
                                 Spacer()
                                 
-                                Text(ContentComponent.ANIMATION_TEXT)
-                                    .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 18))
-                                    .padding(.top, 15)
-                                    .padding(.horizontal, 30)
-                                    .background(Rectangle().foregroundColor(.green).cornerRadius(8).opacity(0.6).padding(.horizontal))
-                                Spacer()
+                                ZStack(alignment: .bottom){
+                                    Rectangle().frame(width: safeDimensionManager.dimensions.width, height: 230).cornerRadius(40)
+                                    HStack{
+                                        Text(ContentComponent.ANIMATION_TEXT)
+                                            .frame(width: safeDimensionManager.dimensions.width * 0.6)
+                                            .foregroundColor(Color(ColorAsset.MAIN_GREEN))
+                                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 14))
+                                            .padding(.top, 15)
+                                            .padding(.horizontal, safeDimensionManager.dimensions.width * 0.1)
+                                            .padding(.bottom, 73)
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Spacer()
+                                        Image("WITCHIE-ONBOARDING-2")
+                                    }
+                                    
+                                }
+                                
                                 
                             }
                         }
