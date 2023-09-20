@@ -100,5 +100,7 @@ struct ImageAsset {
     static let VASE_EMPTY = "VASE-EMPTY"
     static let VASE_FULL = "VASE-FULL"
     static let BUSH_BACKGROUND = "BUSH-BACKGROUND"
+    static let WITCHIE2_DIALOGUE_CHAPTER2 = "WITCHIE2-DIALOGUE-CHAPTER2"
+    static let AFTER_LEVEL_CHAPTER2 = "AFTER-LEVEL-CHAPTER2"
     
 }

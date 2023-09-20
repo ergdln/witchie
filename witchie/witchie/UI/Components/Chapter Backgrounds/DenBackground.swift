@@ -12,10 +12,13 @@ struct DenBackground: View {
     @StateObject var safeDimensionManager = DimensionManager.shared
     
     var body: some View {
+        ZStack {
             Image(ImageAsset.BACKGROUND)
                 .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
+        }
+        .ignoresSafeArea()
     }
 }
 
