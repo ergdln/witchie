@@ -14,6 +14,7 @@ struct LevelView: View{
     
     @State public var soundOn = true
     @EnvironmentObject public var audioPlayerManager: AudioPlayerManager
+    @StateObject var fxPlayerManager = FXPlayerManager()
     @State public var levelNumber: Int
     @State var levelModel: [LevelModel]
     

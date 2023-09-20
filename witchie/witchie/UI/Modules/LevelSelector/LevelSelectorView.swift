@@ -11,6 +11,7 @@ import AVFAudio
 struct LevelSelectorView: View {
     @State private var soundOn = true
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
+    @StateObject var fxPlayerManager = FXPlayerManager()
     @State var isCompleted: [Bool]
     @Environment(\.dismiss) private var dismiss
     var patch: Int
@@ -97,6 +98,9 @@ struct LevelSelectorView: View {
                                     }
                                 }
                             }.disabled(shouldDisable(level: level))
+                                .simultaneousGesture(TapGesture().onEnded({ _ in
+                                    fxPlayerManager.playButtonFX()
+                                }))
                         }
                     }
                     .frame(width: safeDimensionManager.dimensions.width * 0.8)

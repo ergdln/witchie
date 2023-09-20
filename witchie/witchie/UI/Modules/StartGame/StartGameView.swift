@@ -20,6 +20,7 @@ struct StartGameView: View {
     @State private var soundOn = true
     @State var audioPlayer: AVAudioPlayer!
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
+    @StateObject var fxPlayerManager = FXPlayerManager()
     @State private var path = NavigationPath()
     
     @StateObject var safeDimensionManager = DimensionManager.shared
@@ -154,6 +155,9 @@ struct StartGameView: View {
                                         .padding(.top, 6)
                                 }
                             }
+                            .simultaneousGesture(TapGesture().onEnded({ _ in
+                                fxPlayerManager.playButtonFX()
+                            }))
                             Spacer()
                                 .frame(height: safeDimensionManager.dimensions.height * 0.001)
                             
