@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6EFCA0EC2A69A9F50008AAC5"
-               BuildableName = "witchie.app"
-               BlueprintName = "witchie"
+               BuildableName = "Witchie.app"
+               BlueprintName = "Witchie"
                ReferencedContainer = "container:witchie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6EFCA0EC2A69A9F50008AAC5"
-            BuildableName = "witchie.app"
-            BlueprintName = "witchie"
+            BuildableName = "Witchie.app"
+            BlueprintName = "Witchie"
             ReferencedContainer = "container:witchie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,8 +71,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6EFCA0EC2A69A9F50008AAC5"
-            BuildableName = "witchie.app"
-            BlueprintName = "witchie"
+            BuildableName = "Witchie.app"
+            BlueprintName = "Witchie"
             ReferencedContainer = "container:witchie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
