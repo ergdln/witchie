@@ -10,6 +10,7 @@ import SwiftUI
 struct PatchSelectorView: View {
     @ObservedObject var viewModel = PatchSelectorViewModel()
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
+    @StateObject var fxPlayerManager = FXPlayerManager()
     @Environment(\.dismiss) private var dismiss
     
     let lockColor1 = Color(red: 54/255, green: 54/255, blue: 54/255)
@@ -49,6 +50,9 @@ struct PatchSelectorView: View {
                                           patch: patch,
                                           disable: viewModel.shouldDisable(patch: patch))
                             }.disabled(viewModel.shouldDisable(patch: patch))
+                                .simultaneousGesture(TapGesture().onEnded({ _ in
+                                    fxPlayerManager.playButtonFX()
+                                }))
                         }
                     }
                     .padding(.horizontal)
