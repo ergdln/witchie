@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Star.png",
+      "filename" : "DIALOGUE_RECTANGLE.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Star@2x.png",
+      "filename" : "DIALOGUE_RECTANGLE@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Star@3x.png",
+      "filename" : "DIALOGUE_RECTANGLE@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

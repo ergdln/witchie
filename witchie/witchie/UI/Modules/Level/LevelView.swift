@@ -89,14 +89,6 @@ struct LevelView: View{
         ZStack{
             if true {//safeDimensionManager.orientation == .portrait{
                 getPatchBackground(patch: patch, backgrounds: [AnyView(DenBackground()), AnyView( GardenBackground())])
-                if patch == 1 {
-                    Image(ImageAsset.BACKGROUND)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
-                } else {
-                    GardenBackground()
-                }
                 VStack(alignment: .center, spacing: 10) {
                     HStack(alignment: .center) {
                         if UserSettings.isNotFirstTime[patch - 1]{
@@ -251,10 +243,7 @@ struct LevelView: View{
                 //MARK: Changes the screen when the game is over
                 if showEnding{
                     ZStack{
-                        Image(ImageAsset.BACKGROUND)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
+                        getPatchBackground(patch: patch, backgrounds: [AnyView(DenBackground()), AnyView(GardenBackground())])
                         VStack(alignment: .center, spacing: 10) {
                             Spacer()
                             HStack{
@@ -280,7 +269,7 @@ struct LevelView: View{
                                 Text(levelModel[levelNumber].levelDialogue)
                                     .padding(safeDimensionManager.dimensions.height * 0.04)
                                     .background(
-                                        Image(ImageAsset.DIALOGUE_RECTANGLE)
+                                        Image(getPatchAssets(patch: patch, images: [ImageAsset.DIALOGUE_RECTANGLE, ImageAsset.AFTER_LEVEL_CHAPTER2]))
                                             .resizable()
                                             .scaledToFill()
                                     )
@@ -301,7 +290,7 @@ struct LevelView: View{
                                                 showEnding.toggle()
                                             }
                                         label: {
-                                            Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                            Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
                                                 .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
@@ -309,7 +298,7 @@ struct LevelView: View{
                                     }
                                     else {
                                         NavigationLink(destination: PatchSelectorView()) {
-                                            Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                            Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
                                                 .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
@@ -329,7 +318,7 @@ struct LevelView: View{
                                         showEnding.toggle()
                                     }
                                 label: {
-                                    Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
