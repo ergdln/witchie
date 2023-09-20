@@ -30,9 +30,9 @@
 		47B53B862A7DACF200E3DADC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53B852A7DACF200E3DADC /* BackButton.swift */; };
 		5B234C1D2A9FC5E400D0B83C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5B234C1C2A9FC5E400D0B83C /* FirebaseAnalytics */; };
 		5B234C1F2A9FC5E400D0B83C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5B234C1E2A9FC5E400D0B83C /* FirebaseDatabase */; };
+		5B2CFD9B2ABB7019005DCB02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CFD9A2ABB7019005DCB02 /* GoogleService-Info.plist */; };
 		5B6B15D52AA7B628004C523C /* GoogleTagManager in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6B15D42AA7B628004C523C /* GoogleTagManager */; };
 		5B6B15D72AA7B772004C523C /* container in Resources */ = {isa = PBXBuildFile; fileRef = 5B6B15D62AA7B772004C523C /* container */; };
-		5B8B73B02AB0F11D00CE6319 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B73AF2AB0F11D00CE6319 /* GoogleService-Info.plist */; };
 		5BCBD6AA2A963DBB00E46BCE /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBD6A92A963DBB00E46BCE /* UserSettings.swift */; };
 		5BF016322A8EAAF20012751E /* StepCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016312A8EAAF20012751E /* StepCounter.swift */; };
 		5BF016342A8EB03D0012751E /* StepCounterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016332A8EB03D0012751E /* StepCounterType.swift */; };
@@ -94,8 +94,8 @@
 		47889ED22A704C32005EB560 /* LevelSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectorView.swift; sourceTree = "<group>"; };
 		47889F1D2A72F21B005EB560 /* ComponentX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentX.swift; sourceTree = "<group>"; };
 		47B53B852A7DACF200E3DADC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		5B2CFD9A2ABB7019005DCB02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B6B15D62AA7B772004C523C /* container */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = container; sourceTree = SOURCE_ROOT; };
-		5B8B73AF2AB0F11D00CE6319 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5BCBD6A92A963DBB00E46BCE /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		5BF016312A8EAAF20012751E /* StepCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounter.swift; sourceTree = "<group>"; };
 		5BF016332A8EB03D0012751E /* StepCounterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounterType.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		6E75BDD82AB395BD0053EDB6 /* ChapterTransitionTextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTransitionTextBox.swift; sourceTree = "<group>"; };
 		6EAB19B72A7C431B002047CD /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		6EB531CA2AA10CDE00A14705 /* LevelViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelViewExtension.swift; sourceTree = "<group>"; };
-		6EFCA0ED2A69A9F50008AAC5 /* witchie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = witchie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EFCA0ED2A69A9F50008AAC5 /* Witchie-DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Witchie-DEV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFCA0F02A69A9F50008AAC5 /* witchieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = witchieApp.swift; sourceTree = "<group>"; };
 		6EFCA0F22A69A9F50008AAC5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6EFCA0F42A69A9F60008AAC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 		6EFCA0E42A69A9F50008AAC5 = {
 			isa = PBXGroup;
 			children = (
-				5B8B73AF2AB0F11D00CE6319 /* GoogleService-Info.plist */,
+				5B2CFD9A2ABB7019005DCB02 /* GoogleService-Info.plist */,
 				6EFCA0EF2A69A9F50008AAC5 /* witchie */,
 				6EFCA0EE2A69A9F50008AAC5 /* Products */,
 			);
@@ -301,7 +301,7 @@
 		6EFCA0EE2A69A9F50008AAC5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6EFCA0ED2A69A9F50008AAC5 /* witchie.app */,
+				6EFCA0ED2A69A9F50008AAC5 /* Witchie-DEV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -393,9 +393,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6EFCA0EC2A69A9F50008AAC5 /* witchie */ = {
+		6EFCA0EC2A69A9F50008AAC5 /* Witchie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6EFCA0FB2A69A9F60008AAC5 /* Build configuration list for PBXNativeTarget "witchie" */;
+			buildConfigurationList = 6EFCA0FB2A69A9F60008AAC5 /* Build configuration list for PBXNativeTarget "Witchie" */;
 			buildPhases = (
 				6EFCA0E92A69A9F50008AAC5 /* Sources */,
 				6EFCA0EA2A69A9F50008AAC5 /* Frameworks */,
@@ -405,14 +405,14 @@
 			);
 			dependencies = (
 			);
-			name = witchie;
+			name = Witchie;
 			packageProductDependencies = (
 				5B234C1C2A9FC5E400D0B83C /* FirebaseAnalytics */,
 				5B234C1E2A9FC5E400D0B83C /* FirebaseDatabase */,
 				5B6B15D42AA7B628004C523C /* GoogleTagManager */,
 			);
 			productName = witchie;
-			productReference = 6EFCA0ED2A69A9F50008AAC5 /* witchie.app */;
+			productReference = 6EFCA0ED2A69A9F50008AAC5 /* Witchie-DEV.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -450,7 +450,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6EFCA0EC2A69A9F50008AAC5 /* witchie */,
+				6EFCA0EC2A69A9F50008AAC5 /* Witchie */,
 			);
 		};
 /* End PBXProject section */
@@ -461,8 +461,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0BFB4422AA0DE1E005B7FCC /* Borel-Regular.ttf in Resources */,
-				5B8B73B02AB0F11D00CE6319 /* GoogleService-Info.plist in Resources */,
 				471F46822ABB70B000B32362 /* yeah.mp3 in Resources */,
+				5B2CFD9B2ABB7019005DCB02 /* GoogleService-Info.plist in Resources */,
 				C06C15612A71A65A00A7FE9E /* LivaTheme.mp3 in Resources */,
 				471F46922ABB8AC700B32362 /* plant-right-place.mp3 in Resources */,
 				471F468C2ABB867200B32362 /* winBanjo.mp3 in Resources */,
@@ -690,8 +690,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.egln.witchie;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.egln.witchie.dev;
+				PRODUCT_NAME = "Witchie-DEV";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -750,7 +750,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6EFCA0FB2A69A9F60008AAC5 /* Build configuration list for PBXNativeTarget "witchie" */ = {
+		6EFCA0FB2A69A9F60008AAC5 /* Build configuration list for PBXNativeTarget "Witchie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6EFCA0FC2A69A9F60008AAC5 /* Debug */,
