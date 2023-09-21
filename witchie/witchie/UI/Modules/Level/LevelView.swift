@@ -284,18 +284,18 @@ struct LevelView: View{
                                 if (levelNumber == 8){
                                     if UserSettings.hasSeenNewChapter == true {
                                         Button{
-                                                refreshGame()
-                                                levelNumber += 1
-                                                refreshGame()
-                                                isGameOver.toggle()
-                                                showEnding.toggle()
-                                            }
-                                        label: {
-                                            Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                            refreshGame()
+                                            levelNumber += 1
+                                            refreshGame()
+                                            isGameOver.toggle()
+                                            showEnding.toggle()
                                         }
+                                    label: {
+                                        Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                    }
                                     }
                                     else {
                                         NavigationLink(destination: PatchSelectorView()) {
@@ -317,13 +317,20 @@ struct LevelView: View{
                                         refreshGame()
                                         isGameOver.toggle()
                                         showEnding.toggle()
+                                    } label: {
+                                        Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
                                     }
-                                label: {
+                                }
+                            }
+                            else {
+                                NavigationLink(destination: StartGameView()) {
                                     Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
-                                }
                                 }
                             }
                         }
