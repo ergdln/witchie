@@ -26,8 +26,9 @@ class FXPlayerManager: ObservableObject {
         let sound = Bundle.main.path(forResource: patch == 1 ? "cauldron-right-place" : "plant-right-place", ofType: "mp3")
         audioPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
         audioPlayer?.numberOfLoops = 1
+        audioPlayer?.volume = patch == 1 ? 1.0 : 0.8
         audioPlayer?.play()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+        DispatchQueue.main.asyncAfter(deadline: patch == 1 ? .now() + 0.3 : .now() + 1) {
             self.stopSound()
         }
     }
