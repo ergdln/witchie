@@ -7,13 +7,20 @@
 
 import SwiftUI
 import AVFoundation
+import StoreKit
+import FirebaseAnalytics
 
 struct LevelView: View{
     
-    @State private var soundOn = true
-    @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
-    @State var levelNumber: Int
+    @State public var soundOn = true
+    @EnvironmentObject public var audioPlayerManager: AudioPlayerManager
+    @StateObject var fxPlayerManager = FXPlayerManager()
+    @State public var levelNumber: Int
     @State var levelModel: [LevelModel]
+    
+    var patch: Int
+    
+    @Environment(\.requestReview) var requestReview
     
     @State var levelGrid: [GridItem]
     @State var levelSpotsIndex: [Int]
@@ -21,215 +28,336 @@ struct LevelView: View{
     @State var levelStartPosition: Int
     
     //MARK: VARIABLES
-    @State private var isGameOver = false
-    @State private var gestureOffset: CGSize = .zero
-    @State private var direction: Direction = .none
-    @State private var playerMovements: Int = 0
+    
+    @State public var isGameOver = false
+    @State public var showEnding = false
+    @State public var gestureOffset: CGSize = .zero
+    @State public var direction: Direction = .none
+    @State public var playerMovements: Int = 0
+    @State public var timePlayed: Int = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State public var refreshes: Int = 0
+    
+    //Onboarding things
+    @State var showOnboarding: Bool
+    public let images = (1...11).map { String(format: "frame-%d", $0) }.map { Image($0) }
+    public let patch1animaiton = (1...9).map { String(format: "GIF_CAUDRON_%d", $0)}.map {Image($0)}
+    public let patch2animation = (1...21).map { String(format: "BLOSSOM_%d", $0)}.map {Image($0)}
+    
+    @StateObject var safeDimensionManager = DimensionManager.shared
+    @ObservedObject var defaultsManager = DefaultsManager.shared
     
     enum Direction {
         case none, up, down, left, right
     }
     
+    @State var showOnboarding2 = false
+    
     //witch first image
-    @State var witchImage: String = ImageAsset.TILE_WITCH_LEFT
+    @State var witchImage: String
     
     //Rename de map elements
-    let box: String = "📦"
-    let grass: String = "⬜️"
-    let person: String = "🙋🏿"
-    let wall: String = "⬛️"
-    let spot: String = "🔯"
-    let empty: String = "🟫"
+    let box = ContentComponent.BOX
+    let grass = ContentComponent.GRASS
+    let person = ContentComponent.PERSON
+    let wall = ContentComponent.WALL
+    let spot = ContentComponent.SPOT
+    let empty = ContentComponent.EMPTY
     
-    init(levelNumber: Int, levelModel: [LevelModel]) {
+    //future map elements
+    let crate = ContentComponent.CRATE
+    let hole = ContentComponent.HOLE
+    
+    init(patch: Int, levelNumber: Int, showOnboarding: Bool = false) {
+        self.patch = patch
+        
         self._levelNumber = State(initialValue: levelNumber)
-        self._levelModel = State(initialValue: levelModel)
-        self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset))
-        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap))
-        self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
-        self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0])
+        self._levelModel = State(initialValue: LevelModel.getLevels(chapter: patch))
+        self._levelGrid = State(initialValue: Array(repeating: GridItem(.flexible(minimum: 15, maximum: 150), spacing: 0), count: LevelModel.getLevels(chapter: patch)[levelNumber].levelOffset))
+        self._levelSpotsIndex = State(initialValue: LevelModel.getIndexes(of: spot, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap))
+        self._levelStartPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
+        self._levelActualPosition = State(initialValue: LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0])
+        self._witchImage = State(initialValue: ImageAsset.WITCH_LEFT)
+        self._showOnboarding = State(initialValue: showOnboarding)
+        
+        
     }
     
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss) public var dismiss
     
     //MARK: THE GAME VIEW
     var body: some View{
         ZStack{
-            Image(ImageAsset.BACKGROUND)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 1.1)
-            
-            VStack(alignment: .center, spacing: 10){
-                HStack(alignment: .center){
-                    if UserSettings.isNotFirstTime{
-                        Button{
-                            dismiss()
-                        }label:{
-                            Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
+            if true {//safeDimensionManager.orientation == .portrait{
+                getPatchBackground(patch: patch, backgrounds: [AnyView(DenBackground()), AnyView( GardenBackground())])
+                VStack(alignment: .center, spacing: 10) {
+                    HStack(alignment: .center) {
+                        if UserSettings.isNotFirstTime[patch - 1]{
+                            Button{
+                                dismiss()
+                            }label:{
+                                Text(ContentComponent.BACK_SYSTEM).foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
+                                    .padding(.bottom, -15)
+                            }
+                        }else{
+                            NavigationLink(destination: StartGameView()) {
+                                Text(ContentComponent.BACK_SYSTEM).foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
+                                    .padding(.bottom, -15)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded({
+                                UserSettings.isNotFirstTime[patch - 1] = true
+                            }))
                         }
-                    }else{
-                        NavigationLink(destination: StartGameView()) {
-                            Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
-                        }
-                        .simultaneousGesture(TapGesture().onEnded({
-                            UserSettings.isNotFirstTime = true
-                        }))
+                        Spacer()
+                        Text("\(ContentComponent.LEVEL) \(levelNumber + 1)")
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 32))
+                            .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                            .padding(.bottom, -20)
+                        Spacer()
+                        SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                     }
-                    
                     Spacer()
-                    Text("Nível \(levelNumber + 1)")
-                        .font(.custom(ContentComponent.regular, size: 32))
-                        .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                        .padding(.bottom, -20)
-                    Spacer()
-                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
-                }
-                Spacer()
-                ZStack{
                     HStack {
-                        ZStack {
-                            Image(ImageAsset.COUNTER)
-                            Text(String(playerMovements))
-                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .font(.custom(ContentComponent.regular, size: 24))
-                                .padding(.bottom, -15)
-                                .padding(.leading, 41)
-                        }
+                        StepCounter(imageName: ImageAsset.COUNTER, playerMovements: playerMovements, type: .levelView)
+                        Spacer()
                         Button(action:{
                             refreshGame()
+                            refreshes += 1
                         }){
                             Image(ImageAsset.REFRESH_BUTTON)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 38)
-                        }.frame(width: 200, alignment: .trailing)
-                            .disabled(isGameOver)
+                        }.disabled(isGameOver)
+                    }
+                    LazyVGrid(columns: levelGrid, spacing: 0){
+                        ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
+                            Group{
+                                if levelModel[levelNumber].levelMap[num] == wall{
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_BRICK, ImageAsset.GARDEN_BRICK]))
+                                        .resizable()
+                                        .scaledToFill()
+                                    
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == grass{
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_GRASS, ImageAsset.TILE_GARDEN]))
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == hole{
+                                    Image(ImageAsset.TILE_HOLE)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == crate{
+                                    Image(ImageAsset.TILE_BUSH)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == spot{
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_SPOT, ImageAsset.TILE_MAGICAL_SOIL]))
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                //this only happens when a cauldron is in the mark place
+                                else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
+                                    if !isGameOver{
+                                        Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
+                                            .resizable()
+                                            .scaledToFill()
+                                    }else{
+                                        getAnimation(patch: patch)
+                                    }
+                                    
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == box{
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_EMPTY_CAULDRON, ImageAsset.TILE_EMPTY_PLANT]))
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == person{
+                                    Image(witchImage)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                else if levelModel[levelNumber].levelMap[num] == empty{
+                                    Image(ImageAsset.EMPTY)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                            }
+                        }
+                    }
+                    .padding(.top, 20)
+                    Spacer()
+                }.frame(width: safeDimensionManager.dimensions.width * 0.8, height: safeDimensionManager.dimensions.height * 0.8)
+                    .navigationBarBackButtonHidden(true)
+                
+                //MARK: Changes the screen when coming from onboarding
+                if showOnboarding{
+                    ZStack{
+                        if patch == 1{
+                            Color.black
+                                .opacity(0.4)
+                            AnimatingImage(images: images, interval: 0.1)
+                                .frame(height: safeDimensionManager.dimensions.height / 2)
+                                .padding(.leading, safeDimensionManager.dimensions.width * 0.13)
+                        }else if patch == 2 && showOnboarding2{
+                            Color.black
+                                .opacity(0.4)
+                            VStack(spacing: 0){
+                                Spacer()
+                                AnimatingImage(images: images, interval: 0.1)
+                                    .frame(height: safeDimensionManager.dimensions.height / 4)
+                                    .padding(.leading, safeDimensionManager.dimensions.width * 0.11)
+                                    .padding(.bottom, safeDimensionManager.dimensions.height * 0.2)
+                                Spacer()
+                                
+                                ZStack(alignment: .bottom){
+                                    Rectangle().frame(width: safeDimensionManager.dimensions.width, height: 230).cornerRadius(40)
+                                    HStack{
+                                        Text(ContentComponent.ANIMATION_TEXT)
+                                            .frame(width: safeDimensionManager.dimensions.width * 0.6)
+                                            .foregroundColor(Color(ColorAsset.MAIN_GREEN))
+                                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 14))
+                                            .padding(.top, 15)
+                                            .padding(.horizontal, safeDimensionManager.dimensions.width * 0.1)
+                                            .padding(.bottom, 73)
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Spacer()
+                                        Image("WITCHIE-ONBOARDING-2")
+                                    }
+                                    
+                                }
+                                
+                                
+                            }
+                        }
+                        
                     }
                 }
                 
-                //MARK: GAME GRID
-                LazyVGrid(columns: levelGrid, spacing: 0){
-                    ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
-                        Group{
-                            if levelModel[levelNumber].levelMap[num] == wall{
-                                Image(ImageAsset.TILE_BRICK)
-                                    .resizable()
-                                    .scaledToFill()
+                //MARK: Changes the screen when the game is over
+                if showEnding{
+                    ZStack{
+                        getPatchBackground(patch: patch, backgrounds: [AnyView(DenBackground()), AnyView(GardenBackground())])
+                        VStack(alignment: .center, spacing: 10) {
+                            Spacer()
+                            HStack{
+                                Button{
+                                    dismiss()
+                                }label: {
+                                    Text(ContentComponent.BACK_SYSTEM).foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                        .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
+                                        .padding(.bottom, -15)
+                                        .opacity(0)
+                                }.disabled(true)
+                                Spacer()
+                                Text("\(ContentComponent.LEVEL) \(levelNumber + 1)")
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: 32))
+                                    .foregroundColor(Color(ColorAsset.MAIN_WHITE))
+                                    .padding(.bottom, -20)
+                                Spacer()
+                                SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
                             }
-                            else if levelModel[levelNumber].levelMap[num] == grass{
-                                Image(ImageAsset.TILE_GRASS)
-                                    .resizable()
-                                    .scaledToFill()
+                            .padding(.horizontal, safeDimensionManager.dimensions.width * 0.1)
+                            Spacer()
+                            ZStack{
+                                Text(levelModel[levelNumber].levelDialogue)
+                                    .padding(safeDimensionManager.dimensions.height * 0.04)
+                                    .background(
+                                        Image(getPatchAssets(patch: patch, images: [ImageAsset.DIALOGUE_RECTANGLE, ImageAsset.AFTER_LEVEL_CHAPTER2]))
+                                            .resizable()
+                                            .scaledToFill()
+                                    )
+                                    .frame(width: (safeDimensionManager.dimensions.height * 0.5) / 1.23, height: safeDimensionManager.dimensions.height * 0.5)
+                                    .multilineTextAlignment(.center)
+                                    .font(.custom(ContentComponent.BOREL_REGULAR, size: safeDimensionManager.dimensions.height * ContentComponent.CARD_FONT * 0.98))
+                                    .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
-                            else if levelModel[levelNumber].levelMap[num] == spot{
-                                Image(ImageAsset.TILE_SPOT)
-                                    .resizable()
-                                    .scaledToFill()
+                            Spacer()
+                            if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1) {
+                                if (levelNumber == 8){
+                                    if UserSettings.hasSeenNewChapter == true {
+                                        Button{
+                                            refreshGame()
+                                            levelNumber += 1
+                                            refreshGame()
+                                            isGameOver.toggle()
+                                            showEnding.toggle()
+                                        }
+                                    label: {
+                                        Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                    }
+                                    }
+                                    else {
+                                        NavigationLink(destination: PatchSelectorView()) {
+                                            Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                        }       .simultaneousGesture(TapGesture().onEnded({
+                                            UserSettings.isNotFirstTime[patch - 1] = true
+                                            UserSettings.hasSeenNewChapter = true
+                                            defaultsManager.setSeenChapter(value: true)
+                                        }))
+                                    }
+                                }
+                                else {
+                                    Button{
+                                        refreshGame()
+                                        levelNumber += 1
+                                        refreshGame()
+                                        isGameOver.toggle()
+                                        showEnding.toggle()
+                                    } label: {
+                                        Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                    }
+                                }
                             }
-                            //this only happens when a cauldron is in the mark place
-                            else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
-                                Image(ImageAsset.TILE_CAULDRON)
-                                    .resizable()
-                                    .scaledToFill()
-                            }
-                            else if levelModel[levelNumber].levelMap[num] == box{
-                                Image(ImageAsset.TILE_EMPTY_CAULDRON)
-                                    .resizable()
-                                    .scaledToFill()
-                            }
-                            else if levelModel[levelNumber].levelMap[num] == person{
-                                Image(witchImage)
-                                    .resizable()
-                                    .scaledToFill()
-                            }
-                            else if levelModel[levelNumber].levelMap[num] == empty{
-                                Image(ImageAsset.EMPTY)
-                                    .resizable()
-                                    .scaledToFill()
+                            else {
+                                NavigationLink(destination: StartGameView()) {
+                                    Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.width * 0.43)
+                                }
                             }
                         }
                     }
+                    .frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                 }
-                .padding(.top, 20)
-                Spacer()
-            }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.8)
-                .navigationBarBackButtonHidden(true)
-                .navigationViewStyle(StackNavigationViewStyle())
-            
-            //MARK: Changes the screen when the game is over
-            if isGameOver{
-                ZStack{
-                    Image(ImageAsset.BACKGROUND)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 1.1)
-                    VStack (alignment: .center, spacing: 10){
-                        Spacer()
-                        HStack{
-                            Button{
-                                dismiss()
-                            }label: {
-                                Text("<").foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                    .font(.custom(ContentComponent.regular, size: 24))
-                                    .padding(.bottom, -15)
-                                    .opacity(0)
-                            }.disabled(true)
-                            Spacer()
-                            Text("Nível \(levelNumber + 1)")
-                                .font(.custom(ContentComponent.regular, size: 32))
-                                .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                                .padding(.bottom, -20)
-                            Spacer()
-                            SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
-                        }
-                        Spacer()
-                        ZStack{
-                            Image(ImageAsset.DIALOGUE_RECTANGLE)
-                            Text(levelModel[levelNumber].levelDialogue)
-                                .multilineTextAlignment(.center)
-                                .frame(width: 278, height: 337)
-                                .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
-                                .font(.custom(ContentComponent.regular, size: 18))
-                                .padding(.bottom, -15)
-                        }
-                        Spacer()
-                        if (levelNumber < LevelModel.patchOne().count - 1) {
-                            Button{
-                                refreshGame()
-                                levelNumber += 1
-                                refreshGame()
-                                isGameOver.toggle()
-                            }
-                        label: {
-                            Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.268)
-                        }
-                        }
-                        else {
-                            NavigationLink(destination: StartGameView()) {
-                                Image(ImageAsset.NEXT_BUTTON_DIALOGUE)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.268)
-                            }                        .simultaneousGesture(TapGesture().onEnded({
-                                UserSettings.isNotFirstTime = true
-                            }))
-                        }
-                        
-                    }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height)
-                    
-                }
+            } else{
+                Text("EITA VIROU LANDSCAPE")
             }
         }
-        
+        .onChange(of: levelNumber) { newValue in
+            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(newValue + 1)"])
+        }
+        .onAppear(){
+            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1)"])
+            witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
+            
+        }
+        //Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevel: levelNumber])
+        .onReceive(timer) { _ in
+            if (!isGameOver){
+                timePlayed += 1
+            }
+        }
+        .ignoresSafeArea()
         //MARK: New sliding game controls
+#if os(iOS)
         .gesture(
             DragGesture()
                 .onChanged { gesture in
@@ -239,14 +367,19 @@ struct LevelView: View{
                 .onEnded { gesture in
                     if (!isGameOver){
                         if direction == .down{
+                            showOnboarding2 = false
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
+                            showOnboarding = false
                         }else if direction == .up{
                             defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }else if direction == .left{
-                            witchImage = ImageAsset.TILE_WITCH_LEFT
+                            witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
                             defineMoviment(actualPosition: levelActualPosition, offset: -1)
                         }else if direction == .right{
-                            witchImage = ImageAsset.TILE_WITCH_RIGHT
+                            witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_RIGHT, ImageAsset.WITCHIE_GARDEN_RIGHT])
+                            if patch == 2 && levelNumber == 0 && showOnboarding{
+                                showOnboarding2 = true
+                            }
                             defineMoviment(actualPosition: levelActualPosition, offset: 1)
                         }
                         self.gestureOffset = .zero
@@ -255,117 +388,13 @@ struct LevelView: View{
                     }
                 }
         )
+#endif
     }
 }
-//MARK: Game Functions
-extension LevelView{
-    
-    private func getDirection(from translation: CGSize) -> Direction {
-        let x = translation.width
-        let y = translation.height
-        
-        if x > 25 && abs(y) < x {
-            return .right
-        } else if x < -25 && abs(y) < abs(x) {
-            return .left
-        } else if y > 25 && abs(x) < y {
-            return .down
-        } else if y < -25 && abs(x) < abs(y) {
-            return .up
-        }
-        
-        return .none
-    }
-    
-    func refreshGame(){
-        playerMovements = 0
-        levelModel[levelNumber].levelMap = LevelModel.patchOne()[levelNumber].levelMap
-        levelActualPosition = levelStartPosition
-        levelGrid = Array(repeating: GridItem(.flexible(minimum: 30, maximum: 150), spacing: 0), count: levelModel[levelNumber].levelOffset)
-        levelSpotsIndex = LevelModel.getIndexes(of: "🔯", in: levelModel[levelNumber].levelMap)
-        levelStartPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
-        levelActualPosition = LevelModel.getIndexes(of: "🙋🏿", in: levelModel[levelNumber].levelMap)[0]
-    }
-    
-    func defineMoviment(actualPosition: Int, offset: Int){
-        //WALKING IN FREE SPACE
-        if levelModel[levelNumber].levelMap[actualPosition + offset] == grass {
-            levelModel[levelNumber].levelMap.swapAt(actualPosition + offset, actualPosition)
-            levelActualPosition = actualPosition + offset
-            //recursion stop condition
-            if (levelModel[levelNumber].levelMap[levelActualPosition + offset] == box) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == wall) || (levelModel[levelNumber].levelMap[levelActualPosition + offset] == spot) {
-                //here, nothing happens
-                //you hit something, so it's just time to stop walking
-                //then finally it's it time to count the movement:
-                playerMovements += 1
-                
-            }//recursion is called when the next block is TILE_FLOOR
-            else{
-                defineMoviment(actualPosition: levelActualPosition, offset: offset)
-                //keep walking
-            }
-        }
-        //PUSHING A CAULDRON
-        else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == box && !levelSpotsIndex.contains(levelActualPosition + offset) {
-            //pushing a box into a mark (sound effects)
-            // Gui olha aqui dps
-            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] == spot {
-                levelModel[levelNumber].levelMap[actualPosition] = grass
-                levelModel[levelNumber].levelMap[actualPosition + offset] = person
-                levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
-                levelActualPosition = actualPosition + offset
-                //if you successfully pushed a box, update playerMovements
-                playerMovements += 1
-            }
-            //pushing a cauldron in free space (same code, but no sounds effects)
-            else if levelModel[levelNumber].levelMap[actualPosition + offset + offset] != wall && levelModel[levelNumber].levelMap[actualPosition + offset + offset] != box{
-                levelModel[levelNumber].levelMap[actualPosition] = grass
-                levelModel[levelNumber].levelMap[actualPosition + offset] = person
-                levelModel[levelNumber].levelMap[actualPosition + offset + offset] = box
-                levelActualPosition = actualPosition + offset
-                //if you successfully pushed a box, update playerMovements
-                playerMovements += 1
-            }
-        }
-        if isLevelCompleted(platesPosition: levelSpotsIndex){
-            self.isGameOver.toggle()
-            LevelCompleted.isCompleted[levelNumber] = true
-            UserDefaults.standard.set(LevelCompleted.isCompleted, forKey: "CurrentLevel")
-            UserDefaults.standard.set(true, forKey: "isNotFirstTime")
-            
-        }
-    }
-    
-    //    func playCauldronSoundEffects(){
-    //        var audioPlayer: AVAudioPlayer
-    //        let url = Bundle.main.url(forResource: "CauldronAlert", withExtension: "mp3")
-    //        guard url != nil else {
-    //            return
-    //        }
-    //        do {
-    //            audioPlayer = try AVAudioPlayer(contentsOf: url!)
-    //            audioPlayer?.play()
-    //        } catch {
-    //
-    //        }
-    //    }
-    
-    //MARK: function that checks if the level is completed
-    func isLevelCompleted(platesPosition: [Int]) -> Bool{
-        if (platesPosition.allSatisfy{levelModel[levelNumber].levelMap[$0] == box}){
-            
-            return true
-        }
-        else{
-            return false
-        }
-    }
-}
-
 
 struct LevelView_Previews: PreviewProvider {
     static var previews: some View {
-        LevelView(levelNumber: 0, levelModel: LevelModel.patchOne()).environmentObject(AudioPlayerManager())
+        ContentView()
     }
 }
 

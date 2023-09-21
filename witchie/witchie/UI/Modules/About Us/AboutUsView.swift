@@ -12,109 +12,113 @@ struct AboutUsView: View {
     @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @Environment(\.dismiss) private var dismiss
     
+    var safeDimensionManager = DimensionManager.shared
+    
     var body: some View {
         ZStack {
             Color(ColorAsset.MAIN_PURPLE)
                 .ignoresSafeArea()
             VStack {
                 HStack (alignment: .center) {
-                    BackButton(color: ColorAsset.MAIN_WHITE) {
+                    BackButton(color: ColorAsset.MAIN_WHITE, backStyle: ContentComponent.BACK) {
                         dismiss()
                     }
                     Spacer()
                     SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                 }
-                .padding(.horizontal, 32.0)
+                .padding([.horizontal,.top], 32.0)
 
                 Spacer()
+                    //.frame(height: safeDimensionManager.dimensions.height * 0.05)
                 VStack(spacing: 8.0) {
-                    Text("Sobre Nós")
-                        .font(.custom(ContentComponent.regular, size: 40))
+                    Text(ContentComponent.ABOUT_US)
+                        .font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
                         .foregroundColor(Color(ColorAsset.MAIN_WHITE))
-                    Text("Jogo vencedor do Swift Student Challenge 2023 🥇")
-                        .font(.custom(ContentComponent.regular, size: 20))
+                    Text(ContentComponent.WWDC2023_WINNER)
+                        .font(.custom(ContentComponent.BOREL_REGULAR, size: 20))
                         .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.horizontal, 48.0)
                 Spacer()
+                    .frame(height: safeDimensionManager.dimensions.height * 0.05)
                 VStack(spacing: 8.0) {
                     HStack {
-                        Text("Ernesto Gonçalves")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.ERNESTO)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                         Rectangle()
                             .frame(height: 1.0)
                             .foregroundColor(Color(ColorAsset.BAR_PURPLE))
-                        Text("Creator")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.CREATOR)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                     }
                     HStack {
-                        Text("João Pedro Barreto")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.BRUNA)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                         Rectangle()
                             .frame(height: 1.0)
                             .foregroundColor(Color(ColorAsset.BAR_PURPLE))
-                        Text("Dev")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.DESIGNER)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                     }
                     HStack {
-                        Text("Bruna Avellar")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.LUCAS)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                         Rectangle()
                             .frame(height: 1.0)
                             .foregroundColor(Color(ColorAsset.BAR_PURPLE))
-                        Text("Designer")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.GAME_DESIGNER)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                     }
                     HStack {
-                        Text("Lucas Souza")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.GUILHERME)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                         Rectangle()
                             .frame(height: 1.0)
                             .foregroundColor(Color(ColorAsset.BAR_PURPLE))
-                        Text("Game designer")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.DEV)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                     }
                     HStack {
-                        Text("Guilherme Souza")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.BARRETO)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                         Rectangle()
                             .frame(height: 1.0)
                             .foregroundColor(Color(ColorAsset.BAR_PURPLE))
-                        Text("Dev")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.DEV)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                     }
                     HStack {
-                        Text("Thales Fraga")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.THALES)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                         Rectangle()
                             .frame(height: 1.0)
                             .foregroundColor(Color(ColorAsset.BAR_PURPLE))
-                        Text("Dev")
-                            .font(.custom(ContentComponent.regular, size: 16))
+                        Text(ContentComponent.DEV)
+                            .font(.custom(ContentComponent.BOREL_REGULAR, size: 16))
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .fixedSize()
                     }
@@ -126,14 +130,14 @@ struct AboutUsView: View {
                         HStack {
                             Image(ImageAsset.WITCHIE_HALF)
                                 .resizable()
-                                .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height * 0.25)
+                                .frame(width: safeDimensionManager.dimensions.width * 0.3, height: safeDimensionManager.dimensions.height * 0.25)
                             Spacer()
                         }
                         HStack {
                             Spacer()
                             Image(ImageAsset.PLAY_WITCHIE)
                                 .resizable()
-                                .frame(width: UIScreen.main.bounds.width * 0.75, height: UIScreen.main.bounds.height * 0.15)
+                                .frame(width: safeDimensionManager.dimensions.width * 0.75, height: safeDimensionManager.dimensions.height * 0.15)
                         }
                         .padding(.top, 40.0)
                     }

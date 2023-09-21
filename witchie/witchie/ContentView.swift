@@ -9,28 +9,32 @@ import SwiftUI
 import AVFAudio
 
 struct ContentView: View {
-    @State var audioPlayer: AVAudioPlayer!
     @StateObject var audioPlayerManager = AudioPlayerManager()
-
+    @StateObject var defaultsManager = DefaultsManager.shared
+    @StateObject var dimensionManager = DimensionManager.shared
+    
     var body: some View {
-        StartGameView()
-        //OnboardingView()
-            .onAppear {
-                
-                // Criar o AVAudioPlayer no início do jogo
-                audioPlayerManager.setupAudioPlayer()
-                if UserDefaults.standard.bool(forKey: "isSoundOn"){
-                    audioPlayerManager.playSound()
-                } else {
-                    audioPlayerManager.soundOn = UserDefaults.standard.bool(forKey: "isSoundOn")
+        GeometryReader { geo in
+            //StartGameView()
+            //PatchSelectorView()
+            StartGameView()
+                .onAppear {
+                    //Ler o tamanho do dispositivo
+                    dimensionManager.dimensions = geo.size
+                    
+                    // Criar o AVAudioPlayer no início do jogo
+                    audioPlayerManager.gameStarted()
+                    
+                    //Carrega os valores de userdefaults no usersettings
+                    defaultsManager.gameStarted() 
                 }
-                LevelCompleted.isCompleted = UserDefaults.standard.array(forKey: "CurrentLevel") as? [Bool] ?? LevelCompleted.isCompleted
-                UserSettings.isNotFirstTime = UserDefaults.standard.bool(forKey: "isNotFirstTime")
-                print(UserSettings.isNotFirstTime)
-                print(UserDefaults.standard.bool(forKey: "isNotFirstTime"))
-                
+                .onChange(of: geo.size, perform: { newValue in
+                    dimensionManager.dimensions = geo.size
+                })
+                .environmentObject(audioPlayerManager)
+                .preferredColorScheme(.dark)
         }
-            .environmentObject(audioPlayerManager)
+        .ignoresSafeArea()
     }
 }
 
