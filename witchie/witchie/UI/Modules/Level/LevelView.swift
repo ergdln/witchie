@@ -281,7 +281,7 @@ struct LevelView: View{
                             }
                             Spacer()
                             if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1) {
-                                if (levelNumber == 8){
+                                if (levelNumber == 8 && patch == 1){
                                     if UserSettings.hasSeenNewChapter == true {
                                         Button{
                                             refreshGame()
