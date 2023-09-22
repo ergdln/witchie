@@ -28,7 +28,7 @@ class FXPlayerManager: ObservableObject {
         audioPlayer?.numberOfLoops = 1
         audioPlayer?.volume = patch == 1 ? 1.0 : 0.8
         audioPlayer?.play()
-        DispatchQueue.main.asyncAfter(deadline: patch == 1 ? .now() + 0.3 : .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: patch == 1 ? .now() + 0.3 : .now() + 0.5) {
             self.stopSound()
         }
     }
