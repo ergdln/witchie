@@ -13,15 +13,21 @@ import FirebaseAnalytics
 struct LevelView: View{
     
     @State public var soundOn = true
+    // Esses Managers vão para uma pasta chamada Manager
     @EnvironmentObject public var audioPlayerManager: AudioPlayerManager
     @StateObject var fxPlayerManager = FXPlayerManager()
     @State public var levelNumber: Int
+    // Deveria ser chamado apenas o Nível, não o array inteiro do Model
     @State var levelModel: [LevelModel]
     
     var patch: Int
     
     @Environment(\.requestReview) var requestReview
     
+    // Deveria estar na LevelModel
+    // A gente deveria receber só o LevelNumber
+    // Tudo isso aqui deveria ser @StateObject de uma classe que implementa @ObservableObject
+    // Se os valores precisarem ser alterados, referenciamos como @ObservedObject ou @Binding
     @State var levelGrid: [GridItem]
     @State var levelSpotsIndex: [Int]
     @State var levelActualPosition: Int
@@ -29,34 +35,47 @@ struct LevelView: View{
     
     //MARK: VARIABLES
     
+    // Isso aqui fica aqui mesmo (?)
     @State public var isGameOver = false
     @State public var showEnding = false
+    
+    // Variáveis sobre movimentos
+    // Poderiam estar em um GameManager ou algo que lide com os movimentos do jogo
     @State public var gestureOffset: CGSize = .zero
     @State public var direction: Direction = .none
+    
+    // Métricas, poderiam ser Structs
     @State public var playerMovements: Int = 0
     @State public var timePlayed: Int = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State public var refreshes: Int = 0
     
-    //Onboarding things
+    // Onboarding things
+    // Deveriam estar em um PatchModel, pois são referentes à capítulos específicos
     @State var showOnboarding: Bool
     public let images = (1...11).map { String(format: "frame-%d", $0) }.map { Image($0) }
-    public let patch1animaiton = (1...9).map { String(format: "GIF_CAUDRON_%d", $0)}.map {Image($0)}
+    public let patch1animation = (1...9).map { String(format: "GIF_CAUDRON_%d", $0)}.map {Image($0)}
     public let patch2animation = (1...21).map { String(format: "BLOSSOM_%d", $0)}.map {Image($0)}
     
+    // Isso fica aqui mesmo
     @StateObject var safeDimensionManager = DimensionManager.shared
     @ObservedObject var defaultsManager = DefaultsManager.shared
     
+    // Deveria ir pra um enum (dentro da pasta de Enum)
     enum Direction {
         case none, up, down, left, right
     }
     
+    // Pode ir pro PatchModel (a partir de qual movimento mostra-se o onboarding? [não é o ideal mas])
     @State var showOnboarding2 = false
     
-    //witch first image
+    // witch first image
+    //
     @State var witchImage: String
     
-    //Rename de map elements
+    // Rename de map elements
+    // Deveria ser um Enum
+    // Muda de acordo com o Patch
     let box = ContentComponent.BOX
     let grass = ContentComponent.GRASS
     let person = ContentComponent.PERSON
@@ -91,6 +110,8 @@ struct LevelView: View{
             if true {//safeDimensionManager.orientation == .portrait{
                 getPatchBackground(patch: patch, backgrounds: [AnyView(DenBackground()), AnyView( GardenBackground())])
                 VStack(alignment: .center, spacing: 10) {
+                    // Isso aqui deveria ser um componente TopBarComponent, com BackButton, LevelTag e SoundToggle (que agora va iser um botão de config)
+                    // Deveria ter um .disable para o isGameOver
                     HStack(alignment: .center) {
                         if UserSettings.isNotFirstTime[patch - 1]{
                             Button{
@@ -119,6 +140,7 @@ struct LevelView: View{
                         SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                     }
                     Spacer()
+                    // E isso aqui poderia ser um componente também, com StepCounter e RefreshButton
                     HStack {
                         StepCounter(imageName: ImageAsset.COUNTER, playerMovements: playerMovements, type: .levelView)
                         Spacer()
@@ -132,9 +154,13 @@ struct LevelView: View{
                                 .frame(height: 38)
                         }.disabled(isGameOver)
                     }
+                    //MARK: GRID DO JOGO
                     LazyVGrid(columns: levelGrid, spacing: 0){
                         ForEach((0...levelModel[levelNumber].levelMap.count-1), id: \.self) { num in
                             Group{
+                                
+                                // Os assets deveriam estar na PatchModel
+                                // Esse If/Else pode virar uma função na LevelViewModel
                                 if levelModel[levelNumber].levelMap[num] == wall{
                                     Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_BRICK, ImageAsset.GARDEN_BRICK]))
                                         .resizable()
@@ -161,7 +187,8 @@ struct LevelView: View{
                                         .resizable()
                                         .scaledToFill()
                                 }
-                                //this only happens when a cauldron is in the mark place
+                                // this only happens when a cauldron is in the marked place
+                                // Talvez isso não deveria estar assim (?), talvez deveria ser uma função na LevelViewModel
                                 else if levelModel[levelNumber].levelMap[num] == box && levelSpotsIndex.contains(num) {
                                     if !isGameOver{
                                         Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
@@ -196,6 +223,10 @@ struct LevelView: View{
                     .navigationBarBackButtonHidden(true)
                 
                 //MARK: Changes the screen when coming from onboarding
+                // Ernesto: "isso tem que sumir"
+                // Ernesto: "isso não é um onboarding"
+                // Renomear para Coachmark
+                // O onboarding tem que virar um componente e as informações tem que vir do PatchModel
                 if showOnboarding{
                     ZStack{
                         if patch == 1{
@@ -242,6 +273,9 @@ struct LevelView: View{
                 }
                 
                 //MARK: Changes the screen when the game is over
+                // Isso é a tela pós conclusão de nível
+                // Essa tela deveria ser um componente
+                // Não deveria sobrepor a LevelView inteira, apenas substituir (tira o StepCounter, o RefreshButton e o Grid, e coloca o balão de fala e o botão)
                 if showEnding{
                     ZStack{
                         getPatchBackground(patch: patch, backgrounds: [AnyView(DenBackground()), AnyView(GardenBackground())])
@@ -267,6 +301,7 @@ struct LevelView: View{
                             .padding(.horizontal, safeDimensionManager.dimensions.width * 0.1)
                             Spacer()
                             ZStack{
+                                // Isso já é um componente, só trocar
                                 Text(levelModel[levelNumber].levelDialogue)
                                     .padding(safeDimensionManager.dimensions.height * 0.04)
                                     .background(
@@ -280,6 +315,8 @@ struct LevelView: View{
                                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
                             }
                             Spacer()
+                            // Isso aqui vai pra o LevelViewModel e só chamar aqui
+                            // Várias coisas aqui rolam ser componetizadas
                             if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1) {
                                 if (levelNumber == 8 && patch == 1){
                                     if UserSettings.hasSeenNewChapter == true {
@@ -341,6 +378,7 @@ struct LevelView: View{
                 Text("EITA VIROU LANDSCAPE")
             }
         }
+        // Essas coisas de Analytics deveriam virar um AnalyticsManager
         .onChange(of: levelNumber) { newValue in
             Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(newValue + 1)"])
         }
@@ -358,6 +396,7 @@ struct LevelView: View{
         .ignoresSafeArea()
         //MARK: New sliding game controls
 #if os(iOS)
+        // Essa parte aqui vai virar um GameManager
         .gesture(
             DragGesture()
                 .onChanged { gesture in
@@ -368,19 +407,19 @@ struct LevelView: View{
                     if (!isGameOver){
                         if direction == .down{
                             showOnboarding2 = false
-                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
+                            defineMovement(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)
                             showOnboarding = false
                         }else if direction == .up{
-                            defineMoviment(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
+                            defineMovement(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset * -1)
                         }else if direction == .left{
                             witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
-                            defineMoviment(actualPosition: levelActualPosition, offset: -1)
+                            defineMovement(actualPosition: levelActualPosition, offset: -1)
                         }else if direction == .right{
                             witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_RIGHT, ImageAsset.WITCHIE_GARDEN_RIGHT])
                             if patch == 2 && levelNumber == 0 && showOnboarding{
                                 showOnboarding2 = true
                             }
-                            defineMoviment(actualPosition: levelActualPosition, offset: 1)
+                            defineMovement(actualPosition: levelActualPosition, offset: 1)
                         }
                         self.gestureOffset = .zero
                         self.direction = .none

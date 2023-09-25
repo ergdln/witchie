@@ -12,6 +12,10 @@ import FirebaseAnalytics
 //MARK: Game Functions
 extension LevelView{
     
+    // O que tá aqui vai pra LevelViewModel
+    // LevelViewExtension na vdd é uma LevelViewModel da shopee
+    
+    // GameManager
     public func getDirection(from translation: CGSize) -> Direction {
         let x = translation.width
         let y = translation.height
@@ -29,6 +33,7 @@ extension LevelView{
         return .none
     }
     
+    // GameManager
     func refreshGame(){
         //print(safeDimensionManager.dimensions)
         playerMovements = 0
@@ -40,20 +45,23 @@ extension LevelView{
         levelActualPosition = LevelModel.getIndexes(of: person, in: levelModel[levelNumber].levelMap)[0]
     }
     
+    // AnalyticsManager
     fileprivate func levelEndAnalytics() {
         Analytics.logEvent("level_completed", parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1) completed", "player_movements": playerMovements, "time_played": timePlayed, "refreshes": refreshes])
     }
     
+    // ReviewManager
     fileprivate func showReviewPrompt() {
-            //Asking for Evaluation when it's the first time passing Level 6
-            if (UserSettings.records[1]![5] == 0 || UserSettings.records[2]![5] == 0) && levelNumber == 5 {
-                requestReview()
-            }
+        //Asking for Evaluation when it's the first time passing Level 6
+        if (UserSettings.records[1]![5] == 0 || UserSettings.records[2]![5] == 0) && levelNumber == 5 {
+            requestReview()
         }
+    }
     
     
     //MARK: main movement function
-    func defineMoviment(actualPosition: Int, offset: Int){
+    // GameManager
+    func defineMovement(actualPosition: Int, offset: Int){
         //FACED A HOLE
         if levelModel[levelNumber].levelMap[actualPosition + offset] == hole {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
@@ -73,7 +81,7 @@ extension LevelView{
                 
             }//recursion is called when the next block is TILE_FLOOR
             else{
-                defineMoviment(actualPosition: levelActualPosition, offset: offset)
+                defineMovement(actualPosition: levelActualPosition, offset: offset)
                 //keep walking
             }
         }
@@ -141,16 +149,16 @@ extension LevelView{
     }
     
     //MARK: function that checks if the level is completed
+    // GameManager
     func isLevelCompleted(platesPosition: [Int]) -> Bool{
         if (platesPosition.allSatisfy{levelModel[levelNumber].levelMap[$0] == box}){
-            
             return true
-        }
-        else{
+        } else {
             return false
         }
     }
     
+    // Essas três funções aqui vão para o PatchModel
     func getPatchAssets(patch: Int, images: [String]) -> String {
         guard patch >= 1 && patch <= images.count else {
             return "default_image" //caso seja um valor de patch inválido
@@ -166,8 +174,8 @@ extension LevelView{
     }
     
     func getAnimation(patch: Int) -> AnimatingImage{
-        if patch == 1{
-            return AnimatingImage(images: patch1animaiton, interval: 0.05)
+        if patch == 1 {
+            return AnimatingImage(images: patch1animation, interval: 0.05)
         }else if patch == 2{
             return AnimatingImage(images: patch2animation, interval: 0.07, shouldLock: true)
         }
