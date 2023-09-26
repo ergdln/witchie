@@ -52,6 +52,14 @@ struct ContentComponent {
     static let DEN = String(localized: "den")
     static let GARDEN = String(localized: "garden")
     
+    //NOTIFICATIONS
+    static let TITLE1 = String(localized: "title1")
+    static let BODY1 = String(localized: "body1")
+    static let TITLE2 = String(localized: "title2")
+    static let BODY2 = String(localized: "body2")
+    static let TITLE3 = String(localized: "title3")
+    static let BODY3 = String(localized: "body3")
+    
     //MARK: CHAPTER 1
     
     //ONBOARDING TEXTS

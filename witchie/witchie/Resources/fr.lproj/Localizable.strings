@@ -27,6 +27,15 @@
 "den" = "Tanière";
 "garden" = "Jardin";
 
+//NOTIFICATIONS
+"title1" = "title1";
+"body1" = "body1";
+"title2" = "title2";
+"body2" = "body2";
+"title3" = "title3";
+"body3" = "body3";
+
+
 //MARK: EPISODE 1
 //ONBOARDING TEXTS CHAPTER 1
 //Ei, você aí, vamos ser diretos porque tô sem tempo pra conversa fiada.\n\n Eu sou a Witchie.
