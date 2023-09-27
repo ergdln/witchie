@@ -26,12 +26,12 @@
 "garden" = "Jardim";
 
 //NOTIFICATIONS
-"title1" = "title1";
-"body1" = "body1";
-"title2" = "title2";
-"body2" = "body2";
-"title3" = "title3";
-"body3" = "body3";
+"title1" = "Desistiu?";
+"body1" = "Poxa, eu colocava tanta fé em você...";
+"title2" = "Tô tão sozinha ultimamente...";
+"body2" = "Nem meus netinhos ligam mais pra mim 🥺";
+"title3" = "Faz tempo que eu não te vejo...";
+"body3" = "Tu não tá me trocando por aquele joguinho do doce não, né?";
 
 
 //MARK: EPISODE 1

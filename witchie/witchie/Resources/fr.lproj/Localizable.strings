@@ -28,12 +28,12 @@
 "garden" = "Jardin";
 
 //NOTIFICATIONS
-"title1" = "title1";
-"body1" = "body1";
-"title2" = "title2";
-"body2" = "body2";
-"title3" = "title3";
-"body3" = "body3";
+"title1" = "As-tu abandonné?";
+"body1" = "Oh, j'avais tellement foi en toi...";
+"title2" = "J'ai été si seule ces temps-ci...";
+"body2" = "Même mes petits-enfants ne m'appellent plus 🥺";
+"title3" = "Ça fait un moment que je ne t'ai pas vu...";
+"body3" = "Tu ne me remplaces pas par ce jeu de bonbons, n'est-ce pas?";
 
 
 //MARK: EPISODE 1

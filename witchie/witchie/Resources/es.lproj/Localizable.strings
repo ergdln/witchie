@@ -28,12 +28,13 @@
 "garden" = "Jardın";
 
 //NOTIFICATIONS
-"title1" = "title1";
-"body1" = "body1";
-"title2" = "title2";
-"body2" = "body2";
-"title3" = "title3";
-"body3" = "body3";
+"title1" = "¿Te rendiste?";
+"body1" = "Oh, tenía tanta fe en ti...";
+"title2" = "He estado tan sola últimamente...";
+"body2" = "Ni mis nietos me llaman más 🥺";
+"title3" = "Ha pasado un tiempo desde la última vez que te vi...";
+"body3" = "¿No me estás reemplazando con ese juego de dulces, verdad?";
+
 
 //MARK: EPISODE 1
 //ONBOARDING TEXTS CHAPTER 1
