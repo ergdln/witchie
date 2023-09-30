@@ -17,7 +17,7 @@
                BlueprintIdentifier = "6EFCA0EC2A69A9F50008AAC5"
                BuildableName = "Witchie.app"
                BlueprintName = "Witchie"
-               ReferencedContainer = "container:witchie.xcodeproj">
+               ReferencedContainer = "container:Witchie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,7 +46,7 @@
             BlueprintIdentifier = "6EFCA0EC2A69A9F50008AAC5"
             BuildableName = "Witchie.app"
             BlueprintName = "Witchie"
-            ReferencedContainer = "container:witchie.xcodeproj">
+            ReferencedContainer = "container:Witchie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -73,7 +73,7 @@
             BlueprintIdentifier = "6EFCA0EC2A69A9F50008AAC5"
             BuildableName = "Witchie.app"
             BlueprintName = "Witchie"
-            ReferencedContainer = "container:witchie.xcodeproj">
+            ReferencedContainer = "container:Witchie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
