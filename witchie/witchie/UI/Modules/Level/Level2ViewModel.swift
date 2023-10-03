@@ -12,17 +12,23 @@ import SwiftUI
 
 final class Level2ViewModel: ObservableObject {
     
-    
+    @ObservedObject var defaultsManager = DefaultsManager.shared
     
     @Published var patch: Int
     @Published var levelNumber: Int
     
     @Published var levelArray: [String]
     
-    init(patch: Int, levelNumber: Int) {
-        self.patch = patch
-        self.levelNumber = levelNumber
-        self.levelArray = LevelModel.getLevels(chapter: patch)[levelNumber].levelMap
+    @Published var showEnding: Bool = false
+    
+    @Published var showOnboarding: Bool = UserSettings.currentLevel.showOnboarding ?? false
+    @Published var showOnboarding2: Bool = false
+    
+    
+    init() {
+        self.patch = UserSettings.currentLevel.patch
+        self.levelNumber = UserSettings.currentLevel.level
+        self.levelArray = LevelModel.getLevels(chapter: UserSettings.currentLevel.patch)[UserSettings.currentLevel.level].levelMap
     }
     
     @Published var playerMovements: Int = 0
@@ -151,6 +157,78 @@ final class Level2ViewModel: ObservableObject {
         } else {
             return AnyView(Image(""))
         }
+    }
+    
+    func getNextButton() -> AnyView{
+        if (levelNumber < LevelModel.getLevels(chapter: patch).count - 1) {
+            if (levelNumber == 8 && patch == 1){
+                if UserSettings.hasSeenNewChapter == true {
+                    
+                    return (
+                        AnyView(
+                            Button{
+                                self.refreshGame()
+                                self.levelNumber += 1
+                                self.refreshGame()
+                                self.isGameOver.toggle()
+                                self.showEnding.toggle()
+                            }
+                            label: {
+                                Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            }
+                        )
+                    )
+                }
+                else {
+                    
+                    return(
+                        AnyView(
+                            NavigationLink(destination: PatchSelectorView()) {
+                                Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded({
+                                UserSettings.isNotFirstTime[self.patch - 1] = true
+                                UserSettings.hasSeenNewChapter = true
+                                self.defaultsManager.setSeenChapter(value: true)
+                            }))
+                        )
+                    )
+                }
+            }
+            else {
+                return(
+                    AnyView(
+                        Button{
+                            self.refreshGame()
+                            self.levelNumber += 1
+                            self.refreshGame()
+                            self.isGameOver.toggle()
+                            self.showEnding.toggle()
+                        } label: {
+                            Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        }
+                    )
+                )
+            }
+        }
+        else {
+            return(
+                AnyView(
+                    NavigationLink(destination: StartGameView()) {
+                        Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                )
+            )
+        }
+
     }
     
     

@@ -18,6 +18,7 @@ struct LevelModel {
     //map
     var levelMap: [String]
     
+    
 }
 
 extension LevelModel{
