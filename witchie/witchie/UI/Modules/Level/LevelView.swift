@@ -42,7 +42,7 @@ struct LevelView: View{
     // Variáveis sobre movimentos
     // Poderiam estar em um GameManager ou algo que lide com os movimentos do jogo
     @State public var gestureOffset: CGSize = .zero
-    @State public var direction: Direction = .none
+    @State public var direction: GestureDirection = .none
     
     // Métricas, poderiam ser Structs
     @State public var playerMovements: Int = 0
@@ -62,9 +62,6 @@ struct LevelView: View{
     @ObservedObject var defaultsManager = DefaultsManager.shared
     
     // Deveria ir pra um enum (dentro da pasta de Enum)
-    enum Direction {
-        case none, up, down, left, right
-    }
     
     // Pode ir pro PatchModel (a partir de qual movimento mostra-se o onboarding? [não é o ideal mas])
     @State var showOnboarding2 = false
@@ -404,7 +401,7 @@ struct LevelView: View{
                     self.direction = self.getDirection(from: gesture.translation)
                 }
                 .onEnded { gesture in
-                    if (!isGameOver){
+                    if !isGameOver {
                         if direction == .down{
                             showOnboarding2 = false
                             defineMovement(actualPosition: levelActualPosition, offset: levelModel[levelNumber].levelOffset)

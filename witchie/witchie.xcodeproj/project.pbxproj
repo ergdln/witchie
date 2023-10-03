@@ -30,6 +30,8 @@
 		47889ED32A704C32005EB560 /* LevelSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889ED22A704C32005EB560 /* LevelSelectorView.swift */; };
 		47889F1E2A72F21B005EB560 /* ComponentX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47889F1D2A72F21B005EB560 /* ComponentX.swift */; };
 		47B53B862A7DACF200E3DADC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53B852A7DACF200E3DADC /* BackButton.swift */; };
+		47E2C8C52ACCA959006BD56D /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E2C8C42ACCA959006BD56D /* GameManager.swift */; };
+		47E2C8C72ACCAA28006BD56D /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E2C8C62ACCAA28006BD56D /* Direction.swift */; };
 		5B234C1D2A9FC5E400D0B83C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5B234C1C2A9FC5E400D0B83C /* FirebaseAnalytics */; };
 		5B234C1F2A9FC5E400D0B83C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5B234C1E2A9FC5E400D0B83C /* FirebaseDatabase */; };
 		5B6B15D52AA7B628004C523C /* GoogleTagManager in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6B15D42AA7B628004C523C /* GoogleTagManager */; };
@@ -100,6 +102,8 @@
 		47889ED22A704C32005EB560 /* LevelSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectorView.swift; sourceTree = "<group>"; };
 		47889F1D2A72F21B005EB560 /* ComponentX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentX.swift; sourceTree = "<group>"; };
 		47B53B852A7DACF200E3DADC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		47E2C8C42ACCA959006BD56D /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		47E2C8C62ACCAA28006BD56D /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		5B01854F2ABBC23700216CDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B2CFD9A2ABB7019005DCB02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B6B15D62AA7B772004C523C /* container */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = container; sourceTree = SOURCE_ROOT; };
@@ -191,6 +195,7 @@
 				6EB531CA2AA10CDE00A14705 /* LevelViewExtension.swift */,
 				47400F4A2AC74DD800252930 /* Level2View.swift */,
 				47400F4B2AC74DD800252930 /* Level2ViewModel.swift */,
+				47E2C8C42ACCA959006BD56D /* GameManager.swift */,
 				47400F4C2AC74DD800252930 /* Level2.swift */,
 			);
 			path = Level;
@@ -302,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF016332A8EB03D0012751E /* StepCounterType.swift */,
+				47E2C8C62ACCAA28006BD56D /* Direction.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 				4706218F2AB10875009CE47E /* StarPath.swift in Sources */,
 				C06C38E42A8C036200A2C02E /* Patch1Transition3.swift in Sources */,
 				C06C15672A71AD2300A7FE9E /* AudioPlayerManager.swift in Sources */,
+				47E2C8C52ACCA959006BD56D /* GameManager.swift in Sources */,
 				6EB531CB2AA10CDE00A14705 /* LevelViewExtension.swift in Sources */,
 				4725D4772A8D49F9002166EE /* AnimatingImage.swift in Sources */,
 				C092ED782A802E980052F0AD /* NextButton.swift in Sources */,
@@ -589,6 +596,7 @@
 				6EFCA0F12A69A9F50008AAC5 /* witchieApp.swift in Sources */,
 				47889ED32A704C32005EB560 /* LevelSelectorView.swift in Sources */,
 				C0348A392A7431C3001A1EF7 /* SoundToggleComponent.swift in Sources */,
+				47E2C8C72ACCAA28006BD56D /* Direction.swift in Sources */,
 				47889F1E2A72F21B005EB560 /* ComponentX.swift in Sources */,
 				6EFCA1052A69ACDB0008AAC5 /* ContentComponent.swift in Sources */,
 				5BCBD6AA2A963DBB00E46BCE /* UserSettings.swift in Sources */,

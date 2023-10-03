@@ -16,7 +16,7 @@ extension LevelView{
     // LevelViewExtension na vdd é uma LevelViewModel da shopee
     
     // GameManager
-    public func getDirection(from translation: CGSize) -> Direction {
+    public func getDirection(from translation: CGSize) -> GestureDirection {
         let x = translation.width
         let y = translation.height
         

@@ -13,6 +13,7 @@ struct Level2View: View {
     @State var soundOn = true
     
     @ObservedObject private var viewModel = Level2ViewModel()
+//    @ObservedObject private var gameManager = GameManager()
     
     @EnvironmentObject var audioPlayerManager: AudioPlayerManager
     @StateObject var dimensionManager = DimensionManager.shared
@@ -24,9 +25,7 @@ struct Level2View: View {
             
             viewModel.getPatchBackground()
             
-            
             ZStack{
-                
                 
                 if !viewModel.showEnding {
                     gameView
@@ -51,9 +50,18 @@ struct Level2View: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .gesture(
+            DragGesture()
+                .onChanged({ gesture in
+                    gameManager.gestureOffset = gesture.translation
+                    gameManager.direction = gameManager.getDirection(from: gesture.translation)
+                })
+                .onEnded({ gesture in
+                    gameManager.defineMovement(map: &viewModel.levelArray)
+                })
+        )
     }
-    
-    
+   
     @ViewBuilder
     var gameView: some View {
         

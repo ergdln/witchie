@@ -24,7 +24,6 @@ final class Level2ViewModel: ObservableObject {
     @Published var showOnboarding: Bool = UserSettings.currentLevel.showOnboarding ?? false
     @Published var showOnboarding2: Bool = false
     
-    
     init() {
         self.patch = UserSettings.currentLevel.patch
         self.levelNumber = UserSettings.currentLevel.level
@@ -50,8 +49,6 @@ final class Level2ViewModel: ObservableObject {
         LevelModel.getIndexes(of: spot, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)
     }
     
-    
-    
     let box = ContentComponent.BOX
     let grass = ContentComponent.GRASS
     let person = ContentComponent.PERSON
@@ -67,8 +64,6 @@ final class Level2ViewModel: ObservableObject {
     public let images = (1...11).map { String(format: "frame-%d", $0) }.map { Image($0) }
     public let patch1animation = (1...9).map { String(format: "GIF_CAUDRON_%d", $0)}.map {Image($0)}
     public let patch2animation = (1...21).map { String(format: "BLOSSOM_%d", $0)}.map {Image($0)}
-    
-    
     
     func getPatchBackground() -> AnyView {
         let backgrounds = [AnyView(DenBackground()), AnyView( GardenBackground())]
