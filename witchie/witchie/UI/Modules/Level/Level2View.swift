@@ -53,11 +53,11 @@ struct Level2View: View {
         .gesture(
             DragGesture()
                 .onChanged({ gesture in
-                    gameManager.gestureOffset = gesture.translation
-                    gameManager.direction = gameManager.getDirection(from: gesture.translation)
+                    viewModel.gestureOffset = gesture.translation
+                    viewModel.direction = viewModel.directionChanged(from: gesture.translation)
                 })
                 .onEnded({ gesture in
-                    gameManager.defineMovement(map: &viewModel.levelArray)
+                    viewModel.gestureEnded()
                 })
         )
     }
@@ -93,7 +93,7 @@ struct Level2View: View {
                 //MARK: Here goes the level grid/text pós-level
                 LazyVGrid(columns: viewModel.levelGrid, spacing: 0){
                     
-                    ForEach((0...viewModel.model.levelMap.count - 1), id: \.self) { num in
+                    ForEach((0...viewModel.levelArray.count - 1), id: \.self) { num in
                         
                         viewModel.getGridAsset(num: num)
                         
