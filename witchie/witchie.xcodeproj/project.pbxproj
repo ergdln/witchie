@@ -744,7 +744,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.01;
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.egln.witchie.dev;
 				PRODUCT_NAME = "Witchie-DEV";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -780,7 +780,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.01;
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.egln.witchie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
