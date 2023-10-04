@@ -33,6 +33,7 @@ struct ContentView: View {
                 })
                 .environmentObject(audioPlayerManager)
                 .preferredColorScheme(.dark)
+                .environment(\.sizeCategory, .medium)
         }
         .ignoresSafeArea()
     }
