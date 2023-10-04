@@ -34,6 +34,7 @@
 		5BCBD6AA2A963DBB00E46BCE /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBD6A92A963DBB00E46BCE /* UserSettings.swift */; };
 		5BF016322A8EAAF20012751E /* StepCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016312A8EAAF20012751E /* StepCounter.swift */; };
 		5BF016342A8EB03D0012751E /* StepCounterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016332A8EB03D0012751E /* StepCounterType.swift */; };
+		6E02F4632ACDEF5A0054F8BE /* ChapterTransitionBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E02F4622ACDEF5A0054F8BE /* ChapterTransitionBackground.swift */; };
 		6E5CC9282AB3EE44009E5641 /* AnythingCanFlyRandomly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5CC9272AB3EE44009E5641 /* AnythingCanFlyRandomly.swift */; };
 		6E5D1C102AB4DED800556486 /* ChapterTransitionBackgroundBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5D1C0F2AB4DED800556486 /* ChapterTransitionBackgroundBox.swift */; };
 		6E75BDCC2AB235DA0053EDB6 /* Patch2TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E75BDCB2AB235DA0053EDB6 /* Patch2TransitionView.swift */; };
@@ -100,6 +101,7 @@
 		5BCBD6A92A963DBB00E46BCE /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		5BF016312A8EAAF20012751E /* StepCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounter.swift; sourceTree = "<group>"; };
 		5BF016332A8EB03D0012751E /* StepCounterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounterType.swift; sourceTree = "<group>"; };
+		6E02F4622ACDEF5A0054F8BE /* ChapterTransitionBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTransitionBackground.swift; sourceTree = "<group>"; };
 		6E5CC9272AB3EE44009E5641 /* AnythingCanFlyRandomly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnythingCanFlyRandomly.swift; sourceTree = "<group>"; };
 		6E5D1C0F2AB4DED800556486 /* ChapterTransitionBackgroundBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTransitionBackgroundBox.swift; sourceTree = "<group>"; };
 		6E75BDCB2AB235DA0053EDB6 /* Patch2TransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch2TransitionView.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				C07EA7EE2AB490BA0041B21F /* Chapter Backgrounds */,
+				6E02F4622ACDEF5A0054F8BE /* ChapterTransitionBackground.swift */,
 				47889F1D2A72F21B005EB560 /* ComponentX.swift */,
 				C0348A382A7431C3001A1EF7 /* SoundToggleComponent.swift */,
 				47B53B852A7DACF200E3DADC /* BackButton.swift */,
@@ -573,6 +576,7 @@
 				470621892AB0E60B009CE47E /* PatchSelector.swift in Sources */,
 				4706218B2AB0E783009CE47E /* PatchCard.swift in Sources */,
 				6EAB19B82A7C431B002047CD /* AboutUsView.swift in Sources */,
+				6E02F4632ACDEF5A0054F8BE /* ChapterTransitionBackground.swift in Sources */,
 				6EFCA1032A69AC920008AAC5 /* ColorAsset.swift in Sources */,
 				6EFCA0F12A69A9F50008AAC5 /* witchieApp.swift in Sources */,
 				47889ED32A704C32005EB560 /* LevelSelectorView.swift in Sources */,
