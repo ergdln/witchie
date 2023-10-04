@@ -8,10 +8,6 @@
 
 import SwiftUI
 
-enum Movement {
-    case witchToHole, witchWalking, boxToMark, boxToGrass, crateToHole, crateToGrass, invalid
-}
-
 struct Game {
     
     let box = ContentComponent.BOX
@@ -57,5 +53,4 @@ struct Game {
             handler(.invalid)
         }
     }
-    
 }

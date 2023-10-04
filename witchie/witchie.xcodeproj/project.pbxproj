@@ -35,6 +35,7 @@
 		5B234C1F2A9FC5E400D0B83C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5B234C1E2A9FC5E400D0B83C /* FirebaseDatabase */; };
 		5B6B15D52AA7B628004C523C /* GoogleTagManager in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6B15D42AA7B628004C523C /* GoogleTagManager */; };
 		5B6B15D72AA7B772004C523C /* container in Resources */ = {isa = PBXBuildFile; fileRef = 5B6B15D62AA7B772004C523C /* container */; };
+		5B71FBE52ACE172A00B1B96B /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71FBE42ACE172A00B1B96B /* Movement.swift */; };
 		5BCBD6AA2A963DBB00E46BCE /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBD6A92A963DBB00E46BCE /* UserSettings.swift */; };
 		5BF016322A8EAAF20012751E /* StepCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016312A8EAAF20012751E /* StepCounter.swift */; };
 		5BF016342A8EB03D0012751E /* StepCounterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF016332A8EB03D0012751E /* StepCounterType.swift */; };
@@ -105,6 +106,7 @@
 		5B01854F2ABBC23700216CDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B2CFD9A2ABB7019005DCB02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B6B15D62AA7B772004C523C /* container */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = container; sourceTree = SOURCE_ROOT; };
+		5B71FBE42ACE172A00B1B96B /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		5BCBD6A92A963DBB00E46BCE /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		5BF016312A8EAAF20012751E /* StepCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounter.swift; sourceTree = "<group>"; };
 		5BF016332A8EB03D0012751E /* StepCounterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounterType.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			children = (
 				5BF016332A8EB03D0012751E /* StepCounterType.swift */,
 				47E2C8C62ACCAA28006BD56D /* Direction.swift */,
+				5B71FBE42ACE172A00B1B96B /* Movement.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -474,7 +477,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6EFCA0E82A69A9F50008AAC5 /* Build configuration list for PBXProject "Witchie" */;
+			buildConfigurationList = 6EFCA0E82A69A9F50008AAC5 /* Build configuration list for PBXProject "witchie" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -573,6 +576,7 @@
 				470FB7162AA654EF00F7D26A /* PatchSelectorView.swift in Sources */,
 				4706218F2AB10875009CE47E /* StarPath.swift in Sources */,
 				C06C38E42A8C036200A2C02E /* Patch1Transition3.swift in Sources */,
+				5B71FBE52ACE172A00B1B96B /* Movement.swift in Sources */,
 				C06C15672A71AD2300A7FE9E /* AudioPlayerManager.swift in Sources */,
 				6EB531CB2AA10CDE00A14705 /* LevelViewExtension.swift in Sources */,
 				4725D4772A8D49F9002166EE /* AnimatingImage.swift in Sources */,
@@ -813,7 +817,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6EFCA0E82A69A9F50008AAC5 /* Build configuration list for PBXProject "Witchie" */ = {
+		6EFCA0E82A69A9F50008AAC5 /* Build configuration list for PBXProject "witchie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6EFCA0F92A69A9F60008AAC5 /* Debug */,

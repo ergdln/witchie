@@ -382,7 +382,6 @@ struct LevelView: View{
         .onAppear(){
             Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1)"])
             witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
-            
         }
         //Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevel: levelNumber])
         .onReceive(timer) { _ in

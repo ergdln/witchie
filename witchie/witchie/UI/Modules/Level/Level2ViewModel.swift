@@ -12,24 +12,38 @@ import SwiftUI
 
 final class Level2ViewModel: ObservableObject {
     
-    let game = Game()
+    //MARK: Variables
     
+    //Handles the gesture
     @Published var gestureOffset: CGSize = .zero
     @Published var direction: GestureDirection = .none
     
-    @Published var position: Int
-    
+    //User Preferences and records
     @ObservedObject var defaultsManager = DefaultsManager.shared
+
+    //Control Varibles
+    @Published var showEnding: Bool = false
+    @Published var showOnboarding: Bool = UserSettings.currentLevel.showOnboarding ?? false
+    @Published var showOnboarding2: Bool = false
+    @Published var isGameOver = false
+    @Published var playerMovements: Int = 0
+    @Published var refreshes: Int = 0
+    @Published var timePlayed: Int = 0
     
+    //Information required from the LevelView to construct the ViewModel
     @Published var patch: Int
     @Published var levelNumber: Int
     
+    //The Map Array itself
     @Published var levelArray: [String]
     
-    @Published var showEnding: Bool = false
+    //The current Position of Witchie in the levelArray
+    @Published var position: Int
     
-    @Published var showOnboarding: Bool = UserSettings.currentLevel.showOnboarding ?? false
-    @Published var showOnboarding2: Bool = false
+    //Model responsible for handling the business (game) rules
+    let game = Game()
+    
+    @Published var witchImage: String = ImageAsset.TILE_WITCH_LEFT
     
     init() {
         self.patch = UserSettings.currentLevel.patch
@@ -38,22 +52,16 @@ final class Level2ViewModel: ObservableObject {
         self.position = LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: UserSettings.currentLevel.patch)[UserSettings.currentLevel.level].levelMap)[0]
     }
     
-    @Published var playerMovements: Int = 0
-    @Published var refreshes: Int = 0
-    @Published var timePlayed: Int = 0
-    
-    @Published var isGameOver = false
-    
-    @Published var witchImage: String = ImageAsset.TILE_WITCH_LEFT
-    
     var levelGrid: [GridItem] {
         Array(repeating: GridItem(.flexible(minimum: 15, maximum: 150), spacing: 0), count: LevelModel.getLevels(chapter: patch)[levelNumber].levelOffset)
     }
     
+    //Original map state
     var model: LevelModel {
         LevelModel.getLevels(chapter: patch)[levelNumber]
     }
     
+    //position of the marks
     var levelSpotsIndex: [Int] {
         LevelModel.getIndexes(of: spot, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)
     }
@@ -62,10 +70,12 @@ final class Level2ViewModel: ObservableObject {
         LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: patch)[levelNumber].levelMap)[0]
     }
     
+    //map size
     var offset: Int {
         model.levelOffset
     }
     
+    //types of map elements
     let box = ContentComponent.BOX
     let grass = ContentComponent.GRASS
     let person = ContentComponent.PERSON
@@ -73,15 +83,17 @@ final class Level2ViewModel: ObservableObject {
     let spot = ContentComponent.SPOT
     let empty = ContentComponent.EMPTY
     
-    //future map elements
+    //special map elements
     let crate = ContentComponent.CRATE
     let hole = ContentComponent.HOLE
     
-    
-    public let images = (1...11).map { String(format: "frame-%d", $0) }.map { Image($0) }
+    public let images = (1...11).map { String(format: "frame-%d", $0) }.map {Image($0)}
     public let patch1animation = (1...9).map { String(format: "GIF_CAUDRON_%d", $0)}.map {Image($0)}
     public let patch2animation = (1...21).map { String(format: "BLOSSOM_%d", $0)}.map {Image($0)}
     
+    //MARK: Functions
+    
+    //defines the background depending on the patch
     func getPatchBackground() -> AnyView {
         let backgrounds = [AnyView(DenBackground()), AnyView( GardenBackground())]
         let patch = patch
@@ -91,6 +103,7 @@ final class Level2ViewModel: ObservableObject {
         return backgrounds[patch - 1]
     }
     
+    //aqui n entendi
     func getPatchAssets(patch: Int, images: [String]) -> String {
         guard patch >= 1 && patch <= images.count else {
             return "default_image" //caso seja um valor de patch inválido
@@ -117,6 +130,7 @@ final class Level2ViewModel: ObservableObject {
         return game.getDirection(from: gesture)
     }
     
+    //sends the type of movement to the model and receives a type of movement
     func gestureEnded() {
         if !isGameOver {
             if direction == .down{
@@ -148,6 +162,7 @@ final class Level2ViewModel: ObservableObject {
         }
     }
     
+    //changes the positions of the array depending on the answer of the model
     func makeMovement(movement: Movement, offset: Int) {
         switch movement {
             
@@ -195,6 +210,7 @@ final class Level2ViewModel: ObservableObject {
             print("movimento invalido")
             //tocar som de movimento invalido
         }
+        
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             didLevelCompleted()
         }
@@ -227,13 +243,11 @@ final class Level2ViewModel: ObservableObject {
     }
     
     func getGridAsset(num: Int) -> AnyView {
-        // Os assets deveriam estar na PatchModel
-        // Esse If/Else pode virar uma função na LevelViewModel
+        
         if levelArray[num] == wall{
             return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_BRICK, ImageAsset.GARDEN_BRICK]))
                 .resizable()
                 .scaledToFill())
-            
         }
         else if levelArray[num] == grass{
             return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_GRASS, ImageAsset.TILE_GARDEN]))
@@ -255,8 +269,8 @@ final class Level2ViewModel: ObservableObject {
                 .resizable()
                 .scaledToFill())
         }
+        
         // this only happens when a cauldron is in the marked place
-        // Talvez isso não deveria estar assim (?), talvez deveria ser uma função na LevelViewModel
         else if levelArray[num] == box && levelSpotsIndex.contains(num) {
             if !isGameOver{
                 return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
@@ -265,7 +279,6 @@ final class Level2ViewModel: ObservableObject {
             }else{
                 return AnyView(getAnimation(patch: patch))
             }
-            
         }
         else if levelArray[num] == box{
             return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_EMPTY_CAULDRON, ImageAsset.TILE_EMPTY_PLANT]))
@@ -287,7 +300,7 @@ final class Level2ViewModel: ObservableObject {
     }
     
     func getNextButton() -> AnyView{
-        // se for ultimo nivel ou nivel 9 do patch 1 e é a primeira vez do usuário
+        // if it is the last level OR if it is level 9 from the patch 1 AND the user has not been redirected yet
         // se for jogador antigo vai redirecionar
         if ((levelNumber == LevelModel.getLevels(chapter: patch).count - 1) || (levelNumber == 8 && patch == 1 && !UserSettings.hasSeenNewChapter == true)) {
             return (

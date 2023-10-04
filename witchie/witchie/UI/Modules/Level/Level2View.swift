@@ -21,11 +21,11 @@ struct Level2View: View {
     @Environment(\.dismiss) public var dismiss
     
     var body: some View {
-        ZStack{
+        ZStack {
             
             viewModel.getPatchBackground()
             
-            ZStack{
+            ZStack {
                 
                 if !viewModel.showEnding {
                     gameView
@@ -33,7 +33,6 @@ struct Level2View: View {
                 } else {
                     levelDialogue
                 }
-                
                 
             }
             .frame(width: dimensionManager.dimensions.width * 0.8, height: dimensionManager.dimensions.height)
@@ -48,6 +47,7 @@ struct Level2View: View {
             if viewModel.showOnboarding {
                 coachmark
             }
+            
         }
         .navigationBarBackButtonHidden(true)
         .gesture(
@@ -65,7 +65,8 @@ struct Level2View: View {
     @ViewBuilder
     var gameView: some View {
         
-        VStack{
+        VStack {
+            
             Group {
                 
                 HStack {
@@ -140,8 +141,10 @@ struct Level2View: View {
     
     @ViewBuilder
     var topBar: some View {
+        
         HStack(alignment: .center) {
-            if UserSettings.isNotFirstTime[viewModel.patch - 1]{
+            
+            if UserSettings.isNotFirstTime[viewModel.patch - 1] {
                 Button{
                     dismiss()
                 }label:{
@@ -149,7 +152,8 @@ struct Level2View: View {
                         .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
                         .padding(.bottom, -15)
                 }
-            }else{
+                
+            } else {
                 NavigationLink(destination: StartGameView()) {
                     Text(ContentComponent.BACK_SYSTEM).foregroundColor(Color(ColorAsset.MAIN_WHITE))
                         .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
@@ -175,27 +179,34 @@ struct Level2View: View {
     
     @ViewBuilder
     var coachmark: some View {
-        ZStack{
-            if viewModel.patch == 1{
+        ZStack {
+            
+            if viewModel.patch == 1 {
                 Color.black
                     .opacity(0.4)
                 AnimatingImage(images: viewModel.images, interval: 0.1)
                     .frame(height: dimensionManager.dimensions.height / 2)
                     .padding(.leading, dimensionManager.dimensions.width * 0.13)
-            }else if viewModel.patch == 2 && viewModel.showOnboarding2{
+            } else if viewModel.patch == 2 && viewModel.showOnboarding2 {
                 Color.black
                     .opacity(0.4)
-                VStack(spacing: 0){
+                
+                VStack(spacing: 0) {
+                    
                     Spacer()
+                    
                     AnimatingImage(images: viewModel.images, interval: 0.1)
                         .frame(height: dimensionManager.dimensions.height / 4)
                         .padding(.leading, dimensionManager.dimensions.width * 0.11)
                         .padding(.bottom, dimensionManager.dimensions.height * 0.2)
+                    
                     Spacer()
                     
-                    ZStack(alignment: .bottom){
+                    ZStack(alignment: .bottom) {
+                        
                         Rectangle().frame(width: dimensionManager.dimensions.width, height: 230).cornerRadius(40)
-                        HStack{
+                        
+                        HStack {
                             Text(ContentComponent.ANIMATION_TEXT)
                                 .frame(width: dimensionManager.dimensions.width * 0.6)
                                 .foregroundColor(Color(ColorAsset.MAIN_GREEN))
@@ -203,19 +214,17 @@ struct Level2View: View {
                                 .padding(.top, 15)
                                 .padding(.horizontal, dimensionManager.dimensions.width * 0.1)
                                 .padding(.bottom, 73)
+                            
                             Spacer()
                         }
-                        HStack{
+                        
+                        HStack {
                             Spacer()
                             Image("WITCHIE-ONBOARDING-2")
                         }
-                        
                     }
-                    
-                    
                 }
             }
-            
         }
     }
     
