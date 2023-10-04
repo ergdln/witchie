@@ -86,14 +86,24 @@ extension LevelView{
             }
         }
         //PUSHING CRATE
-        else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == crate && levelModel[levelNumber].levelMap[actualPosition + offset + offset] == grass{
+        else if levelModel[levelNumber].levelMap[levelActualPosition + offset] == crate {// && levelModel[levelNumber].levelMap[actualPosition + offset + offset] == grass{
+            //pushing crate to a hole
+            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] == hole{
+                levelModel[levelNumber].levelMap[actualPosition] = grass
+                levelModel[levelNumber].levelMap[actualPosition + offset] = person
+                levelActualPosition = actualPosition + offset
+                playerMovements += 1
+            }
             
-            levelModel[levelNumber].levelMap[actualPosition] = grass
-            levelModel[levelNumber].levelMap[actualPosition + offset] = person
-            levelModel[levelNumber].levelMap[actualPosition + offset + offset] = crate
-            levelActualPosition = actualPosition + offset
-            //if you successfully pushed a box, update playerMovements
-            playerMovements += 1
+            //pushing a crate in free space
+            if levelModel[levelNumber].levelMap[actualPosition + offset + offset] == grass{
+                levelModel[levelNumber].levelMap[actualPosition] = grass
+                levelModel[levelNumber].levelMap[actualPosition + offset] = person
+                levelModel[levelNumber].levelMap[actualPosition + offset + offset] = crate
+                levelActualPosition = actualPosition + offset
+                //if you successfully pushed a crate, update playerMovements
+                playerMovements += 1
+            }
         }
         //PUSHING A CAULDRON
         //pushing a cauldron to a magic mark
