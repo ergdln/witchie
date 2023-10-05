@@ -13,10 +13,10 @@ struct Level2View: View {
     @State var soundOn = true
     
     @ObservedObject private var viewModel = Level2ViewModel()
-//    @ObservedObject private var gameManager = GameManager()
     
     @EnvironmentObject var audioPlayerManager: AudioPlayerManager
     @StateObject var dimensionManager = DimensionManager.shared
+    
     
     @Environment(\.dismiss) public var dismiss
     
@@ -118,7 +118,7 @@ struct Level2View: View {
                 Text(viewModel.model.levelDialogue)
                     .padding(dimensionManager.dimensions.height * 0.04)
                     .background(
-                        Image(viewModel.getPatchAssets(patch: viewModel.patch, images: [ImageAsset.DIALOGUE_RECTANGLE, ImageAsset.AFTER_LEVEL_CHAPTER2]))
+                        Image(PatchModel().getPatchAssets(patch: viewModel.patch, images: [ImageAsset.DIALOGUE_RECTANGLE, ImageAsset.AFTER_LEVEL_CHAPTER2]))
                             .resizable()
                             .scaledToFill()
                     )
@@ -151,6 +151,8 @@ struct Level2View: View {
                         .font(.custom(ContentComponent.BOREL_REGULAR, size: 24))
                         .padding(.bottom, -15)
                 }
+                .disabled(viewModel.isGameOver)
+                .opacity(viewModel.isGameOver ? 0 : 1)
                 
             } else {
                 NavigationLink(destination: StartGameView()) {

@@ -14,6 +14,8 @@ class AudioPlayerManager: ObservableObject {
     var audioPlayer: AVAudioPlayer?
     let audioSession = AVAudioSession()
     @Published var soundOn: Bool = DefaultsManager.shared.getSoundPreference() // Adicionar @Published para notificar mudanças no soundOn
+    
+    static var shared = AudioPlayerManager()
 
     func setupAudioPlayer() {
         let sound = Bundle.main.path(forResource: "LivaTheme", ofType: "mp3")
