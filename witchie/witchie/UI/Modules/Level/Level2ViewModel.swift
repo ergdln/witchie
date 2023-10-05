@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 // MARK: Variables to watch mark as Published. ViewModel also calls API/Core Data
 
@@ -20,7 +21,11 @@ final class Level2ViewModel: ObservableObject {
     
     //User Preferences and records
     @ObservedObject var defaultsManager = DefaultsManager.shared
-
+    @ObservedObject var audioPlayerManager = AudioPlayerManager.shared
+    @ObservedObject var fxPlayerManager = FXPlayerManager()
+    
+    @Environment (\.requestReview) var requestReview
+    
     //Control Varibles
     @Published var showEnding: Bool = false
     @Published var showOnboarding: Bool = UserSettings.currentLevel.showOnboarding ?? false
@@ -43,13 +48,14 @@ final class Level2ViewModel: ObservableObject {
     //Model responsible for handling the business (game) rules
     let game = Game()
     
-    @Published var witchImage: String = ImageAsset.TILE_WITCH_LEFT
+    @Published var witchImage: String
     
     init() {
         self.patch = UserSettings.currentLevel.patch
         self.levelNumber = UserSettings.currentLevel.level
         self.levelArray = LevelModel.getLevels(chapter: UserSettings.currentLevel.patch)[UserSettings.currentLevel.level].levelMap
         self.position = LevelModel.getIndexes(of: person, in: LevelModel.getLevels(chapter: UserSettings.currentLevel.patch)[UserSettings.currentLevel.level].levelMap)[0]
+        self.witchImage = PatchModel().getPatchAssets(patch: UserSettings.currentLevel.patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
     }
     
     var levelGrid: [GridItem] {
@@ -103,13 +109,8 @@ final class Level2ViewModel: ObservableObject {
         return backgrounds[patch - 1]
     }
     
-    //aqui n entendi
-    func getPatchAssets(patch: Int, images: [String]) -> String {
-        guard patch >= 1 && patch <= images.count else {
-            return "default_image" //caso seja um valor de patch inválido
-        }
-        return images[patch - 1] //subtrai 1 do patch para corresponder ao índice do array
-    }
+    //aqui n entendi <- é pra pegar os assets da tela pos nivel
+    
     
     func getAnimation(patch: Int) -> AnimatingImage{
         if patch == 1 {
@@ -144,12 +145,12 @@ final class Level2ViewModel: ObservableObject {
                     self.makeMovement(movement: movement, offset: -self.offset)
                 }
             }else if direction == .left{
-                witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
+                witchImage = PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
                 game.defineMovement(levelArray: levelArray, actualPosition: position, offset: -1, spotsIndex: levelSpotsIndex) { movement in
                     self.makeMovement(movement: movement, offset: -1)
                 }
             }else if direction == .right{
-                witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_RIGHT, ImageAsset.WITCHIE_GARDEN_RIGHT])
+                witchImage = PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_RIGHT, ImageAsset.WITCHIE_GARDEN_RIGHT])
                 if patch == 2 && levelNumber == 0 && showOnboarding{
                     showOnboarding2 = true
                 }
@@ -192,6 +193,9 @@ final class Level2ViewModel: ObservableObject {
             position = position + offset
             playerMovements += 1
             //MARK: should play sound
+            if !isLevelCompleted(platesPosition: levelSpotsIndex){
+                fxPlayerManager.playBoxInMarkFX(patch: patch)
+            }
             
         case .boxToGrass:
             levelArray[position] = grass
@@ -219,22 +223,28 @@ final class Level2ViewModel: ObservableObject {
     func didLevelCompleted(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
             self.showEnding.toggle()
-//            fxPlayerManager.stopSound()
-//            audioPlayerManager.audioPlayer?.volume = 0.07
+            self.fxPlayerManager.stopSound()
+            self.audioPlayerManager.audioPlayer?.volume = 0.07
         }
         self.isGameOver.toggle()
-//        showReviewPrompt()
+        showReviewPrompt()
 //        levelEndAnalytics()
         refreshes = 0
         timePlayed = 0
-//        fxPlayerManager.playLevelCompletedFX(patch: patch)
-//        audioPlayerManager.audioPlayer?.volume = 0
+        fxPlayerManager.playLevelCompletedFX(patch: patch)
+        audioPlayerManager.audioPlayer?.volume = 0
         if patch == 1{
             defaultsManager.setLevelCompleted(level: levelNumber)
         }
         defaultsManager.setUserFirstTime(value: true, patch: patch)
         if playerMovements < UserSettings.records[patch]![levelNumber] || UserSettings.records[patch]![levelNumber] == 0 {
             defaultsManager.setNewRecord(patch: patch, level: levelNumber, value: playerMovements)
+        }
+    }
+    
+    func showReviewPrompt() {
+        if (UserSettings.records[1]![5] == 0 || UserSettings.records[2]![5] == 0) && levelNumber == 5 {
+            requestReview()
         }
     }
     
@@ -245,12 +255,12 @@ final class Level2ViewModel: ObservableObject {
     func getGridAsset(num: Int) -> AnyView {
         
         if levelArray[num] == wall{
-            return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_BRICK, ImageAsset.GARDEN_BRICK]))
+            return AnyView(Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.TILE_BRICK, ImageAsset.GARDEN_BRICK]))
                 .resizable()
                 .scaledToFill())
         }
         else if levelArray[num] == grass{
-            return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_GRASS, ImageAsset.TILE_GARDEN]))
+            return AnyView(Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.TILE_GRASS, ImageAsset.TILE_GARDEN]))
                 .resizable()
                 .scaledToFill())
         }
@@ -265,7 +275,7 @@ final class Level2ViewModel: ObservableObject {
                 .scaledToFill())
         }
         else if levelArray[num] == spot{
-            return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_SPOT, ImageAsset.TILE_MAGICAL_SOIL]))
+            return AnyView(Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.TILE_SPOT, ImageAsset.TILE_MAGICAL_SOIL]))
                 .resizable()
                 .scaledToFill())
         }
@@ -274,7 +284,7 @@ final class Level2ViewModel: ObservableObject {
         // Talvez isso não deveria estar assim (?), talvez deveria ser uma função na LevelViewModel <- VIROU ;)
         else if levelArray[num] == box && levelSpotsIndex.contains(num) {
             if !isGameOver{
-                return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
+                return AnyView(Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
                     .resizable()
                     .scaledToFill())
             }else{
@@ -282,7 +292,7 @@ final class Level2ViewModel: ObservableObject {
             }
         }
         else if levelArray[num] == box{
-            return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_EMPTY_CAULDRON, ImageAsset.TILE_EMPTY_PLANT]))
+            return AnyView(Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.TILE_EMPTY_CAULDRON, ImageAsset.TILE_EMPTY_PLANT]))
                 .resizable()
                 .scaledToFill())
         }
@@ -307,7 +317,7 @@ final class Level2ViewModel: ObservableObject {
             return (
                 AnyView(
                     NavigationLink(destination: PatchSelectorView()) {
-                        Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                        Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                     }
@@ -330,7 +340,7 @@ final class Level2ViewModel: ObservableObject {
                         self.isGameOver.toggle()
                         self.showEnding.toggle()
                     } label: {
-                        Image(getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                        Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                     }

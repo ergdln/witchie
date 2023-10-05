@@ -9,7 +9,7 @@ import SwiftUI
 import AVFAudio
 
 struct ContentView: View {
-    @StateObject var audioPlayerManager = AudioPlayerManager()
+    @StateObject var audioPlayerManager = AudioPlayerManager.shared
     @StateObject var defaultsManager = DefaultsManager.shared
     @StateObject var dimensionManager = DimensionManager.shared
     
