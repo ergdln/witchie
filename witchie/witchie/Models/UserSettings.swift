@@ -28,6 +28,7 @@ struct UserSettings{
     static var records: [Int: [Int]] = [
         1: Array(repeating: 0, count: LevelModel.patchOne().count),
         2: Array(repeating: 0, count: LevelModel.patchTwo().count),
+        3: Array(repeating: 0, count: LevelModel.patchThree().count),
     ]
     
     static var hasSeenNewChapter: Bool = false

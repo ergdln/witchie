@@ -37,6 +37,11 @@ final class PatchSelectorViewModel: ObservableObject {
             color1: Color(red: 0/255, green: 26/255, blue: 20/255),
             color2: Color(red: 27/255, green: 105/255, blue: 85/255),
             bgColor: Color(red: 13/255, green: 56/255, blue: 46/255)), image: Image(ImageAsset.VASE_PATCH_CARD), lockedImage: Image(ImageAsset.VASE_LOCKED)
+        ),
+        PatchInformations(name: ContentComponent.GARDEN, colors: PatchInformations.Colors(
+            color1: Color(red: 0/255, green: 26/255, blue: 20/255),
+            color2: Color(red: 27/255, green: 105/255, blue: 85/255),
+            bgColor: Color(red: 13/255, green: 56/255, blue: 46/255)), image: Image(ImageAsset.VASE_PATCH_CARD), lockedImage: Image(ImageAsset.VASE_LOCKED)
         )
     ]
     

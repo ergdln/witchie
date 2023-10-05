@@ -126,7 +126,6 @@ struct Level2View: View {
                     .multilineTextAlignment(.center)
                     .font(.custom(ContentComponent.BOREL_REGULAR, size: dimensionManager.dimensions.height * ContentComponent.CARD_FONT * 0.98))
                     .foregroundColor(Color(ColorAsset.MAIN_PURPLE))
-                    .border(.red)
                 
                 Spacer()
                 
