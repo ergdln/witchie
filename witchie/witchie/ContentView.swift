@@ -17,8 +17,8 @@ struct ContentView: View {
         GeometryReader { geo in
             //StartGameView()
             //PatchSelectorView()
-            //StartGameView()
-            Level2View()
+            StartGameView()
+            //Level2View()
                 .onAppear {
                     //Ler o tamanho do dispositivo
                     dimensionManager.dimensions = geo.size

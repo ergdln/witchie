@@ -191,7 +191,7 @@ final class Level2ViewModel: ObservableObject {
             levelArray[position + offset + offset] = box
             position = position + offset
             playerMovements += 1
-            //should play sound
+            //MARK: should play sound
             
         case .boxToGrass:
             levelArray[position] = grass
@@ -208,7 +208,7 @@ final class Level2ViewModel: ObservableObject {
             
         default:
             print("movimento invalido")
-            //tocar som de movimento invalido
+            //MARK: tocar som de movimento invalido
         }
         
         if isLevelCompleted(platesPosition: levelSpotsIndex){
@@ -271,6 +271,7 @@ final class Level2ViewModel: ObservableObject {
         }
         
         // this only happens when a cauldron is in the marked place
+        // Talvez isso não deveria estar assim (?), talvez deveria ser uma função na LevelViewModel <- VIROU ;)
         else if levelArray[num] == box && levelSpotsIndex.contains(num) {
             if !isGameOver{
                 return AnyView(Image(getPatchAssets(patch: patch, images: [ImageAsset.TILE_CAULDRON, ImageAsset.TILE_BLOSSOMED]))
