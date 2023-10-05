@@ -56,6 +56,10 @@ class DefaultsManager: ObservableObject{
         
         //pega se é a primeira vez do usuário
         UserSettings.isNotFirstTime = UserDefaults.standard.array(forKey: "firstTime") as? [Bool] ?? UserSettings.isNotFirstTime
+        if UserSettings.isNotFirstTime.count < UserSettings.records.count {
+            UserSettings.isNotFirstTime.append(false)
+            UserDefaults.standard.set(UserSettings.isNotFirstTime, forKey: "firstTime")
+        }
         
         UserSettings.hasSeenNewChapter = UserDefaults.standard.bool(forKey: "hasSeenNewChapter")
         

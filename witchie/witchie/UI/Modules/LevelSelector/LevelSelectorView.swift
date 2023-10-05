@@ -125,9 +125,6 @@ struct LevelSelectorView: View {
             }
             .navigationBarBackButtonHidden()
         }
-        .onAppear{
-            print(UserSettings.records)
-        }
     }
     
     

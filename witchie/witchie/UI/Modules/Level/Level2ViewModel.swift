@@ -173,8 +173,12 @@ final class Level2ViewModel: ObservableObject {
         case .witchWalking:
             levelArray.swapAt(position + offset, position)
             position = position + offset
-            if levelArray[position + offset] != grass{
-                playerMovements += 1
+            if levelArray[position + offset] != grass {
+                if (levelArray[position + offset] == hole){
+                    makeMovement(movement: .witchToHole, offset: offset)
+                }else{
+                    playerMovements += 1
+                }
             } else {
                 makeMovement(movement: movement, offset: offset)
             }
