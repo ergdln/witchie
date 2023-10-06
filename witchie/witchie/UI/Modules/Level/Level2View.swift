@@ -17,6 +17,10 @@ struct Level2View: View {
     @EnvironmentObject var audioPlayerManager: AudioPlayerManager
     @StateObject var dimensionManager = DimensionManager.shared
     
+    //Manager for the Analytics
+    let firebaseManager = FirebaseManager()
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @Environment(\.dismiss) public var dismiss
     
@@ -48,6 +52,18 @@ struct Level2View: View {
                 coachmark
             }
             
+        }
+        .onAppear(){
+            firebaseManager.level_started(patch: viewModel.patch, level: viewModel.levelNumber)
+        }
+        .onChange(of: viewModel.levelNumber, perform: { newValue in
+            firebaseManager.level_started(patch: viewModel.patch, level: newValue)
+        })
+        .onReceive(timer) { _ in
+            if (!viewModel.isGameOver){
+                viewModel.timePlayed += 1
+                print(viewModel.timePlayed)
+            }
         }
         .navigationBarBackButtonHidden(true)
         .gesture(

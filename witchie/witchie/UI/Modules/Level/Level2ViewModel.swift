@@ -48,6 +48,9 @@ final class Level2ViewModel: ObservableObject {
     //Model responsible for handling the business (game) rules
     let game = Game()
     
+    //Manager for the Analytics
+    let firebaseManager = FirebaseManager()
+    
     @Published var witchImage: String
     
     init() {
@@ -232,7 +235,7 @@ final class Level2ViewModel: ObservableObject {
         }
         self.isGameOver.toggle()
         showReviewPrompt()
-//        levelEndAnalytics()
+        firebaseManager.level_completed(patch: self.patch, level: self.levelNumber, playerMovements: self.playerMovements, timePlayed: self.timePlayed, refreshes: self.refreshes)
         refreshes = 0
         timePlayed = 0
         fxPlayerManager.playLevelCompletedFX(patch: patch)
