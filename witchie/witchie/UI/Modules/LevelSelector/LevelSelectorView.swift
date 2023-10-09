@@ -57,7 +57,7 @@ struct LevelSelectorView: View {
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 30, maximum: 300), spacing: 0), count: 3), spacing: 30) {
                         ForEach(Array(0..<LevelModel.getLevels(chapter: patch).count), id: \.self) { level in
-                            NavigationLink(destination: Level2View()) {
+                            NavigationLink(destination: LevelView()) {
                                 VStack(alignment: .center, spacing: 0){
                                     Text("\(level + 1)").font(.custom(ContentComponent.BOREL_REGULAR, size: 35))
                                         .padding(.bottom, -30)

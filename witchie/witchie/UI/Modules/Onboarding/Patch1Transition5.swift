@@ -36,9 +36,14 @@ struct Patch1Transition5: View {
                     Spacer()
                     VStack(spacing: 0){
                         //HIDDEN SKIP BUTTON
-                        NavigationLink(destination: LevelView(patch: 1, levelNumber: 0, showOnboarding: true)) {
+                        NavigationLink(destination: LevelView()) {
                             JumpButton(color: ColorAsset.MAIN_WHITE)
                         }
+                        .simultaneousGesture(TapGesture().onEnded({ _ in
+                            UserSettings.currentLevel.patch = 1
+                            UserSettings.currentLevel.level = 0
+                            UserSettings.currentLevel.showOnboarding = true
+                        }))
                         .padding(.top, safeDimensionManager.dimensions.height * 0.06)
                         .padding(.trailing, safeDimensionManager.dimensions.width * 0.07)
                         .hidden()
@@ -47,7 +52,7 @@ struct Patch1Transition5: View {
                                 .frame(height: safeDimensionManager.dimensions.height * 0.75)
                             
                         //NEXT BUTTON
-                        NavigationLink(destination: LevelView(patch: 1, levelNumber: 0, showOnboarding: true)) {
+                        NavigationLink(destination: LevelView()) {
                             Group{
                                 HStack {
                                     Image(systemName: "arrow.forward").font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
@@ -58,6 +63,11 @@ struct Patch1Transition5: View {
                             }.padding(.bottom, safeDimensionManager.dimensions.height * 0.06)
                             .padding(.trailing, safeDimensionManager.dimensions.width * 0.1)
                         }
+                        .simultaneousGesture(TapGesture().onEnded({ _ in
+                            UserSettings.currentLevel.patch = 1
+                            UserSettings.currentLevel.level = 0
+                            UserSettings.currentLevel.showOnboarding = true
+                        }))
                     }
                 }.frame(width: safeDimensionManager.dimensions.width, height: safeDimensionManager.dimensions.height)
                 

@@ -36,9 +36,14 @@ struct Patch2Transition2: View {
                 Spacer()
                 VStack(spacing: 0){
                     //SKIP BUTTON
-                    NavigationLink(destination: LevelView(patch: 2, levelNumber: 0, showOnboarding: true)) {
+                    NavigationLink(destination: LevelView()) {
                         JumpButton(color: ColorAsset.MAIN_WHITE)
                     }
+                    .simultaneousGesture(TapGesture().onEnded({ _ in
+                        UserSettings.currentLevel.patch = 2
+                        UserSettings.currentLevel.level = 0
+                        UserSettings.currentLevel.showOnboarding = true
+                    }))
                     .padding(.top, safeDimensionManager.dimensions.height * 0.06)
                     .padding(.trailing, safeDimensionManager.dimensions.width * 0.07)
                     

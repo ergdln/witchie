@@ -7,11 +7,10 @@
 //
 
 import SwiftUI
-import StoreKit
 
 // MARK: Variables to watch mark as Published. ViewModel also calls API/Core Data
 
-final class Level2ViewModel: ObservableObject {
+final class LevelViewModel: ObservableObject {
     
     //MARK: Variables
     
@@ -23,9 +22,7 @@ final class Level2ViewModel: ObservableObject {
     @ObservedObject var defaultsManager = DefaultsManager.shared
     @ObservedObject var audioPlayerManager = AudioPlayerManager.shared
     @ObservedObject var fxPlayerManager = FXPlayerManager()
-    
-    @Environment (\.requestReview) var requestReview
-    
+        
     //Control Varibles
     @Published var showEnding: Bool = false
     @Published var showOnboarding: Bool = UserSettings.currentLevel.showOnboarding ?? false
@@ -113,7 +110,6 @@ final class Level2ViewModel: ObservableObject {
     }
     
     //aqui n entendi <- é pra pegar os assets da tela pos nivel
-    
     
     func getAnimation(patch: Int) -> AnimatingImage{
         if patch == 1 {
@@ -250,9 +246,7 @@ final class Level2ViewModel: ObservableObject {
     }
     
     func showReviewPrompt() {
-        if (UserSettings.records[1]![5] == 0 || UserSettings.records[2]![5] == 0) && levelNumber == 5 {
-            requestReview()
-        }
+
     }
     
     func isLevelCompleted(platesPosition: [Int]) -> Bool{

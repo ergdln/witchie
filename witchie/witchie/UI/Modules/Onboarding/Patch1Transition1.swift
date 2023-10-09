@@ -36,14 +36,19 @@ struct Patch1Transition1: View {
                 Spacer()
                 VStack(spacing: 0){
                     //SKIP BUTTON
-                    NavigationLink(destination: LevelView(patch: 1, levelNumber: 0, showOnboarding: true)) {
+                    NavigationLink(destination: LevelView()) {
                         JumpButton(color: ColorAsset.MAIN_WHITE)
                     }
+                    .simultaneousGesture(TapGesture().onEnded({ _ in
+                        UserSettings.currentLevel.patch = 1
+                        UserSettings.currentLevel.level = 0
+                        UserSettings.currentLevel.showOnboarding = true
+                    }))
                     .padding(.top, safeDimensionManager.dimensions.height * 0.06)
                     .padding(.trailing, safeDimensionManager.dimensions.width * 0.07)
                     
                     Spacer()
-                       .frame(height: safeDimensionManager.dimensions.height * 0.75)
+                        .frame(height: safeDimensionManager.dimensions.height * 0.75)
                     
                     //NEXT BUTTON
                     NextButton(color: ColorAsset.MAIN_WHITE) {
