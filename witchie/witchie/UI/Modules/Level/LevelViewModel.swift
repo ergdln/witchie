@@ -12,7 +12,19 @@ import SwiftUI
 
 final class LevelViewModel: ObservableObject {
     
+    enum State {
+        case game, dialog
+    }
+    
     //MARK: Variables
+    
+    var state: State {
+        if showEnding {
+         return .dialog
+        } else {
+            return .game
+        }
+    }
     
     //Handles the gesture
     @Published var gestureOffset: CGSize = .zero
@@ -223,6 +235,18 @@ final class LevelViewModel: ObservableObject {
         }
     }
     
+    func nextButtonAction(){
+        if state == .dialog {
+            isGameOver.toggle()
+            showEnding.toggle()
+            refreshGame()
+            levelNumber += 1
+            UserSettings.currentLevel.level = levelNumber
+            refreshGame()
+        }
+
+    }
+    
     func didLevelCompleted(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
             self.showEnding.toggle()
@@ -230,7 +254,6 @@ final class LevelViewModel: ObservableObject {
             self.audioPlayerManager.audioPlayer?.volume = 0.07
         }
         self.isGameOver.toggle()
-        showReviewPrompt()
         firebaseManager.level_completed(patch: self.patch, level: self.levelNumber, playerMovements: self.playerMovements, timePlayed: self.timePlayed, refreshes: self.refreshes)
         refreshes = 0
         timePlayed = 0
@@ -245,9 +268,6 @@ final class LevelViewModel: ObservableObject {
         }
     }
     
-    func showReviewPrompt() {
-
-    }
     
     func isLevelCompleted(platesPosition: [Int]) -> Bool{
         return platesPosition.allSatisfy{levelArray[$0] == box}
@@ -308,45 +328,6 @@ final class LevelViewModel: ObservableObject {
                 .scaledToFill())
         } else {
             return AnyView(Image(""))
-        }
-    }
-    
-    func getNextButton() -> AnyView{
-        // if it is the last level OR if it is level 9 from the patch 1 AND the user has not been redirected yet
-        // se for jogador antigo vai redirecionar
-        if ((levelNumber == LevelModel.getLevels(chapter: patch).count - 1) || (levelNumber == 8 && patch == 1 && !UserSettings.hasSeenNewChapter == true)) {
-            return (
-                AnyView(
-                    NavigationLink(destination: PatchSelectorView()) {
-                        Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    }
-                        .simultaneousGesture(TapGesture().onEnded({
-                            UserSettings.isNotFirstTime[self.patch - 1] = true
-                            UserSettings.hasSeenNewChapter = true
-                            self.defaultsManager.setSeenChapter(value: true)
-                        }))
-                )
-            )
-        }
-        else {
-            return(
-                AnyView(
-                    Button{
-                        self.refreshGame()
-                        self.levelNumber += 1
-                        UserSettings.currentLevel.level = self.levelNumber
-                        self.refreshGame()
-                        self.isGameOver.toggle()
-                        self.showEnding.toggle()
-                    } label: {
-                        Image(PatchModel().getPatchAssets(patch: patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    }
-                )
-            )
         }
     }
 }

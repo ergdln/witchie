@@ -23,6 +23,8 @@ struct LevelView: View {
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    @State var disableButton = false
+    
     @Environment(\.dismiss) public var dismiss
     @Environment (\.requestReview) var requestReview
     
@@ -31,20 +33,20 @@ struct LevelView: View {
             
             viewModel.getPatchBackground()
             
-            ZStack {
+            HStack {
                 
-                if !viewModel.showEnding {
-                    gameView
-                        .frame(width: dimensionManager.dimensions.width * 0.8, height: dimensionManager.dimensions.height * 0.6)
-                } else {
+                switch viewModel.state {
+                case .dialog:
                     levelDialogue
                         .onAppear{
                             if (UserSettings.records[1]![5] == 0 || UserSettings.records[2]![5] == 0) && viewModel.levelNumber == 5 {
                                 requestReview()
                             }
                         }
+                case .game:
+                    gameView
+                        .frame(width: dimensionManager.dimensions.width * 0.8, height: dimensionManager.dimensions.height * 0.6)
                 }
-                
             }
             .frame(width: dimensionManager.dimensions.width * 0.8, height: dimensionManager.dimensions.height)
             
@@ -80,6 +82,7 @@ struct LevelView: View {
                 })
                 .onEnded({ gesture in
                     viewModel.gestureEnded()
+                    disableButton = false
                 })
         )
     }
@@ -151,7 +154,7 @@ struct LevelView: View {
                 
                 Spacer()
                 
-                viewModel.getNextButton()
+                nextButton
                     .frame(width: dimensionManager.dimensions.width, height: dimensionManager.dimensions.width * 0.43)
                     .simultaneousGesture(TapGesture().onEnded({ _ in
                         UserSettings.currentLevel.showOnboarding = false
@@ -251,6 +254,32 @@ struct LevelView: View {
         }
     }
     
+    @ViewBuilder
+    var nextButton: some View {
+        // if it is the last level OR if it is level 9 from the patch 1 AND the user has not been redirected yet
+        // se for jogador antigo vai redirecionar
+        if ((viewModel.levelNumber == LevelModel.getLevels(chapter: viewModel.patch).count - 1) || (viewModel.levelNumber == 8 && viewModel.patch == 1 && !UserSettings.hasSeenNewChapter)) {
+            NavigationLink(destination: StartGameView()) {
+                Image(PatchModel().getPatchAssets(patch: viewModel.patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+            .simultaneousGesture(TapGesture().onEnded({
+                UserSettings.isNotFirstTime[viewModel.patch - 1] = true
+                UserSettings.hasSeenNewChapter = true
+                viewModel.defaultsManager.setSeenChapter(value: true)
+            }))
+        }
+        else {
+            Button{
+                viewModel.nextButtonAction()
+            } label: {
+                Image(PatchModel().getPatchAssets(patch: viewModel.patch, images: [ImageAsset.NEXT_BUTTON_DIALOGUE, ImageAsset.WITCHIE2_DIALOGUE_CHAPTER2]))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        }
+    }
 }
 
 struct Level2_Previews: PreviewProvider {
