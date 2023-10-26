@@ -9,8 +9,8 @@ import SwiftUI
 
 struct PatchSelectorView: View {
     @ObservedObject var viewModel = PatchSelectorViewModel()
-    //@EnvironmentObject private var audioPlayerManager: AudioPlayerManager
-    //@StateObject var fxPlayerManager = FXPlayerManager()
+    @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
+    @StateObject var fxPlayerManager = FXPlayerManager()
     @Environment(\.dismiss) private var dismiss
     
     let lockColor1 = Color(red: 54/255, green: 54/255, blue: 54/255)
@@ -29,7 +29,7 @@ struct PatchSelectorView: View {
                     
                     Spacer()
                     
-                    //SoundToggleComponent(soundOn: $viewModel.soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_PURPLE)
+                    SoundToggleComponent(soundOn: $viewModel.soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_PURPLE)
                 }
                 .padding([.horizontal,.top], 32.0)
                 
@@ -51,9 +51,10 @@ struct PatchSelectorView: View {
                                           disable: viewModel.shouldDisable(patch: patch))
                             }.disabled(viewModel.shouldDisable(patch: patch))
                                 .simultaneousGesture(TapGesture().onEnded({ _ in
-                                    //fxPlayerManager.playButtonFX()
+                                    fxPlayerManager.playButtonFX()
                                 }))
                         }
+                        .id(UUID())
                     }
                     .padding(.horizontal)
                 }
@@ -61,6 +62,7 @@ struct PatchSelectorView: View {
             .navigationBarBackButtonHidden()
         }
         .onAppear{
+            print (UserSettings.records.count + 1)
         }
     }
     

@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-//import AVFAudio
+import AVFAudio
 
 struct ContentView: View {
-    //@StateObject var audioPlayerManager = AudioPlayerManager()
+    @StateObject var audioPlayerManager = AudioPlayerManager()
     @StateObject var defaultsManager = DefaultsManager.shared
     @StateObject var dimensionManager = DimensionManager.shared
     
@@ -23,7 +23,7 @@ struct ContentView: View {
                     dimensionManager.dimensions = geo.size
                     
                     // Criar o AVAudioPlayer no início do jogo
-                    //audioPlayerManager.gameStarted()
+                    audioPlayerManager.gameStarted()
                     
                     //Carrega os valores de userdefaults no usersettings
                     defaultsManager.gameStarted() 
@@ -31,7 +31,7 @@ struct ContentView: View {
                 .onChange(of: geo.size, perform: { newValue in
                     dimensionManager.dimensions = geo.size
                 })
-                //.environmentObject(audioPlayerManager)
+                .environmentObject(audioPlayerManager)
                 .preferredColorScheme(.dark)
         }
         .ignoresSafeArea()

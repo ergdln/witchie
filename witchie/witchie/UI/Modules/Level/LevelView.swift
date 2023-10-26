@@ -14,8 +14,8 @@ struct LevelView: View{
     
     @State public var soundOn = true
     // Esses Managers vão para uma pasta chamada Manager
-    //@EnvironmentObject public var audioPlayerManager: AudioPlayerManager
-    //@StateObject var fxPlayerManager = FXPlayerManager()
+    @EnvironmentObject public var audioPlayerManager: AudioPlayerManager
+    @StateObject var fxPlayerManager = FXPlayerManager()
     @State public var levelNumber: Int
     // Deveria ser chamado apenas o Nível, não o array inteiro do Model
     @State var levelModel: [LevelModel]
@@ -137,7 +137,7 @@ struct LevelView: View{
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .padding(.bottom, -20)
                         Spacer()
-                        //SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
+                        SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                     }
                     Spacer()
                     // E isso aqui poderia ser um componente também, com StepCounter e RefreshButton
@@ -296,7 +296,7 @@ struct LevelView: View{
                                     .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                     .padding(.bottom, -20)
                                 Spacer()
-                                //SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
+                                SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
                             }
                             .padding(.horizontal, safeDimensionManager.dimensions.width * 0.1)
                             Spacer()

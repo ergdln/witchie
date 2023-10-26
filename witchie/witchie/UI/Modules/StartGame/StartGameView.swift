@@ -18,9 +18,9 @@ struct StartGameView: View {
     @State var animatingW = true
     
     @State private var soundOn = true
-    //@State var audioPlayer: AVAudioPlayer!
-    //@EnvironmentObject private var audioPlayerManager: AudioPlayerManager
-    //@StateObject var fxPlayerManager = FXPlayerManager()
+    @State var audioPlayer: AVAudioPlayer!
+    @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
+    @StateObject var fxPlayerManager = FXPlayerManager()
     @State private var path = NavigationPath()
     
     @StateObject var safeDimensionManager = DimensionManager.shared
@@ -52,7 +52,7 @@ struct StartGameView: View {
                         VStack(spacing: 10) {
                             HStack (alignment: .center) {
                                 Spacer()
-                                //SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
+                                SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                             }
                             .padding(.horizontal, 32.0)
                             .padding(.top, safeDimensionManager.dimensions.height * 0.05)
@@ -156,7 +156,7 @@ struct StartGameView: View {
                                 }
                             }
                             .simultaneousGesture(TapGesture().onEnded({ _ in
-                                //fxPlayerManager.playButtonFX()
+                                fxPlayerManager.playButtonFX()
                             }))
                             Spacer()
                                 .frame(height: safeDimensionManager.dimensions.height * 0.001)

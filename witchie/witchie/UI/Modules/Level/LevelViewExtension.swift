@@ -106,7 +106,7 @@ extension LevelView{
                 levelActualPosition = actualPosition + offset
                 //if you successfully pushed a box, update playerMovements
                 if !isLevelCompleted(platesPosition: levelSpotsIndex){
-                    //fxPlayerManager.playBoxInMarkFX(patch: patch)
+                    fxPlayerManager.playBoxInMarkFX(patch: patch)
                 }
                 playerMovements += 1
             }
@@ -128,16 +128,16 @@ extension LevelView{
         if isLevelCompleted(platesPosition: levelSpotsIndex){
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
                 showEnding.toggle()
-                //fxPlayerManager.stopSound()
-                //audioPlayerManager.audioPlayer?.volume = 0.07
+                fxPlayerManager.stopSound()
+                audioPlayerManager.audioPlayer?.volume = 0.07
             }
             self.isGameOver.toggle()
             showReviewPrompt()
             levelEndAnalytics()
             refreshes = 0
             timePlayed = 0
-            //fxPlayerManager.playLevelCompletedFX(patch: patch)
-            //audioPlayerManager.audioPlayer?.volume = 0
+            fxPlayerManager.playLevelCompletedFX(patch: patch)
+            audioPlayerManager.audioPlayer?.volume = 0
             if patch == 1{
                 defaultsManager.setLevelCompleted(level: levelNumber)
             }
