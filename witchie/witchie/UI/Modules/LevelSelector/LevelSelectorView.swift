@@ -102,6 +102,7 @@ struct LevelSelectorView: View {
                                     fxPlayerManager.playButtonFX()
                                 }))
                         }
+                        .id(UUID())
                     }
                     .frame(width: safeDimensionManager.dimensions.width * 0.8)
                     .onAppear{

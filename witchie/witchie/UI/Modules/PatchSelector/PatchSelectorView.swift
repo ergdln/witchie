@@ -54,6 +54,7 @@ struct PatchSelectorView: View {
                                     fxPlayerManager.playButtonFX()
                                 }))
                         }
+                        .id(UUID())
                     }
                     .padding(.horizontal)
                 }
