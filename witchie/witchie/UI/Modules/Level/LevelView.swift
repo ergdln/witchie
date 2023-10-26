@@ -8,14 +8,14 @@
 import SwiftUI
 import AVFoundation
 import StoreKit
-import FirebaseAnalytics
+//import FirebaseAnalytics
 
 struct LevelView: View{
     
     @State public var soundOn = true
     // Esses Managers vão para uma pasta chamada Manager
-    @EnvironmentObject public var audioPlayerManager: AudioPlayerManager
-    @StateObject var fxPlayerManager = FXPlayerManager()
+    //@EnvironmentObject public var audioPlayerManager: AudioPlayerManager
+    //@StateObject var fxPlayerManager = FXPlayerManager()
     @State public var levelNumber: Int
     // Deveria ser chamado apenas o Nível, não o array inteiro do Model
     @State var levelModel: [LevelModel]
@@ -137,7 +137,7 @@ struct LevelView: View{
                             .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                             .padding(.bottom, -20)
                         Spacer()
-                        SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
+                        //SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                     }
                     Spacer()
                     // E isso aqui poderia ser um componente também, com StepCounter e RefreshButton
@@ -296,7 +296,7 @@ struct LevelView: View{
                                     .foregroundColor(Color(ColorAsset.MAIN_WHITE))
                                     .padding(.bottom, -20)
                                 Spacer()
-                                SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
+                                //SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.WHITE)
                             }
                             .padding(.horizontal, safeDimensionManager.dimensions.width * 0.1)
                             Spacer()
@@ -380,10 +380,10 @@ struct LevelView: View{
         }
         // Essas coisas de Analytics deveriam virar um AnalyticsManager
         .onChange(of: levelNumber) { newValue in
-            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(newValue + 1)"])
+            //Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(newValue + 1)"])
         }
         .onAppear(){
-            Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1)"])
+            //Analytics.logEvent(AnalyticsEventLevelStart, parameters: [AnalyticsParameterLevelName: "\(patch): \(levelNumber + 1)"])
             witchImage = getPatchAssets(patch: patch, images: [ImageAsset.TILE_WITCH_LEFT, ImageAsset.WITCHIE_GARDEN_LEFT])
             
         }

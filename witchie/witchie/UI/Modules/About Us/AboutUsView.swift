@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AboutUsView: View {
     @State private var soundOn = true
-    @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
+    //@EnvironmentObject private var audioPlayerManager: AudioPlayerManager
     @Environment(\.dismiss) private var dismiss
     
     var safeDimensionManager = DimensionManager.shared
@@ -24,7 +24,7 @@ struct AboutUsView: View {
                         dismiss()
                     }
                     Spacer()
-                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
+                    //SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_WHITE)
                 }
                 .padding([.horizontal,.top], 32.0)
 
@@ -148,8 +148,3 @@ struct AboutUsView: View {
     }
 }
 
-struct AboutUsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AboutUsView().environmentObject(AudioPlayerManager())
-    }
-}

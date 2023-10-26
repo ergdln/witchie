@@ -10,7 +10,7 @@ import SwiftUI
 struct SoundToggleComponent: View {
     @StateObject var defaultsManager = DefaultsManager.shared
     @Binding var soundOn: Bool
-    @ObservedObject var audioPlayerManager: AudioPlayerManager
+    //@ObservedObject var audioPlayerManager: AudioPlayerManager
     var color: String
     var body: some View {
         
@@ -39,9 +39,9 @@ struct SoundToggleComponent: View {
         .frame(width: 33, height: 26)
         .onChange(of: soundOn) { newValue in
             if newValue {
-                audioPlayerManager.playSound()
+                //audioPlayerManager.playSound()
             } else {
-                audioPlayerManager.stopSound()
+                //audioPlayerManager.stopSound()
             }
         }
         .onAppear{
@@ -50,8 +50,3 @@ struct SoundToggleComponent: View {
     }
 }
 
-struct SoundToggleComponent_Previews: PreviewProvider {
-    static var previews: some View {
-        SoundToggleComponent(soundOn: .constant(false), audioPlayerManager: .init(), color: ColorAsset.MAIN_WHITE)
-    }
-}

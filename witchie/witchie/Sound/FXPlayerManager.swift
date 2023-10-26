@@ -5,7 +5,7 @@
 //  Created by Guilherme Souza on 26/07/23.
 //
 
-import SwiftUI
+/*import SwiftUI
 import AVFoundation
 import Combine
 
@@ -49,4 +49,4 @@ class FXPlayerManager: ObservableObject {
         audioPlayer?.stop()
     }
 }
-
+*/

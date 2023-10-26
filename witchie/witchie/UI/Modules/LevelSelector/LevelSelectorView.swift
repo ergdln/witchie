@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-import AVFAudio
+//import AVFAudio
 
 struct LevelSelectorView: View {
     @State private var soundOn = true
-    @EnvironmentObject private var audioPlayerManager: AudioPlayerManager
-    @StateObject var fxPlayerManager = FXPlayerManager()
+    //@EnvironmentObject private var audioPlayerManager: AudioPlayerManager
+    //@StateObject var fxPlayerManager = FXPlayerManager()
     @State var isCompleted: [Bool]
     @Environment(\.dismiss) private var dismiss
     var patch: Int
@@ -47,7 +47,7 @@ struct LevelSelectorView: View {
                         dismiss()
                     }
                     Spacer()
-                    SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_PURPLE)
+                    //SoundToggleComponent(soundOn: $soundOn, audioPlayerManager: audioPlayerManager, color: ColorAsset.MAIN_PURPLE)
                 }
                 .padding([.horizontal,.top], 32.0)
                 Text(ContentComponent.LEVELS).font(.custom(ContentComponent.BOREL_REGULAR, size: 40))
@@ -99,7 +99,7 @@ struct LevelSelectorView: View {
                                 }
                             }.disabled(shouldDisable(level: level))
                                 .simultaneousGesture(TapGesture().onEnded({ _ in
-                                    fxPlayerManager.playButtonFX()
+                                    //fxPlayerManager.playButtonFX()
                                 }))
                         }
                     }
@@ -143,9 +143,3 @@ struct LevelSelectorView: View {
     }
 }
 
-struct LevelSelectorView_Previews: PreviewProvider {
-    static var previews: some View {
-        LevelSelectorView(patch: 1)
-            .environmentObject(AudioPlayerManager())
-    }
-}
